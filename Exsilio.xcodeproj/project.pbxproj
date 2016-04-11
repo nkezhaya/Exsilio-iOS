@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */; };
+		A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */; };
+		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
+		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
+		A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */; };
+		A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */; };
+		A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD421CBC074C00E605B3 /* EXButton.swift */; };
+		A6F1DD451CBC1CD100E605B3 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */; };
+		A6F1DD461CBC1CD100E605B3 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */; };
+		A6F1DD471CBC1CD100E605B3 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */; };
+		A6F1DD481CBC1CD100E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3A1CBC047300E605B3 /* OpenSans-ExtraBoldItalic.ttf */; };
+		A6F1DD491CBC1CD100E605B3 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3B1CBC047300E605B3 /* OpenSans-Italic.ttf */; };
+		A6F1DD4A1CBC1CD100E605B3 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3C1CBC047300E605B3 /* OpenSans-Light.ttf */; };
+		A6F1DD4B1CBC1CD100E605B3 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3D1CBC047300E605B3 /* OpenSans-LightItalic.ttf */; };
+		A6F1DD4C1CBC1CD100E605B3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */; };
+		A6F1DD4D1CBC1CD100E605B3 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */; };
+		A6F1DD4E1CBC1CD100E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */; };
+		A6F1DD501CBC248300E605B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.release.xcconfig"; sourceTree = "<group>"; };
+		93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.debug.xcconfig"; sourceTree = "<group>"; };
+		A65A39961CBBFB3C00E605B3 /* Exsilio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exsilio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A65A399E1CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A65A39A31CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A65A39A51CBBFB3C00E605B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A6F1DD3A1CBC047300E605B3 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		A6F1DD3B1CBC047300E605B3 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		A6F1DD3C1CBC047300E605B3 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		A6F1DD3D1CBC047300E605B3 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		A6F1DD421CBC074C00E605B3 /* EXButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXButton.swift; sourceTree = "<group>"; };
+		A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exsilio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A65A39931CBBFB3C00E605B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09516E61381D674892E16F40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */,
+				6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		976AA7F49EF47297BE143AA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A65A398D1CBBFB3C00E605B3 = {
+			isa = PBXGroup;
+			children = (
+				A65A39981CBBFB3C00E605B3 /* Exsilio */,
+				A65A39971CBBFB3C00E605B3 /* Products */,
+				09516E61381D674892E16F40 /* Pods */,
+				976AA7F49EF47297BE143AA5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A65A39971CBBFB3C00E605B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A65A39961CBBFB3C00E605B3 /* Exsilio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A65A39981CBBFB3C00E605B3 /* Exsilio */ = {
+			isa = PBXGroup;
+			children = (
+				A6F1DD441CBC0B4A00E605B3 /* Views */,
+				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
+				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
+				A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */,
+				A65A399D1CBBFB3C00E605B3 /* Main.storyboard */,
+				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
+				A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */,
+				A6F1DD361CBC046000E605B3 /* Supporting Files */,
+			);
+			path = Exsilio;
+			sourceTree = "<group>";
+		};
+		A6F1DD361CBC046000E605B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A6F1DD411CBC048F00E605B3 /* Fonts */,
+				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6F1DD411CBC048F00E605B3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */,
+				A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */,
+				A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */,
+				A6F1DD3A1CBC047300E605B3 /* OpenSans-ExtraBoldItalic.ttf */,
+				A6F1DD3B1CBC047300E605B3 /* OpenSans-Italic.ttf */,
+				A6F1DD3C1CBC047300E605B3 /* OpenSans-Light.ttf */,
+				A6F1DD3D1CBC047300E605B3 /* OpenSans-LightItalic.ttf */,
+				A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */,
+				A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */,
+				A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		A6F1DD441CBC0B4A00E605B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6F1DD421CBC074C00E605B3 /* EXButton.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A65A39951CBBFB3C00E605B3 /* Exsilio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A65A39A81CBBFB3C00E605B3 /* Build configuration list for PBXNativeTarget "Exsilio" */;
+			buildPhases = (
+				D643D76A537EDD787BF20A1B /* 📦 Check Pods Manifest.lock */,
+				A65A39921CBBFB3C00E605B3 /* Sources */,
+				A65A39931CBBFB3C00E605B3 /* Frameworks */,
+				A65A39941CBBFB3C00E605B3 /* Resources */,
+				757C270E7909E6874CAFFFB6 /* 📦 Embed Pods Frameworks */,
+				D07C83D352B0B235C4E51E43 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Exsilio;
+			productName = Exsilio;
+			productReference = A65A39961CBBFB3C00E605B3 /* Exsilio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A65A398E1CBBFB3C00E605B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					A65A39951CBBFB3C00E605B3 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = A65A39911CBBFB3C00E605B3 /* Build configuration list for PBXProject "Exsilio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A65A398D1CBBFB3C00E605B3;
+			productRefGroup = A65A39971CBBFB3C00E605B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A65A39951CBBFB3C00E605B3 /* Exsilio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A65A39941CBBFB3C00E605B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F1DD451CBC1CD100E605B3 /* OpenSans-Bold.ttf in Resources */,
+				A6F1DD461CBC1CD100E605B3 /* OpenSans-BoldItalic.ttf in Resources */,
+				A6F1DD471CBC1CD100E605B3 /* OpenSans-ExtraBold.ttf in Resources */,
+				A6F1DD481CBC1CD100E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				A6F1DD491CBC1CD100E605B3 /* OpenSans-Italic.ttf in Resources */,
+				A6F1DD4A1CBC1CD100E605B3 /* OpenSans-Light.ttf in Resources */,
+				A6F1DD4B1CBC1CD100E605B3 /* OpenSans-LightItalic.ttf in Resources */,
+				A6F1DD4C1CBC1CD100E605B3 /* OpenSans-Regular.ttf in Resources */,
+				A6F1DD4D1CBC1CD100E605B3 /* OpenSans-Semibold.ttf in Resources */,
+				A6F1DD4E1CBC1CD100E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */,
+				A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */,
+				A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		757C270E7909E6874CAFFFB6 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D07C83D352B0B235C4E51E43 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D643D76A537EDD787BF20A1B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A65A39921CBBFB3C00E605B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
+				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
+				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,
+				A6F1DD501CBC248300E605B3 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A65A399D1CBBFB3C00E605B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A65A399E1CBBFB3C00E605B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A65A39A31CBBFB3C00E605B3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A65A39A61CBBFB3C00E605B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A65A39A71CBBFB3C00E605B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A65A39A91CBBFB3C00E605B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Exsilio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.whitepaperclip.Exsilio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A65A39AA1CBBFB3C00E605B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Exsilio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.whitepaperclip.Exsilio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A65A39911CBBFB3C00E605B3 /* Build configuration list for PBXProject "Exsilio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65A39A61CBBFB3C00E605B3 /* Debug */,
+				A65A39A71CBBFB3C00E605B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A65A39A81CBBFB3C00E605B3 /* Build configuration list for PBXNativeTarget "Exsilio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65A39A91CBBFB3C00E605B3 /* Debug */,
+				A65A39AA1CBBFB3C00E605B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A65A398E1CBBFB3C00E605B3 /* Project object */;
+}
