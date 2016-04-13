@@ -8,8 +8,11 @@
 
 import UIKit
 import FBSDKLoginKit
+import PKRevealController
 
 class LoginViewController: UIViewController {
+
+    var pkRevealController: PKRevealController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,6 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 
     @IBAction func loginButtonClicked() {
         let login = FBSDKLoginManager()
@@ -33,9 +35,7 @@ class LoginViewController: UIViewController {
                 fbRequest.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) in
                     if error == nil {
                         print("Info: \(result)")
-
-                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("HomeViewController")
-                        self.presentViewController(vc!, animated: true, completion: nil)
+                        (UIApplication.sharedApplication().delegate as! AppDelegate).setRootViewController()
                     } else {
                         print("Error: \(error)")
                     }
@@ -46,5 +46,9 @@ class LoginViewController: UIViewController {
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
+    }
+
+    func startPresentationMode() {
+        self.pkRevealController.enterPresentationModeAnimated(true, completion: nil)
     }
 }

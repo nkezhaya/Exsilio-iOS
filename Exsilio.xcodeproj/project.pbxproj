@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */; };
+		A62A5B171CBEC6F300E605B3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B161CBEC6F300E605B3 /* MenuViewController.swift */; };
 		A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */; };
 		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.release.xcconfig"; sourceTree = "<group>"; };
 		93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.debug.xcconfig"; sourceTree = "<group>"; };
+		A62A5B161CBEC6F300E605B3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A65A39961CBBFB3C00E605B3 /* Exsilio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exsilio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -106,9 +108,9 @@
 				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
 				A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */,
+				A62A5B161CBEC6F300E605B3 /* MenuViewController.swift */,
 				A65A399D1CBBFB3C00E605B3 /* Main.storyboard */,
 				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
-				A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */,
 				A6F1DD361CBC046000E605B3 /* Supporting Files */,
 			);
 			path = Exsilio;
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F1DD411CBC048F00E605B3 /* Fonts */,
+				A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */,
 				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
+				A62A5B171CBEC6F300E605B3 /* MenuViewController.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
 				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,
 				A6F1DD501CBC248300E605B3 /* HomeViewController.swift in Sources */,

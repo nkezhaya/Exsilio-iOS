@@ -8,15 +8,19 @@
 
 import UIKit
 import FBSDKCoreKit
+import PKRevealController
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
 
     var window: UIWindow?
-
+    var revealController: PKRevealController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        setRootViewController()
+
         return true
     }
 
@@ -44,5 +48,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+
+    func setRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController : UIViewController
+
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            let homeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
+            let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")
+            let navigationController : UINavigationController
+
+            var menuIcon = UIImage(named: "MenuIcon")!
+            menuIcon = UIImage(CGImage: menuIcon.CGImage!, scale: menuIcon.scale * 1.5, orientation: menuIcon.imageOrientation)
+
+            self.revealController = PKRevealController(frontViewController: homeViewController, leftViewController: menuViewController)
+            self.revealController?.title = homeViewController.title
+            self.revealController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuIcon,
+                                                                                      style: .Plain,
+                                                                                      target: self,
+                                                                                      action: #selector(togglePresentationMode))
+
+            navigationController = UINavigationController(rootViewController: self.revealController!)
+            navigationController.navigationBar.barTintColor = UIColor.whiteColor()
+            navigationController.navigationBar.tintColor = UIColor.blackColor()
+            navigationController.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "OpenSans", size: 18)! ]
+
+            initialViewController = navigationController
+        } else {
+            initialViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+        }
+
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+    }
+
+    func togglePresentationMode() {
+        if self.revealController?.isPresentationModeActive == true {
+            self.revealController?.resignPresentationModeEntirely(true, animated: true, completion: nil)
+        } else {
+            self.revealController?.enterPresentationModeAnimated(true, completion: nil)
+        }
     }
 }
