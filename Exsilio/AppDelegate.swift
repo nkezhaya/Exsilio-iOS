@@ -56,13 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
 
         if FBSDKAccessToken.currentAccessToken() != nil {
             let homeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
-            let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")
+            let menuTableViewController = storyboard.instantiateViewControllerWithIdentifier("MenuTableViewController")
             let navigationController : UINavigationController
 
             var menuIcon = UIImage(named: "MenuIcon")!
             menuIcon = UIImage(CGImage: menuIcon.CGImage!, scale: menuIcon.scale * 1.5, orientation: menuIcon.imageOrientation)
 
-            self.revealController = PKRevealController(frontViewController: homeViewController, leftViewController: menuViewController)
+            self.revealController = PKRevealController(frontViewController: homeViewController, leftViewController: menuTableViewController)
             self.revealController?.title = homeViewController.title
             self.revealController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuIcon,
                                                                                       style: .Plain,
@@ -72,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
             navigationController = UINavigationController(rootViewController: self.revealController!)
             navigationController.navigationBar.barTintColor = UIColor.whiteColor()
             navigationController.navigationBar.tintColor = UIColor.blackColor()
+            navigationController.navigationBar.translucent = false
             navigationController.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "OpenSans", size: 18)! ]
 
             initialViewController = navigationController
@@ -79,7 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
             initialViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
         }
 
-        self.window?.rootViewController = initialViewController
+        UIView.transitionWithView(self.window!,
+                                  duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft,
+                                  animations: { self.window?.rootViewController = initialViewController },
+                                  completion: nil)
+
         self.window?.makeKeyAndVisible()
     }
 

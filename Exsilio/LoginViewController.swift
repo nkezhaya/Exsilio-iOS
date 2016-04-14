@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 import PKRevealController
+import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -19,13 +20,8 @@ class LoginViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     @IBAction func loginButtonClicked() {
-        let login = FBSDKLoginManager()
-        login.logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result, error) in
+        FBSDKLoginManager().logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result, error) in
             if error != nil {
                 print("Error with Facebook login")
             } else if result.isCancelled {
@@ -34,7 +30,9 @@ class LoginViewController: UIViewController {
                 let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,first_name,last_name,email,gender"])
                 fbRequest.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) in
                     if error == nil {
-                        print("Info: \(result)")
+                        Alamofire.request(.POST, "\(API.URL)/\(API.AuthPath)", parameters: [ "user[token]": FBSDKAccessToken.currentAccessToken().tokenString ]).responseJSON { response in
+                            print("\(result)")
+                        }
                         (UIApplication.sharedApplication().delegate as! AppDelegate).setRootViewController()
                     } else {
                         print("Error: \(error)")
