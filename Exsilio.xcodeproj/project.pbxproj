@@ -16,6 +16,11 @@
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
 		A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */; };
 		A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */; };
+		A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */; };
+		A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */; };
+		A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78B1CD1082500E605B3 /* SearchViewController.swift */; };
+		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
+		A674A7901CD108F600E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourViewController.swift */; };
 		A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD421CBC074C00E605B3 /* EXButton.swift */; };
 		A6F1DD451CBC1CD100E605B3 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */; };
 		A6F1DD461CBC1CD100E605B3 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */; };
@@ -27,7 +32,6 @@
 		A6F1DD4C1CBC1CD100E605B3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */; };
 		A6F1DD4D1CBC1CD100E605B3 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */; };
 		A6F1DD4E1CBC1CD100E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */; };
-		A6F1DD501CBC248300E605B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,12 @@
 		A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A65A39A31CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A65A39A51CBBFB3C00E605B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
+		A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
+		A674A78B1CD1082500E605B3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToursTableViewController.swift; sourceTree = "<group>"; };
+		A674A78F1CD108F600E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
+		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -54,7 +64,6 @@
 		A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		A6F1DD421CBC074C00E605B3 /* EXButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXButton.swift; sourceTree = "<group>"; };
-		A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exsilio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */,
+				A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */,
+				A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -116,26 +127,45 @@
 		A65A39981CBBFB3C00E605B3 /* Exsilio */ = {
 			isa = PBXGroup;
 			children = (
-				A6354C6F1CC047BD00E605B3 /* Extensions */,
-				A6F1DD441CBC0B4A00E605B3 /* Views */,
-				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
+				A674A78A1CD1081C00E605B3 /* Search */,
+				A674A7891CD1081800E605B3 /* Tours */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
-				A6F1DD4F1CBC248300E605B3 /* HomeViewController.swift */,
+				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
 				A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */,
 				A65A399D1CBBFB3C00E605B3 /* Main.storyboard */,
-				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
 				A6F1DD361CBC046000E605B3 /* Supporting Files */,
 			);
 			path = Exsilio;
 			sourceTree = "<group>";
 		};
+		A674A7891CD1081800E605B3 /* Tours */ = {
+			isa = PBXGroup;
+			children = (
+				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
+				A674A78F1CD108F600E605B3 /* CreateTourViewController.swift */,
+			);
+			name = Tours;
+			sourceTree = "<group>";
+		};
+		A674A78A1CD1081C00E605B3 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A674A78B1CD1082500E605B3 /* SearchViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		A6F1DD361CBC046000E605B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A6354C6F1CC047BD00E605B3 /* Extensions */,
+				A6F1DD441CBC0B4A00E605B3 /* Views */,
 				A6F1DD411CBC048F00E605B3 /* Fonts */,
+				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
 				A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */,
 				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
 				A62A5B1D1CBED6D500E605B3 /* Constants.swift */,
+				A689046E1CD112E000E605B3 /* ObjCBridge.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -296,13 +326,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */,
+				A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */,
+				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
 				A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
 				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,
-				A6F1DD501CBC248300E605B3 /* HomeViewController.swift in Sources */,
 				A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */,
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
+				A674A7901CD108F600E605B3 /* CreateTourViewController.swift in Sources */,
+				A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +403,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = Exsilio/ObjCBridge.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -408,6 +443,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = Exsilio/ObjCBridge.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

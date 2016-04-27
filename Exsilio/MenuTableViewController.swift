@@ -46,17 +46,23 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            break
-        case 1:
-            break
-        case 2:
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let revealController = appDelegate.revealController!
+        let vc: UIViewController?
+
+        if indexPath.row == 0 {
+            vc = self.storyboard?.instantiateViewControllerWithIdentifier("SearchViewController")
+        } else if indexPath.row == 1 {
+            vc = self.storyboard?.instantiateViewControllerWithIdentifier("ToursTableViewController")
+        } else {
             FBSDKLoginManager().logOut()
             (UIApplication.sharedApplication().delegate as! AppDelegate).setRootViewController()
-        default:
-            break
+            return
         }
+
+        revealController.frontViewController = vc
+        revealController.showViewController(revealController.frontViewController, animated: true, completion: nil)
+        revealController.title = revealController.frontViewController.title
 
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

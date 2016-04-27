@@ -25,17 +25,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LoginBackground" highlightedImage="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EGN-K3-R0w">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" highlightedImage="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EGN-K3-R0w">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to Exsilio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrw-rB-QhQ">
-                                <rect key="frame" x="181" y="129" width="239" height="142"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4Z-9y-R6M" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="200" y="484" width="200" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4Z-9y-R6M" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="200" y="492" width="200" height="32"/>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.75294117647058822" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Vgu-f5-JX7"/>
@@ -48,18 +42,25 @@
                                     <action selector="loginButtonClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="cid-45-x4B"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Exsilio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrw-rB-QhQ">
+                                <rect key="frame" x="193" y="87" width="215" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="L4Z-9y-R6M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="17P-tl-kih"/>
-                            <constraint firstItem="Jrw-rB-QhQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4SN-Ql-HEy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="L4Z-9y-R6M" secondAttribute="bottom" constant="76" id="2GA-zd-Fph"/>
                             <constraint firstItem="Jrw-rB-QhQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="67u-eI-fSU"/>
-                            <constraint firstItem="EGN-K3-R0w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="E4O-VS-gGa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EGN-K3-R0w" secondAttribute="bottom" id="ErW-zr-F2J"/>
-                            <constraint firstItem="L4Z-9y-R6M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GOo-WS-zgH"/>
-                            <constraint firstItem="EGN-K3-R0w" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Q0Q-If-0oq"/>
+                            <constraint firstItem="EGN-K3-R0w" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GcZ-Qs-PaW"/>
+                            <constraint firstItem="Jrw-rB-QhQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="67" id="HiD-ni-Qwe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EGN-K3-R0w" secondAttribute="trailing" constant="-20" id="eMe-TT-K88"/>
                             <constraint firstItem="EGN-K3-R0w" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="epy-Ia-31E"/>
                             <constraint firstItem="L4Z-9y-R6M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i8N-cc-2Nu"/>
+                            <constraint firstItem="EGN-K3-R0w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="lum-hl-7E1"/>
+                            <constraint firstItem="EGN-K3-R0w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wWk-Sg-dyv"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -116,7 +117,7 @@
         <!--Search-->
         <scene sceneID="IPG-Xj-p3V">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" title="Search" id="vMS-27-t5x" customClass="HomeViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" title="Search" id="vMS-27-t5x" customClass="SearchViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kfi-xJ-qws"/>
                         <viewControllerLayoutGuide type="bottom" id="wil-5y-5wA"/>
@@ -125,19 +126,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf6-OA-25d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf6-OA-25d">
                                 <rect key="frame" x="259" y="289" width="83" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="AYd-zY-cng"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rf6-OA-25d" firstAttribute="centerY" secondItem="Gd1-Be-iOT" secondAttribute="centerY" id="s9K-tW-IKf"/>
+                            <constraint firstItem="rf6-OA-25d" firstAttribute="centerX" secondItem="Gd1-Be-iOT" secondAttribute="centerX" id="uUn-Wq-oQZ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XG5-c5-5De" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1283" y="419"/>
+        </scene>
+        <!--My Tours-->
+        <scene sceneID="j3C-yK-ej4">
+            <objects>
+                <tableViewController storyboardIdentifier="ToursTableViewController" title="My Tours" id="DzD-g4-K3Z" customClass="ToursTableViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxH-9a-6y1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KMd-Ia-4mf">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMd-Ia-4mf" id="JVf-Z0-WCl">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DzD-g4-K3Z" id="LdY-Dc-J6c"/>
+                            <outlet property="delegate" destination="DzD-g4-K3Z" id="3Yt-CI-uCu"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vUm-mb-J9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1283" y="1120"/>
         </scene>
     </scenes>
     <resources>

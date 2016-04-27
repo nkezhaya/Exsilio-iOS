@@ -7,4 +7,5 @@ target "Exsilio" do
   pod "FBSDKCoreKit"
   pod "FBSDKLoginKit"
   pod "FBSDKShareKit"
+  pod "DZNEmptyDataSet"
 end

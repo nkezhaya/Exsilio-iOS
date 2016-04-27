@@ -55,15 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
         var initialViewController : UIViewController
 
         if FBSDKAccessToken.currentAccessToken() != nil {
-            let homeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
+            let searchViewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController")
             let menuTableViewController = storyboard.instantiateViewControllerWithIdentifier("MenuTableViewController")
             let navigationController : UINavigationController
 
-            var menuIcon = UIImage(named: "MenuIcon")!
-            menuIcon = UIImage(CGImage: menuIcon.CGImage!, scale: menuIcon.scale * 1.5, orientation: menuIcon.imageOrientation)
+            let menuIcon = UIImage(named: "MenuIcon")?.scaledTo(1.5)
 
-            self.revealController = PKRevealController(frontViewController: homeViewController, leftViewController: menuTableViewController)
-            self.revealController?.title = homeViewController.title
+            self.revealController = PKRevealController(frontViewController: searchViewController, leftViewController: menuTableViewController)
+            self.revealController?.title = searchViewController.title
             self.revealController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuIcon,
                                                                                       style: .Plain,
                                                                                       target: self,
