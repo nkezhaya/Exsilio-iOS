@@ -9,4 +9,6 @@ target "Exsilio" do
   pod "FBSDKShareKit"
   pod "DZNEmptyDataSet"
   pod "SVProgressHUD"
+  pod "Fusuma"
+  pod "SCLAlertView"
 end

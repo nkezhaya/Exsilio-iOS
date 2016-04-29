@@ -44,6 +44,7 @@
 		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
 		A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */; };
 		A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */; };
+		A6CBBC1A1CD3DABB00E605B3 /* CreateWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */; };
 		A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD421CBC074C00E605B3 /* EXButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourNavigationController.swift; sourceTree = "<group>"; };
 		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXLabel.swift; sourceTree = "<group>"; };
+		A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWaypointViewController.swift; sourceTree = "<group>"; };
 		A6F1DD421CBC074C00E605B3 /* EXButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXButton.swift; sourceTree = "<group>"; };
 		C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exsilio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
 				A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */,
 				A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */,
+				A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */,
 			);
 			name = Tours;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */,
 				A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */,
 				A6686F961CD29E9100E605B3 /* MadokaTextField.swift in Sources */,
+				A6CBBC1A1CD3DABB00E605B3 /* CreateWaypointViewController.swift in Sources */,
 				A6686F971CD29E9100E605B3 /* MinoruTextField.swift in Sources */,
 				A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */,
 				A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */,

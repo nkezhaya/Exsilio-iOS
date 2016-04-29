@@ -207,7 +207,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreateTour" translatesAutoresizingMaskIntoConstraints="NO" id="abX-aO-dW3">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreateTour" translatesAutoresizingMaskIntoConstraints="NO" id="abX-aO-dW3">
                                 <rect key="frame" x="252" y="72" width="97" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="ivI-Ut-Rpf"/>
@@ -276,6 +276,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQS-eM-11c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1963" y="1861"/>
+        </scene>
+        <!--New Waypoint-->
+        <scene sceneID="ut5-tc-1E1">
+            <objects>
+                <viewController storyboardIdentifier="CreateWaypointViewController" title="New Waypoint" id="rCV-Dq-8ZR" customClass="CreateWaypointViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RaJ-Z2-4P5"/>
+                        <viewControllerLayoutGuide type="bottom" id="BY9-UO-Cea"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="plf-OM-IyS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW9-mm-ekF">
+                                <rect key="frame" x="258" y="285" width="84" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="84" id="V3e-ML-Uzl"/>
+                                </constraints>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="pickImage" destination="rCV-Dq-8ZR" eventType="touchUpInside" id="dJC-lX-FK7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wW9-mm-ekF" firstAttribute="centerX" secondItem="plf-OM-IyS" secondAttribute="centerX" id="Zg3-kR-6cu"/>
+                            <constraint firstItem="wW9-mm-ekF" firstAttribute="centerY" secondItem="plf-OM-IyS" secondAttribute="centerY" id="exr-eK-MB5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zlt-5g-OzW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2651" y="1861"/>
         </scene>
     </scenes>
     <resources>

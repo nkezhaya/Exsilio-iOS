@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class CreateTourViewController: UIViewController {
     @IBOutlet var nameField: UITextField?
@@ -17,12 +18,21 @@ class CreateTourViewController: UIViewController {
         let forwardIcon = UIImage(named: "ForwardIcon")!.scaledTo(1.5)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .Plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
 
         self.nameField?.becomeFirstResponder()
     }
 
     func dismiss() {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func next() {
+        if self.nameField?.text == nil {
+            SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
+        } else {
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 }
