@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         setRootViewController()
+        setAesthetics()
 
         return true
     }
@@ -69,10 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
                                                                                       action: #selector(togglePresentationMode))
 
             navigationController = UINavigationController(rootViewController: self.revealController!)
-            navigationController.navigationBar.barTintColor = UIColor.whiteColor()
-            navigationController.navigationBar.tintColor = UIColor.blackColor()
             navigationController.navigationBar.translucent = false
-            navigationController.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "OpenSans", size: 18)! ]
 
             initialViewController = navigationController
         } else {
@@ -85,6 +83,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
                                   completion: nil)
 
         self.window?.makeKeyAndVisible()
+    }
+
+    func setAesthetics() {
+        let color = UIColor(hexString: "#333333")
+        UINavigationBar.appearance().tintColor = color
+        UINavigationBar.appearance().barTintColor = .whiteColor()
+
+        let attributes: [String: AnyObject] = [
+            NSFontAttributeName: UIFont(name: "OpenSans", size: 20)!,
+            NSForegroundColorAttributeName: color
+        ]
+
+        UINavigationBar.appearance().titleTextAttributes = attributes
     }
 
     func togglePresentationMode() {

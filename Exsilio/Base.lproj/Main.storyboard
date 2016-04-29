@@ -11,6 +11,10 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
         </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--Login View Controller-->
@@ -175,8 +179,107 @@
             </objects>
             <point key="canvasLocation" x="1283" y="1120"/>
         </scene>
+        <!--Create Tour-->
+        <scene sceneID="hHK-yC-tv2">
+            <objects>
+                <navigationController storyboardIdentifier="CreateTourNavigationController" title="Create Tour" id="9Xe-FF-1Lu" customClass="CreateTourNavigationController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hXw-Oe-E69">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="quI-X2-xOk" kind="relationship" relationship="rootViewController" id="66D-eI-uWg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjZ-kr-3pK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1283" y="1861"/>
+        </scene>
+        <!--Create Tour-->
+        <scene sceneID="tMx-FC-Rkf">
+            <objects>
+                <viewController storyboardIdentifier="CreateTourViewController" title="Create Tour" id="quI-X2-xOk" customClass="CreateTourViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hGx-ip-kLa"/>
+                        <viewControllerLayoutGuide type="bottom" id="vSp-nf-r3E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="369-Ok-cjQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-Cq-tF2" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="20" y="240" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wpl-id-21Z"/>
+                                </constraints>
+                                <color key="textColor" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.10980392160000001" green="0.57254901960000004" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cLY-dk-3Yk" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="20" y="331" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yeX-u7-HY4"/>
+                                </constraints>
+                                <color key="textColor" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.10980392160000001" green="0.57254901960000004" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreateTour" translatesAutoresizingMaskIntoConstraints="NO" id="abX-aO-dW3">
+                                <rect key="frame" x="252" y="72" width="97" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="ivI-Ut-Rpf"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vSp-nf-r3E" firstAttribute="top" secondItem="cLY-dk-3Yk" secondAttribute="bottom" constant="219" id="1D2-OA-S5V"/>
+                            <constraint firstItem="cLY-dk-3Yk" firstAttribute="top" secondItem="jNo-Cq-tF2" secondAttribute="bottom" constant="41" id="6de-oH-faC"/>
+                            <constraint firstItem="abX-aO-dW3" firstAttribute="centerX" secondItem="jNo-Cq-tF2" secondAttribute="centerX" id="F6f-dV-ONy"/>
+                            <constraint firstItem="abX-aO-dW3" firstAttribute="top" secondItem="hGx-ip-kLa" secondAttribute="bottom" constant="8" symbolic="YES" id="MLf-RP-ROf"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="cLY-dk-3Yk" secondAttribute="leading" id="ShB-vc-oiC"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="cLY-dk-3Yk" secondAttribute="trailing" id="faa-vO-gNR"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="top" secondItem="abX-aO-dW3" secondAttribute="bottom" constant="55" id="puc-Y0-YoM"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="369-Ok-cjQ" secondAttribute="leadingMargin" id="tnO-Y1-rtZ"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="369-Ok-cjQ" secondAttribute="trailingMargin" id="v9v-uF-opb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Tour" id="DvZ-eK-8mh"/>
+                    <connections>
+                        <outlet property="descriptionField" destination="cLY-dk-3Yk" id="CK8-1g-7UK"/>
+                        <outlet property="nameField" destination="jNo-Cq-tF2" id="qmG-95-amu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FQS-eM-11c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="1861"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="CreateTour" width="149" height="150"/>
         <image name="LoginBackground" width="640" height="1135"/>
     </resources>
 </document>

@@ -14,6 +14,7 @@ PODS:
   - FBSDKShareKit (4.10.1):
     - FBSDKCoreKit
   - PKRevealController (2.0.6)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.3)
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - FBSDKShareKit
   - PKRevealController
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
@@ -31,7 +33,8 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
   PKRevealController: ffb45a16f5a5032ad90a3d16e5cbb0d8e035bd58
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: 0ebae1beffdafecfb8c45e25360f84852b69c897
+PODFILE CHECKSUM: e4c4c756556f10ad578c7f8425e699256d4013ca
 
 COCOAPODS: 1.0.0.beta.6

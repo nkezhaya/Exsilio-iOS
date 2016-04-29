@@ -23,6 +23,35 @@ class ToursTableViewController: UITableViewController, DZNEmptyDataSetSource, DZ
         self.tableView.emptyDataSetDelegate = self
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showPlusIcon()
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        hidePlusIcon()
+    }
+
+    func showPlusIcon() {
+        let plusIcon = UIImage(named: "PlusIcon")?.scaledTo(1.5)
+
+        self.revealController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: plusIcon,
+                                                                                   style: .Plain,
+                                                                                   target: self,
+                                                                                   action: #selector(newTour))
+    }
+
+    func hidePlusIcon() {
+        self.revealController?.navigationItem.rightBarButtonItem = nil
+    }
+
+    func newTour() {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateTourNavigationController")
+
+        self.presentViewController(vc!, animated: true, completion: nil)
+    }
+
     func emptyDataSetShouldDisplay(scrollView: UIScrollView) -> Bool {
         return true
     }

@@ -16,22 +16,35 @@
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
 		A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */; };
 		A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */; };
+		A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */; };
+		A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F841CD29E9100E605B3 /* AkiraTextField.swift */; };
+		A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F851CD29E9100E605B3 /* HoshiTextField.swift */; };
+		A6686F921CD29E9100E605B3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6686F861CD29E9100E605B3 /* Info.plist */; };
+		A6686F931CD29E9100E605B3 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F871CD29E9100E605B3 /* IsaoTextField.swift */; };
+		A6686F941CD29E9100E605B3 /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F881CD29E9100E605B3 /* JiroTextField.swift */; };
+		A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F891CD29E9100E605B3 /* KaedeTextField.swift */; };
+		A6686F961CD29E9100E605B3 /* MadokaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8A1CD29E9100E605B3 /* MadokaTextField.swift */; };
+		A6686F971CD29E9100E605B3 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8B1CD29E9100E605B3 /* MinoruTextField.swift */; };
+		A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8D1CD29E9100E605B3 /* TextFieldsEffects.swift */; };
+		A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8E1CD29E9100E605B3 /* YokoTextField.swift */; };
+		A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8F1CD29E9100E605B3 /* YoshikoTextField.swift */; };
+		A6686FA51CD2A12900E605B3 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9B1CD2A12900E605B3 /* OpenSans-Bold.ttf */; };
+		A6686FA61CD2A12900E605B3 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9C1CD2A12900E605B3 /* OpenSans-BoldItalic.ttf */; };
+		A6686FA71CD2A12900E605B3 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9D1CD2A12900E605B3 /* OpenSans-ExtraBold.ttf */; };
+		A6686FA81CD2A12900E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9E1CD2A12900E605B3 /* OpenSans-ExtraBoldItalic.ttf */; };
+		A6686FA91CD2A12900E605B3 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9F1CD2A12900E605B3 /* OpenSans-Italic.ttf */; };
+		A6686FAA1CD2A12900E605B3 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA01CD2A12900E605B3 /* OpenSans-Light.ttf */; };
+		A6686FAB1CD2A12900E605B3 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA11CD2A12900E605B3 /* OpenSans-LightItalic.ttf */; };
+		A6686FAC1CD2A12900E605B3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA21CD2A12900E605B3 /* OpenSans-Regular.ttf */; };
+		A6686FAD1CD2A12900E605B3 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA31CD2A12900E605B3 /* OpenSans-Semibold.ttf */; };
+		A6686FAE1CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */; };
 		A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */; };
 		A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */; };
 		A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78B1CD1082500E605B3 /* SearchViewController.swift */; };
 		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
-		A674A7901CD108F600E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourViewController.swift */; };
+		A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */; };
+		A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */; };
 		A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD421CBC074C00E605B3 /* EXButton.swift */; };
-		A6F1DD451CBC1CD100E605B3 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */; };
-		A6F1DD461CBC1CD100E605B3 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */; };
-		A6F1DD471CBC1CD100E605B3 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */; };
-		A6F1DD481CBC1CD100E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3A1CBC047300E605B3 /* OpenSans-ExtraBoldItalic.ttf */; };
-		A6F1DD491CBC1CD100E605B3 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3B1CBC047300E605B3 /* OpenSans-Italic.ttf */; };
-		A6F1DD4A1CBC1CD100E605B3 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3C1CBC047300E605B3 /* OpenSans-Light.ttf */; };
-		A6F1DD4B1CBC1CD100E605B3 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3D1CBC047300E605B3 /* OpenSans-LightItalic.ttf */; };
-		A6F1DD4C1CBC1CD100E605B3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */; };
-		A6F1DD4D1CBC1CD100E605B3 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */; };
-		A6F1DD4E1CBC1CD100E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,22 +60,36 @@
 		A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A65A39A31CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A65A39A51CBBFB3C00E605B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
+		A6686F841CD29E9100E605B3 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
+		A6686F851CD29E9100E605B3 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		A6686F861CD29E9100E605B3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6686F871CD29E9100E605B3 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
+		A6686F881CD29E9100E605B3 /* JiroTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiroTextField.swift; sourceTree = "<group>"; };
+		A6686F891CD29E9100E605B3 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
+		A6686F8A1CD29E9100E605B3 /* MadokaTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadokaTextField.swift; sourceTree = "<group>"; };
+		A6686F8B1CD29E9100E605B3 /* MinoruTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinoruTextField.swift; sourceTree = "<group>"; };
+		A6686F8C1CD29E9100E605B3 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		A6686F8D1CD29E9100E605B3 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
+		A6686F8E1CD29E9100E605B3 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
+		A6686F8F1CD29E9100E605B3 /* YoshikoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoshikoTextField.swift; sourceTree = "<group>"; };
+		A6686F9B1CD2A12900E605B3 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		A6686F9C1CD2A12900E605B3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A6686F9D1CD2A12900E605B3 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A6686F9E1CD2A12900E605B3 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		A6686F9F1CD2A12900E605B3 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		A6686FA01CD2A12900E605B3 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		A6686FA11CD2A12900E605B3 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		A6686FA21CD2A12900E605B3 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		A6686FA31CD2A12900E605B3 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
 		A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		A674A78B1CD1082500E605B3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToursTableViewController.swift; sourceTree = "<group>"; };
-		A674A78F1CD108F600E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
+		A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourNavigationController.swift; sourceTree = "<group>"; };
 		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
-		A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
-		A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		A6F1DD3A1CBC047300E605B3 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		A6F1DD3B1CBC047300E605B3 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		A6F1DD3C1CBC047300E605B3 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		A6F1DD3D1CBC047300E605B3 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
-		A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
-		A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXLabel.swift; sourceTree = "<group>"; };
 		A6F1DD421CBC074C00E605B3 /* EXButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXButton.swift; sourceTree = "<group>"; };
 		C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exsilio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,11 +165,31 @@
 			path = Exsilio;
 			sourceTree = "<group>";
 		};
+		A6686F831CD29E9100E605B3 /* TextFieldEffects */ = {
+			isa = PBXGroup;
+			children = (
+				A6686F841CD29E9100E605B3 /* AkiraTextField.swift */,
+				A6686F851CD29E9100E605B3 /* HoshiTextField.swift */,
+				A6686F861CD29E9100E605B3 /* Info.plist */,
+				A6686F871CD29E9100E605B3 /* IsaoTextField.swift */,
+				A6686F881CD29E9100E605B3 /* JiroTextField.swift */,
+				A6686F891CD29E9100E605B3 /* KaedeTextField.swift */,
+				A6686F8A1CD29E9100E605B3 /* MadokaTextField.swift */,
+				A6686F8B1CD29E9100E605B3 /* MinoruTextField.swift */,
+				A6686F8C1CD29E9100E605B3 /* TextFieldEffects.h */,
+				A6686F8D1CD29E9100E605B3 /* TextFieldsEffects.swift */,
+				A6686F8E1CD29E9100E605B3 /* YokoTextField.swift */,
+				A6686F8F1CD29E9100E605B3 /* YoshikoTextField.swift */,
+			);
+			path = TextFieldEffects;
+			sourceTree = "<group>";
+		};
 		A674A7891CD1081800E605B3 /* Tours */ = {
 			isa = PBXGroup;
 			children = (
 				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
-				A674A78F1CD108F600E605B3 /* CreateTourViewController.swift */,
+				A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */,
+				A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */,
 			);
 			name = Tours;
 			sourceTree = "<group>";
@@ -173,16 +220,16 @@
 		A6F1DD411CBC048F00E605B3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A6F1DD371CBC047300E605B3 /* OpenSans-Bold.ttf */,
-				A6F1DD381CBC047300E605B3 /* OpenSans-BoldItalic.ttf */,
-				A6F1DD391CBC047300E605B3 /* OpenSans-ExtraBold.ttf */,
-				A6F1DD3A1CBC047300E605B3 /* OpenSans-ExtraBoldItalic.ttf */,
-				A6F1DD3B1CBC047300E605B3 /* OpenSans-Italic.ttf */,
-				A6F1DD3C1CBC047300E605B3 /* OpenSans-Light.ttf */,
-				A6F1DD3D1CBC047300E605B3 /* OpenSans-LightItalic.ttf */,
-				A6F1DD3E1CBC047300E605B3 /* OpenSans-Regular.ttf */,
-				A6F1DD3F1CBC047300E605B3 /* OpenSans-Semibold.ttf */,
-				A6F1DD401CBC047300E605B3 /* OpenSans-SemiboldItalic.ttf */,
+				A6686F9B1CD2A12900E605B3 /* OpenSans-Bold.ttf */,
+				A6686F9C1CD2A12900E605B3 /* OpenSans-BoldItalic.ttf */,
+				A6686F9D1CD2A12900E605B3 /* OpenSans-ExtraBold.ttf */,
+				A6686F9E1CD2A12900E605B3 /* OpenSans-ExtraBoldItalic.ttf */,
+				A6686F9F1CD2A12900E605B3 /* OpenSans-Italic.ttf */,
+				A6686FA01CD2A12900E605B3 /* OpenSans-Light.ttf */,
+				A6686FA11CD2A12900E605B3 /* OpenSans-LightItalic.ttf */,
+				A6686FA21CD2A12900E605B3 /* OpenSans-Regular.ttf */,
+				A6686FA31CD2A12900E605B3 /* OpenSans-Semibold.ttf */,
+				A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -190,7 +237,9 @@
 		A6F1DD441CBC0B4A00E605B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A6686F831CD29E9100E605B3 /* TextFieldEffects */,
 				A6F1DD421CBC074C00E605B3 /* EXButton.swift */,
+				A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -255,19 +304,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F1DD451CBC1CD100E605B3 /* OpenSans-Bold.ttf in Resources */,
-				A6F1DD461CBC1CD100E605B3 /* OpenSans-BoldItalic.ttf in Resources */,
-				A6F1DD471CBC1CD100E605B3 /* OpenSans-ExtraBold.ttf in Resources */,
-				A6F1DD481CBC1CD100E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				A6F1DD491CBC1CD100E605B3 /* OpenSans-Italic.ttf in Resources */,
-				A6F1DD4A1CBC1CD100E605B3 /* OpenSans-Light.ttf in Resources */,
-				A6F1DD4B1CBC1CD100E605B3 /* OpenSans-LightItalic.ttf in Resources */,
-				A6F1DD4C1CBC1CD100E605B3 /* OpenSans-Regular.ttf in Resources */,
-				A6F1DD4D1CBC1CD100E605B3 /* OpenSans-Semibold.ttf in Resources */,
-				A6F1DD4E1CBC1CD100E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				A6686FA91CD2A12900E605B3 /* OpenSans-Italic.ttf in Resources */,
+				A6686FA61CD2A12900E605B3 /* OpenSans-BoldItalic.ttf in Resources */,
+				A6686F921CD29E9100E605B3 /* Info.plist in Resources */,
+				A6686FAD1CD2A12900E605B3 /* OpenSans-Semibold.ttf in Resources */,
+				A6686FA71CD2A12900E605B3 /* OpenSans-ExtraBold.ttf in Resources */,
 				A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */,
+				A6686FAB1CD2A12900E605B3 /* OpenSans-LightItalic.ttf in Resources */,
 				A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */,
+				A6686FA51CD2A12900E605B3 /* OpenSans-Bold.ttf in Resources */,
 				A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */,
+				A6686FAE1CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				A6686FAA1CD2A12900E605B3 /* OpenSans-Light.ttf in Resources */,
+				A6686FAC1CD2A12900E605B3 /* OpenSans-Regular.ttf in Resources */,
+				A6686FA81CD2A12900E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,15 +377,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */,
+				A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */,
 				A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */,
+				A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */,
 				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
+				A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */,
 				A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
 				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,
 				A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */,
+				A6686F931CD29E9100E605B3 /* IsaoTextField.swift in Sources */,
+				A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */,
+				A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */,
+				A6686F961CD29E9100E605B3 /* MadokaTextField.swift in Sources */,
+				A6686F971CD29E9100E605B3 /* MinoruTextField.swift in Sources */,
+				A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */,
+				A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */,
+				A6686F941CD29E9100E605B3 /* JiroTextField.swift in Sources */,
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
-				A674A7901CD108F600E605B3 /* CreateTourViewController.swift in Sources */,
+				A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */,
+				A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */,
 				A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

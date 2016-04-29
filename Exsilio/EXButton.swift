@@ -18,6 +18,6 @@ class EXButton: UIButton {
     func modifyAesthetics() {
         layer.cornerRadius = 20
         titleLabel?.attributedText = NSAttributedString(string: (titleLabel?.text)!,
-                                                        attributes: [NSKernAttributeName : 1.2])
+                                                        attributes: [NSKernAttributeName: Constants.LabelCharacterSpacing])
     }
 }
