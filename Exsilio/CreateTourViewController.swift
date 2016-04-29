@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class CreateTourViewController: UIViewController {
+class CreateTourViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
     @IBOutlet var descriptionField: UITextField?
 
@@ -28,11 +28,22 @@ class CreateTourViewController: UIViewController {
     }
 
     func next() {
-        if self.nameField?.text == nil {
+        if self.nameField?.text == nil || self.nameField?.text!.isEmpty == true {
             SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
         } else {
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
             self.navigationController?.pushViewController(vc!, animated: true)
         }
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == nameField {
+            nameField?.resignFirstResponder()
+            descriptionField?.becomeFirstResponder()
+        } else {
+            descriptionField?.resignFirstResponder()
+        }
+
+        return true
     }
 }

@@ -208,39 +208,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreateTour" translatesAutoresizingMaskIntoConstraints="NO" id="abX-aO-dW3">
-                                <rect key="frame" x="252" y="72" width="97" height="113"/>
+                                <rect key="frame" x="252" y="72" width="97" height="99"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="ivI-Ut-Rpf"/>
+                                    <constraint firstAttribute="width" constant="97" id="gu1-0D-cef"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-Cq-tF2" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="20" y="202" width="560" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="wpl-id-21Z"/>
-                                </constraints>
-                                <color key="textColor" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
-                                        <color key="value" red="0.10980392160000001" green="0.57254901960000004" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cLY-dk-3Yk" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="20" y="293" width="560" height="50"/>
+                                <rect key="frame" x="20" y="257" width="560" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="yeX-u7-HY4"/>
+                                    <constraint firstAttribute="height" constant="50" id="wTR-5w-cnQ"/>
                                 </constraints>
                                 <color key="textColor" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                         <color key="value" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -252,19 +232,45 @@
                                         <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="quI-X2-xOk" id="IQw-tF-Rwa"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-Cq-tF2" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="20" y="184" width="560" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wA3-6U-obW"/>
+                                </constraints>
+                                <color key="textColor" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.41568627450000001" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.10980392160000001" green="0.57254901960000004" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="quI-X2-xOk" id="9oc-iO-w9P"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vSp-nf-r3E" firstAttribute="top" secondItem="cLY-dk-3Yk" secondAttribute="bottom" constant="257" id="1D2-OA-S5V"/>
-                            <constraint firstItem="cLY-dk-3Yk" firstAttribute="top" secondItem="jNo-Cq-tF2" secondAttribute="bottom" constant="41" id="6de-oH-faC"/>
-                            <constraint firstItem="abX-aO-dW3" firstAttribute="centerX" secondItem="jNo-Cq-tF2" secondAttribute="centerX" id="F6f-dV-ONy"/>
-                            <constraint firstItem="abX-aO-dW3" firstAttribute="top" secondItem="hGx-ip-kLa" secondAttribute="bottom" constant="8" symbolic="YES" id="MLf-RP-ROf"/>
-                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="cLY-dk-3Yk" secondAttribute="leading" id="ShB-vc-oiC"/>
-                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="cLY-dk-3Yk" secondAttribute="trailing" id="faa-vO-gNR"/>
-                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="top" secondItem="abX-aO-dW3" secondAttribute="bottom" constant="17" id="puc-Y0-YoM"/>
-                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="369-Ok-cjQ" secondAttribute="leadingMargin" id="tnO-Y1-rtZ"/>
-                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="369-Ok-cjQ" secondAttribute="trailingMargin" id="v9v-uF-opb"/>
+                            <constraint firstItem="vSp-nf-r3E" firstAttribute="top" secondItem="cLY-dk-3Yk" secondAttribute="bottom" constant="293" id="9JO-jr-bGh"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="cLY-dk-3Yk" secondAttribute="leading" id="E8u-jf-rxz"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="369-Ok-cjQ" secondAttribute="trailingMargin" id="IW2-Iv-jTc"/>
+                            <constraint firstItem="abX-aO-dW3" firstAttribute="top" secondItem="hGx-ip-kLa" secondAttribute="bottom" constant="8" symbolic="YES" id="J2N-b8-dvz"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="369-Ok-cjQ" secondAttribute="leadingMargin" id="W3q-Rx-Oyv"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="top" secondItem="abX-aO-dW3" secondAttribute="bottom" constant="13" id="ftR-Uw-aKn"/>
+                            <constraint firstItem="abX-aO-dW3" firstAttribute="centerX" secondItem="jNo-Cq-tF2" secondAttribute="centerX" id="lYH-tx-xGn"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="cLY-dk-3Yk" secondAttribute="trailing" id="uu2-bh-dZX"/>
+                            <constraint firstItem="cLY-dk-3Yk" firstAttribute="top" secondItem="jNo-Cq-tF2" secondAttribute="bottom" constant="23" id="vVH-z7-2V6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Tour" id="DvZ-eK-8mh"/>
