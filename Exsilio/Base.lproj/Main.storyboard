@@ -207,8 +207,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreateTour" translatesAutoresizingMaskIntoConstraints="NO" id="abX-aO-dW3">
+                                <rect key="frame" x="252" y="72" width="97" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="ivI-Ut-Rpf"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNo-Cq-tF2" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="20" y="240" width="560" height="50"/>
+                                <rect key="frame" x="20" y="202" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wpl-id-21Z"/>
                                 </constraints>
@@ -228,7 +234,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cLY-dk-3Yk" customClass="HoshiTextField" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="20" y="331" width="560" height="50"/>
+                                <rect key="frame" x="20" y="293" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yeX-u7-HY4"/>
                                 </constraints>
@@ -247,22 +253,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CreateTour" translatesAutoresizingMaskIntoConstraints="NO" id="abX-aO-dW3">
-                                <rect key="frame" x="252" y="72" width="97" height="113"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="ivI-Ut-Rpf"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vSp-nf-r3E" firstAttribute="top" secondItem="cLY-dk-3Yk" secondAttribute="bottom" constant="219" id="1D2-OA-S5V"/>
+                            <constraint firstItem="vSp-nf-r3E" firstAttribute="top" secondItem="cLY-dk-3Yk" secondAttribute="bottom" constant="257" id="1D2-OA-S5V"/>
                             <constraint firstItem="cLY-dk-3Yk" firstAttribute="top" secondItem="jNo-Cq-tF2" secondAttribute="bottom" constant="41" id="6de-oH-faC"/>
                             <constraint firstItem="abX-aO-dW3" firstAttribute="centerX" secondItem="jNo-Cq-tF2" secondAttribute="centerX" id="F6f-dV-ONy"/>
                             <constraint firstItem="abX-aO-dW3" firstAttribute="top" secondItem="hGx-ip-kLa" secondAttribute="bottom" constant="8" symbolic="YES" id="MLf-RP-ROf"/>
                             <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="cLY-dk-3Yk" secondAttribute="leading" id="ShB-vc-oiC"/>
                             <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="cLY-dk-3Yk" secondAttribute="trailing" id="faa-vO-gNR"/>
-                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="top" secondItem="abX-aO-dW3" secondAttribute="bottom" constant="55" id="puc-Y0-YoM"/>
+                            <constraint firstItem="jNo-Cq-tF2" firstAttribute="top" secondItem="abX-aO-dW3" secondAttribute="bottom" constant="17" id="puc-Y0-YoM"/>
                             <constraint firstItem="jNo-Cq-tF2" firstAttribute="leading" secondItem="369-Ok-cjQ" secondAttribute="leadingMargin" id="tnO-Y1-rtZ"/>
                             <constraint firstItem="jNo-Cq-tF2" firstAttribute="trailing" secondItem="369-Ok-cjQ" secondAttribute="trailingMargin" id="v9v-uF-opb"/>
                         </constraints>
