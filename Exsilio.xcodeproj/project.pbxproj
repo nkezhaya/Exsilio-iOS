@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */; };
-		A606BA611CDB9F8800E605B3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = A606BA601CDB9F8800E605B3 /* Configuration.plist */; };
+		A606BA611CDB9F8800E605B3 /* Configuration.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = A606BA601CDB9F8800E605B3 /* Configuration.plist.example */; };
 		A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.release.xcconfig"; sourceTree = "<group>"; };
 		93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.debug.xcconfig"; sourceTree = "<group>"; };
-		A606BA601CDB9F8800E605B3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		A606BA601CDB9F8800E605B3 /* Configuration.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Configuration.plist.example; sourceTree = "<group>"; };
 		A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
 				A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */,
 				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
-				A606BA601CDB9F8800E605B3 /* Configuration.plist */,
+				A606BA601CDB9F8800E605B3 /* Configuration.plist.example */,
 				A62A5B1D1CBED6D500E605B3 /* Constants.swift */,
 				A689046E1CD112E000E605B3 /* ObjCBridge.h */,
 			);
@@ -316,7 +316,7 @@
 				A6686FAD1CD2A12900E605B3 /* OpenSans-Semibold.ttf in Resources */,
 				A6686FA71CD2A12900E605B3 /* OpenSans-ExtraBold.ttf in Resources */,
 				A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */,
-				A606BA611CDB9F8800E605B3 /* Configuration.plist in Resources */,
+				A606BA611CDB9F8800E605B3 /* Configuration.plist.example in Resources */,
 				A6686FAB1CD2A12900E605B3 /* OpenSans-LightItalic.ttf in Resources */,
 				A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */,
 				A6686FA51CD2A12900E605B3 /* OpenSans-Bold.ttf in Resources */,
