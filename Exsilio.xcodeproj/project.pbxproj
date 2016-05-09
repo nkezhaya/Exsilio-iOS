@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */; };
 		A606BA611CDB9F8800E605B3 /* Configuration.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = A606BA601CDB9F8800E605B3 /* Configuration.plist.example */; };
+		A606BA631CDBA07D00E605B3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = A606BA621CDBA07D00E605B3 /* Configuration.plist */; };
+		A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD581CDBA2F700E605B3 /* MapViewController.swift */; };
+		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
+		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
 		A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
@@ -16,7 +20,7 @@
 		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
 		A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */; };
-		A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */; };
+		A660C6391CE0FDAD00E605B3 /* ReviewTourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A660C6381CE0FDAD00E605B3 /* ReviewTourTableViewController.swift */; };
 		A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */; };
 		A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F841CD29E9100E605B3 /* AkiraTextField.swift */; };
 		A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F851CD29E9100E605B3 /* HoshiTextField.swift */; };
@@ -53,6 +57,10 @@
 		6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.release.xcconfig"; sourceTree = "<group>"; };
 		93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.debug.xcconfig"; sourceTree = "<group>"; };
 		A606BA601CDB9F8800E605B3 /* Configuration.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Configuration.plist.example; sourceTree = "<group>"; };
+		A606BA621CDBA07D00E605B3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		A611CD581CDBA2F700E605B3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
 		A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
@@ -61,8 +69,8 @@
 		A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A65A399E1CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A65A39A31CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A65A39A51CBBFB3C00E605B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A660C6381CE0FDAD00E605B3 /* ReviewTourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTourTableViewController.swift; sourceTree = "<group>"; };
 		A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
 		A6686F841CD29E9100E605B3 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		A6686F851CD29E9100E605B3 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -159,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A674A78A1CD1081C00E605B3 /* Search */,
-				A674A7891CD1081800E605B3 /* Tours */,
+				A674A7891CD1081800E605B3 /* Create Tour */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
 				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
 				A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */,
@@ -188,15 +196,18 @@
 			path = TextFieldEffects;
 			sourceTree = "<group>";
 		};
-		A674A7891CD1081800E605B3 /* Tours */ = {
+		A674A7891CD1081800E605B3 /* Create Tour */ = {
 			isa = PBXGroup;
 			children = (
 				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
 				A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */,
 				A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */,
 				A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */,
+				A611CD581CDBA2F700E605B3 /* MapViewController.swift */,
+				A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */,
+				A660C6381CE0FDAD00E605B3 /* ReviewTourTableViewController.swift */,
 			);
-			name = Tours;
+			name = "Create Tour";
 			sourceTree = "<group>";
 		};
 		A674A78A1CD1081C00E605B3 /* Search */ = {
@@ -214,9 +225,10 @@
 				A6F1DD441CBC0B4A00E605B3 /* Views */,
 				A6F1DD411CBC048F00E605B3 /* Fonts */,
 				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
-				A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */,
+				A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */,
 				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
 				A606BA601CDB9F8800E605B3 /* Configuration.plist.example */,
+				A606BA621CDBA07D00E605B3 /* Configuration.plist */,
 				A62A5B1D1CBED6D500E605B3 /* Constants.swift */,
 				A689046E1CD112E000E605B3 /* ObjCBridge.h */,
 			);
@@ -315,10 +327,11 @@
 				A6686F921CD29E9100E605B3 /* Info.plist in Resources */,
 				A6686FAD1CD2A12900E605B3 /* OpenSans-Semibold.ttf in Resources */,
 				A6686FA71CD2A12900E605B3 /* OpenSans-ExtraBold.ttf in Resources */,
-				A65A39A41CBBFB3C00E605B3 /* LaunchScreen.storyboard in Resources */,
+				A606BA631CDBA07D00E605B3 /* Configuration.plist in Resources */,
 				A606BA611CDB9F8800E605B3 /* Configuration.plist.example in Resources */,
 				A6686FAB1CD2A12900E605B3 /* OpenSans-LightItalic.ttf in Resources */,
 				A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */,
+				A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */,
 				A6686FA51CD2A12900E605B3 /* OpenSans-Bold.ttf in Resources */,
 				A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */,
 				A6686FAE1CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */,
@@ -386,11 +399,14 @@
 				A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */,
 				A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */,
 				A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */,
+				A660C6391CE0FDAD00E605B3 /* ReviewTourTableViewController.swift in Sources */,
+				A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */,
 				A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */,
 				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
 				A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */,
 				A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */,
+				A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
 				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,
 				A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */,
@@ -419,14 +435,6 @@
 				A65A399E1CBBFB3C00E605B3 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A65A39A21CBBFB3C00E605B3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A65A39A31CBBFB3C00E605B3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

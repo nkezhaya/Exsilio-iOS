@@ -20,4 +20,11 @@ struct API {
     #endif
 
     static let AuthPath = "/users"
+
+    static func googleMapsKey() -> String {
+        let plist = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
+        let config = NSDictionary(contentsOfFile: plist)!
+
+        return config.objectForKey("GoogleMapsAPI")!.objectForKey("Key") as! String
+    }
 }

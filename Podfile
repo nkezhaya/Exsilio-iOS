@@ -11,4 +11,6 @@ target "Exsilio" do
   pod "SVProgressHUD"
   pod "Fusuma"
   pod "SCLAlertView"
+  pod "GoogleMaps"
+  pod "FontAwesome.swift"
 end

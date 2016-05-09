@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        GMSServices.provideAPIKey(API.googleMapsKey())
+
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         setRootViewController()
         setAesthetics()

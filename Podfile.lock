@@ -13,7 +13,9 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.10.1):
     - FBSDKCoreKit
+  - FontAwesome.swift (0.7.3)
   - Fusuma (0.3.7)
+  - GoogleMaps (1.13.0)
   - PKRevealController (2.0.6)
   - SCLAlertView (0.5.2)
   - SVProgressHUD (2.0.3)
@@ -24,7 +26,9 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - FontAwesome.swift
   - Fusuma
+  - GoogleMaps
   - PKRevealController
   - SCLAlertView
   - SVProgressHUD
@@ -36,11 +40,13 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: d2aaed5e9ab7d8d6301c533376a1fbff1cf3deb5
   FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
+  FontAwesome.swift: f694fe0f667d6d3390b5919cdb0556a27b75d427
   Fusuma: 1bfe8abff1c1dbb2c6847b1d195182222bbfb241
+  GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
   PKRevealController: ffb45a16f5a5032ad90a3d16e5cbb0d8e035bd58
   SCLAlertView: 66873759027a98f891b6ba9042d75db9082abca2
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: c2dc697b3dcadac846a2709c8249721dfb85dcc0
+PODFILE CHECKSUM: b2199d77cd5716512b33d8391ad2953ca51d6cf7
 
-COCOAPODS: 1.0.0.beta.6
+COCOAPODS: 1.0.0.rc.2

@@ -31,6 +31,8 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
         if self.nameField?.text == nil || self.nameField?.text!.isEmpty == true {
             SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
         } else {
+            CurrentTourSingleton.sharedInstance.tour = ["name": self.nameField!.text!, "description": self.descriptionField!.text!, "waypoints": []]
+
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
             self.navigationController?.pushViewController(vc!, animated: true)
         }
