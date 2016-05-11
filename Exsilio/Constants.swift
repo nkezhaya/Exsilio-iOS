@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FBSDKLoginKit
 
 struct Constants {
     static let LabelCharacterSpacing = 1.2
@@ -19,12 +20,25 @@ struct API {
     static let URL = "https://exsilio.herokuapp.com"
     #endif
 
+    static let TokenHeader = "X-Token"
+
     static let AuthPath = "/users"
+    static let ToursPath = "/tours"
 
     static func googleMapsKey() -> String {
         let plist = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
         let config = NSDictionary(contentsOfFile: plist)!
 
         return config.objectForKey("GoogleMapsAPI")!.objectForKey("Key") as! String
+    }
+
+    static func currentToken() -> String {
+        return FBSDKAccessToken.currentAccessToken().tokenString
+    }
+
+    static func authHeaders() -> [String: String] {
+        return [
+            TokenHeader: self.currentToken()
+        ]
     }
 }

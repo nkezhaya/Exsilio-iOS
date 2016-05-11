@@ -10,7 +10,9 @@ import UIKit
 import Fusuma
 import SCLAlertView
 
-class CreateWaypointViewController: UIViewController, FusumaDelegate, GMSMapViewDelegate {
+class CreateWaypointViewController: UIViewController, UITextFieldDelegate, FusumaDelegate, GMSMapViewDelegate {
+    @IBOutlet var nameField: UITextField?
+    @IBOutlet var descriptionField: UITextField?
     @IBOutlet var coordsLabel: UILabel?
     @IBOutlet var photo: UIImageView?
 
@@ -34,14 +36,52 @@ class CreateWaypointViewController: UIViewController, FusumaDelegate, GMSMapView
     func next() {
         let alertVC = UIAlertController(title: "Title", message: "Message", preferredStyle: .ActionSheet)
         alertVC.addAction(UIAlertAction(title: "New Waypoint", style: .Default, handler: { _ in
+            self.saveWaypoint()
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
             self.navigationController?.pushViewController(vc!, animated: true)
         }))
-        alertVC.addAction(UIAlertAction(title: "Review & Save", style: .Default, handler: { _ in
-
+        alertVC.addAction(UIAlertAction(title: "Save & Publish Tour", style: .Default, handler: { _ in
+            self.saveWaypoint()
+            CurrentTourSingleton.sharedInstance.save()
+            self.navigationController?.dismissViewControllerAnimated(true, completion: {
+                CurrentTourSingleton.sharedInstance.currentWaypointIndex = -1
+            })
         }))
 
         self.presentViewController(alertVC, animated: true, completion: nil)
+    }
+
+    func saveWaypoint() {
+        var data: [String: AnyObject] = [:]
+
+        if let name = self.nameField?.text {
+            data["name"] = name
+        }
+
+        if let description = self.descriptionField?.text {
+            data["description"] = description
+        }
+
+        if let coords = self.coordsLabel?.text {
+            data["coords"] = coords
+        }
+
+        if let image = self.photo?.image {
+            data["photo"] = image
+        }
+
+        CurrentTourSingleton.sharedInstance.saveWaypoint(data)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == nameField {
+            nameField?.resignFirstResponder()
+            descriptionField?.becomeFirstResponder()
+        } else {
+            descriptionField?.resignFirstResponder()
+        }
+
+        return true
     }
 
     @IBAction func pickImage() {

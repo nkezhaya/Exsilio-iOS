@@ -20,7 +20,6 @@
 		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
 		A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */; };
-		A660C6391CE0FDAD00E605B3 /* ReviewTourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A660C6381CE0FDAD00E605B3 /* ReviewTourTableViewController.swift */; };
 		A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */; };
 		A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F841CD29E9100E605B3 /* AkiraTextField.swift */; };
 		A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F851CD29E9100E605B3 /* HoshiTextField.swift */; };
@@ -70,7 +69,6 @@
 		A65A399E1CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A65A39A51CBBFB3C00E605B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A660C6381CE0FDAD00E605B3 /* ReviewTourTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTourTableViewController.swift; sourceTree = "<group>"; };
 		A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
 		A6686F841CD29E9100E605B3 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		A6686F851CD29E9100E605B3 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */,
 				A611CD581CDBA2F700E605B3 /* MapViewController.swift */,
 				A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */,
-				A660C6381CE0FDAD00E605B3 /* ReviewTourTableViewController.swift */,
 			);
 			name = "Create Tour";
 			sourceTree = "<group>";
@@ -399,7 +396,6 @@
 				A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */,
 				A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */,
 				A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */,
-				A660C6391CE0FDAD00E605B3 /* ReviewTourTableViewController.swift in Sources */,
 				A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */,
 				A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */,
 				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
