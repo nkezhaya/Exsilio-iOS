@@ -74,9 +74,12 @@ class MenuTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         setString(self.itemLabel!.text!)
 
+        let color = UIColor(hexString: "#131313")
         let bgView = UIView()
-        bgView.backgroundColor = UIColor(hexString: "#131313")
+        bgView.backgroundColor = color
+        self.backgroundView = bgView
         self.selectedBackgroundView = bgView
+        self.backgroundColor = color
 
         super.awakeFromNib()
     }
