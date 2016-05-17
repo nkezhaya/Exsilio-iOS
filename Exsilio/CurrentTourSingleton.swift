@@ -16,6 +16,11 @@ class CurrentTourSingleton {
     var tour: [String: AnyObject] = [:]
     var waypoints: [[String: AnyObject]] = []
 
+    func newTour(name: String, description: String) {
+        CurrentTourSingleton.sharedInstance.tour = ["name": name, "description": description, "waypoints": []]
+        CurrentTourSingleton.sharedInstance.waypoints = []
+    }
+
     func saveWaypoint(waypoint: [String: AnyObject]) {
         if self.currentWaypointIndex == self.waypoints.count {
             self.waypoints.append(waypoint)

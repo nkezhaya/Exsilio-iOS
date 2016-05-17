@@ -9,12 +9,16 @@
 import UIKit
 import Fusuma
 import SCLAlertView
+import FontAwesome_swift
 
-class CreateWaypointViewController: UIViewController, UITextFieldDelegate, FusumaDelegate, GMSMapViewDelegate {
+class CreateWaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
-    @IBOutlet var descriptionField: UITextField?
-    @IBOutlet var coordsLabel: UILabel?
-    @IBOutlet var photo: UIImageView?
+
+    @IBOutlet var openMapButton: EXButton?
+    @IBOutlet var pickImageButton: EXButton?
+
+    var selectedImage: UIImage?
+    var selectedPoint: CLLocationCoordinate2D?
 
     override func viewDidLoad() {
         CurrentTourSingleton.sharedInstance.currentWaypointIndex += 1
@@ -26,6 +30,14 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate, Fusum
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
 
         self.title = "Waypoint \(CurrentTourSingleton.sharedInstance.currentWaypointIndex + 1)"
+
+        self.openMapButton?.darkBorderStyle()
+        self.pickImageButton?.darkBorderStyle()
+
+        self.openMapButton?.setIcon(.Map)
+        self.pickImageButton?.setIcon(.Camera)
+
+        self.nameField?.becomeFirstResponder()
     }
 
     func dismiss() {
@@ -34,7 +46,17 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate, Fusum
     }
 
     func next() {
-        let alertVC = UIAlertController(title: "Title", message: "Message", preferredStyle: .ActionSheet)
+        if self.nameField?.text == nil || self.nameField!.text!.isEmpty {
+            SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
+            return
+        }
+
+        if self.selectedPoint == nil {
+            SCLAlertView().showError("Whoops!", subTitle: "You forgot to select a point on the map.", closeButtonTitle: "OK")
+            return
+        }
+
+        let alertVC = UIAlertController(title: "What next?", message: "Select from the options below.", preferredStyle: .ActionSheet)
         alertVC.addAction(UIAlertAction(title: "New Waypoint", style: .Default, handler: { _ in
             self.saveWaypoint()
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
@@ -58,15 +80,11 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate, Fusum
             data["name"] = name
         }
 
-        if let description = self.descriptionField?.text {
-            data["description"] = description
+        if let coords = self.selectedPoint {
+            data["coords"] = "\(coords.latitude), \(coords.longitude)"
         }
 
-        if let coords = self.coordsLabel?.text {
-            data["coords"] = coords
-        }
-
-        if let image = self.photo?.image {
+        if let image = self.selectedImage {
             data["photo"] = image
         }
 
@@ -76,14 +94,13 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate, Fusum
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == nameField {
             nameField?.resignFirstResponder()
-            descriptionField?.becomeFirstResponder()
-        } else {
-            descriptionField?.resignFirstResponder()
         }
 
         return true
     }
+}
 
+extension CreateWaypointViewController: FusumaDelegate {
     @IBAction func pickImage() {
         let fusuma = FusumaViewController()
         fusuma.delegate = self
@@ -91,13 +108,19 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate, Fusum
     }
 
     func fusumaImageSelected(image: UIImage) {
-        self.photo?.image = image
+        self.selectedImage = image
+        self.pickImageButton?.layer.borderWidth = 0
+        self.pickImageButton?.backgroundColor = Constants.GreenColor
+        self.pickImageButton?.setIcon(.Check)
+        self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .whiteColor())
     }
 
     func fusumaCameraRollUnauthorized() {
         SCLAlertView().showError("Error", subTitle: "We need to access the camera in order to designate a photo for this waypoint.", closeButtonTitle: "OK")
     }
+}
 
+extension CreateWaypointViewController: GMSMapViewDelegate {
     @IBAction func openMap() {
         let vc = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
         vc.delegate = self
@@ -112,6 +135,11 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate, Fusum
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.map = mapView
 
-        self.coordsLabel?.text = "\(coordinate.latitude), \(coordinate.longitude)"
+        self.selectedPoint = coordinate
+
+        self.openMapButton?.layer.borderWidth = 0
+        self.openMapButton?.backgroundColor = Constants.GreenColor
+        self.openMapButton?.setIcon(.Check)
+        self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .whiteColor())
     }
 }

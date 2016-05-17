@@ -11,6 +11,7 @@ import FBSDKLoginKit
 
 struct Constants {
     static let LabelCharacterSpacing = 1.2
+    static let GreenColor = UIColor(hexString: "#21C064")
 }
 
 struct API {
