@@ -6,7 +6,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Italic.ttf">
+            <string>OpenSans-Italic</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -157,18 +161,69 @@
         <scene sceneID="j3C-yK-ej4">
             <objects>
                 <tableViewController storyboardIdentifier="ToursTableViewController" title="My Tours" id="DzD-g4-K3Z" customClass="ToursTableViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxH-9a-6y1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxH-9a-6y1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KMd-Ia-4mf">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TourTableViewCell" rowHeight="87" id="KMd-Ia-4mf" customClass="TourTableViewCell" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMd-Ia-4mf" id="JVf-Z0-WCl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome tour!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ0-2b-PvY">
+                                            <rect key="frame" x="90" y="8" width="502" height="32"/>
+                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                                            <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Austin, TX • 34 min • 100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nuh-LQ-0qR">
+                                            <rect key="frame" x="114" y="55" width="478" height="23"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="14"/>
+                                            <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HLj-ja-gV2">
+                                            <rect key="frame" x="90" y="55" width="23" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="RS1-Zq-nQO"/>
+                                                <constraint firstAttribute="width" constant="23" id="yn5-9I-d9x"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bdC-LQ-Ge4">
+                                            <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="owe-Dz-YmD"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HLj-ja-gV2" firstAttribute="top" secondItem="Nuh-LQ-0qR" secondAttribute="top" id="0UW-XL-12g"/>
+                                        <constraint firstItem="bdC-LQ-Ge4" firstAttribute="top" secondItem="JVf-Z0-WCl" secondAttribute="topMargin" id="7Pf-Wb-Wqu"/>
+                                        <constraint firstItem="DZ0-2b-PvY" firstAttribute="trailing" secondItem="Nuh-LQ-0qR" secondAttribute="trailing" id="JVd-k9-Q67"/>
+                                        <constraint firstItem="bdC-LQ-Ge4" firstAttribute="bottom" secondItem="JVf-Z0-WCl" secondAttribute="bottomMargin" id="M3a-gT-yTA"/>
+                                        <constraint firstItem="HLj-ja-gV2" firstAttribute="top" secondItem="DZ0-2b-PvY" secondAttribute="bottom" constant="15" id="WUb-FV-8nR"/>
+                                        <constraint firstItem="DZ0-2b-PvY" firstAttribute="leading" secondItem="bdC-LQ-Ge4" secondAttribute="trailing" constant="12" id="cYW-f2-c1l"/>
+                                        <constraint firstItem="Nuh-LQ-0qR" firstAttribute="leading" secondItem="HLj-ja-gV2" secondAttribute="trailing" constant="1" id="elH-CV-5Ey"/>
+                                        <constraint firstItem="bdC-LQ-Ge4" firstAttribute="bottom" secondItem="HLj-ja-gV2" secondAttribute="bottom" id="gAa-8A-cYD"/>
+                                        <constraint firstItem="DZ0-2b-PvY" firstAttribute="trailing" secondItem="JVf-Z0-WCl" secondAttribute="trailingMargin" id="hrX-cx-EdH"/>
+                                        <constraint firstItem="DZ0-2b-PvY" firstAttribute="leading" secondItem="HLj-ja-gV2" secondAttribute="leading" id="mML-wE-hNn"/>
+                                        <constraint firstItem="bdC-LQ-Ge4" firstAttribute="leading" secondItem="JVf-Z0-WCl" secondAttribute="leadingMargin" id="nFM-OH-EFm"/>
+                                        <constraint firstItem="bdC-LQ-Ge4" firstAttribute="top" secondItem="DZ0-2b-PvY" secondAttribute="top" id="opc-MS-GVK"/>
+                                        <constraint firstItem="HLj-ja-gV2" firstAttribute="bottom" secondItem="Nuh-LQ-0qR" secondAttribute="bottom" id="yYR-q8-DI7"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="Nuh-LQ-0qR" id="gXp-nn-1r7"/>
+                                    <outlet property="nameLabel" destination="DZ0-2b-PvY" id="Kqh-wj-Hde"/>
+                                    <outlet property="pinImage" destination="HLj-ja-gV2" id="8zo-Lr-B6I"/>
+                                    <outlet property="userImage" destination="bdC-LQ-Ge4" id="7h8-1k-xfA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -180,6 +235,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUm-mb-J9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1283" y="1120"/>
+        </scene>
+        <!--Tour View Controller-->
+        <scene sceneID="sqL-XO-sH3">
+            <objects>
+                <viewController storyboardIdentifier="TourViewController" id="buQ-PA-bwk" customClass="TourViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G7h-05-D8A"/>
+                        <viewControllerLayoutGuide type="bottom" id="XcI-f9-axM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aff-v8-JG0">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkg-vm-Zd9" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="mapView" destination="bkg-vm-Zd9" id="4uc-nJ-w3m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMP-oU-G67" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="1120"/>
         </scene>
         <!--Create Tour-->
         <scene sceneID="hHK-yC-tv2">
@@ -302,6 +385,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FGA-aK-kw6"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="PICK PHOTO">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -315,6 +399,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="trn-Me-kc1"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="OPEN MAP">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

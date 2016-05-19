@@ -3,6 +3,8 @@ use_frameworks!
 
 target "Exsilio" do
   pod "Alamofire", "~> 3.3"
+  pod "AlamofireImage", "~> 2.0"
+
   pod "PKRevealController"
   pod "FBSDKCoreKit"
   pod "FBSDKLoginKit"
@@ -13,4 +15,6 @@ target "Exsilio" do
   pod "SCLAlertView"
   pod "GoogleMaps"
   pod "FontAwesome.swift"
+  pod "SwiftyJSON"
+  pod "SWTableViewCell", "~> 0.3.7"
 end

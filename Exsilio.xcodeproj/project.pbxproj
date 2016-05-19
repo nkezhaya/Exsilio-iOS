@@ -13,6 +13,7 @@
 		A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD581CDBA2F700E605B3 /* MapViewController.swift */; };
 		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
 		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
+		A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */; };
 		A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
@@ -49,6 +50,7 @@
 		A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */; };
 		A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */; };
 		A6CBBC1A1CD3DABB00E605B3 /* CreateWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */; };
+		A6DFDFF91CECC07C00E605B3 /* TourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DFDFF81CECC07C00E605B3 /* TourTableViewCell.swift */; };
 		A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F1DD421CBC074C00E605B3 /* EXButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,7 @@
 		A611CD581CDBA2F700E605B3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
+		A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXLabel.swift; sourceTree = "<group>"; };
 		A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWaypointViewController.swift; sourceTree = "<group>"; };
+		A6DFDFF81CECC07C00E605B3 /* TourTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTableViewCell.swift; sourceTree = "<group>"; };
 		A6F1DD421CBC074C00E605B3 /* EXButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXButton.swift; sourceTree = "<group>"; };
 		C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exsilio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +147,16 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		A63768481CEB7F3C00E605B3 /* My Tours */ = {
+			isa = PBXGroup;
+			children = (
+				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
+				A6DFDFF81CECC07C00E605B3 /* TourTableViewCell.swift */,
+				A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */,
+			);
+			name = "My Tours";
+			sourceTree = "<group>";
+		};
 		A65A398D1CBBFB3C00E605B3 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				A674A78A1CD1081C00E605B3 /* Search */,
+				A63768481CEB7F3C00E605B3 /* My Tours */,
 				A674A7891CD1081800E605B3 /* Create Tour */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
 				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
@@ -197,7 +212,6 @@
 		A674A7891CD1081800E605B3 /* Create Tour */ = {
 			isa = PBXGroup;
 			children = (
-				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
 				A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */,
 				A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */,
 				A6CBBC191CD3DABB00E605B3 /* CreateWaypointViewController.swift */,
@@ -413,7 +427,9 @@
 				A6CBBC1A1CD3DABB00E605B3 /* CreateWaypointViewController.swift in Sources */,
 				A6686F971CD29E9100E605B3 /* MinoruTextField.swift in Sources */,
 				A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */,
+				A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */,
 				A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */,
+				A6DFDFF91CECC07C00E605B3 /* TourTableViewCell.swift in Sources */,
 				A6686F941CD29E9100E605B3 /* JiroTextField.swift in Sources */,
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
 				A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */,

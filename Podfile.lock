@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (3.3.1)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
   - Bolts (1.7.0):
     - Bolts/AppLinks (= 1.7.0)
     - Bolts/Tasks (= 1.7.0)
@@ -19,9 +21,12 @@ PODS:
   - PKRevealController (2.0.6)
   - SCLAlertView (0.5.2)
   - SVProgressHUD (2.0.3)
+  - SwiftyJSON (2.3.2)
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - Alamofire (~> 3.3)
+  - AlamofireImage (~> 2.0)
   - DZNEmptyDataSet
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -32,9 +37,12 @@ DEPENDENCIES:
   - PKRevealController
   - SCLAlertView
   - SVProgressHUD
+  - SwiftyJSON
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   FBSDKCoreKit: d2aaed5e9ab7d8d6301c533376a1fbff1cf3deb5
@@ -46,7 +54,9 @@ SPEC CHECKSUMS:
   PKRevealController: ffb45a16f5a5032ad90a3d16e5cbb0d8e035bd58
   SCLAlertView: 66873759027a98f891b6ba9042d75db9082abca2
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: b2199d77cd5716512b33d8391ad2953ca51d6cf7
+PODFILE CHECKSUM: 138b3e2cced7eff7030fb204c9f94b300007e645
 
 COCOAPODS: 1.0.0.rc.2
