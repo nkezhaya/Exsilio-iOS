@@ -33,7 +33,7 @@ class TourTableViewCell: SWTableViewCell {
     func updateWithTour(tour: JSON) {
         self.tourJSON = tour
         self.nameLabel!.text = tour["name"].string
-        self.descriptionLabel!.text = "Austin, TX • \(tour["waypoints"].count) Waypoints"
+        self.descriptionLabel!.text = "Austin, TX • \(tour["waypoints"].count) Stops • \(tour["duration"].string!)"
 
         if let imageURL = tour["user"]["picture_url"].string {
             Alamofire.request(.GET, "\(API.URL)\(imageURL)").responseImage { response in

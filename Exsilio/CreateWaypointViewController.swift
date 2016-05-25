@@ -81,7 +81,8 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate {
         }
 
         if let coords = self.selectedPoint {
-            data["coords"] = "\(coords.latitude), \(coords.longitude)"
+            data["latitude"] = coords.latitude
+            data["longitude"] = coords.longitude
         }
 
         if let image = self.selectedImage {

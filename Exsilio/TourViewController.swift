@@ -8,19 +8,47 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 
 class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var mapView: GMSMapView?
 
     var locationManager = CLLocationManager()
+    var tour: JSON?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let backIcon = UIImage(named: "BackIcon")!.scaledTo(1.5)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .Plain, target: self, action: #selector(dismiss))
+
         self.mapView?.mapType = kGMSTypeTerrain
         self.mapView?.delegate = self
         self.mapView?.myLocationEnabled = true
-        self.mapView?.animateToZoom(15)
+
+        self.title = self.tour!["name"].string
+
+        if let path = self.tour!["polyline"].string {
+            let polyline = GMSPolyline(path: GMSPath(fromEncodedPath: path))
+            polyline.strokeWidth = 4.0
+            polyline.map = self.mapView
+
+            let bounds = GMSCoordinateBounds(path: polyline.path!)
+            self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 150))
+        }
+
+        if let waypoints = self.tour!["waypoints"].array {
+            for waypoint in waypoints {
+                if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
+                    let marker = GMSMarker(
+                        position: CLLocationCoordinate2D(
+                            latitude: Double(latitude),
+                            longitude: Double(longitude)))
+
+                    marker.map = self.mapView
+                }
+            }
+        }
 
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -32,6 +60,10 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         }
     }
 
+    func dismiss() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
             manager.startUpdatingLocation()
@@ -40,10 +72,5 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
-
-        if let coordinate = locations.first?.coordinate {
-            self.mapView?.animateToLocation(coordinate)
-            self.mapView?.animateToZoom(15)
-        }
     }
 }

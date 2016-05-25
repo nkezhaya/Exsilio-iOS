@@ -27,13 +27,12 @@ class ToursTableViewController: UITableViewController {
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
-
-        refresh()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         showPlusIcon()
+        refresh()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -91,6 +90,7 @@ class ToursTableViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
+        vc.tour = self.tours[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
