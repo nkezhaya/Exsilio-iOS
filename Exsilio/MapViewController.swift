@@ -15,6 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     var delegate: GMSMapViewDelegate?
     var locationManager: CLLocationManager?
+    var startingPoint: CLLocationCoordinate2D?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.mapView?.delegate = self.delegate
         self.mapView?.myLocationEnabled = true
         self.mapView?.animateToZoom(15)
+
+        if self.startingPoint != nil {
+            self.setCoordinate(self.startingPoint!)
+        }
 
         self.navigationItem.hidesBackButton = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Check, textColor: UIColor.blackColor(), size: CGSizeMake(30, 30)),
@@ -49,11 +54,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
 
-        if let coordinate = locations.first?.coordinate {
-            self.delegate?.mapView!(self.mapView!, didTapAtCoordinate: coordinate)
-            self.mapView?.animateToLocation(coordinate)
-            self.mapView?.animateToZoom(15)
+        if self.startingPoint != nil {
+            return
         }
+
+        if let coordinate = locations.first?.coordinate {
+            self.setCoordinate(coordinate)
+        }
+    }
+
+    func setCoordinate(coordinate: CLLocationCoordinate2D) {
+        self.delegate?.mapView!(self.mapView!, didTapAtCoordinate: coordinate)
+        self.mapView?.animateToLocation(coordinate)
+        self.mapView?.animateToZoom(15)
     }
 
     func done() {

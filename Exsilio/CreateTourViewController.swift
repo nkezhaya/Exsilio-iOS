@@ -18,33 +18,9 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
         let forwardIcon = UIImage(named: "ForwardIcon")!.scaledTo(1.5)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .Plain, target: self, action: #selector(dismiss))
-
-        if CurrentTourSingleton.sharedInstance.editingExistingTour {
-            if let name = CurrentTourSingleton.sharedInstance.tour["name"] as? String {
-                self.nameField?.text = name
-            }
-
-            if let description = CurrentTourSingleton.sharedInstance.tour["description"] as? String {
-                self.descriptionField?.text = description
-            }
-
-            self.navigationItem.rightBarButtonItems = [
-                UIBarButtonItem(image: UI.BarButtonIcon(.MapPin), style: .Plain, target: self, action: #selector(editWaypoints)),
-                UIBarButtonItem(image: UI.BarButtonIcon(.Save), style: .Plain, target: self, action: #selector(save))
-            ]
-        } else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
-        }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
 
         self.nameField?.becomeFirstResponder()
-    }
-
-    func editWaypoints() {
-
-    }
-
-    func save() {
-
     }
 
     func dismiss() {

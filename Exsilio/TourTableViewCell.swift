@@ -21,6 +21,8 @@ class TourTableViewCell: SWTableViewCell {
     @IBOutlet var userImage: UIImageView?
 
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
         self.pinImage?.image = UIImage.fontAwesomeIconWithName(.MapMarker, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
 
         let buttons = NSMutableArray()

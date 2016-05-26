@@ -10,6 +10,9 @@ import Foundation
 import FBSDKLoginKit
 import FontAwesome_swift
 
+typealias Tour = [String: AnyObject]
+typealias Waypoint = [String: AnyObject]
+
 struct UI {
     static let LabelCharacterSpacing = 1.2
     static let GreenColor = UIColor(hexString: "#21C064")
@@ -32,6 +35,8 @@ struct API {
 
     static let AuthPath = "/users"
     static let ToursPath = "/tours"
+    static let WaypointsPath = "/waypoints"
+    static let MissingImagePath = "/images/original/missing.png"
 
     static func googleMapsKey() -> String {
         let plist = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!

@@ -14,8 +14,8 @@ class CurrentTourSingleton {
     static let sharedInstance = CurrentTourSingleton()
 
     var currentWaypointIndex = -1
-    var tour: [String: AnyObject] = [:]
-    var waypoints: [[String: AnyObject]] = []
+    var tour: Tour = [:]
+    var waypoints: [Waypoint] = []
     var editingExistingTour = false
 
     func newTour(name: String, description: String) {
@@ -39,7 +39,29 @@ class CurrentTourSingleton {
         self.currentWaypointIndex = -1
     }
 
-    func saveWaypoint(waypoint: [String: AnyObject]) {
+    func updateWaypoint(waypoint: Waypoint) {
+        if let id = waypoint["id"] as? Int, tourId = waypoint["tour_id"] as? Int {
+            Alamofire.upload(
+                .PUT,
+                "\(API.URL)\(API.ToursPath)/\(tourId)\(API.WaypointsPath)/\(id)",
+                headers: API.authHeaders(),
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(data: waypoint["name"]!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[name]")
+                    multipartFormData.appendBodyPart(data: "\(waypoint["latitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[latitude]")
+                    multipartFormData.appendBodyPart(data: "\(waypoint["longitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[longitude]")
+
+                    if let image = waypoint["photo"] as? UIImage {
+                        multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "waypoint[image]", fileName: "image.png", mimeType: "image/png")
+                    }
+                },
+                encodingCompletion: { encodingResult in
+
+                }
+            )
+        }
+    }
+
+    func saveWaypoint(waypoint: Waypoint) {
         if self.currentWaypointIndex == self.waypoints.count {
             self.waypoints.append(waypoint)
         } else {
@@ -48,15 +70,6 @@ class CurrentTourSingleton {
     }
 
     func save() {
-        var params: [String: AnyObject] = [
-            "tour[name]": self.tour["name"]!,
-            "tour[waypoints]": self.waypoints
-        ]
-
-        if let description = self.tour["description"] {
-            params["tour[description]"] = description
-        }
-
         Alamofire.upload(
             .POST,
             "\(API.URL)\(API.ToursPath)",

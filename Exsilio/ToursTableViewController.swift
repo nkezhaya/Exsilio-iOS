@@ -103,9 +103,8 @@ extension ToursTableViewController: SWTableViewCellDelegate {
         case 0:
             CurrentTourSingleton.sharedInstance.editTour(self.tours[indexPath.row])
 
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateTourNavigationController") as! CreateTourNavigationController
-
-            self.presentViewController(vc, animated: true, completion: nil)
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointsTableViewController") as! WaypointsTableViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             if let id = self.tours[indexPath.row]["id"].int {
                 Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(id)", headers: API.authHeaders())
