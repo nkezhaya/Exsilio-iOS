@@ -17,6 +17,6 @@ class EXLabel: UILabel {
 
     func modifyAesthetics() {
         self.attributedText = NSAttributedString(string: (self.text)!,
-                                                 attributes: [NSKernAttributeName: Constants.LabelCharacterSpacing])
+                                                 attributes: [NSKernAttributeName: UI.LabelCharacterSpacing])
     }
 }

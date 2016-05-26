@@ -40,7 +40,7 @@ class EXButton: UIButton {
     }
 
     func updateText(text: String, withColor color: UIColor?) {
-        var attributes: [String: AnyObject] = [NSKernAttributeName: Constants.LabelCharacterSpacing]
+        var attributes: [String: AnyObject] = [NSKernAttributeName: UI.LabelCharacterSpacing]
 
         if color != nil {
             attributes[NSForegroundColorAttributeName] = color!

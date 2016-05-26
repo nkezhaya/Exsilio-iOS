@@ -85,6 +85,6 @@ class MenuTableViewCell: UITableViewCell {
     }
 
     func setString(string: String) {
-        self.itemLabel?.attributedText = NSAttributedString(string: string, attributes: [NSKernAttributeName: Constants.LabelCharacterSpacing])
+        self.itemLabel?.attributedText = NSAttributedString(string: string, attributes: [NSKernAttributeName: UI.LabelCharacterSpacing])
     }
 }

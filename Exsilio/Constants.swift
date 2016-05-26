@@ -8,10 +8,17 @@
 
 import Foundation
 import FBSDKLoginKit
+import FontAwesome_swift
 
-struct Constants {
+struct UI {
     static let LabelCharacterSpacing = 1.2
     static let GreenColor = UIColor(hexString: "#21C064")
+    static let BarButtonColor = UIColor(hexString: "#333333")
+    static let BarButtonSize = CGSizeMake(32, 32)
+
+    static func BarButtonIcon(name: FontAwesome) -> UIImage {
+        return UIImage.fontAwesomeIconWithName(name, textColor: BarButtonColor, size: BarButtonSize)
+    }
 }
 
 struct API {

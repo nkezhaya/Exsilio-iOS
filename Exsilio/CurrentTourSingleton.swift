@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class CurrentTourSingleton {
     static let sharedInstance = CurrentTourSingleton()
@@ -15,10 +16,27 @@ class CurrentTourSingleton {
     var currentWaypointIndex = -1
     var tour: [String: AnyObject] = [:]
     var waypoints: [[String: AnyObject]] = []
+    var editingExistingTour = false
 
     func newTour(name: String, description: String) {
-        CurrentTourSingleton.sharedInstance.tour = ["name": name, "description": description, "waypoints": []]
-        CurrentTourSingleton.sharedInstance.waypoints = []
+        self.tour = ["name": name, "description": description, "waypoints": []]
+        self.waypoints = []
+    }
+
+    func editTour(tour: JSON) {
+        if let tourDict = tour.dictionaryObject {
+            self.tour = tourDict
+
+            if let waypointsArray = tour["waypoints"].arrayObject {
+                self.waypoints = waypointsArray as! [[String: AnyObject]]
+            }
+        } else {
+            self.tour = [:]
+            self.waypoints = []
+        }
+
+        self.editingExistingTour = true
+        self.currentWaypointIndex = -1
     }
 
     func saveWaypoint(waypoint: [String: AnyObject]) {

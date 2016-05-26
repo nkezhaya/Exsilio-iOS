@@ -18,9 +18,33 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
         let forwardIcon = UIImage(named: "ForwardIcon")!.scaledTo(1.5)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .Plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
+
+        if CurrentTourSingleton.sharedInstance.editingExistingTour {
+            if let name = CurrentTourSingleton.sharedInstance.tour["name"] as? String {
+                self.nameField?.text = name
+            }
+
+            if let description = CurrentTourSingleton.sharedInstance.tour["description"] as? String {
+                self.descriptionField?.text = description
+            }
+
+            self.navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(image: UI.BarButtonIcon(.MapPin), style: .Plain, target: self, action: #selector(editWaypoints)),
+                UIBarButtonItem(image: UI.BarButtonIcon(.Save), style: .Plain, target: self, action: #selector(save))
+            ]
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
+        }
 
         self.nameField?.becomeFirstResponder()
+    }
+
+    func editWaypoints() {
+
+    }
+
+    func save() {
+
     }
 
     func dismiss() {
@@ -33,17 +57,17 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
         } else {
             CurrentTourSingleton.sharedInstance.newTour(self.nameField!.text!, description: self.descriptionField!.text!)
 
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointViewController")
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == nameField {
-            nameField?.resignFirstResponder()
-            descriptionField?.becomeFirstResponder()
+        if textField == self.nameField {
+            self.nameField?.resignFirstResponder()
+            self.descriptionField?.becomeFirstResponder()
         } else {
-            descriptionField?.resignFirstResponder()
+            self.descriptionField?.resignFirstResponder()
         }
 
         return true

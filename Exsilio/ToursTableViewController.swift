@@ -101,7 +101,11 @@ extension ToursTableViewController: SWTableViewCellDelegate {
 
         switch index {
         case 0:
-            print("edit")
+            CurrentTourSingleton.sharedInstance.editTour(self.tours[indexPath.row])
+
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateTourNavigationController") as! CreateTourNavigationController
+
+            self.presentViewController(vc, animated: true, completion: nil)
         case 1:
             if let id = self.tours[indexPath.row]["id"].int {
                 Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(id)", headers: API.authHeaders())
@@ -134,7 +138,7 @@ extension ToursTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
         let attributes: [String : AnyObject!] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
-            NSKernAttributeName: Constants.LabelCharacterSpacing
+            NSKernAttributeName: UI.LabelCharacterSpacing
         ]
 
         return NSAttributedString(string: text, attributes: attributes)

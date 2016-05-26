@@ -1,5 +1,5 @@
 //
-//  CreateWaypointViewController.swift
+//  WaypointViewController.swift
 //  Exsilio
 //
 //  Created by Nick Kezhaya on 4/29/16.
@@ -11,7 +11,7 @@ import Fusuma
 import SCLAlertView
 import FontAwesome_swift
 
-class CreateWaypointViewController: UIViewController, UITextFieldDelegate {
+class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
 
     @IBOutlet var openMapButton: EXButton?
@@ -59,7 +59,7 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate {
         let alertVC = UIAlertController(title: "What next?", message: "Select from the options below.", preferredStyle: .ActionSheet)
         alertVC.addAction(UIAlertAction(title: "New Waypoint", style: .Default, handler: { _ in
             self.saveWaypoint()
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateWaypointViewController")
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointViewController")
             self.navigationController?.pushViewController(vc!, animated: true)
         }))
         alertVC.addAction(UIAlertAction(title: "Save & Publish Tour", style: .Default, handler: { _ in
@@ -101,7 +101,7 @@ class CreateWaypointViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension CreateWaypointViewController: FusumaDelegate {
+extension WaypointViewController: FusumaDelegate {
     @IBAction func pickImage() {
         let fusuma = FusumaViewController()
         fusuma.delegate = self
@@ -111,7 +111,7 @@ extension CreateWaypointViewController: FusumaDelegate {
     func fusumaImageSelected(image: UIImage) {
         self.selectedImage = image
         self.pickImageButton?.layer.borderWidth = 0
-        self.pickImageButton?.backgroundColor = Constants.GreenColor
+        self.pickImageButton?.backgroundColor = UI.GreenColor
         self.pickImageButton?.setIcon(.Check)
         self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .whiteColor())
     }
@@ -121,7 +121,7 @@ extension CreateWaypointViewController: FusumaDelegate {
     }
 }
 
-extension CreateWaypointViewController: GMSMapViewDelegate {
+extension WaypointViewController: GMSMapViewDelegate {
     @IBAction func openMap() {
         let vc = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
         vc.delegate = self
@@ -139,7 +139,7 @@ extension CreateWaypointViewController: GMSMapViewDelegate {
         self.selectedPoint = coordinate
 
         self.openMapButton?.layer.borderWidth = 0
-        self.openMapButton?.backgroundColor = Constants.GreenColor
+        self.openMapButton?.backgroundColor = UI.GreenColor
         self.openMapButton?.setIcon(.Check)
         self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .whiteColor())
     }
