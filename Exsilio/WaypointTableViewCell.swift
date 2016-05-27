@@ -29,7 +29,12 @@ class WaypointTableViewCell: UITableViewCell {
         self.waypoint = waypoint
 
         self.nameLabel?.text = waypoint["name"] as? String
-        self.descriptionLabel?.text = "\(waypoint["address"]!)"
+
+        if let address = waypoint["address"] as? String {
+            self.descriptionLabel?.text = address
+        } else {
+            self.descriptionLabel?.text = "Address not available yet."
+        }
 
         if let imageURL = waypoint["image_url"] as? String {
             let urlRequest = NSURLRequest(URL: NSURL(string: "\(API.URL)\(imageURL)")!)
