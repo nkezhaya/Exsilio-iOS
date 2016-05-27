@@ -22,6 +22,7 @@ class CurrentTourSingleton {
     var editingExistingTour = false
 
     func newTour(name: String, description: String) {
+        self.editingExistingTour = false
         self.tour = ["name": name, "description": description, "waypoints": []]
         self.waypoints = []
     }

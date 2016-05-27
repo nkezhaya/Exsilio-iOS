@@ -130,8 +130,12 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             }
         }
 
-        CurrentTourSingleton.sharedInstance.updateWaypoint(waypoint)
-        self.dismiss()
+        if CurrentTourSingleton.sharedInstance.editingExistingTour {
+            CurrentTourSingleton.sharedInstance.updateWaypoint(waypoint)
+            self.dismiss()
+        } else {
+            CurrentTourSingleton.sharedInstance.saveWaypoint(waypoint)
+        }
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
