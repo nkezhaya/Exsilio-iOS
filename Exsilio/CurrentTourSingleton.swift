@@ -54,7 +54,7 @@ class CurrentTourSingleton {
             waypointIdsInOrder.append(waypoint["id"] as! Int)
         }
 
-        Alamofire.request(.PUT, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/reposition", parameters: ["waypoints": waypointIdsInOrder]).responseJSON { _ in
+        Alamofire.request(.PUT, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/reposition", parameters: ["waypoints": waypointIdsInOrder], headers: API.authHeaders()).responseJSON { _ in
             completion?()
         }
     }
@@ -63,11 +63,11 @@ class CurrentTourSingleton {
         let id = self.waypoints[index]["id"] as! Int
         self.waypoints.removeAtIndex(index)
 
-        Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)")
+        Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)", headers: API.authHeaders())
     }
 
     func refreshTour(completion: (Void -> Void)) {
-        Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)").responseJSON { response in
+        Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)", headers: API.authHeaders()).responseJSON { response in
             switch (response.result) {
             case .Success(let jsonResponse):
                 let json = JSON(jsonResponse)
