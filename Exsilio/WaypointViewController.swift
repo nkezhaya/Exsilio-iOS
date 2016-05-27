@@ -61,7 +61,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                 }
             }
 
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.BarButtonIcon(.Save), style: .Plain, target: self, action: #selector(saveWaypoint))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Done, target: self, action: #selector(saveWaypoint))
         }
 
         self.nameField?.becomeFirstResponder()

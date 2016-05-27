@@ -28,7 +28,7 @@ class CurrentTourSingleton {
             self.tour = tourDict
 
             if let waypointsArray = tour["waypoints"].arrayObject {
-                self.waypoints = waypointsArray as! [[String: AnyObject]]
+                self.waypoints = waypointsArray as! [Waypoint]
             }
         } else {
             self.tour = [:]
@@ -37,6 +37,28 @@ class CurrentTourSingleton {
 
         self.editingExistingTour = true
         self.currentWaypointIndex = -1
+    }
+
+    func moveWaypointAtIndex(sourceIndex: Int, toIndex destinationIndex: Int) {
+        let waypoint = self.waypoints[sourceIndex]
+        self.waypoints.removeAtIndex(sourceIndex)
+        self.waypoints.insert(waypoint, atIndex: destinationIndex)
+    }
+
+    func refreshTour(completion: (Void -> Void)) {
+        Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)").responseJSON { response in
+            switch (response.result) {
+            case .Success(let jsonResponse):
+                let json = JSON(jsonResponse)
+                self.tour = json.dictionaryObject!
+                self.waypoints = json["waypoints"].arrayObject as! [Waypoint]
+
+                completion()
+                break
+            default:
+                break
+            }
+        }
     }
 
     func updateWaypoint(waypoint: Waypoint) {
