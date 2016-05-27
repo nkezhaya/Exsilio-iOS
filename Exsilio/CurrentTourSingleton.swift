@@ -58,6 +58,13 @@ class CurrentTourSingleton {
         }
     }
 
+    func removeWaypointAtIndex(index: Int) {
+        let id = self.waypoints[index]["id"] as! Int
+        self.waypoints.removeAtIndex(index)
+
+        Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)")
+    }
+
     func refreshTour(completion: (Void -> Void)) {
         Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)").responseJSON { response in
             switch (response.result) {

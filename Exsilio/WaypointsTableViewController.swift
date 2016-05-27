@@ -88,4 +88,11 @@ class WaypointsTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            CurrentTourSingleton.sharedInstance.removeWaypointAtIndex(indexPath.row)
+            self.tableView.reloadData()
+        }
+    }
 }
