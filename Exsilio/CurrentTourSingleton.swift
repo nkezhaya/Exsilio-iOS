@@ -47,9 +47,15 @@ class CurrentTourSingleton {
         self.waypoints.removeAtIndex(sourceIndex)
         self.waypoints.insert(waypoint, atIndex: destinationIndex)
 
-        // TODO: API call for repositioning waypoints.
+        var waypointIdsInOrder: [Int] = []
 
-        completion?()
+        for waypoint in self.waypoints {
+            waypointIdsInOrder.append(waypoint["id"] as! Int)
+        }
+
+        Alamofire.request(.PUT, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/reposition", parameters: ["waypoints": waypointIdsInOrder]).responseJSON { _ in
+            completion?()
+        }
     }
 
     func refreshTour(completion: (Void -> Void)) {
