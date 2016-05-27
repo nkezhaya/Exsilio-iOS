@@ -32,11 +32,12 @@ class WaypointTableViewCell: UITableViewCell {
         self.descriptionLabel?.text = "\(waypoint["latitude"]!), \(waypoint["longitude"]!)"
 
         if let imageURL = waypoint["image_url"] as? String {
-            Alamofire.request(.GET, "\(API.URL)\(imageURL)").responseImage { response in
+            let urlRequest = NSURLRequest(URL: NSURL(string: "\(API.URL)\(imageURL)")!)
+            CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.photoImageView?.image = image.af_imageRoundedIntoCircle()
                 }
-            }
+            })
         }
     }
 }

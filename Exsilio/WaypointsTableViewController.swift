@@ -84,6 +84,8 @@ class WaypointsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        CurrentTourSingleton.sharedInstance.moveWaypointAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        CurrentTourSingleton.sharedInstance.moveWaypointAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row, completion: {
+            self.tableView.reloadData()
+        })
     }
 }

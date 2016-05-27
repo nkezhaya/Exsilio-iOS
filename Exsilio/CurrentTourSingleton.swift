@@ -8,10 +8,13 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class CurrentTourSingleton {
     static let sharedInstance = CurrentTourSingleton()
+
+    var imageDownloader = ImageDownloader()
 
     var currentWaypointIndex = -1
     var tour: Tour = [:]
@@ -39,10 +42,14 @@ class CurrentTourSingleton {
         self.currentWaypointIndex = -1
     }
 
-    func moveWaypointAtIndex(sourceIndex: Int, toIndex destinationIndex: Int) {
+    func moveWaypointAtIndex(sourceIndex: Int, toIndex destinationIndex: Int, completion: (Void -> Void)?) {
         let waypoint = self.waypoints[sourceIndex]
         self.waypoints.removeAtIndex(sourceIndex)
         self.waypoints.insert(waypoint, atIndex: destinationIndex)
+
+        // TODO: API call for repositioning waypoints.
+
+        completion?()
     }
 
     func refreshTour(completion: (Void -> Void)) {

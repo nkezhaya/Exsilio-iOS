@@ -294,6 +294,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A65A39A81CBBFB3C00E605B3 /* Build configuration list for PBXNativeTarget "Exsilio" */;
 			buildPhases = (
+				A62194E71CF8903300E605B3 /* ShellScript */,
 				D643D76A537EDD787BF20A1B /* 📦 Check Pods Manifest.lock */,
 				A65A39921CBBFB3C00E605B3 /* Sources */,
 				A65A39931CBBFB3C00E605B3 /* Frameworks */,
@@ -383,6 +384,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A62194E71CF8903300E605B3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# do not assign the new build number if there is no changes\nDIFF=`git diff`\nif [[ $DIFF == \"\" ]]; then exit 0; fi\n\n# path to the property list where the version number should be changed\nPLIST=\"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n# the latest tag that will be used as a short version number\nVERSION_NUMBER=`git describe | awk '{ split($0, a, \"-\"); print a[1] }'`\n\n# the number of commits in repository to be used for the build number\nNUMBER_OF_COMMITS=`git rev-list HEAD --count`\n\n# a future build number should consider its own commit\nBUILD_NUMBER=$((NUMBER_OF_COMMITS+1))\n\n/usr/libexec/PlistBuddy -c \"Set CFBundleShortVersionString $VERSION_NUMBER\" \"${PLIST}\"\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $BUILD_NUMBER\" \"${PLIST}\"";
 		};
 		D07C83D352B0B235C4E51E43 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

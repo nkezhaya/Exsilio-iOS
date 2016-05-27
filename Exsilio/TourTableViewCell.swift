@@ -38,11 +38,12 @@ class TourTableViewCell: SWTableViewCell {
         self.descriptionLabel!.text = "Austin, TX • \(tour["waypoints"].count) Stops • \(tour["duration"].string!)"
 
         if let imageURL = tour["user"]["picture_url"].string {
-            Alamofire.request(.GET, "\(API.URL)\(imageURL)").responseImage { response in
+            let urlRequest = NSURLRequest(URL: NSURL(string: "\(API.URL)\(imageURL)")!)
+            CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.userImage?.image = image.af_imageRoundedIntoCircle()
                 }
-            }
+            })
         }
     }
 }
