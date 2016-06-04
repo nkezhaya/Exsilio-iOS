@@ -21,6 +21,8 @@ class ToursTableViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
 
+        self.tableView.registerNib(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
+
         self.tableView.tableFooterView = UIView()
         self.tableView.opaque = false
         self.tableView.backgroundView = nil

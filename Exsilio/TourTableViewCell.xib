@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Italic.ttf">
+            <string>OpenSans-Italic</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TourTableViewCell" rowHeight="87" id="5bi-Ha-v2w" customClass="TourTableViewCell" customModule="Exsilio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bi-Ha-v2w" id="b5g-zN-WnP">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome tour!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEz-9a-ffB">
+                        <rect key="frame" x="90" y="8" width="502" height="32"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
+                        <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Austin, TX • 34 min • 100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqZ-ju-pVp">
+                        <rect key="frame" x="114" y="55" width="478" height="23"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="14"/>
+                        <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kls-Wz-ye7">
+                        <rect key="frame" x="90" y="55" width="23" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="23" id="ke3-bA-iy1"/>
+                            <constraint firstAttribute="height" constant="23" id="mNL-iR-vZE"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aSY-cF-7TK">
+                        <rect key="frame" x="8" y="8" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="pLQ-Lz-Cyk"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sqZ-ju-pVp" firstAttribute="leading" secondItem="Kls-Wz-ye7" secondAttribute="trailing" constant="1" id="5xt-J3-dQY"/>
+                    <constraint firstItem="Kls-Wz-ye7" firstAttribute="top" secondItem="sqZ-ju-pVp" secondAttribute="top" id="7rm-F0-XXK"/>
+                    <constraint firstItem="dEz-9a-ffB" firstAttribute="leading" secondItem="aSY-cF-7TK" secondAttribute="trailing" constant="12" id="AGX-4p-8ct"/>
+                    <constraint firstItem="aSY-cF-7TK" firstAttribute="leading" secondItem="b5g-zN-WnP" secondAttribute="leadingMargin" id="BUh-26-ekc"/>
+                    <constraint firstItem="dEz-9a-ffB" firstAttribute="trailing" secondItem="sqZ-ju-pVp" secondAttribute="trailing" id="Chn-Hk-2KC"/>
+                    <constraint firstItem="aSY-cF-7TK" firstAttribute="bottom" secondItem="Kls-Wz-ye7" secondAttribute="bottom" id="NvX-4a-xsU"/>
+                    <constraint firstItem="dEz-9a-ffB" firstAttribute="leading" secondItem="Kls-Wz-ye7" secondAttribute="leading" id="Oho-Em-OHS"/>
+                    <constraint firstItem="Kls-Wz-ye7" firstAttribute="top" secondItem="dEz-9a-ffB" secondAttribute="bottom" constant="15" id="Qej-Wu-gSU"/>
+                    <constraint firstItem="aSY-cF-7TK" firstAttribute="bottom" secondItem="b5g-zN-WnP" secondAttribute="bottomMargin" id="a1Q-AO-OJv"/>
+                    <constraint firstItem="aSY-cF-7TK" firstAttribute="top" secondItem="dEz-9a-ffB" secondAttribute="top" id="kB5-4b-KSv"/>
+                    <constraint firstItem="aSY-cF-7TK" firstAttribute="top" secondItem="b5g-zN-WnP" secondAttribute="topMargin" id="tP5-DL-MkH"/>
+                    <constraint firstItem="Kls-Wz-ye7" firstAttribute="bottom" secondItem="sqZ-ju-pVp" secondAttribute="bottom" id="u54-sZ-ymP"/>
+                    <constraint firstItem="dEz-9a-ffB" firstAttribute="trailing" secondItem="b5g-zN-WnP" secondAttribute="trailingMargin" id="yWs-ng-0TW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="sqZ-ju-pVp" id="81c-VB-h4m"/>
+                <outlet property="nameLabel" destination="dEz-9a-ffB" id="NYt-um-09l"/>
+                <outlet property="pinImage" destination="Kls-Wz-ye7" id="QfD-vY-R5w"/>
+                <outlet property="userImage" destination="aSY-cF-7TK" id="vDw-F2-9Qu"/>
+            </connections>
+            <point key="canvasLocation" x="632" y="142.5"/>
+        </tableViewCell>
+    </objects>
+</document>

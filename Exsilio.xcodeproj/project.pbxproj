@@ -10,6 +10,7 @@
 		8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */; };
 		A606BA611CDB9F8800E605B3 /* Configuration.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = A606BA601CDB9F8800E605B3 /* Configuration.plist.example */; };
 		A606BA631CDBA07D00E605B3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = A606BA621CDBA07D00E605B3 /* Configuration.plist */; };
+		A60A60EA1D020AA200E605B3 /* TourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A60A60E91D020AA200E605B3 /* TourTableViewCell.xib */; };
 		A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD581CDBA2F700E605B3 /* MapViewController.swift */; };
 		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
 		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
@@ -45,7 +46,7 @@
 		A6686FAE1CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */; };
 		A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */; };
 		A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */; };
-		A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78B1CD1082500E605B3 /* SearchViewController.swift */; };
+		A674A78C1CD1082500E605B3 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78B1CD1082500E605B3 /* SearchTableViewController.swift */; };
 		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
 		A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */; };
 		A6A3B8321CF7489E00E605B3 /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3B8311CF7489E00E605B3 /* WaypointsTableViewController.swift */; };
@@ -61,6 +62,7 @@
 		93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exsilio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio.debug.xcconfig"; sourceTree = "<group>"; };
 		A606BA601CDB9F8800E605B3 /* Configuration.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Configuration.plist.example; sourceTree = "<group>"; };
 		A606BA621CDBA07D00E605B3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		A60A60E91D020AA200E605B3 /* TourTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TourTableViewCell.xib; sourceTree = "<group>"; };
 		A611CD581CDBA2F700E605B3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
@@ -99,7 +101,7 @@
 		A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
 		A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
-		A674A78B1CD1082500E605B3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A674A78B1CD1082500E605B3 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToursTableViewController.swift; sourceTree = "<group>"; };
 		A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourNavigationController.swift; sourceTree = "<group>"; };
 		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
@@ -228,7 +230,7 @@
 		A674A78A1CD1081C00E605B3 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A674A78B1CD1082500E605B3 /* SearchViewController.swift */,
+				A674A78B1CD1082500E605B3 /* SearchTableViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 				A6F1DD441CBC0B4A00E605B3 /* Views */,
 				A6F1DD411CBC048F00E605B3 /* Fonts */,
 				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
+				A60A60E91D020AA200E605B3 /* TourTableViewCell.xib */,
 				A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */,
 				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
 				A606BA601CDB9F8800E605B3 /* Configuration.plist.example */,
@@ -362,6 +365,7 @@
 				A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */,
 				A6686FAE1CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				A6686FAA1CD2A12900E605B3 /* OpenSans-Light.ttf in Resources */,
+				A60A60EA1D020AA200E605B3 /* TourTableViewCell.xib in Resources */,
 				A6686FAC1CD2A12900E605B3 /* OpenSans-Regular.ttf in Resources */,
 				A6686FA81CD2A12900E605B3 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 			);
@@ -435,7 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A674A78C1CD1082500E605B3 /* SearchViewController.swift in Sources */,
+				A674A78C1CD1082500E605B3 /* SearchTableViewController.swift in Sources */,
 				A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */,
 				A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */,
 				A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */,
@@ -597,7 +601,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-DRELEASE\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitepaperclip.Exsilio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8f50ba4d-efbf-455d-9973-c161453a077f";
+				PROVISIONING_PROFILE = "aa7bdd48-6db7-4989-8480-5374daf3e627";
 			};
 			name = Release;
 		};

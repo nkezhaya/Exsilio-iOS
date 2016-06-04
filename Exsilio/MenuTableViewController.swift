@@ -51,7 +51,7 @@ class MenuTableViewController: UITableViewController {
         let vc: UIViewController?
 
         if indexPath.row == 0 {
-            vc = self.storyboard?.instantiateViewControllerWithIdentifier("SearchViewController")
+            vc = self.storyboard?.instantiateViewControllerWithIdentifier("SearchTableViewController")
         } else if indexPath.row == 1 {
             vc = self.storyboard?.instantiateViewControllerWithIdentifier("ToursTableViewController")
         } else {

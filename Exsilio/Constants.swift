@@ -36,6 +36,7 @@ struct API {
     static let AuthPath = "/users"
     static let ToursPath = "/tours"
     static let WaypointsPath = "/waypoints"
+    static let SearchPath = "\(API.ToursPath)/search"
     static let MissingImagePath = "/images/original/missing.png"
 
     static func googleMapsKey() -> String {

@@ -25,11 +25,13 @@ class TourTableViewCell: SWTableViewCell {
         
         self.pinImage?.image = UIImage.fontAwesomeIconWithName(.MapMarker, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
 
-        let buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor(hexString: "#1c56ff"), icon: UIImage.fontAwesomeIconWithName(.Edit, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
-        buttons.sw_addUtilityButtonWithColor(UIColor(hexString: "#e04940"), icon: UIImage.fontAwesomeIconWithName(.Trash, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
+        if self.delegate != nil {
+            let buttons = NSMutableArray()
+            buttons.sw_addUtilityButtonWithColor(UIColor(hexString: "#1c56ff"), icon: UIImage.fontAwesomeIconWithName(.Edit, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
+            buttons.sw_addUtilityButtonWithColor(UIColor(hexString: "#e04940"), icon: UIImage.fontAwesomeIconWithName(.Trash, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
 
-        self.rightUtilityButtons = buttons as [AnyObject]
+            self.rightUtilityButtons = buttons as [AnyObject]
+        }
     }
 
     func updateWithTour(tour: JSON) {
