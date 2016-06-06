@@ -45,6 +45,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aSY-cF-7TK">
                         <rect key="frame" x="8" y="8" width="70" height="70"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="70" id="ZEE-gT-mNY"/>
                             <constraint firstAttribute="width" constant="70" id="pLQ-Lz-Cyk"/>
                         </constraints>
                     </imageView>
@@ -58,7 +59,6 @@
                     <constraint firstItem="aSY-cF-7TK" firstAttribute="bottom" secondItem="Kls-Wz-ye7" secondAttribute="bottom" id="NvX-4a-xsU"/>
                     <constraint firstItem="dEz-9a-ffB" firstAttribute="leading" secondItem="Kls-Wz-ye7" secondAttribute="leading" id="Oho-Em-OHS"/>
                     <constraint firstItem="Kls-Wz-ye7" firstAttribute="top" secondItem="dEz-9a-ffB" secondAttribute="bottom" constant="15" id="Qej-Wu-gSU"/>
-                    <constraint firstItem="aSY-cF-7TK" firstAttribute="bottom" secondItem="b5g-zN-WnP" secondAttribute="bottomMargin" id="a1Q-AO-OJv"/>
                     <constraint firstItem="aSY-cF-7TK" firstAttribute="top" secondItem="dEz-9a-ffB" secondAttribute="top" id="kB5-4b-KSv"/>
                     <constraint firstItem="aSY-cF-7TK" firstAttribute="top" secondItem="b5g-zN-WnP" secondAttribute="topMargin" id="tP5-DL-MkH"/>
                     <constraint firstItem="Kls-Wz-ye7" firstAttribute="bottom" secondItem="sqZ-ju-pVp" secondAttribute="bottom" id="u54-sZ-ymP"/>
@@ -73,7 +73,7 @@
                 <outlet property="pinImage" destination="Kls-Wz-ye7" id="QfD-vY-R5w"/>
                 <outlet property="userImage" destination="aSY-cF-7TK" id="vDw-F2-9Qu"/>
             </connections>
-            <point key="canvasLocation" x="632" y="142.5"/>
+            <point key="canvasLocation" x="426" y="150.5"/>
         </tableViewCell>
     </objects>
 </document>

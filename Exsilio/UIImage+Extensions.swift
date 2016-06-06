@@ -1,5 +1,5 @@
 //
-//  UIImage+Scaled.swift
+//  UIImage+Extensions.swift
 //  Exsilio
 //
 //  Created by Nick Kezhaya on 4/27/16.

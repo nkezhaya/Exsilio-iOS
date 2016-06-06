@@ -22,6 +22,8 @@
 		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
 		A65A39A11CBBFB3C00E605B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */; };
+		A667BE4E1D05D98800E605B3 /* ExpandedTourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A667BE4D1D05D98800E605B3 /* ExpandedTourTableViewCell.xib */; };
+		A667BE501D05D9A900E605B3 /* ExpandedTourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667BE4F1D05D9A900E605B3 /* ExpandedTourTableViewCell.swift */; };
 		A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */; };
 		A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F841CD29E9100E605B3 /* AkiraTextField.swift */; };
 		A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F851CD29E9100E605B3 /* HoshiTextField.swift */; };
@@ -44,7 +46,7 @@
 		A6686FAC1CD2A12900E605B3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA21CD2A12900E605B3 /* OpenSans-Regular.ttf */; };
 		A6686FAD1CD2A12900E605B3 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA31CD2A12900E605B3 /* OpenSans-Semibold.ttf */; };
 		A6686FAE1CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */; };
-		A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */; };
+		A674A7861CD100D400E605B3 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7851CD100D400E605B3 /* UIImage+Extensions.swift */; };
 		A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */; };
 		A674A78C1CD1082500E605B3 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78B1CD1082500E605B3 /* SearchTableViewController.swift */; };
 		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
@@ -76,6 +78,8 @@
 		A65A399E1CBBFB3C00E605B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A65A39A51CBBFB3C00E605B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A667BE4D1D05D98800E605B3 /* ExpandedTourTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandedTourTableViewCell.xib; sourceTree = "<group>"; };
+		A667BE4F1D05D9A900E605B3 /* ExpandedTourTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedTourTableViewCell.swift; sourceTree = "<group>"; };
 		A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
 		A6686F841CD29E9100E605B3 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
 		A6686F851CD29E9100E605B3 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -99,7 +103,7 @@
 		A6686FA21CD2A12900E605B3 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		A6686FA31CD2A12900E605B3 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		A6686FA41CD2A12900E605B3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
+		A674A7851CD100D400E605B3 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		A674A78B1CD1082500E605B3 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToursTableViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */,
-				A674A7851CD100D400E605B3 /* UIImage+Scaled.swift */,
+				A674A7851CD100D400E605B3 /* UIImage+Extensions.swift */,
 				A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */,
 			);
 			name = Extensions;
@@ -157,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
-				A6DFDFF81CECC07C00E605B3 /* TourTableViewCell.swift */,
 				A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */,
 			);
 			name = "My Tours";
@@ -184,6 +187,7 @@
 		A65A39981CBBFB3C00E605B3 /* Exsilio */ = {
 			isa = PBXGroup;
 			children = (
+				A667BE4B1D05D8DB00E605B3 /* Cells */,
 				A674A78A1CD1081C00E605B3 /* Search */,
 				A63768481CEB7F3C00E605B3 /* My Tours */,
 				A674A7891CD1081800E605B3 /* Create Tour */,
@@ -195,6 +199,17 @@
 				A6F1DD361CBC046000E605B3 /* Supporting Files */,
 			);
 			path = Exsilio;
+			sourceTree = "<group>";
+		};
+		A667BE4B1D05D8DB00E605B3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A60A60E91D020AA200E605B3 /* TourTableViewCell.xib */,
+				A6DFDFF81CECC07C00E605B3 /* TourTableViewCell.swift */,
+				A667BE4D1D05D98800E605B3 /* ExpandedTourTableViewCell.xib */,
+				A667BE4F1D05D9A900E605B3 /* ExpandedTourTableViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		A6686F831CD29E9100E605B3 /* TextFieldEffects */ = {
@@ -252,7 +267,6 @@
 				A6F1DD441CBC0B4A00E605B3 /* Views */,
 				A6F1DD411CBC048F00E605B3 /* Fonts */,
 				A65A39A01CBBFB3C00E605B3 /* Assets.xcassets */,
-				A60A60E91D020AA200E605B3 /* TourTableViewCell.xib */,
 				A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */,
 				A65A39A51CBBFB3C00E605B3 /* Info.plist */,
 				A606BA601CDB9F8800E605B3 /* Configuration.plist.example */,
@@ -351,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A667BE4E1D05D98800E605B3 /* ExpandedTourTableViewCell.xib in Resources */,
 				A6686FA91CD2A12900E605B3 /* OpenSans-Italic.ttf in Resources */,
 				A6686FA61CD2A12900E605B3 /* OpenSans-BoldItalic.ttf in Resources */,
 				A6686F921CD29E9100E605B3 /* Info.plist in Resources */,
@@ -462,13 +477,14 @@
 				A6A3B8341CF7510000E605B3 /* WaypointTableViewCell.swift in Sources */,
 				A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */,
 				A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */,
+				A667BE501D05D9A900E605B3 /* ExpandedTourTableViewCell.swift in Sources */,
 				A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */,
 				A6DFDFF91CECC07C00E605B3 /* TourTableViewCell.swift in Sources */,
 				A6686F941CD29E9100E605B3 /* JiroTextField.swift in Sources */,
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
 				A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */,
 				A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */,
-				A674A7861CD100D400E605B3 /* UIImage+Scaled.swift in Sources */,
+				A674A7861CD100D400E605B3 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

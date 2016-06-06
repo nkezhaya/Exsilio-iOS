@@ -22,6 +22,9 @@ class TourTableViewCell: SWTableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.selectedBackgroundView = UIView()
+        self.selectedBackgroundView!.backgroundColor = .whiteColor()
         
         self.pinImage?.image = UIImage.fontAwesomeIconWithName(.MapMarker, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
 

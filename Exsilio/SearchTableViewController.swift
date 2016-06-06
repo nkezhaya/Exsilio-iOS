@@ -13,11 +13,13 @@ import DZNEmptyDataSet
 
 class SearchTableViewController: UITableViewController {
     var tours: JSON?
+    var expandedIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.registerNib(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "ExpandedTourTableViewCell", bundle: nil), forCellReuseIdentifier: "ExpandedTourTableViewCell")
 
         self.tableView.tableFooterView = UIView()
         self.tableView.opaque = false
@@ -36,18 +38,51 @@ class SearchTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("TourTableViewCell", forIndexPath: indexPath) as! TourTableViewCell
-        cell.updateWithTour(self.tours![indexPath.row])
+        if self.expandedIndexPath == indexPath {
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("ExpandedTourTableViewCell", forIndexPath: indexPath) as! ExpandedTourTableViewCell
+            cell.updateWithTour(self.tours![indexPath.row])
 
-        return cell
+            return cell
+        } else {
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("TourTableViewCell", forIndexPath: indexPath) as! TourTableViewCell
+            cell.updateWithTour(self.tours![indexPath.row])
+
+            return cell
+        }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
-        vc.tour = self.tours![indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        // If the user taps the same row, proceed to Tour summary.
+
+        if self.expandedIndexPath == indexPath {
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
+            vc.tour = self.tours![indexPath.row]
+
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+
+        // Otherwise, figure out which rows are being expanded/collapsed. Only one row can be expanded at a time.
+
+        var pathsToReload: [NSIndexPath] = []
+
+        if let oldExpandedIndexPath = self.expandedIndexPath {
+            pathsToReload.append(oldExpandedIndexPath)
+            pathsToReload.append(indexPath)
+
+            self.expandedIndexPath = indexPath
+        } else {
+            pathsToReload.append(indexPath)
+            self.expandedIndexPath = indexPath
+        }
+
+        self.tableView.reloadRowsAtIndexPaths(pathsToReload, withRowAnimation: .Automatic)
+    }
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return self.expandedIndexPath == indexPath ? 200.0 : 87.0
     }
 }
 
@@ -67,6 +102,8 @@ extension SearchTableViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if let query = searchBar.text {
+            searchBar.resignFirstResponder()
+
             Alamofire.request(.GET, "\(API.URL)\(API.SearchPath)?query=\(query)", headers: API.authHeaders()).responseJSON { response in
                 switch response.result {
                 case .Success(let result):
