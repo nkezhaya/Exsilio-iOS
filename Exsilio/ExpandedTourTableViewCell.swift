@@ -88,7 +88,7 @@ class ExpandedTourTableViewCell: UITableViewCell {
 
         // Background image
         if let backgroundImageURL = tour["display_image_url"].string {
-            let urlRequest = NSURLRequest(URL: NSURL(string: "\(API.URL)\(backgroundImageURL)")!)
+            let urlRequest = NSURLRequest(URL: NSURL(string: backgroundImageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.backgroundImage?.image = image
@@ -98,7 +98,7 @@ class ExpandedTourTableViewCell: UITableViewCell {
 
         // User image
         if let userImageURL = tour["user"]["picture_url"].string {
-            let urlRequest = NSURLRequest(URL: NSURL(string: "\(API.URL)\(userImageURL)")!)
+            let urlRequest = NSURLRequest(URL: NSURL(string: userImageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.userImage?.image = image.af_imageRoundedIntoCircle()
