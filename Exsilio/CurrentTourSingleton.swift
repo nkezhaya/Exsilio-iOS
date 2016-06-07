@@ -112,7 +112,7 @@ class CurrentTourSingleton {
         }
     }
 
-    func save() {
+    func save(successHandler successHandler: (Void -> Void), errorHandler: (String -> Void)) {
         Alamofire.upload(
             .POST,
             "\(API.URL)\(API.ToursPath)",
@@ -141,7 +141,25 @@ class CurrentTourSingleton {
                 }
             },
             encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        switch response.result {
+                        case .Success(let json):
+                            if let errors = json["errors"] as? String {
+                                errorHandler(errors)
+                            } else {
+                                successHandler()
+                            }
 
+                            break
+                        default:
+                            break
+                        }
+                    }
+                default:
+                    break
+                }
             }
         )
     }

@@ -98,9 +98,12 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }))
         alertVC.addAction(UIAlertAction(title: "Save & Publish Tour", style: .Default, handler: { _ in
             self.saveWaypoint()
-            CurrentTourSingleton.sharedInstance.save()
-            self.navigationController?.dismissViewControllerAnimated(true, completion: {
-                CurrentTourSingleton.sharedInstance.currentWaypointIndex = -1
+            CurrentTourSingleton.sharedInstance.save(successHandler: {
+                self.navigationController?.dismissViewControllerAnimated(true, completion: {
+                    CurrentTourSingleton.sharedInstance.currentWaypointIndex = -1
+                })
+            }, errorHandler: { errors in
+                SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
             })
         }))
 
