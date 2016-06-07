@@ -84,6 +84,7 @@ class ToursTableViewController: UITableViewController {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("TourTableViewCell", forIndexPath: indexPath) as! TourTableViewCell
         cell.delegate = self
         cell.updateWithTour(self.tours[indexPath.row])
+        cell.addUtilityButtons()
 
         return cell
     }

@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Italic.ttf">
@@ -182,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkg-vm-Zd9" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="268"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -191,7 +192,7 @@
                             <constraint firstAttribute="trailing" secondItem="bkg-vm-Zd9" secondAttribute="trailing" id="3FB-A9-E0P"/>
                             <constraint firstItem="bkg-vm-Zd9" firstAttribute="leading" secondItem="aff-v8-JG0" secondAttribute="leading" id="HIQ-er-DEe"/>
                             <constraint firstItem="bkg-vm-Zd9" firstAttribute="top" secondItem="G7h-05-D8A" secondAttribute="bottom" id="KAp-4P-G3x"/>
-                            <constraint firstItem="bkg-vm-Zd9" firstAttribute="bottom" secondItem="XcI-f9-axM" secondAttribute="top" id="diP-2X-mCq"/>
+                            <constraint firstItem="bkg-vm-Zd9" firstAttribute="height" secondItem="aff-v8-JG0" secondAttribute="height" multiplier="0.5" id="ZDb-eA-Rus"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>

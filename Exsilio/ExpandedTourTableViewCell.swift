@@ -26,6 +26,9 @@ class ExpandedTourTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        self.selectedBackgroundView = UIView()
+        self.selectedBackgroundView!.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
+
         self.distanceLabel!.layer.masksToBounds = true
         self.distanceLabel!.layer.cornerRadius = 4.0
 
