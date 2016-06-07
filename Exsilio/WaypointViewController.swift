@@ -125,7 +125,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }
 
         if let image = self.selectedImage {
-            if waypoint["photo"] != nil && (waypoint["photo"] as! UIImage) != image {
+            if waypoint["photo"] == nil || (waypoint["photo"] as! UIImage) != image {
                 waypoint["photo"] = image
             }
         }

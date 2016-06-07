@@ -37,7 +37,7 @@ class WaypointTableViewCell: UITableViewCell {
         }
 
         if let imageURL = waypoint["image_url"] as? String {
-            let urlRequest = NSURLRequest(URL: NSURL(string: "\(API.URL)\(imageURL)")!)
+            let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.photoImageView?.image = image.af_imageRoundedIntoCircle()
