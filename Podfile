@@ -5,7 +5,6 @@ target "Exsilio" do
   pod "Alamofire", "~> 3.3"
   pod "AlamofireImage", "~> 2.0"
 
-  pod "PKRevealController"
   pod "FBSDKCoreKit"
   pod "FBSDKLoginKit"
   pod "FBSDKShareKit"

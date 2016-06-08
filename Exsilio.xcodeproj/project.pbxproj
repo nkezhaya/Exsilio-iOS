@@ -15,9 +15,9 @@
 		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
 		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
 		A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */; };
-		A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
+		A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63910971D08740300E605B3 /* MainTabBarController.swift */; };
 		A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */; };
 		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
@@ -69,9 +69,9 @@
 		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
 		A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
-		A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
+		A63910971D08740300E605B3 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A65A39961CBBFB3C00E605B3 /* Exsilio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exsilio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				A6A3B8301CF7488300E605B3 /* Edit Tour */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
 				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
-				A62A5B161CBEC6F300E605B3 /* MenuTableViewController.swift */,
+				A63910971D08740300E605B3 /* MainTabBarController.swift */,
 				A65A399D1CBBFB3C00E605B3 /* Main.storyboard */,
 				A6F1DD361CBC046000E605B3 /* Supporting Files */,
 			);
@@ -462,7 +462,7 @@
 				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
 				A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */,
-				A62A5B171CBEC6F300E605B3 /* MenuTableViewController.swift in Sources */,
+				A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */,
 				A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
 				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,

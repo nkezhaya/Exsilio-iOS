@@ -15,6 +15,18 @@ class SearchTableViewController: UITableViewController {
     var tours: JSON?
     var expandedIndexPath: NSIndexPath?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.tabBarItem.image = UI.BarButtonIcon(.Search)
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.tabBarController?.navigationItem.title = self.title
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

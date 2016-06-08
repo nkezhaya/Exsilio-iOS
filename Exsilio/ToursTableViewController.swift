@@ -15,6 +15,12 @@ import SWTableViewCell
 class ToursTableViewController: UITableViewController {
     var tours: JSON = JSON([])
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.tabBarItem.image = UI.BarButtonIcon(.MapO)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +41,8 @@ class ToursTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         showPlusIcon()
         refresh()
+
+        self.tabBarController?.navigationItem.title = self.title
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -58,16 +66,14 @@ class ToursTableViewController: UITableViewController {
     }
 
     func showPlusIcon() {
-        let plusIcon = UIImage(named: "PlusIcon")?.scaledTo(1.5)
-
-        self.revealController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: plusIcon,
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.PlusIcon,
                                                                                    style: .Plain,
                                                                                    target: self,
                                                                                    action: #selector(newTour))
     }
 
     func hidePlusIcon() {
-        self.revealController?.navigationItem.rightBarButtonItem = nil
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
 
     func newTour() {

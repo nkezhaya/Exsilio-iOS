@@ -28,11 +28,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         CurrentTourSingleton.sharedInstance.currentWaypointIndex += 1
         
-        let backIcon = UIImage(named: "BackIcon")!.scaledTo(1.5)
-        let forwardIcon = UIImage(named: "ForwardIcon")!.scaledTo(1.5)
-
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .Plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: forwardIcon, style: .Plain, target: self, action: #selector(next))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.ForwardIcon, style: .Plain, target: self, action: #selector(next))
 
         self.title = "Waypoint \(CurrentTourSingleton.sharedInstance.currentWaypointIndex + 1)"
 

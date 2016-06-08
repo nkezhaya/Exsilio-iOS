@@ -14,7 +14,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -78,52 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531" y="419"/>
-        </scene>
-        <!--Menu Table View Controller-->
-        <scene sceneID="Bz3-tZ-3E8">
-            <objects>
-                <tableViewController storyboardIdentifier="MenuTableViewController" id="f3C-OI-vND" customClass="MenuTableViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="U53-oi-Nq2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="50" id="ENz-fP-Fqp" customClass="MenuTableViewCell" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ENz-fP-Fqp" id="KlJ-M8-l6Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SEARCH TOURS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47V-KE-TRO">
-                                            <rect key="frame" x="8" y="14" width="250" height="21"/>
-                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="itemLabel" destination="47V-KE-TRO" id="NMw-OR-YCb"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="f3C-OI-vND" id="Mrm-xa-rDM"/>
-                            <outlet property="delegate" destination="f3C-OI-vND" id="B88-Mi-mxb"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="334-Fu-gwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1283" y="-270"/>
+            <point key="canvasLocation" x="-393" y="797"/>
         </scene>
         <!--Search-->
         <scene sceneID="cSr-WR-EOq">
@@ -146,6 +100,7 @@
                             <outlet property="delegate" destination="Ozd-la-cqO" id="dVs-Gh-Keb"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="" id="pQd-ue-Ug6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbo-fU-jkf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,6 +120,7 @@
                             <outlet property="delegate" destination="DzD-g4-K3Z" id="3Yt-CI-uCu"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="" id="rQd-an-ePs"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUm-mb-J9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,6 +159,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMP-oU-G67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1963" y="1120"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="tAw-wj-Apm">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabBarController" id="zkp-Dl-uAi" customClass="MainTabBarController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="JL8-vt-xfz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ozd-la-cqO" kind="relationship" relationship="viewControllers" id="TWU-7O-sjo"/>
+                        <segue destination="DzD-g4-K3Z" kind="relationship" relationship="viewControllers" id="Mc4-Bk-pIe"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4A-Pq-rAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="797"/>
         </scene>
         <!--Create Tour-->
         <scene sceneID="hHK-yC-tv2">

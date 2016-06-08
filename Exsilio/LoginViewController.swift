@@ -8,12 +8,9 @@
 
 import UIKit
 import FBSDKLoginKit
-import PKRevealController
 import Alamofire
 
 class LoginViewController: UIViewController {
-
-    var pkRevealController: PKRevealController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +41,5 @@ class LoginViewController: UIViewController {
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
-    }
-
-    func startPresentationMode() {
-        self.pkRevealController.enterPresentationModeAnimated(true, completion: nil)
     }
 }

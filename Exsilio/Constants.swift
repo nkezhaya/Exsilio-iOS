@@ -22,6 +22,10 @@ struct UI {
     static func BarButtonIcon(name: FontAwesome) -> UIImage {
         return UIImage.fontAwesomeIconWithName(name, textColor: BarButtonColor, size: BarButtonSize)
     }
+
+    static let PlusIcon = UIImage(named: "PlusIcon")!.scaledTo(1.5)
+    static let ForwardIcon = UIImage(named: "ForwardIcon")!.scaledTo(1.5)
+    static let BackIcon = UIImage(named: "BackIcon")!.scaledTo(1.5)
 }
 
 struct API {

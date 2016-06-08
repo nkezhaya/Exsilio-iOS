@@ -8,13 +8,12 @@
 
 import UIKit
 import FBSDKCoreKit
-import PKRevealController
+import FBSDKLoginKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var revealController: PKRevealController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -56,23 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
 
     func setRootViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var initialViewController : UIViewController
+        var initialViewController: UIViewController
 
         if FBSDKAccessToken.currentAccessToken() != nil {
-            let searchTableViewController = storyboard.instantiateViewControllerWithIdentifier("SearchTableViewController")
-            let menuTableViewController = storyboard.instantiateViewControllerWithIdentifier("MenuTableViewController")
-            let navigationController : UINavigationController
+            let mainTabBarController = storyboard.instantiateViewControllerWithIdentifier("MainTabBarController")
+            let navigationController: UINavigationController
 
-            let menuIcon = UIImage(named: "MenuIcon")?.scaledTo(1.5)
-
-            self.revealController = PKRevealController(frontViewController: searchTableViewController, leftViewController: menuTableViewController)
-            self.revealController?.title = searchTableViewController.title
-            self.revealController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuIcon,
-                                                                                      style: .Plain,
-                                                                                      target: self,
-                                                                                      action: #selector(togglePresentationMode))
-
-            navigationController = UINavigationController(rootViewController: self.revealController!)
+            navigationController = UINavigationController(rootViewController: mainTabBarController)
             navigationController.navigationBar.translucent = false
 
             initialViewController = navigationController
@@ -88,6 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
         self.window?.makeKeyAndVisible()
     }
 
+    func logOut() {
+        FBSDKLoginManager().logOut()
+        self.setRootViewController()
+    }
+
     func setAesthetics() {
         let color = UIColor(hexString: "#333333")
         UINavigationBar.appearance().tintColor = color
@@ -99,13 +93,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKRevealing {
         ]
 
         UINavigationBar.appearance().titleTextAttributes = attributes
-    }
-
-    func togglePresentationMode() {
-        if self.revealController?.isPresentationModeActive == true {
-            self.revealController?.resignPresentationModeEntirely(true, animated: true, completion: nil)
-        } else {
-            self.revealController?.enterPresentationModeAnimated(true, completion: nil)
-        }
     }
 }
