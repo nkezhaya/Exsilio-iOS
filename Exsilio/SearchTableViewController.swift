@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import DZNEmptyDataSet
+import FontAwesome_swift
 
 class SearchTableViewController: UITableViewController {
     var tours: JSON?
@@ -139,6 +140,10 @@ extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
         return self.tours?.count == 0
     }
 
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage.fontAwesomeIconWithName(.Search, textColor: UIColor(hexString: "#AAAAAA"), size: CGSizeMake(80, 80))
+    }
+
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO RESULTS"
 
@@ -152,7 +157,7 @@ extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
     }
 
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = "Create a tour and\nshare it with others!"
+        let text = "Modify your search terms\nand try again!"
 
         let attributes: [String : AnyObject!] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
@@ -160,5 +165,9 @@ extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
         ]
 
         return NSAttributedString(string: text, attributes: attributes)
+    }
+
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -20
     }
 }
