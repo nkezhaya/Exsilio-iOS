@@ -16,4 +16,5 @@ target "Exsilio" do
   pod "FontAwesome.swift"
   pod "SwiftyJSON"
   pod "SWTableViewCell", "~> 0.3.7"
+  pod "Eureka"
 end

@@ -77,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="797"/>
+            <point key="canvasLocation" x="-1479" y="1861"/>
         </scene>
         <!--Search-->
         <scene sceneID="cSr-WR-EOq">
@@ -104,7 +104,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbo-fU-jkf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="419"/>
+            <point key="canvasLocation" x="199" y="1160"/>
         </scene>
         <!--My Tours-->
         <scene sceneID="j3C-yK-ej4">
@@ -124,7 +124,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUm-mb-J9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="1120"/>
+            <point key="canvasLocation" x="199" y="1861"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="2Jm-4y-CDC">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings" id="7rb-eZ-hEe" customClass="SettingsViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YYb-nK-H7P"/>
+                        <viewControllerLayoutGuide type="bottom" id="8a3-0G-bQr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AJP-ns-cfz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="HUU-TU-Ylz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZa-bS-K0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="2548"/>
         </scene>
         <!--Tour View Controller-->
         <scene sceneID="sqL-XO-sH3">
@@ -172,11 +191,12 @@
                     <connections>
                         <segue destination="Ozd-la-cqO" kind="relationship" relationship="viewControllers" id="TWU-7O-sjo"/>
                         <segue destination="DzD-g4-K3Z" kind="relationship" relationship="viewControllers" id="Mc4-Bk-pIe"/>
+                        <segue destination="7rb-eZ-hEe" kind="relationship" relationship="viewControllers" id="XHw-1s-fzP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4A-Pq-rAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="797"/>
+            <point key="canvasLocation" x="-781" y="1861"/>
         </scene>
         <!--Create Tour-->
         <scene sceneID="hHK-yC-tv2">

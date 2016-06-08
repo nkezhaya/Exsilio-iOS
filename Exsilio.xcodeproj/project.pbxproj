@@ -18,6 +18,7 @@
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
 		A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63910971D08740300E605B3 /* MainTabBarController.swift */; };
+		A639109C1D0888E400E605B3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A639109B1D0888E400E605B3 /* SettingsViewController.swift */; };
 		A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */; };
 		A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */; };
 		A65A399F1CBBFB3C00E605B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A399D1CBBFB3C00E605B3 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		A63910971D08740300E605B3 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		A639109B1D0888E400E605B3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A65A39961CBBFB3C00E605B3 /* Exsilio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exsilio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			name = "My Tours";
 			sourceTree = "<group>";
 		};
+		A639109A1D0888D600E605B3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A639109B1D0888E400E605B3 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		A65A398D1CBBFB3C00E605B3 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 				A63768481CEB7F3C00E605B3 /* My Tours */,
 				A674A7891CD1081800E605B3 /* Create Tour */,
 				A6A3B8301CF7488300E605B3 /* Edit Tour */,
+				A639109A1D0888D600E605B3 /* Settings */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
 				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
 				A63910971D08740300E605B3 /* MainTabBarController.swift */,
@@ -461,6 +472,7 @@
 				A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */,
 				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
+				A639109C1D0888E400E605B3 /* SettingsViewController.swift in Sources */,
 				A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */,
 				A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */,
 				A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */,

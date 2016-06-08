@@ -9,6 +9,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
   - DZNEmptyDataSet (1.8.1)
+  - Eureka (1.6.0)
   - FBSDKCoreKit (4.12.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.12.0):
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - Alamofire (~> 3.3)
   - AlamofireImage (~> 2.0)
   - DZNEmptyDataSet
+  - Eureka
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Eureka: ef5b9ac93aedeecfe50d98b1ac7678bf09a1fc62
   FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
   FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
   FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
@@ -54,6 +57,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 07c91ee8737797ca3f7daea9c725c62091156b6b
+PODFILE CHECKSUM: 2901b84f6d38836bf1f2ac9fb38c19eb473b5432
 
 COCOAPODS: 1.0.0
