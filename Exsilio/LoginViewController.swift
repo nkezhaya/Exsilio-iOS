@@ -27,10 +27,10 @@ class LoginViewController: UIViewController {
                 let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,first_name,last_name,email,gender"])
                 fbRequest.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) in
                     if error == nil {
-                        Alamofire.request(.POST, "\(API.URL)/\(API.AuthPath)", parameters: [ "user[token]": FBSDKAccessToken.currentAccessToken().tokenString ]).responseJSON { response in
-                            print("\(result)")
-                        }
-                        (UIApplication.sharedApplication().delegate as! AppDelegate).setRootViewController()
+                        Alamofire.request(.POST, "\(API.URL)/\(API.AuthPath)", parameters: [ "user[token]": FBSDKAccessToken.currentAccessToken().tokenString ])
+                            .responseJSON { _ in
+                                (UIApplication.sharedApplication().delegate as! AppDelegate).setRootViewController()
+                            }
                     } else {
                         print("Error: \(error)")
                     }
