@@ -19,6 +19,10 @@ class ToursTableViewController: UITableViewController {
         super.awakeFromNib()
         
         self.tabBarItem.image = UI.BarButtonIcon(.MapO)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.PlusIcon,
+                                                                 style: .Plain,
+                                                                 target: self,
+                                                                 action: #selector(newTour))
     }
 
     override func viewDidLoad() {
@@ -35,19 +39,8 @@ class ToursTableViewController: UITableViewController {
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
-    }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        showPlusIcon()
         refresh()
-
-        self.tabBarController?.navigationItem.title = self.title
-    }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        hidePlusIcon()
     }
 
     func refresh() {
@@ -63,17 +56,6 @@ class ToursTableViewController: UITableViewController {
                 break
             }
         }
-    }
-
-    func showPlusIcon() {
-        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.PlusIcon,
-                                                                                   style: .Plain,
-                                                                                   target: self,
-                                                                                   action: #selector(newTour))
-    }
-
-    func hidePlusIcon() {
-        self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
 
     func newTour() {

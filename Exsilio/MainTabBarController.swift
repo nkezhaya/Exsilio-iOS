@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        self.title = self.selectedViewController?.title
-    }
-
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.delegate = self
+
+        if let firstVC = self.viewControllers?[0] {
+            self.setAttributesFromViewController(firstVC)
+        }
 
         // Sets the default color of the icon of the selected UITabBarItem and Title
         UITabBar.appearance().tintColor = UIColor.blackColor()
@@ -36,5 +36,14 @@ class MainTabBarController: UITabBarController {
                 item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
             }
         }
+    }
+
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        self.setAttributesFromViewController(viewController)
+    }
+
+    func setAttributesFromViewController(viewController: UIViewController) {
+        self.title = viewController.title
+        self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem
     }
 }

@@ -15,6 +15,7 @@
 		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
 		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
 		A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */; };
+		A6234C851D09C04B00E605B3 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6234C841D09C04B00E605B3 /* FiltersViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
 		A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63910971D08740300E605B3 /* MainTabBarController.swift */; };
@@ -70,6 +71,7 @@
 		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
 		A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
+		A6234C841D09C04B00E605B3 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		A63910971D08740300E605B3 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				A674A78B1CD1082500E605B3 /* SearchTableViewController.swift */,
+				A6234C841D09C04B00E605B3 /* FiltersViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
 				A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */,
 				A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */,
+				A6234C851D09C04B00E605B3 /* FiltersViewController.swift in Sources */,
 				A674A7861CD100D400E605B3 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

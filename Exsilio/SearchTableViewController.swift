@@ -15,17 +15,16 @@ import FontAwesome_swift
 class SearchTableViewController: UITableViewController {
     var tours: JSON?
     var expandedIndexPath: NSIndexPath?
+    var filters: [String: Any?]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.tabBarItem.image = UI.BarButtonIcon(.Search)
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.tabBarController?.navigationItem.title = self.title
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.BarButtonIcon(.Sliders),
+                                                                 style: .Plain,
+                                                                 target: self,
+                                                                 action: #selector(showFilters))
     }
 
     override func viewDidLoad() {
@@ -96,6 +95,13 @@ class SearchTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return self.expandedIndexPath == indexPath ? 200.0 : 87.0
+    }
+
+    func showFilters() {
+        let filtersVC = FiltersViewController()
+        filtersVC.delegate = self
+
+        self.presentViewController(filtersVC, animated: true, completion: nil)
     }
 }
 
