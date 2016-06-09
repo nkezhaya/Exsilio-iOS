@@ -15,7 +15,9 @@ import FontAwesome_swift
 class SearchTableViewController: UITableViewController {
     var tours: JSON?
     var expandedIndexPath: NSIndexPath?
-    var filters: [String: Any?]?
+
+    var query: String = ""
+    var filters: [String: Any?] = [:]
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -103,6 +105,25 @@ class SearchTableViewController: UITableViewController {
 
         self.presentViewController(filtersVC, animated: true, completion: nil)
     }
+
+    func search() {
+        var params: [String: String] = ["query": self.query]
+
+        for filter in self.filters {
+            params[filter.0] = params["\(filter.1)"]
+        }
+
+        Alamofire.request(.GET, "\(API.URL)\(API.SearchPath)", parameters: params, headers: API.authHeaders()).responseJSON { response in
+            switch response.result {
+            case .Success(let result):
+                self.tours = JSON(result)["tours"]
+                self.tableView.reloadData()
+                break
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
@@ -120,19 +141,11 @@ extension SearchTableViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if let query = searchBar.text {
+        if let searchText = searchBar.text {
             searchBar.resignFirstResponder()
 
-            Alamofire.request(.GET, "\(API.URL)\(API.SearchPath)?query=\(query)", headers: API.authHeaders()).responseJSON { response in
-                switch response.result {
-                case .Success(let result):
-                    self.tours = JSON(result)["tours"]
-                    self.tableView.reloadData()
-                    break
-                default:
-                    break
-                }
-            }
+            self.query = searchText
+            self.search()
         }
     }
 }

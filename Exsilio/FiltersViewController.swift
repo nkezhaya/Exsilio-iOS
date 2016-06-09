@@ -11,6 +11,11 @@ import Eureka
 
 class FiltersViewController: FormViewController {
     var delegate: SearchTableViewController?
+
+    let defaultValues: [String: Any?] = [
+        "sort": "Relevance",
+        "distance": "1 mile"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +25,6 @@ class FiltersViewController: FormViewController {
             <<< PickerInlineRow<String>("sort") { row in
                 row.title = "Sort By"
                 row.options = ["Relevance", "Distance"]
-                row.value = "Relevance"
             }
 
             +++ Section("Distance")
@@ -28,6 +32,14 @@ class FiltersViewController: FormViewController {
                 row.title = "Distance From Me"
                 row.options = ["1 mile", "2 miles", "5 miles", "10 miles"]
             }
+
+        if let searchVC = self.delegate {
+            if searchVC.filters.count > 0 {
+                form.setValues(searchVC.filters)
+            } else {
+                form.setValues(self.defaultValues)
+            }
+        }
     }
 
     func showNavigation() {
@@ -39,6 +51,12 @@ class FiltersViewController: FormViewController {
         // Create a navigation item with a title
         let navigationItem = UINavigationItem()
         navigationItem.title = "Filters"
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset",
+                                                           style: .Plain,
+                                                           target: self,
+                                                           action: #selector(reset))
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
                                                             style: .Done,
                                                             target: self,
@@ -48,6 +66,11 @@ class FiltersViewController: FormViewController {
 
         self.view.addSubview(navigationBar)
         self.tableView?.contentInset = UIEdgeInsetsMake(navBarHeight, 0, 0, 0)
+    }
+
+    func reset() {
+        form.setValues(self.defaultValues)
+        self.tableView?.reloadData()
     }
 
     func done() {
