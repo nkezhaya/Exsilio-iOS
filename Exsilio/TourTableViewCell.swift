@@ -44,7 +44,7 @@ class TourTableViewCell: SWTableViewCell {
     func updateWithTour(tour: JSON) {
         self.tourJSON = tour
         self.nameLabel!.text = tour["name"].string
-        self.descriptionLabel!.text = "Austin, TX • \(tour["waypoints"].count) Stops • \(tour["duration"].string!)"
+        self.descriptionLabel!.text = "\(tour["city_state"].string!) • \(tour["waypoints"].count) Stops • \(tour["duration"].string!)"
 
         if let imageURL = tour["user"]["picture_url"].string {
             let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
