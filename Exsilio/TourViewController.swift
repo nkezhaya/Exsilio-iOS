@@ -32,22 +32,23 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
             let polyline = GMSPolyline(path: GMSPath(fromEncodedPath: path))
             polyline.strokeWidth = 4.0
             polyline.map = self.mapView
-
-            let bounds = GMSCoordinateBounds(path: polyline.path!)
-            self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 150))
         }
 
         if let waypoints = self.tour!["waypoints"].array {
+            var bounds = GMSCoordinateBounds()
+
             for waypoint in waypoints {
                 if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
-                    let marker = GMSMarker(
-                        position: CLLocationCoordinate2D(
-                            latitude: Double(latitude),
-                            longitude: Double(longitude)))
+                    let coordinate = CLLocationCoordinate2D(latitude: Double(latitude), longitude: Double(longitude))
+                    let marker = GMSMarker(position: coordinate)
 
                     marker.map = self.mapView
+
+                    bounds = bounds.includingCoordinate(coordinate)
                 }
             }
+
+            self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds))
         }
 
         self.locationManager = CLLocationManager()
@@ -58,6 +59,11 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
                 self.locationManager.requestWhenInUseAuthorization()
             }
         }
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
 
     func dismiss() {
