@@ -8,14 +8,17 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 import FontAwesome_swift
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: GMSMapView?
 
     var delegate: GMSMapViewDelegate?
-    var locationManager: CLLocationManager?
     var startingPoint: CLLocationCoordinate2D?
+    var tour: JSON?
+
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +32,65 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             self.setCoordinate(self.startingPoint!)
         }
 
-        self.navigationItem.hidesBackButton = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Check, textColor: UIColor.blackColor(), size: CGSizeMake(30, 30)),
-                                                                 style: .Done,
-                                                                 target: self,
-                                                                 action: #selector(done))
+        if let tour = self.tour {
+            self.title = tour["name"].string
 
-        self.locationManager = CLLocationManager()
-        self.locationManager!.delegate = self
+            if let path = tour["polyline"].string {
+                let polyline = GMSPolyline(path: GMSPath(fromEncodedPath: path))
+                polyline.strokeWidth = 4.0
+                polyline.map = self.mapView
+            }
+
+            if let waypoints = tour["waypoints"].array {
+                var bounds = GMSCoordinateBounds()
+
+                for waypoint in waypoints {
+                    if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
+                        let coordinate = CLLocationCoordinate2D(latitude: Double(latitude), longitude: Double(longitude))
+                        let marker = GMSMarker(position: coordinate)
+
+                        marker.map = self.mapView
+
+                        bounds = bounds.includingCoordinate(coordinate)
+                    }
+                }
+                
+                self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds))
+            }
+        } else {
+            self.title = "Pick Location"
+        }
+
+        self.locationManager.delegate = self
 
         if CLLocationManager.locationServicesEnabled() {
             if CLLocationManager.authorizationStatus() == .NotDetermined {
-                self.locationManager!.requestWhenInUseAuthorization()
+                self.locationManager.requestWhenInUseAuthorization()
             }
         }
+
+        showNavigation()
+    }
+
+    func showNavigation() {
+        let navBarHeight = CGFloat(44)
+        let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, navBarHeight + 20))
+
+        navigationBar.backgroundColor = UIColor.whiteColor()
+
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        navigationItem.title = self.title
+
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+                                                            style: .Done,
+                                                            target: self,
+                                                            action: #selector(done))
+
+        navigationBar.items = [navigationItem]
+
+        self.view.addSubview(navigationBar)
     }
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -70,6 +118,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func done() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

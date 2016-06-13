@@ -173,7 +173,7 @@ extension WaypointViewController: GMSMapViewDelegate {
         vc.delegate = self
         vc.startingPoint = self.selectedPoint
 
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
     func pointSelected(coordinate: CLLocationCoordinate2D) {
