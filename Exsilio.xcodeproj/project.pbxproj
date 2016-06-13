@@ -27,17 +27,6 @@
 		A667BE4E1D05D98800E605B3 /* ExpandedTourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A667BE4D1D05D98800E605B3 /* ExpandedTourTableViewCell.xib */; };
 		A667BE501D05D9A900E605B3 /* ExpandedTourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667BE4F1D05D9A900E605B3 /* ExpandedTourTableViewCell.swift */; };
 		A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */; };
-		A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F841CD29E9100E605B3 /* AkiraTextField.swift */; };
-		A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F851CD29E9100E605B3 /* HoshiTextField.swift */; };
-		A6686F921CD29E9100E605B3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6686F861CD29E9100E605B3 /* Info.plist */; };
-		A6686F931CD29E9100E605B3 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F871CD29E9100E605B3 /* IsaoTextField.swift */; };
-		A6686F941CD29E9100E605B3 /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F881CD29E9100E605B3 /* JiroTextField.swift */; };
-		A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F891CD29E9100E605B3 /* KaedeTextField.swift */; };
-		A6686F961CD29E9100E605B3 /* MadokaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8A1CD29E9100E605B3 /* MadokaTextField.swift */; };
-		A6686F971CD29E9100E605B3 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8B1CD29E9100E605B3 /* MinoruTextField.swift */; };
-		A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8D1CD29E9100E605B3 /* TextFieldsEffects.swift */; };
-		A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8E1CD29E9100E605B3 /* YokoTextField.swift */; };
-		A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6686F8F1CD29E9100E605B3 /* YoshikoTextField.swift */; };
 		A6686FA51CD2A12900E605B3 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9B1CD2A12900E605B3 /* OpenSans-Bold.ttf */; };
 		A6686FA61CD2A12900E605B3 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9C1CD2A12900E605B3 /* OpenSans-BoldItalic.ttf */; };
 		A6686FA71CD2A12900E605B3 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6686F9D1CD2A12900E605B3 /* OpenSans-ExtraBold.ttf */; };
@@ -85,18 +74,6 @@
 		A667BE4D1D05D98800E605B3 /* ExpandedTourTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandedTourTableViewCell.xib; sourceTree = "<group>"; };
 		A667BE4F1D05D9A900E605B3 /* ExpandedTourTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedTourTableViewCell.swift; sourceTree = "<group>"; };
 		A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
-		A6686F841CD29E9100E605B3 /* AkiraTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AkiraTextField.swift; sourceTree = "<group>"; };
-		A6686F851CD29E9100E605B3 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
-		A6686F861CD29E9100E605B3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6686F871CD29E9100E605B3 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
-		A6686F881CD29E9100E605B3 /* JiroTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiroTextField.swift; sourceTree = "<group>"; };
-		A6686F891CD29E9100E605B3 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
-		A6686F8A1CD29E9100E605B3 /* MadokaTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadokaTextField.swift; sourceTree = "<group>"; };
-		A6686F8B1CD29E9100E605B3 /* MinoruTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinoruTextField.swift; sourceTree = "<group>"; };
-		A6686F8C1CD29E9100E605B3 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
-		A6686F8D1CD29E9100E605B3 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
-		A6686F8E1CD29E9100E605B3 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
-		A6686F8F1CD29E9100E605B3 /* YoshikoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoshikoTextField.swift; sourceTree = "<group>"; };
 		A6686F9B1CD2A12900E605B3 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		A6686F9C1CD2A12900E605B3 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		A6686F9D1CD2A12900E605B3 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -225,25 +202,6 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
-		A6686F831CD29E9100E605B3 /* TextFieldEffects */ = {
-			isa = PBXGroup;
-			children = (
-				A6686F841CD29E9100E605B3 /* AkiraTextField.swift */,
-				A6686F851CD29E9100E605B3 /* HoshiTextField.swift */,
-				A6686F861CD29E9100E605B3 /* Info.plist */,
-				A6686F871CD29E9100E605B3 /* IsaoTextField.swift */,
-				A6686F881CD29E9100E605B3 /* JiroTextField.swift */,
-				A6686F891CD29E9100E605B3 /* KaedeTextField.swift */,
-				A6686F8A1CD29E9100E605B3 /* MadokaTextField.swift */,
-				A6686F8B1CD29E9100E605B3 /* MinoruTextField.swift */,
-				A6686F8C1CD29E9100E605B3 /* TextFieldEffects.h */,
-				A6686F8D1CD29E9100E605B3 /* TextFieldsEffects.swift */,
-				A6686F8E1CD29E9100E605B3 /* YokoTextField.swift */,
-				A6686F8F1CD29E9100E605B3 /* YoshikoTextField.swift */,
-			);
-			path = TextFieldEffects;
-			sourceTree = "<group>";
-		};
 		A674A7891CD1081800E605B3 /* Create Tour */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,7 +269,6 @@
 		A6F1DD441CBC0B4A00E605B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A6686F831CD29E9100E605B3 /* TextFieldEffects */,
 				A6F1DD421CBC074C00E605B3 /* EXButton.swift */,
 				A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */,
 			);
@@ -382,7 +339,6 @@
 				A667BE4E1D05D98800E605B3 /* ExpandedTourTableViewCell.xib in Resources */,
 				A6686FA91CD2A12900E605B3 /* OpenSans-Italic.ttf in Resources */,
 				A6686FA61CD2A12900E605B3 /* OpenSans-BoldItalic.ttf in Resources */,
-				A6686F921CD29E9100E605B3 /* Info.plist in Resources */,
 				A6686FAD1CD2A12900E605B3 /* OpenSans-Semibold.ttf in Resources */,
 				A6686FA71CD2A12900E605B3 /* OpenSans-ExtraBold.ttf in Resources */,
 				A606BA631CDBA07D00E605B3 /* Configuration.plist in Resources */,
@@ -469,33 +425,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				A674A78C1CD1082500E605B3 /* SearchTableViewController.swift in Sources */,
-				A6686F911CD29E9100E605B3 /* HoshiTextField.swift in Sources */,
 				A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */,
 				A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */,
-				A6686F951CD29E9100E605B3 /* KaedeTextField.swift in Sources */,
 				A674A7881CD100E700E605B3 /* Dictionary+Merge.swift in Sources */,
 				A65A399C1CBBFB3C00E605B3 /* LoginViewController.swift in Sources */,
 				A639109C1D0888E400E605B3 /* SettingsViewController.swift in Sources */,
-				A6686F9A1CD29E9100E605B3 /* YoshikoTextField.swift in Sources */,
 				A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */,
 				A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,
 				A65A399A1CBBFB3C00E605B3 /* AppDelegate.swift in Sources */,
 				A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */,
-				A6686F931CD29E9100E605B3 /* IsaoTextField.swift in Sources */,
 				A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */,
-				A6686F901CD29E9100E605B3 /* AkiraTextField.swift in Sources */,
-				A6686F961CD29E9100E605B3 /* MadokaTextField.swift in Sources */,
 				A6CBBC1A1CD3DABB00E605B3 /* WaypointViewController.swift in Sources */,
-				A6686F971CD29E9100E605B3 /* MinoruTextField.swift in Sources */,
 				A6A3B8321CF7489E00E605B3 /* WaypointsTableViewController.swift in Sources */,
 				A6A3B8341CF7510000E605B3 /* WaypointTableViewCell.swift in Sources */,
-				A6686F991CD29E9100E605B3 /* YokoTextField.swift in Sources */,
 				A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */,
 				A667BE501D05D9A900E605B3 /* ExpandedTourTableViewCell.swift in Sources */,
-				A6686F981CD29E9100E605B3 /* TextFieldsEffects.swift in Sources */,
 				A6DFDFF91CECC07C00E605B3 /* TourTableViewCell.swift in Sources */,
-				A6686F941CD29E9100E605B3 /* JiroTextField.swift in Sources */,
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
 				A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */,
 				A6686F821CD29DCF00E605B3 /* CreateTourViewController.swift in Sources */,

@@ -17,4 +17,5 @@ target "Exsilio" do
   pod "SwiftyJSON"
   pod "SWTableViewCell", "~> 0.3.7"
   pod "Eureka"
+  pod "SkyFloatingLabelTextField"
 end
