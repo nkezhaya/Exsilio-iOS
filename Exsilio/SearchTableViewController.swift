@@ -13,11 +13,13 @@ import DZNEmptyDataSet
 import FontAwesome_swift
 
 class SearchTableViewController: UITableViewController {
+    let filtersViewController = FiltersViewController()
+    let locationManager = CLLocationManager()
+
     var tours: JSON?
     var expandedIndexPath: NSIndexPath?
-
     var query: String = ""
-    var filters: [String: Any?] = [:]
+    var currentLocation: CLLocation?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +33,8 @@ class SearchTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.filtersViewController.searchController = self
 
         self.tableView.registerNib(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
         self.tableView.registerNib(UINib(nibName: "ExpandedTourTableViewCell", bundle: nil), forCellReuseIdentifier: "ExpandedTourTableViewCell")
@@ -46,6 +50,14 @@ class SearchTableViewController: UITableViewController {
         self.query = "Nick"
         self.search()
         #endif
+
+        self.locationManager.delegate = self
+
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .NotDetermined {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,17 +117,24 @@ class SearchTableViewController: UITableViewController {
     }
 
     func showFilters() {
-        let filtersVC = FiltersViewController()
-        filtersVC.delegate = self
-
-        self.presentViewController(filtersVC, animated: true, completion: nil)
+        self.presentViewController(self.filtersViewController, animated: true, completion: nil)
     }
 
     func search() {
         var params: [String: String] = ["query": self.query]
 
-        for filter in self.filters {
-            params[filter.0] = params["\(filter.1)"]
+        for filter in self.filtersViewController.form.values() {
+            if let value = filter.1 {
+                let strValue = "\(value)"
+                if !strValue.isEmpty {
+                    params[filter.0] = strValue
+                }
+            }
+        }
+
+        if let currentLocation = self.currentLocation {
+            params["current_location[latitude]"] = String(currentLocation.coordinate.latitude)
+            params["current_location[longitude]"] = String(currentLocation.coordinate.longitude)
         }
 
         Alamofire.request(.GET, "\(API.URL)\(API.SearchPath)", parameters: params, headers: API.authHeaders()).responseJSON { response in
@@ -127,6 +146,22 @@ class SearchTableViewController: UITableViewController {
             default:
                 break
             }
+        }
+    }
+}
+
+extension SearchTableViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+            manager.startUpdatingLocation()
+        }
+    }
+
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+
+        if let location = locations.first {
+            self.currentLocation = location
         }
     }
 }
