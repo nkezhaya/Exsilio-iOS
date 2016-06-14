@@ -41,6 +41,11 @@ class SearchTableViewController: UITableViewController {
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+
+        #if DEBUG
+        self.query = "Nick"
+        self.search()
+        #endif
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

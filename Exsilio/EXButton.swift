@@ -17,11 +17,19 @@ class EXButton: UIButton {
     }
 
     func darkBorderStyle() {
+        self.borderStyle(.blackColor())
+    }
+
+    func lightBorderStyle() {
+        self.borderStyle(.whiteColor())
+    }
+
+    func borderStyle(color: UIColor) {
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.blackColor().CGColor
+        self.layer.borderColor = color.CGColor
         self.backgroundColor = UIColor.clearColor()
-        self.tintColor = UIColor.blackColor()
-        self.updateText(titleLabel!.text!, withColor: .blackColor())
+        self.tintColor = color
+        self.updateText(titleLabel!.text!, withColor: color)
     }
 
     func modifyAesthetics() {
