@@ -80,7 +80,7 @@ class ToursTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourViewController") as! TourViewController
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourPreviewViewController") as! TourPreviewViewController
         vc.tour = self.tours[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -151,7 +151,7 @@
         <!--Tour Preview-->
         <scene sceneID="sqL-XO-sH3">
             <objects>
-                <viewController storyboardIdentifier="TourViewController" title="Tour Preview" id="buQ-PA-bwk" customClass="TourViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TourPreviewViewController" title="Tour Preview" id="buQ-PA-bwk" customClass="TourPreviewViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G7h-05-D8A"/>
                         <viewControllerLayoutGuide type="bottom" id="XcI-f9-axM"/>

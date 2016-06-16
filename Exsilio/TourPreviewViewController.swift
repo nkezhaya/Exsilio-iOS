@@ -1,5 +1,5 @@
 //
-//  TourViewController.swift
+//  TourPreviewViewController.swift
 //  Exsilio
 //
 //  Created by Nick Kezhaya on 5/19/16.
@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 
-class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var backgroundImageView: UIImageView?
     @IBOutlet var pageControl: UIPageControl?

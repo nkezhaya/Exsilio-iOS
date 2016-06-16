@@ -14,7 +14,7 @@
 		A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD581CDBA2F700E605B3 /* MapViewController.swift */; };
 		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
 		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
-		A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */; };
+		A62219FC1CEE0FEC00E605B3 /* TourPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62219FB1CEE0FEC00E605B3 /* TourPreviewViewController.swift */; };
 		A6234C851D09C04B00E605B3 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6234C841D09C04B00E605B3 /* FiltersViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
@@ -59,7 +59,7 @@
 		A611CD581CDBA2F700E605B3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
-		A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
+		A62219FB1CEE0FEC00E605B3 /* TourPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourPreviewViewController.swift; sourceTree = "<group>"; };
 		A6234C841D09C04B00E605B3 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */,
-				A62219FB1CEE0FEC00E605B3 /* TourViewController.swift */,
+				A62219FB1CEE0FEC00E605B3 /* TourPreviewViewController.swift */,
 			);
 			name = "My Tours";
 			sourceTree = "<group>";
@@ -439,7 +439,7 @@
 				A6CBBC1A1CD3DABB00E605B3 /* WaypointViewController.swift in Sources */,
 				A6A3B8321CF7489E00E605B3 /* WaypointsTableViewController.swift in Sources */,
 				A6A3B8341CF7510000E605B3 /* WaypointTableViewCell.swift in Sources */,
-				A62219FC1CEE0FEC00E605B3 /* TourViewController.swift in Sources */,
+				A62219FC1CEE0FEC00E605B3 /* TourPreviewViewController.swift in Sources */,
 				A667BE501D05D9A900E605B3 /* ExpandedTourTableViewCell.swift in Sources */,
 				A6DFDFF91CECC07C00E605B3 /* TourTableViewCell.swift in Sources */,
 				A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */,
