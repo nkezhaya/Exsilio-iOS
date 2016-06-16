@@ -11,8 +11,11 @@ import CoreLocation
 import SwiftyJSON
 
 class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+    @IBOutlet var nameLabel: UILabel?
     @IBOutlet var backgroundImageView: UIImageView?
+    @IBOutlet var pageControl: UIPageControl?
     @IBOutlet var viewMapButton: EXButton?
+    @IBOutlet var takeTourButton: EXButton?
 
     var locationManager = CLLocationManager()
     var tour: JSON?
@@ -23,17 +26,76 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
 
         if let tour = self.tour {
-            if let backgroundImageURL = tour["display_image_url"].string {
-                let urlRequest = NSURLRequest(URL: NSURL(string: backgroundImageURL)!)
-                CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
-                    if let image = response.result.value {
-                        self.backgroundImageView?.image = image
-                    }
-                })
+            self.nameLabel?.text = tour["name"].string
+
+            if let numberOfWaypoints = tour["waypoints_count"].int {
+                self.pageControl?.numberOfPages = numberOfWaypoints
             }
         }
 
         self.viewMapButton?.lightBorderStyle()
+
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe))
+        swipeLeft.direction = .Left
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(rightSwipe))
+        swipeRight.direction = .Right
+
+        self.view.addGestureRecognizer(swipeLeft)
+        self.view.addGestureRecognizer(swipeRight)
+
+        self.updateBackgroundImageForPage()
+    }
+
+    func leftSwipe() {
+        if let pageControl = self.pageControl {
+            let currentPage = pageControl.currentPage
+
+            if currentPage == pageControl.numberOfPages - 1 {
+                pageControl.currentPage = 0
+            } else {
+                pageControl.currentPage += 1
+            }
+        }
+
+        self.updateBackgroundImageForPage()
+    }
+
+    func rightSwipe() {
+        if let pageControl = self.pageControl {
+            let currentPage = pageControl.currentPage
+
+            if currentPage == 0 {
+                pageControl.currentPage = pageControl.numberOfPages - 1
+            } else {
+                pageControl.currentPage -= 1
+            }
+        }
+
+        self.updateBackgroundImageForPage()
+    }
+
+    func updateBackgroundImageForPage() {
+        if let currentPage = self.pageControl?.currentPage {
+            if let imageURL = self.tour?["waypoints"][currentPage]["image_url"].string {
+                let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
+                CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+                    let duration = 0.2
+
+                    if let image = response.result.value {
+                        UIView.animateWithDuration(duration, animations: {
+                            self.backgroundImageView?.alpha = 0.0
+                        }, completion: { _ in
+                            self.backgroundImageView?.image = image
+
+                            UIView.animateWithDuration(duration, animations: {
+                                self.backgroundImageView?.alpha = 0.75
+                            })
+                        })
+                    }
+                })
+            }
+        }
     }
 
     func dismiss() {
@@ -45,5 +107,9 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         mapVC.tour = self.tour!
 
         self.presentViewController(mapVC, animated: true, completion: nil)
+    }
+
+    @IBAction func takeTour() {
+        
     }
 }
