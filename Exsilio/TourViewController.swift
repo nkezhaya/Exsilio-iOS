@@ -34,6 +34,7 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         }
 
         self.viewMapButton?.lightBorderStyle()
+        self.takeTourButton?.backgroundColor = UIColor(hexString: "#21C064")
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe))
         swipeLeft.direction = .Left
@@ -78,21 +79,21 @@ class TourViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
     func updateBackgroundImageForPage() {
         if let currentPage = self.pageControl?.currentPage {
             if let imageURL = self.tour?["waypoints"][currentPage]["image_url"].string {
+                let duration = 0.2
                 let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
-                CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
-                    let duration = 0.2
 
-                    if let image = response.result.value {
-                        UIView.animateWithDuration(duration, animations: {
-                            self.backgroundImageView?.alpha = 0.0
-                        }, completion: { _ in
+                UIView.animateWithDuration(duration, animations: {
+                    self.backgroundImageView?.alpha = 0.0
+                }, completion: { _ in
+                    CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+                        if let image = response.result.value {
                             self.backgroundImageView?.image = image
 
                             UIView.animateWithDuration(duration, animations: {
                                 self.backgroundImageView?.alpha = 0.75
                             })
-                        })
-                    }
+                        }
+                    })
                 })
             }
         }

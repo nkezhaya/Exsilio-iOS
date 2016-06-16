@@ -16,6 +16,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -169,44 +171,47 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao9-74-MQv" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="217" y="321" width="167" height="40"/>
+                                <rect key="frame" x="190" y="321" width="220" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Bck-Lx-E4Z"/>
-                                    <constraint firstAttribute="width" constant="167" id="d4z-hy-Jdy"/>
+                                    <constraint firstAttribute="width" constant="220" id="d4z-hy-Jdy"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <state key="normal" title="View Map"/>
                                 <connections>
                                     <action selector="openMap" destination="buQ-PA-bwk" eventType="touchUpInside" id="wng-Ip-IU7"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6ws-BD-ZoC">
+                                <rect key="frame" x="20" y="196" width="560" height="37"/>
+                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZW-Iv-CDJ" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="217" y="385" width="167" height="40"/>
+                                <rect key="frame" x="190" y="385" width="220" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Boh-1e-Wkp"/>
-                                    <constraint firstAttribute="width" constant="167" id="Ubp-97-RCW"/>
+                                    <constraint firstAttribute="width" constant="220" id="Ubp-97-RCW"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <state key="normal" title="Take this tour!"/>
                                 <connections>
                                     <action selector="takeTour" destination="buQ-PA-bwk" eventType="touchUpInside" id="uye-qs-QPk"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6ws-BD-ZoC">
-                                <rect key="frame" x="281" y="196" width="39" height="37"/>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6ws-BD-ZoC" firstAttribute="centerX" secondItem="ao9-74-MQv" secondAttribute="centerX" id="44c-A3-VK7"/>
                             <constraint firstItem="YCb-zi-SYq" firstAttribute="leading" secondItem="aff-v8-JG0" secondAttribute="leadingMargin" id="88w-c1-4ad"/>
                             <constraint firstItem="ao9-74-MQv" firstAttribute="centerX" secondItem="YCb-zi-SYq" secondAttribute="centerX" id="8Ba-tp-Sl5"/>
                             <constraint firstItem="YCb-zi-SYq" firstAttribute="top" secondItem="aff-v8-JG0" secondAttribute="top" constant="20" symbolic="YES" id="8IC-f0-ALc"/>
-                            <constraint firstItem="6ws-BD-ZoC" firstAttribute="top" secondItem="YCb-zi-SYq" secondAttribute="bottom" constant="76" id="92g-oI-9zX"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="centerX" secondItem="YCb-zi-SYq" secondAttribute="centerX" id="GUR-TH-e2x"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="bottom" secondItem="XcI-f9-axM" secondAttribute="top" id="Jsg-NV-DPN"/>
+                            <constraint firstItem="6ws-BD-ZoC" firstAttribute="leading" secondItem="YCb-zi-SYq" secondAttribute="leading" id="K0q-bp-4OY"/>
+                            <constraint firstItem="6ws-BD-ZoC" firstAttribute="trailing" secondItem="YCb-zi-SYq" secondAttribute="trailing" id="MmX-Zx-0kw"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="leading" secondItem="aff-v8-JG0" secondAttribute="leading" id="NEr-qR-ysW"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="top" secondItem="G7h-05-D8A" secondAttribute="bottom" id="NOH-75-r7i"/>
                             <constraint firstItem="XcI-f9-axM" firstAttribute="top" secondItem="ao9-74-MQv" secondAttribute="bottom" constant="175" id="Ol2-D6-WoU"/>
                             <constraint firstItem="NZW-Iv-CDJ" firstAttribute="top" secondItem="ao9-74-MQv" secondAttribute="bottom" constant="24" id="gxT-ld-Rcq"/>
+                            <constraint firstItem="6ws-BD-ZoC" firstAttribute="top" secondItem="YCb-zi-SYq" secondAttribute="bottom" constant="76" id="oCV-0J-CIe"/>
                             <constraint firstItem="NZW-Iv-CDJ" firstAttribute="leading" secondItem="ao9-74-MQv" secondAttribute="leading" id="oTv-TT-YXH"/>
                             <constraint firstAttribute="trailing" secondItem="p9g-zl-Pf2" secondAttribute="trailing" id="qhG-WJ-XyY"/>
                             <constraint firstItem="XcI-f9-axM" firstAttribute="top" secondItem="YCb-zi-SYq" secondAttribute="bottom" constant="416" id="tfY-Ae-NCZ"/>
