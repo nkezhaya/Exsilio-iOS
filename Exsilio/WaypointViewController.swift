@@ -19,7 +19,6 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var openMapButton: EXButton?
     @IBOutlet var pickImageButton: EXButton?
 
-    var fusumaViewController = FusumaViewController()
     var selectedImage: UIImage?
     var selectedPoint: CLLocationCoordinate2D?
 
@@ -149,12 +148,16 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
 
 extension WaypointViewController: FusumaDelegate {
     @IBAction func pickImage() {
-        self.fusumaViewController.delegate = self
-        self.presentViewController(self.fusumaViewController, animated: true, completion: nil)
+        let fusumaViewController = FusumaViewController()
+        fusumaViewController.delegate = self
+        self.presentViewController(fusumaViewController, animated: true, completion: nil)
     }
 
     func fusumaImageSelected(image: UIImage) {
         self.selectedImage = image
+
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+
         self.pickImageButton?.layer.borderWidth = 0
         self.pickImageButton?.backgroundColor = UI.GreenColor
         self.pickImageButton?.tintColor = .whiteColor()
