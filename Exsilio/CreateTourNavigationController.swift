@@ -9,5 +9,10 @@
 import UIKit
 
 class CreateTourNavigationController: UINavigationController {
+    var toursTableViewController: ToursTableViewController?
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.toursTableViewController?.refresh()
+    }
 }

@@ -59,9 +59,10 @@ class ToursTableViewController: UITableViewController {
     }
 
     func newTour() {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateTourNavigationController")
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateTourNavigationController") as! CreateTourNavigationController
+        vc.toursTableViewController = self
 
-        self.presentViewController(vc!, animated: true, completion: nil)
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
