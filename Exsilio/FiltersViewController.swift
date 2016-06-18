@@ -114,6 +114,7 @@ class FiltersViewController: FormViewController {
 
     func done() {
         self.dismissViewControllerAnimated(true, completion: {
+            self.searchController?.resetSearch()
             self.searchController?.search()
         })
     }

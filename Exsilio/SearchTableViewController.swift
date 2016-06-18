@@ -21,6 +21,10 @@ class SearchTableViewController: UITableViewController {
     var query: String = ""
     var currentLocation: CLLocation?
 
+    // Server-side pagination
+    var currentPage = 1
+    var totalTours: Int?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -69,6 +73,10 @@ class SearchTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if self.totalTours == indexPath.row - 1 {
+            self.fetchNextPage()
+        }
+
         if self.expandedIndexPath == indexPath {
             let cell = self.tableView.dequeueReusableCellWithIdentifier("ExpandedTourTableViewCell", forIndexPath: indexPath) as! ExpandedTourTableViewCell
             cell.updateWithTour(self.tours![indexPath.row])
@@ -137,16 +145,51 @@ class SearchTableViewController: UITableViewController {
             params["current_location[longitude]"] = String(currentLocation.coordinate.longitude)
         }
 
+        params["page"] = String(self.currentPage)
+
         Alamofire.request(.GET, "\(API.URL)\(API.SearchPath)", parameters: params, headers: API.authHeaders()).responseJSON { response in
             switch response.result {
             case .Success(let result):
-                self.tours = JSON(result)["tours"]
+                let jsonResult = JSON(result)
+                let newTours = jsonResult["tours"]
+                let totalTours = jsonResult["total"].int
+
+                // Is this the first load?
+                if self.totalTours == nil && self.tours == nil {
+                    self.tours = newTours
+                    self.totalTours = totalTours
+                }
+
+                // Are we adding to the current set of tours?
+                if self.currentPage > 1 {
+                    var currentTours = self.tours!.arrayValue
+                    currentTours.appendContentsOf(newTours.arrayValue)
+
+                    self.tours = JSON(currentTours)
+                }
+
                 self.tableView.reloadData()
                 break
             default:
                 break
             }
         }
+    }
+
+    func fetchNextPage() {
+        if let totalTours = self.totalTours {
+            if self.tours!.count < totalTours {
+                self.currentPage += 1
+                self.search()
+            }
+        }
+    }
+
+    func resetSearch() {
+        self.tours = nil
+        self.totalTours = nil
+        self.currentPage = 1
+        self.tableView.reloadData()
     }
 }
 
@@ -184,6 +227,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         if let searchText = searchBar.text {
             searchBar.resignFirstResponder()
 
+            self.resetSearch()
             self.query = searchText
             self.search()
         }
