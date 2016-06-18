@@ -183,6 +183,7 @@
 				A6A3B8301CF7488300E605B3 /* Edit Tour */,
 				A639109A1D0888D600E605B3 /* Settings */,
 				A65A399B1CBBFB3C00E605B3 /* LoginViewController.swift */,
+				A611CD581CDBA2F700E605B3 /* MapViewController.swift */,
 				A65A39991CBBFB3C00E605B3 /* AppDelegate.swift */,
 				A63910971D08740300E605B3 /* MainTabBarController.swift */,
 				A65A399D1CBBFB3C00E605B3 /* Main.storyboard */,
@@ -207,7 +208,6 @@
 			children = (
 				A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */,
 				A6686F811CD29DCF00E605B3 /* CreateTourViewController.swift */,
-				A611CD581CDBA2F700E605B3 /* MapViewController.swift */,
 				A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */,
 			);
 			name = "Create Tour";

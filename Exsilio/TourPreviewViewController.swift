@@ -28,9 +28,9 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         if let tour = self.tour {
             self.nameLabel?.text = tour["name"].string
 
-            if let numberOfWaypoints = tour["waypoints_count"].int {
-                self.pageControl?.numberOfPages = numberOfWaypoints
-            }
+            let numberOfWaypoints = tour["waypoints"].array?.filter { $0["image_url"].string != API.MissingImagePath }.count
+
+            self.pageControl?.numberOfPages = numberOfWaypoints == nil ? 0 : numberOfWaypoints!
         }
 
         self.viewMapButton?.lightBorderStyle()
@@ -45,6 +45,7 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
 
+        self.cacheAllImages()
         self.updateBackgroundImageForPage()
     }
 
@@ -74,6 +75,17 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         }
 
         self.updateBackgroundImageForPage()
+    }
+
+    func cacheAllImages() {
+        self.tour?["waypoints"].array?.forEach({ waypoint in
+            if let urlString = waypoint["image_url"].string {
+                if urlString != API.MissingImagePath {
+                    let urlRequest = NSURLRequest(URL: NSURL(string: urlString)!)
+                    CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: nil)
+                }
+            }
+        })
     }
 
     func updateBackgroundImageForPage() {
