@@ -107,7 +107,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         if let coordinate = locations.first?.coordinate {
-            self.setCoordinate(coordinate)
+            if self.tour == nil {
+                self.setCoordinate(coordinate)
+            }
         }
     }
 
