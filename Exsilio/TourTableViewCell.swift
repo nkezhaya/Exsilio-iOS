@@ -34,11 +34,19 @@ class TourTableViewCell: SWTableViewCell {
             return
         }
 
+        let tourPublished = self.tourJSON?["published"].bool == true
+
         let buttons = NSMutableArray()
-        buttons.sw_addUtilityButtonWithColor(UIColor(hexString: "#1c56ff"), icon: UIImage.fontAwesomeIconWithName(.Edit, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
-        buttons.sw_addUtilityButtonWithColor(UIColor(hexString: "#e04940"), icon: UIImage.fontAwesomeIconWithName(.Trash, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
+        buttons.sw_addUtilityButtonWithColor(UI.BlueColor, icon: UIImage.fontAwesomeIconWithName(.Edit, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
+        buttons.sw_addUtilityButtonWithColor(UI.GreenColor, icon: UIImage.fontAwesomeIconWithName(tourPublished ? .Lock : .UnlockAlt, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
+        buttons.sw_addUtilityButtonWithColor(UI.RedColor, icon: UIImage.fontAwesomeIconWithName(.Trash, textColor: .whiteColor(), size: CGSizeMake(30, 30)))
 
         self.rightUtilityButtons = buttons as [AnyObject]
+    }
+
+    func resetUtilityButtons() {
+        self.rightUtilityButtons = []
+        self.addUtilityButtons()
     }
 
     func updateWithTour(tour: JSON) {

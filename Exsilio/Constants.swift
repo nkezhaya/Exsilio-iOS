@@ -15,7 +15,9 @@ typealias Waypoint = [String: AnyObject]
 
 struct UI {
     static let LabelCharacterSpacing = 1.2
-    static let GreenColor = UIColor(hexString: "#21C064")
+    static let GreenColor = UIColor(hexString: "#21c064")
+    static let BlueColor = UIColor(hexString: "#1c56ff")
+    static let RedColor = UIColor(hexString: "#e04940")
     static let BarButtonColor = UIColor(hexString: "#333333")
     static let BarButtonSize = CGSizeMake(32, 32)
 

@@ -11,6 +11,7 @@ import Alamofire
 import DZNEmptyDataSet
 import SwiftyJSON
 import SWTableViewCell
+import SCLAlertView
 
 class ToursTableViewController: UITableViewController {
     var tours: JSON = JSON([])
@@ -97,13 +98,41 @@ extension ToursTableViewController: SWTableViewCellDelegate {
 
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointsTableViewController") as! WaypointsTableViewController
             self.navigationController?.pushViewController(vc, animated: true)
+            break
         case 1:
+            if let id = self.tours[indexPath.row]["id"].int {
+                let tourCell = cell as! TourTableViewCell
+                let published = !(self.tours[indexPath.row]["published"].bool == true)
+                let params = ["tour[published]": "\(published)"]
+
+                tourCell.hideUtilityButtonsAnimated(true)
+
+                Alamofire.request(.PUT, "\(API.URL)\(API.ToursPath)/\(id)", parameters: params, headers: API.authHeaders()).responseJSON { response in
+                    switch response.result {
+                    case .Success(let jsonString):
+                        let json = JSON(jsonString)
+                        if let errors = json["errors"].string {
+                            SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
+                        } else {
+                            self.tours[indexPath.row]["published"] = JSON(published)
+                            tourCell.updateWithTour(self.tours[indexPath.row])
+                            tourCell.resetUtilityButtons()
+                        }
+                        break
+                    default:
+                        break
+                    }
+                }
+            }
+            break
+        case 2:
             if let id = self.tours[indexPath.row]["id"].int {
                 Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(id)", headers: API.authHeaders())
 
                 self.tours.arrayObject?.removeAtIndex(indexPath.row)
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             }
+            break
         default:
             break
         }
