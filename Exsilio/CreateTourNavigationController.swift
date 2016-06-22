@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class CreateTourNavigationController: UINavigationController {
     var toursTableViewController: ToursTableViewController?
 
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
+    func dismissAndEditTour(tour: JSON) {
         self.toursTableViewController?.refresh()
+
+        self.dismissViewControllerAnimated(true, completion: {
+            CurrentTourSingleton.sharedInstance.editTour(tour)
+            let waypointsTableViewController = self.storyboard!.instantiateViewControllerWithIdentifier("WaypointsTableViewController")
+            self.toursTableViewController?.navigationController?.pushViewController(waypointsTableViewController, animated: true)
+        })
     }
 }

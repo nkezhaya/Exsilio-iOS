@@ -8,26 +8,30 @@
 
 import UIKit
 import DZNEmptyDataSet
+import Alamofire
 import SwiftyJSON
+import SVProgressHUD
+import SCLAlertView
 
 class WaypointsTableViewController: UITableViewController {
+    var addBarButtonItem: UIBarButtonItem?
     var editBarButtonItem: UIBarButtonItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backIcon = UIImage(named: "BackIcon")!.scaledTo(1.5)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .Plain, target: self, action: #selector(dismiss))
-
-        if self.editBarButtonItem == nil {
-            self.editBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(enterEditingMode))
-        }
-
-        self.navigationItem.rightBarButtonItem = self.editBarButtonItem
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UI.PlusIcon, style: .Plain, target: self, action: #selector(addWaypoint)),
+            UIBarButtonItem(image: UI.BarButtonIcon(.Edit), style: .Plain, target: self, action: #selector(toggleEditingMode))
+        ]
 
         self.tableView.tableFooterView = UIView()
         self.tableView.opaque = false
         self.tableView.backgroundView = nil
+
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
 
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
@@ -43,14 +47,14 @@ class WaypointsTableViewController: UITableViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
 
-    func enterEditingMode() {
-        self.setEditing(true, animated: true)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(exitEditingMode))
+    func addWaypoint() {
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("WaypointViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
-    func exitEditingMode() {
-        self.setEditing(false, animated: true)
-        self.navigationItem.rightBarButtonItem = self.editBarButtonItem
+    func toggleEditingMode() {
+        self.setEditing(!self.editing, animated: true)
+        self.navigationItem.rightBarButtonItems![1].tintColor = self.editing ? UI.BlueColor : UI.BlackColor
     }
 
     func refresh() {
@@ -94,5 +98,46 @@ class WaypointsTableViewController: UITableViewController {
             CurrentTourSingleton.sharedInstance.removeWaypointAtIndex(indexPath.row)
             self.tableView.reloadData()
         }
+    }
+}
+
+extension WaypointsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
+
+    func emptyDataSetShouldDisplay(scrollView: UIScrollView) -> Bool {
+        return CurrentTourSingleton.sharedInstance.waypoints.count == 0
+    }
+
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage.fontAwesomeIconWithName(.MapPin, textColor: UIColor(hexString: "#AAAAAA"), size: CGSizeMake(80, 80))
+    }
+
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = "NO WAYPOINTS"
+
+        let attributes: [String : AnyObject!] = [
+            NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
+            NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
+            NSKernAttributeName: UI.LabelCharacterSpacing
+        ]
+
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = "Add some waypoints before\npublishing your tour!"
+
+        let attributes: [String : AnyObject!] = [
+            NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
+            NSForegroundColorAttributeName: UIColor(hexString: "#333333")
+        ]
+
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -20
     }
 }

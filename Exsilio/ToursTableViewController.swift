@@ -66,6 +66,13 @@ class ToursTableViewController: UITableViewController {
         self.presentViewController(vc, animated: true, completion: nil)
     }
 
+    func editTourAtIndexPath(indexPath: NSIndexPath) {
+        CurrentTourSingleton.sharedInstance.editTour(self.tours[indexPath.row])
+
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointsTableViewController") as! WaypointsTableViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tours.count
     }
@@ -94,10 +101,7 @@ extension ToursTableViewController: SWTableViewCellDelegate {
 
         switch index {
         case 0:
-            CurrentTourSingleton.sharedInstance.editTour(self.tours[indexPath.row])
-
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointsTableViewController") as! WaypointsTableViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.editTourAtIndexPath(indexPath)
             break
         case 1:
             if let id = self.tours[indexPath.row]["id"].int {

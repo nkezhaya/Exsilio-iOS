@@ -18,11 +18,16 @@ struct UI {
     static let GreenColor = UIColor(hexString: "#21c064")
     static let BlueColor = UIColor(hexString: "#1c56ff")
     static let RedColor = UIColor(hexString: "#e04940")
+    static let BlackColor = UIColor.blackColor()
     static let BarButtonColor = UIColor(hexString: "#333333")
     static let BarButtonSize = CGSizeMake(32, 32)
 
+    static func BarButtonIcon(name: FontAwesome, withColor color: UIColor) -> UIImage {
+        return UIImage.fontAwesomeIconWithName(name, textColor: color, size: BarButtonSize)
+    }
+
     static func BarButtonIcon(name: FontAwesome) -> UIImage {
-        return UIImage.fontAwesomeIconWithName(name, textColor: BarButtonColor, size: BarButtonSize)
+        return UI.BarButtonIcon(name, withColor: UI.BarButtonColor)
     }
 
     static let PlusIcon = UIImage(named: "PlusIcon")!.scaledTo(1.5)

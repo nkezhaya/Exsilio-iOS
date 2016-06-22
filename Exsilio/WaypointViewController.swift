@@ -12,6 +12,7 @@ import SwiftyJSON
 import Alamofire
 import SCLAlertView
 import FontAwesome_swift
+import SVProgressHUD
 
 class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
@@ -25,12 +26,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var waypoint: Waypoint?
 
     override func viewDidLoad() {
-        CurrentTourSingleton.sharedInstance.currentWaypointIndex += 1
-        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.ForwardIcon, style: .Plain, target: self, action: #selector(next))
-
-        self.title = "Waypoint \(CurrentTourSingleton.sharedInstance.currentWaypointIndex + 1)"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Done, target: self, action: #selector(saveWaypoint))
 
         self.openMapButton?.darkBorderStyle()
         self.pickImageButton?.darkBorderStyle()
@@ -56,59 +53,34 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Done, target: self, action: #selector(saveWaypoint))
         }
 
         self.nameField?.becomeFirstResponder()
     }
 
     func dismiss() {
-        CurrentTourSingleton.sharedInstance.currentWaypointIndex -= 1
         self.navigationController?.popViewControllerAnimated(true)
     }
 
-    func validateMessage() -> String? {
+    func validateMessage() -> Bool {
+        var message = ""
+
         if self.nameField?.text == nil || self.nameField!.text!.isEmpty {
-            return "You forgot to put a name in."
+            message = "You forgot to put a name in."
+        } else if self.selectedPoint == nil {
+            message = "You forgot to select a point on the map."
         }
 
-        if self.selectedPoint == nil {
-            return "You forgot to select a point on the map."
+        if !message.isEmpty {
+            SCLAlertView().showError("Whoops!", subTitle: message, closeButtonTitle: "OK")
+            return false
         }
 
-        return nil
-    }
-
-    func next() {
-        if let invalidMessage = self.validateMessage() {
-            SCLAlertView().showError("Whoops!", subTitle: invalidMessage, closeButtonTitle: "OK")
-            return
-        }
-
-        let alertVC = UIAlertController(title: "What next?", message: "Select from the options below.", preferredStyle: .ActionSheet)
-        alertVC.addAction(UIAlertAction(title: "New Waypoint", style: .Default, handler: { _ in
-            self.saveWaypoint()
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointViewController")
-            self.navigationController?.pushViewController(vc!, animated: true)
-        }))
-        alertVC.addAction(UIAlertAction(title: "Save & Publish Tour", style: .Default, handler: { _ in
-            self.saveWaypoint()
-            CurrentTourSingleton.sharedInstance.save(successHandler: {
-                self.navigationController?.dismissViewControllerAnimated(true, completion: {
-                    CurrentTourSingleton.sharedInstance.currentWaypointIndex = -1
-                })
-            }, errorHandler: { errors in
-                SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
-            })
-        }))
-
-        self.presentViewController(alertVC, animated: true, completion: nil)
+        return true
     }
 
     func saveWaypoint() {
-        if let invalidMessage = self.validateMessage() {
-            SCLAlertView().showError("Whoops!", subTitle: invalidMessage, closeButtonTitle: "OK")
+        if !self.validateMessage() {
             return
         }
 
@@ -129,11 +101,58 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             }
         }
 
-        if CurrentTourSingleton.sharedInstance.editingExistingTour {
-            CurrentTourSingleton.sharedInstance.updateWaypoint(waypoint)
-            self.dismiss()
-        } else {
-            CurrentTourSingleton.sharedInstance.saveWaypoint(waypoint)
+        if let tourId = CurrentTourSingleton.sharedInstance.tour["id"] as? Int {
+            let method: Alamofire.Method
+            let waypointId = waypoint["id"]
+            var url = "\(API.URL)\(API.ToursPath)/\(tourId)\(API.WaypointsPath)"
+
+            if waypointId == nil {
+                method = .POST
+            } else {
+                method = .PUT
+                url = url.stringByAppendingString("/\(waypointId!)")
+            }
+
+            SVProgressHUD.show()
+            Alamofire.upload(
+                method,
+                url,
+                headers: API.authHeaders(),
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(data: waypoint["name"]!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[name]")
+                    multipartFormData.appendBodyPart(data: "\(waypoint["latitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[latitude]")
+                    multipartFormData.appendBodyPart(data: "\(waypoint["longitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[longitude]")
+
+                    if let image = waypoint["photo"] as? UIImage {
+                        multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "waypoint[image]", fileName: "image.png", mimeType: "image/png")
+                    }
+                },
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
+                            switch response.result {
+                            case .Success(let json):
+                                SVProgressHUD.dismiss()
+
+                                if let errors = json["errors"] as? String {
+                                    SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
+                                } else {
+                                    self.dismiss()
+                                }
+
+                                break
+                            default:
+                                SVProgressHUD.dismiss()
+                                break
+                            }
+                        }
+                    default:
+                        SVProgressHUD.dismiss()
+                        break
+                    }
+                }
+            )
         }
     }
 

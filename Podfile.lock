@@ -21,6 +21,7 @@ PODS:
   - GoogleMaps (1.13.2)
   - SCLAlertView (0.5.8)
   - SkyFloatingLabelTextField (1.2.1)
+  - SVProgressHUD (2.0.3)
   - SwiftyJSON (2.3.2)
   - SWTableViewCell (0.3.7)
 
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - GoogleMaps
   - SCLAlertView
   - SkyFloatingLabelTextField
+  - SVProgressHUD
   - SwiftyJSON
   - SWTableViewCell (~> 0.3.7)
 
@@ -54,9 +56,10 @@ SPEC CHECKSUMS:
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 143b59cae6edfc4b1eed74c37c6f905c3c66346b
+PODFILE CHECKSUM: b7d598ba70d3d29e265409bfd3553362f2772530
 
 COCOAPODS: 1.0.0
