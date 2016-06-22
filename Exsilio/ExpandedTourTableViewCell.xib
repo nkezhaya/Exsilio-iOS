@@ -46,9 +46,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2d 12h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="831-aQ-7dh">
-                        <rect key="frame" x="506" y="152" width="86" height="29"/>
+                        <rect key="frame" x="8" y="152" width="584" height="29"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="86" id="6f7-gn-m7J"/>
+                            <constraint firstAttribute="width" constant="584" id="6f7-gn-m7J"/>
                             <constraint firstAttribute="height" constant="29" id="abV-y2-s2G"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
@@ -56,10 +56,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32 KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd1-dA-8zS">
-                        <rect key="frame" x="530" y="202" width="62" height="29"/>
+                        <rect key="frame" x="514" y="202" width="78" height="29"/>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.75294117647058822" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="62" id="3JV-7B-IO3"/>
+                            <constraint firstAttribute="width" constant="78" id="3JV-7B-IO3"/>
                             <constraint firstAttribute="height" constant="29" id="7ix-JH-qL5"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
@@ -67,7 +67,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeK-dX-SmR">
-                        <rect key="frame" x="479" y="202" width="43" height="29"/>
+                        <rect key="frame" x="463" y="202" width="43" height="29"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="43" id="1CU-gU-hPs"/>

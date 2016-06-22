@@ -20,13 +20,14 @@ class TourTableViewCell: SWTableViewCell {
     @IBOutlet var pinImage: UIImageView?
     @IBOutlet var userImage: UIImageView?
 
+    let mapMarkerImage = UIImage.fontAwesomeIconWithName(.MapMarker, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
+    let lockImage = UIImage.fontAwesomeIconWithName(.Lock, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.selectedBackgroundView = UIView()
         self.selectedBackgroundView!.backgroundColor = .whiteColor()
-        
-        self.pinImage?.image = UIImage.fontAwesomeIconWithName(.MapMarker, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
     }
 
     func addUtilityButtons() {
@@ -52,7 +53,15 @@ class TourTableViewCell: SWTableViewCell {
     func updateWithTour(tour: JSON) {
         self.tourJSON = tour
         self.nameLabel!.text = tour["name"].string
-        self.descriptionLabel!.text = "\(tour["city_state"].string!) • \(tour["waypoints"].count) Stops • \(tour["duration"].string!)"
+
+        if tour["published"].bool == true {
+            self.descriptionLabel!.text = "\(tour["city_state"].string!) • \(tour["waypoints"].count) Stops • \(tour["duration"].string!)"
+            self.pinImage?.image = mapMarkerImage
+        } else {
+            self.descriptionLabel!.text = "Draft: \(tour["city_state"].string!)"
+            self.pinImage?.image = lockImage
+        }
+
 
         if let imageURL = tour["user"]["picture_url"].string {
             let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
