@@ -38,6 +38,10 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.extendedLayoutIncludesOpaqueBars = false
+        self.automaticallyAdjustsScrollViewInsets = false
+
         self.filtersViewController.searchController = self
 
         self.tableView.registerNib(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
@@ -73,7 +77,7 @@ class SearchTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if self.totalTours == indexPath.row - 1 {
+        if (indexPath.row + 1) % 10 == 0 {
             self.fetchNextPage()
         }
 
@@ -158,17 +162,22 @@ class SearchTableViewController: UITableViewController {
                 if self.totalTours == nil && self.tours == nil {
                     self.tours = newTours
                     self.totalTours = totalTours
+                    self.tableView.reloadData()
                 }
 
                 // Are we adding to the current set of tours?
                 if self.currentPage > 1 {
                     var currentTours = self.tours!.arrayValue
+                    let initialCount = currentTours.count
                     currentTours.appendContentsOf(newTours.arrayValue)
+                    let newCount = currentTours.count
 
                     self.tours = JSON(currentTours)
+
+                    let indexPaths = (initialCount...newCount - 1).map({ NSIndexPath(forRow: $0, inSection: 0) })
+                    self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 }
 
-                self.tableView.reloadData()
                 break
             default:
                 break
