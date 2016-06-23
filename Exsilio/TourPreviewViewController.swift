@@ -19,6 +19,7 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
 
     var locationManager = CLLocationManager()
     var tour: JSON?
+    var imagesPresent = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,12 +84,19 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
                 if urlString != API.MissingImagePath {
                     let urlRequest = NSURLRequest(URL: NSURL(string: urlString)!)
                     CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: nil)
+                    self.imagesPresent = true
                 }
             }
         })
     }
 
     func updateBackgroundImageForPage() {
+        if !self.imagesPresent {
+            self.backgroundImageView?.image = UIImage(named: "LoginBackground")
+            self.backgroundImageView?.alpha = 0.6
+            return
+        }
+
         if let currentPage = self.pageControl?.currentPage {
             if let imageURL = self.tour?["waypoints"][currentPage]["image_url"].string {
                 let duration = 0.2

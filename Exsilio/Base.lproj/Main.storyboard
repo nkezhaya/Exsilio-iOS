@@ -420,6 +420,24 @@
             </objects>
             <point key="canvasLocation" x="1963" y="2539"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="85A-FG-R3T">
+            <objects>
+                <viewController id="ffu-Hn-21V" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kh8-gV-b6D"/>
+                        <viewControllerLayoutGuide type="bottom" id="FNK-NC-ZWz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F59-HU-oVd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-AZ-Nr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2651" y="1120"/>
+        </scene>
         <!--Edit Waypoint-->
         <scene sceneID="ut5-tc-1E1">
             <objects>

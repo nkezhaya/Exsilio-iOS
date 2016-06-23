@@ -174,7 +174,7 @@ class SearchTableViewController: UITableViewController {
 
                     self.tours = JSON(currentTours)
 
-                    let indexPaths = (initialCount...newCount - 1).map({ NSIndexPath(forRow: $0, inSection: 0) })
+                    let indexPaths = (initialCount...newCount - 1).map { NSIndexPath(forRow: $0, inSection: 0) }
                     self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 }
 
