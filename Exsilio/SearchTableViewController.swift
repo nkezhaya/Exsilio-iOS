@@ -198,6 +198,7 @@ class SearchTableViewController: UITableViewController {
         self.tours = nil
         self.totalTours = nil
         self.currentPage = 1
+        self.expandedIndexPath = nil
         self.tableView.reloadData()
     }
 }
