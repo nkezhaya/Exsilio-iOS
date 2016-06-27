@@ -14,7 +14,6 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var backgroundImageView: UIImageView?
     @IBOutlet var pageControl: UIPageControl?
-    @IBOutlet var viewMapButton: EXButton?
     @IBOutlet var takeTourButton: EXButton?
 
     var locationManager = CLLocationManager()
@@ -34,7 +33,6 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
             self.pageControl?.numberOfPages = numberOfWaypoints == nil ? 0 : numberOfWaypoints!
         }
 
-        self.viewMapButton?.lightBorderStyle()
         self.takeTourButton?.backgroundColor = UIColor(hexString: "#21C064")
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe))
@@ -97,25 +95,23 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
             return
         }
 
-        if let currentPage = self.pageControl?.currentPage {
-            if let imageURL = self.tour?["waypoints"][currentPage]["image_url"].string {
-                let duration = 0.2
-                let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
+        if let currentPage = self.pageControl?.currentPage, let imageURL = self.tour?["waypoints"][currentPage]["image_url"].string {
+            let duration = 0.2
+            let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
 
-                UIView.animateWithDuration(duration, animations: {
-                    self.backgroundImageView?.alpha = 0.0
-                }, completion: { _ in
-                    CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
-                        if let image = response.result.value {
-                            self.backgroundImageView?.image = image
+            UIView.animateWithDuration(duration, animations: {
+                self.backgroundImageView?.alpha = 0.0
+            }, completion: { _ in
+                CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+                    if let image = response.result.value {
+                        self.backgroundImageView?.image = image
 
-                            UIView.animateWithDuration(duration, animations: {
-                                self.backgroundImageView?.alpha = 0.75
-                            })
-                        }
-                    })
+                        UIView.animateWithDuration(duration, animations: {
+                            self.backgroundImageView?.alpha = 0.75
+                        })
+                    }
                 })
-            }
+            })
         }
     }
 
@@ -123,14 +119,9 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         self.navigationController?.popViewControllerAnimated(true)
     }
 
-    @IBAction func openMap() {
-        let mapVC = self.storyboard?.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
-        mapVC.tour = self.tour!
-
-        self.presentViewController(mapVC, animated: true, completion: nil)
-    }
-
     @IBAction func takeTour() {
-        
+        CurrentTourSingleton.sharedInstance.loadTourFromJSON(self.tour)
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ActiveTourViewController") as! ActiveTourViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 }

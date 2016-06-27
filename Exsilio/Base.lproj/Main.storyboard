@@ -170,18 +170,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao9-74-MQv" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="190" y="321" width="220" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Bck-Lx-E4Z"/>
-                                    <constraint firstAttribute="width" constant="220" id="d4z-hy-Jdy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                                <state key="normal" title="View Map"/>
-                                <connections>
-                                    <action selector="openMap" destination="buQ-PA-bwk" eventType="touchUpInside" id="wng-Ip-IU7"/>
-                                </connections>
-                            </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6ws-BD-ZoC">
                                 <rect key="frame" x="20" y="196" width="560" height="37"/>
                             </pageControl>
@@ -201,19 +189,17 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YCb-zi-SYq" firstAttribute="leading" secondItem="aff-v8-JG0" secondAttribute="leadingMargin" id="88w-c1-4ad"/>
-                            <constraint firstItem="ao9-74-MQv" firstAttribute="centerX" secondItem="YCb-zi-SYq" secondAttribute="centerX" id="8Ba-tp-Sl5"/>
                             <constraint firstItem="YCb-zi-SYq" firstAttribute="top" secondItem="aff-v8-JG0" secondAttribute="top" constant="20" symbolic="YES" id="8IC-f0-ALc"/>
+                            <constraint firstItem="NZW-Iv-CDJ" firstAttribute="centerX" secondItem="6ws-BD-ZoC" secondAttribute="centerX" id="CgR-KQ-AOJ"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="centerX" secondItem="YCb-zi-SYq" secondAttribute="centerX" id="GUR-TH-e2x"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="bottom" secondItem="XcI-f9-axM" secondAttribute="top" id="Jsg-NV-DPN"/>
                             <constraint firstItem="6ws-BD-ZoC" firstAttribute="leading" secondItem="YCb-zi-SYq" secondAttribute="leading" id="K0q-bp-4OY"/>
                             <constraint firstItem="6ws-BD-ZoC" firstAttribute="trailing" secondItem="YCb-zi-SYq" secondAttribute="trailing" id="MmX-Zx-0kw"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="leading" secondItem="aff-v8-JG0" secondAttribute="leading" id="NEr-qR-ysW"/>
                             <constraint firstItem="p9g-zl-Pf2" firstAttribute="top" secondItem="G7h-05-D8A" secondAttribute="bottom" id="NOH-75-r7i"/>
-                            <constraint firstItem="XcI-f9-axM" firstAttribute="top" secondItem="ao9-74-MQv" secondAttribute="bottom" constant="175" id="Ol2-D6-WoU"/>
-                            <constraint firstItem="NZW-Iv-CDJ" firstAttribute="top" secondItem="ao9-74-MQv" secondAttribute="bottom" constant="24" id="gxT-ld-Rcq"/>
                             <constraint firstItem="6ws-BD-ZoC" firstAttribute="top" secondItem="YCb-zi-SYq" secondAttribute="bottom" constant="76" id="oCV-0J-CIe"/>
-                            <constraint firstItem="NZW-Iv-CDJ" firstAttribute="leading" secondItem="ao9-74-MQv" secondAttribute="leading" id="oTv-TT-YXH"/>
                             <constraint firstAttribute="trailing" secondItem="p9g-zl-Pf2" secondAttribute="trailing" id="qhG-WJ-XyY"/>
+                            <constraint firstItem="XcI-f9-axM" firstAttribute="top" secondItem="NZW-Iv-CDJ" secondAttribute="bottom" constant="111" id="spb-tH-6dm"/>
                             <constraint firstItem="XcI-f9-axM" firstAttribute="top" secondItem="YCb-zi-SYq" secondAttribute="bottom" constant="416" id="tfY-Ae-NCZ"/>
                         </constraints>
                     </view>
@@ -223,7 +209,6 @@
                         <outlet property="nameLabel" destination="YCb-zi-SYq" id="IQR-ar-TtT"/>
                         <outlet property="pageControl" destination="6ws-BD-ZoC" id="FYZ-n4-12K"/>
                         <outlet property="takeTourButton" destination="NZW-Iv-CDJ" id="ueI-qZ-vs5"/>
-                        <outlet property="viewMapButton" destination="ao9-74-MQv" id="7oL-3o-kgx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMP-oU-G67" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -420,10 +405,10 @@
             </objects>
             <point key="canvasLocation" x="1963" y="2539"/>
         </scene>
-        <!--View Controller-->
+        <!--Active Tour View Controller-->
         <scene sceneID="85A-FG-R3T">
             <objects>
-                <viewController id="ffu-Hn-21V" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActiveTourViewController" id="ffu-Hn-21V" customClass="ActiveTourViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kh8-gV-b6D"/>
                         <viewControllerLayoutGuide type="bottom" id="FNK-NC-ZWz"/>
@@ -431,8 +416,76 @@
                     <view key="view" contentMode="scaleToFill" id="F59-HU-oVd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZO-dp-XJB" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5L-b6-ftT" customClass="DirectionsHeaderView" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="430 feet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4te-Bi-ljA">
+                                        <rect key="frame" x="8" y="8" width="584" height="37"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqw-jU-Btx">
+                                        <rect key="frame" x="15" y="40" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Hnv-br-i43"/>
+                                            <constraint firstAttribute="height" constant="20" id="d1M-1i-HgN"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="BackIcon"/>
+                                        <connections>
+                                            <action selector="dismiss" destination="n5L-b6-ftT" eventType="touchUpInside" id="MaB-FM-pQW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4te-Bi-ljA" firstAttribute="leading" secondItem="n5L-b6-ftT" secondAttribute="leadingMargin" id="6gr-E6-ShW"/>
+                                    <constraint firstItem="Gqw-jU-Btx" firstAttribute="centerY" secondItem="n5L-b6-ftT" secondAttribute="centerY" id="CC9-6Y-wCq"/>
+                                    <constraint firstItem="Gqw-jU-Btx" firstAttribute="leading" secondItem="n5L-b6-ftT" secondAttribute="leadingMargin" constant="7" id="JlJ-O6-4rI"/>
+                                    <constraint firstAttribute="bottom" secondItem="4te-Bi-ljA" secondAttribute="bottom" constant="55" id="RPS-Wt-frA"/>
+                                    <constraint firstItem="4te-Bi-ljA" firstAttribute="baseline" secondItem="Gqw-jU-Btx" secondAttribute="baseline" id="Rk9-6W-jh9"/>
+                                    <constraint firstItem="4te-Bi-ljA" firstAttribute="trailing" secondItem="n5L-b6-ftT" secondAttribute="trailingMargin" id="cJN-Uz-KZg"/>
+                                    <constraint firstItem="4te-Bi-ljA" firstAttribute="top" secondItem="n5L-b6-ftT" secondAttribute="topMargin" id="gY9-og-7S3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="backButton" destination="Gqw-jU-Btx" id="Z8A-A3-vMB"/>
+                                    <outlet property="header" destination="4te-Bi-ljA" id="DGX-ge-vRh"/>
+                                </connections>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xsz-gz-dBX" customClass="TabControlsView" customModule="Exsilio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="buv-e4-0Yq"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="n5L-b6-ftT" firstAttribute="leading" secondItem="jZO-dp-XJB" secondAttribute="leading" id="2BD-BD-VyB"/>
+                            <constraint firstItem="xsz-gz-dBX" firstAttribute="leading" secondItem="jZO-dp-XJB" secondAttribute="leading" id="2TP-on-QSW"/>
+                            <constraint firstItem="n5L-b6-ftT" firstAttribute="trailing" secondItem="jZO-dp-XJB" secondAttribute="trailing" id="2Tv-dH-Fzh"/>
+                            <constraint firstAttribute="trailing" secondItem="jZO-dp-XJB" secondAttribute="trailing" id="3Sv-8y-poM"/>
+                            <constraint firstItem="n5L-b6-ftT" firstAttribute="top" secondItem="jZO-dp-XJB" secondAttribute="top" id="8UW-lI-6ov"/>
+                            <constraint firstAttribute="bottom" secondItem="n5L-b6-ftT" secondAttribute="bottom" constant="500" id="OG7-mE-wYq"/>
+                            <constraint firstItem="jZO-dp-XJB" firstAttribute="leading" secondItem="F59-HU-oVd" secondAttribute="leading" id="QVP-LJ-0Mh"/>
+                            <constraint firstItem="xsz-gz-dBX" firstAttribute="top" secondItem="jZO-dp-XJB" secondAttribute="bottom" id="WUI-xW-2Ac"/>
+                            <constraint firstItem="xsz-gz-dBX" firstAttribute="trailing" secondItem="n5L-b6-ftT" secondAttribute="trailing" id="gPg-y1-Qia"/>
+                            <constraint firstItem="xsz-gz-dBX" firstAttribute="bottom" secondItem="FNK-NC-ZWz" secondAttribute="top" id="sLD-Wt-5zT"/>
+                            <constraint firstItem="jZO-dp-XJB" firstAttribute="top" secondItem="F59-HU-oVd" secondAttribute="top" id="vIj-l5-X7C"/>
+                        </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="mapView" destination="jZO-dp-XJB" id="fl4-bd-vsh"/>
+                        <outlet property="navView" destination="n5L-b6-ftT" id="sSS-Er-f3B"/>
+                        <outlet property="tabView" destination="xsz-gz-dBX" id="FAp-8i-qR0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-AZ-Nr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -521,10 +574,10 @@
             </objects>
             <point key="canvasLocation" x="2651" y="1861"/>
         </scene>
-        <!--Map-->
+        <!--Pick Location-->
         <scene sceneID="4O7-xk-mAJ">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="Map" id="xfV-e4-XVO" customClass="MapViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="Pick Location" id="xfV-e4-XVO" customClass="MapViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nt1-Zr-M2P"/>
                         <viewControllerLayoutGuide type="bottom" id="rvK-0Y-bA2"/>
@@ -558,6 +611,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackIcon" width="26" height="23"/>
         <image name="CreateTour" width="149" height="150"/>
         <image name="LoginBackground" width="640" height="1135"/>
     </resources>

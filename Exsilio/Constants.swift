@@ -33,6 +33,7 @@ struct UI {
     static let PlusIcon = UIImage(named: "PlusIcon")!.scaledTo(1.5)
     static let ForwardIcon = UIImage(named: "ForwardIcon")!.scaledTo(1.5)
     static let BackIcon = UIImage(named: "BackIcon")!.scaledTo(1.5)
+    static let XIcon = UIImage(named: "XIcon")!.scaledTo(1.5)
 }
 
 struct API {

@@ -11,12 +11,11 @@ import CoreLocation
 import SwiftyJSON
 import FontAwesome_swift
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController {
     @IBOutlet var mapView: GMSMapView?
 
     var delegate: GMSMapViewDelegate?
     var startingPoint: CLLocationCoordinate2D?
-    var tour: JSON?
 
     let locationManager = CLLocationManager()
 
@@ -30,35 +29,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
         if self.startingPoint != nil {
             self.setCoordinate(self.startingPoint!)
-        }
-
-        if let tour = self.tour {
-            self.title = tour["name"].string
-
-            if let path = tour["polyline"].string {
-                let polyline = GMSPolyline(path: GMSPath(fromEncodedPath: path))
-                polyline.strokeWidth = 4.0
-                polyline.map = self.mapView
-            }
-
-            if let waypoints = tour["waypoints"].array {
-                var bounds = GMSCoordinateBounds()
-
-                for waypoint in waypoints {
-                    if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
-                        let coordinate = CLLocationCoordinate2D(latitude: Double(latitude), longitude: Double(longitude))
-                        let marker = GMSMarker(position: coordinate)
-
-                        marker.map = self.mapView
-
-                        bounds = bounds.includingCoordinate(coordinate)
-                    }
-                }
-                
-                self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds))
-            }
-        } else {
-            self.title = "Pick Location"
         }
 
         self.locationManager.delegate = self
@@ -93,6 +63,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(navigationBar)
     }
 
+    func setCoordinate(coordinate: CLLocationCoordinate2D) {
+        self.delegate?.mapView!(self.mapView!, didTapAtCoordinate: coordinate)
+        self.mapView?.animateToLocation(coordinate)
+        self.mapView?.animateToZoom(15)
+    }
+
+    func done() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
             manager.startUpdatingLocation()
@@ -107,19 +89,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         if let coordinate = locations.first?.coordinate {
-            if self.tour == nil {
-                self.setCoordinate(coordinate)
-            }
+            self.setCoordinate(coordinate)
         }
-    }
-
-    func setCoordinate(coordinate: CLLocationCoordinate2D) {
-        self.delegate?.mapView!(self.mapView!, didTapAtCoordinate: coordinate)
-        self.mapView?.animateToLocation(coordinate)
-        self.mapView?.animateToZoom(15)
-    }
-
-    func done() {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -41,17 +41,21 @@ class CurrentTourSingleton {
         }
     }
 
-    func editTour(tour: JSON) {
-        if let tourDict = tour.dictionaryObject {
-            self.tour = tourDict
-
-            if let waypointsArray = tour["waypoints"].arrayObject {
-                self.waypoints = waypointsArray as! [Waypoint]
-            }
-        } else {
-            self.tour = [:]
-            self.waypoints = []
+    func loadTourFromJSON(tour: JSON?) {
+        guard let tour = tour, let tourDict = tour.dictionaryObject else {
+            return self.unloadTour()
         }
+
+        self.tour = tourDict
+
+        if let waypointsArray = tour["waypoints"].arrayObject {
+            self.waypoints = waypointsArray as! [Waypoint]
+        }
+    }
+
+    func unloadTour() {
+        self.tour = [:]
+        self.waypoints = []
     }
 
     func moveWaypointAtIndex(sourceIndex: Int, toIndex destinationIndex: Int, completion: (Void -> Void)?) {

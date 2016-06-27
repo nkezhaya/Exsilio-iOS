@@ -71,7 +71,7 @@ class ToursTableViewController: UITableViewController {
     }
 
     func editTourAtIndexPath(indexPath: NSIndexPath) {
-        CurrentTourSingleton.sharedInstance.editTour(self.tours[indexPath.row])
+        CurrentTourSingleton.sharedInstance.loadTourFromJSON(self.tours[indexPath.row])
 
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointsTableViewController") as! WaypointsTableViewController
         self.navigationController?.pushViewController(vc, animated: true)

@@ -16,7 +16,7 @@ class CreateTourNavigationController: UINavigationController {
         self.toursTableViewController?.refresh()
 
         self.dismissViewControllerAnimated(true, completion: {
-            CurrentTourSingleton.sharedInstance.editTour(tour)
+            CurrentTourSingleton.sharedInstance.loadTourFromJSON(tour)
             let waypointsTableViewController = self.storyboard!.instantiateViewControllerWithIdentifier("WaypointsTableViewController")
             self.toursTableViewController?.navigationController?.pushViewController(waypointsTableViewController, animated: true)
         })
