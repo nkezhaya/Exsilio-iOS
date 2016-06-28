@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class ActiveTourViewController: UIViewController {
     @IBOutlet var navView: DirectionsHeaderView?
@@ -35,7 +37,25 @@ class ActiveTourViewController: UIViewController {
     }
 
     func startTour(completion: (Void -> Void)?) {
-        completion?()
+        if let location = self.mapView?.myLocation {
+            SVProgressHUD.show()
+
+            let id = CurrentTourSingleton.sharedInstance.tour["id"]!
+            let params = ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
+            Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(id)/start", parameters: params, headers: API.authHeaders()).responseJSON { response in
+                switch response.result {
+                case .Success(let json):
+                    print(json)
+
+                    fallthrough
+                default:
+                    SVProgressHUD.dismiss()
+                    completion?()
+                }
+            }
+        } else {
+
+        }
     }
 
     func drawTour() {

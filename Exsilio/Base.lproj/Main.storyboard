@@ -18,6 +18,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -441,20 +442,31 @@
                                             <action selector="dismiss" destination="n5L-b6-ftT" eventType="touchUpInside" id="MaB-FM-pQW"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subheader" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Za9-cI-1dS">
+                                        <rect key="frame" x="15" y="22" width="577" height="70"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="4te-Bi-ljA" firstAttribute="leading" secondItem="n5L-b6-ftT" secondAttribute="leadingMargin" id="6gr-E6-ShW"/>
+                                    <constraint firstItem="Za9-cI-1dS" firstAttribute="trailing" secondItem="4te-Bi-ljA" secondAttribute="trailing" id="8Ue-4A-fph"/>
                                     <constraint firstItem="Gqw-jU-Btx" firstAttribute="centerY" secondItem="n5L-b6-ftT" secondAttribute="centerY" id="CC9-6Y-wCq"/>
                                     <constraint firstItem="Gqw-jU-Btx" firstAttribute="leading" secondItem="n5L-b6-ftT" secondAttribute="leadingMargin" constant="7" id="JlJ-O6-4rI"/>
                                     <constraint firstAttribute="bottom" secondItem="4te-Bi-ljA" secondAttribute="bottom" constant="55" id="RPS-Wt-frA"/>
                                     <constraint firstItem="4te-Bi-ljA" firstAttribute="baseline" secondItem="Gqw-jU-Btx" secondAttribute="baseline" id="Rk9-6W-jh9"/>
+                                    <constraint firstItem="Za9-cI-1dS" firstAttribute="leading" secondItem="Gqw-jU-Btx" secondAttribute="leading" id="Xzz-wc-tUu"/>
+                                    <constraint firstItem="Za9-cI-1dS" firstAttribute="bottom" secondItem="n5L-b6-ftT" secondAttribute="bottomMargin" id="acU-2J-g8y"/>
                                     <constraint firstItem="4te-Bi-ljA" firstAttribute="trailing" secondItem="n5L-b6-ftT" secondAttribute="trailingMargin" id="cJN-Uz-KZg"/>
                                     <constraint firstItem="4te-Bi-ljA" firstAttribute="top" secondItem="n5L-b6-ftT" secondAttribute="topMargin" id="gY9-og-7S3"/>
+                                    <constraint firstItem="Za9-cI-1dS" firstAttribute="top" secondItem="4te-Bi-ljA" secondAttribute="bottom" constant="-23" id="gg9-St-TmT"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="backButton" destination="Gqw-jU-Btx" id="Z8A-A3-vMB"/>
                                     <outlet property="header" destination="4te-Bi-ljA" id="DGX-ge-vRh"/>
+                                    <outlet property="subheader" destination="Za9-cI-1dS" id="RMr-MW-2rB"/>
                                 </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xsz-gz-dBX" customClass="TabControlsView" customModule="Exsilio" customModuleProvider="target">
