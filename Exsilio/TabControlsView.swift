@@ -8,12 +8,18 @@
 
 import UIKit
 
-class TabControlsView: UIStackView {
-    enum TabState {
-        case TourPreview
-        case ActiveTour
-    }
+enum TabState {
+    case TourPreview
+    case ActiveTour
+}
 
+protocol TabControlsDelegate {
+    func willChangeTabState(state: TabState)
+    func willMoveToNextStep()
+    func willMoveToPreviousStep()
+}
+
+class TabControlsView: UIStackView {
     // Tour preview state
     let takeTourButton = UIButton()
 
@@ -22,7 +28,7 @@ class TabControlsView: UIStackView {
     let backButton = UIButton()
     let forwardButton = UIButton()
 
-    var activeTourViewController: ActiveTourViewController?
+    var delegate: TabControlsDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,21 +65,33 @@ class TabControlsView: UIStackView {
     }
 
     func takeTourButtonTapped() {
-        self.activeTourViewController?.startTour {
-            self.setState(.ActiveTour)
-        }
+        self.setState(.ActiveTour)
+        self.delegate?.willChangeTabState(.ActiveTour)
     }
 
     func cancelButtonTapped() {
         self.setState(.TourPreview)
-
+        self.delegate?.willChangeTabState(.TourPreview)
     }
 
     func backButtonTapped() {
-
+        self.delegate?.willMoveToPreviousStep()
     }
 
     func forwardButtonTapped() {
+        self.delegate?.willMoveToNextStep()
+    }
 
+    func updateStepIndex(index: Int, outOf: Int) {
+        self.backButton.enabled = true
+        self.forwardButton.enabled = true
+
+        if index == 0 {
+            self.backButton.enabled = false
+        }
+
+        if index == outOf {
+            self.forwardButton.enabled = false
+        }
     }
 }

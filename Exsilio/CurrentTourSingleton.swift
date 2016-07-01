@@ -18,6 +18,7 @@ class CurrentTourSingleton {
     var imageDownloader = ImageDownloader()
     var tour: Tour = [:]
     var waypoints: [Waypoint] = []
+    var tourActive = false
 
     func newTour(name: String, description: String, successHandler: (JSON -> Void)) {
         self.tour = ["name": name, "description": description, "waypoints": []]
@@ -81,7 +82,7 @@ class CurrentTourSingleton {
         Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)", headers: API.authHeaders())
     }
 
-    func refreshTour(completion: (Void -> Void)) {
+    func refreshTour(completion: (JSON? -> Void)?) {
         Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)", headers: API.authHeaders()).responseJSON { response in
             switch (response.result) {
             case .Success(let jsonResponse):
@@ -89,10 +90,9 @@ class CurrentTourSingleton {
                 self.tour = json.dictionaryObject!
                 self.waypoints = json["waypoints"].arrayObject as! [Waypoint]
 
-                completion()
-                break
+                completion?(json)
             default:
-                break
+                completion?(nil)
             }
         }
     }

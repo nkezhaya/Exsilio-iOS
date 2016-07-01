@@ -58,10 +58,10 @@ class WaypointsTableViewController: UITableViewController {
     }
 
     func refresh() {
-        CurrentTourSingleton.sharedInstance.refreshTour({
+        CurrentTourSingleton.sharedInstance.refreshTour { _ in
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
-        })
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

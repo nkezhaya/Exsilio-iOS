@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
+
+protocol DirectionsHeaderDelegate {
+    func willDismissFromHeader()
+}
 
 class DirectionsHeaderView: UIView {
     @IBOutlet var backButton: UIButton?
     @IBOutlet var header: UILabel?
     @IBOutlet var subheader: UILabel?
     
-    var activeTourViewController: ActiveTourViewController?
+    var delegate: DirectionsHeaderDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,7 +66,24 @@ class DirectionsHeaderView: UIView {
         self.subheader?.attributedText = description
     }
 
+    func updateStep(step: JSON) {
+        if let distance = step["distance"]["text"].string {
+
+        }
+
+        if let htmlInstructions = step["html_instructions"].string {
+            guard let regex = try? NSRegularExpression(pattern: "<.*?>", options: .CaseInsensitive) else {
+                return
+            }
+
+            let range = NSMakeRange(0, htmlInstructions.characters.count)
+            let instructions = regex.stringByReplacingMatchesInString(htmlInstructions, options: NSMatchingOptions(), range: range, withTemplate: "")
+
+            self.header?.text = instructions
+        }
+    }
+
     @IBAction func dismiss() {
-        self.activeTourViewController?.dismiss()
+        self.delegate?.willDismissFromHeader()
     }
 }
