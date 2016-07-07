@@ -83,7 +83,9 @@ class ActiveTourViewController: UIViewController {
     }
 
     func currentStep() -> JSON? {
-        return self.allStepsCache?[self.currentStepIndex]
+        guard let allStepsCache = self.allStepsCache where allStepsCache.count > self.currentStepIndex else { return nil }
+
+        return allStepsCache[self.currentStepIndex]
     }
 
     func animateToMyLocation() {

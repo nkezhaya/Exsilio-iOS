@@ -16,6 +16,7 @@ import SVProgressHUD
 
 class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
+    @IBOutlet var descriptionField: UITextField?
 
     @IBOutlet var openMapButton: EXButton?
     @IBOutlet var pickImageButton: EXButton?
@@ -38,6 +39,10 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         if let waypoint = self.waypoint {
             if let name = waypoint["name"] as? String {
                 self.nameField?.text = name
+            }
+
+            if let description = waypoint["description"] as? String {
+                self.descriptionField?.text = description
             }
 
             if let latitude = waypoint["latitude"] as? Double, longitude = waypoint["longitude"] as? Double {
@@ -123,6 +128,10 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                     multipartFormData.appendBodyPart(data: "\(waypoint["latitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[latitude]")
                     multipartFormData.appendBodyPart(data: "\(waypoint["longitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[longitude]")
 
+                    if let description = waypoint["description"] as? String {
+                        multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[description]")
+                    }
+
                     if let image = waypoint["photo"] as? UIImage {
                         multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "waypoint[image]", fileName: "image.png", mimeType: "image/png")
                     }
@@ -157,8 +166,10 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == nameField {
-            nameField?.resignFirstResponder()
+        if textField == self.descriptionField {
+            self.descriptionField?.resignFirstResponder()
+        } else {
+            self.descriptionField?.becomeFirstResponder()
         }
 
         return true

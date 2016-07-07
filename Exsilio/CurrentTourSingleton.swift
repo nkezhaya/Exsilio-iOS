@@ -118,6 +118,10 @@ class CurrentTourSingleton {
                     multipartFormData.appendBodyPart(data: "\(waypoint["latitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][latitude]")
                     multipartFormData.appendBodyPart(data: "\(waypoint["longitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][longitude]")
 
+                    if let description = waypoint["description"] as? String {
+                        multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][description]")
+                    }
+
                     if let image = waypoint["photo"] as? UIImage {
                         multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "tour[waypoints_attributes][][image]", fileName: "image.png", mimeType: "image/png")
                     }
