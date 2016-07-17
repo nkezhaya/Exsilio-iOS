@@ -68,7 +68,7 @@ class DirectionsHeaderView: UIView {
 
     func updateStep(step: JSON) {
         if let distance = step["distance"]["text"].string {
-
+            self.header?.text = distance
         }
 
         if let htmlInstructions = step["html_instructions"].string {
@@ -79,7 +79,7 @@ class DirectionsHeaderView: UIView {
             let range = NSMakeRange(0, htmlInstructions.characters.count)
             let instructions = regex.stringByReplacingMatchesInString(htmlInstructions, options: NSMatchingOptions(), range: range, withTemplate: "")
 
-            self.header?.text = instructions
+            self.subheader?.text = instructions
         }
     }
 

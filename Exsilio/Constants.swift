@@ -20,6 +20,7 @@ struct UI {
     static let RedColor = UIColor(hexString: "#e04940")
     static let BlackColor = UIColor.blackColor()
     static let BarButtonColor = UIColor(hexString: "#333333")
+    static let BarButtonColorDisabled = UIColor(hexString: "#c1c1c1")
     static let BarButtonSize = CGSizeMake(32, 32)
 
     static func BarButtonIcon(name: FontAwesome, withColor color: UIColor) -> UIImage {

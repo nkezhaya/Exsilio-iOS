@@ -504,6 +504,24 @@
             </objects>
             <point key="canvasLocation" x="2651" y="1120"/>
         </scene>
+        <!--Active Waypoint View Controller-->
+        <scene sceneID="Qv7-eI-MQN">
+            <objects>
+                <viewController storyboardIdentifier="ActiveWaypointViewController" id="wes-K8-H8l" customClass="ActiveWaypointViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o2s-Th-bzh"/>
+                        <viewControllerLayoutGuide type="bottom" id="NAt-GE-6Lu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HOU-2d-qUr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="95y-QS-PC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3318" y="1120"/>
+        </scene>
         <!--Edit Waypoint-->
         <scene sceneID="ut5-tc-1E1">
             <objects>

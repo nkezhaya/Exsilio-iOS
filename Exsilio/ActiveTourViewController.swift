@@ -18,6 +18,7 @@ class ActiveTourViewController: UIViewController {
 
     var tourActive = false
     var currentStepIndex = 0
+    var currentWaypointIndex = 0
 
     var startingPoint: CLLocationCoordinate2D?
     var allStepsCache: [JSON]?
@@ -42,8 +43,13 @@ class ActiveTourViewController: UIViewController {
         self.mapView?.myLocationEnabled = true
         self.mapView?.buildingsEnabled = true
         self.mapView?.indoorEnabled = true
+        self.mapView?.addObserver(self, forKeyPath: "myLocation", options: .New, context: nil)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
+    }
+
+    deinit {
+        self.mapView?.removeObserver(self, forKeyPath: "myLocation")
     }
 
     func dismiss() {
@@ -86,6 +92,10 @@ class ActiveTourViewController: UIViewController {
         guard let allStepsCache = self.allStepsCache where allStepsCache.count > self.currentStepIndex else { return nil }
 
         return allStepsCache[self.currentStepIndex]
+    }
+
+    func currentWaypoint() -> JSON? {
+        return self.tourJSON?["waypoints"].array?[self.currentWaypointIndex]
     }
 
     func animateToMyLocation() {
@@ -167,6 +177,31 @@ class ActiveTourViewController: UIViewController {
         return steps
     }
 
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        guard let keyPath = keyPath where keyPath == "myLocation" && tourActive == true else { return }
+
+        if let location = self.mapView?.myLocation, step = self.currentStep(), waypoint = self.currentWaypoint() {
+            if let latitude = step["end_location"]["lat"].float, longitude = step["end_location"]["lng"].float {
+                let endLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
+                let distanceMeters = location.distanceFromLocation(endLocation)
+
+                if distanceMeters < 10 {
+                    self.tabView?.forwardButtonTapped()
+                }
+            }
+
+            // Are we close to the current waypoint?
+            if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
+                let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
+                let distanceMeters = location.distanceFromLocation(waypointLocation)
+
+                if distanceMeters < 15 {
+                    self.willDisplayWaypointInfo()
+                }
+            }
+        }
+    }
+
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -178,6 +213,7 @@ extension ActiveTourViewController: TabControlsDelegate {
             self.startTour() {
                 self.tourActive = true
                 self.animateToMyLocation()
+                self.updateUIForCurrentStep()
             }
         } else if state == .TourPreview {
             self.tourActive = false
@@ -204,6 +240,10 @@ extension ActiveTourViewController: TabControlsDelegate {
 
         self.currentStepIndex -= 1
         self.updateUIForCurrentStep()
+    }
+
+    func willDisplayWaypointInfo() {
+        print("info")
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 enum TabState {
     case TourPreview
@@ -17,6 +18,7 @@ protocol TabControlsDelegate {
     func willChangeTabState(state: TabState)
     func willMoveToNextStep()
     func willMoveToPreviousStep()
+    func willDisplayWaypointInfo()
 }
 
 class TabControlsView: UIStackView {
@@ -27,6 +29,7 @@ class TabControlsView: UIStackView {
     let cancelButton = UIButton()
     let backButton = UIButton()
     let forwardButton = UIButton()
+    let infoButton = UIButton()
 
     var delegate: TabControlsDelegate?
 
@@ -41,13 +44,22 @@ class TabControlsView: UIStackView {
         self.cancelButton.setImage(UI.XIcon.imageWithTint(UI.RedColor), forState: .Normal)
         self.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), forControlEvents: .TouchUpInside)
 
+        // Disable the back button for the first load
+        self.backButton.enabled = false
         self.backButton.backgroundColor = UIColor.whiteColor()
         self.backButton.setImage(UI.BackIcon.imageWithTint(UI.BarButtonColor), forState: .Normal)
+        self.backButton.setImage(UI.BackIcon.imageWithTint(UI.BarButtonColorDisabled), forState: .Disabled)
         self.backButton.addTarget(self, action: #selector(backButtonTapped), forControlEvents: .TouchUpInside)
 
         self.forwardButton.backgroundColor = UIColor.whiteColor()
         self.forwardButton.setImage(UI.ForwardIcon.imageWithTint(UI.BarButtonColor), forState: .Normal)
+        self.forwardButton.setImage(UI.ForwardIcon.imageWithTint(UI.BarButtonColorDisabled), forState: .Disabled)
         self.forwardButton.addTarget(self, action: #selector(forwardButtonTapped), forControlEvents: .TouchUpInside)
+
+        let infoImage = UIImage.fontAwesomeIconWithName(.MapMarker, textColor: UI.BlueColor, size: UI.BarButtonSize)
+        self.infoButton.backgroundColor = UIColor.whiteColor()
+        self.infoButton.setImage(infoImage.imageWithTint(UI.BarButtonColor), forState: .Normal)
+        self.infoButton.addTarget(self, action: #selector(infoButtonTapped), forControlEvents: .TouchUpInside)
 
         self.setState(.TourPreview)
     }
@@ -61,6 +73,7 @@ class TabControlsView: UIStackView {
             self.addArrangedSubview(self.cancelButton)
             self.addArrangedSubview(self.backButton)
             self.addArrangedSubview(self.forwardButton)
+            self.addArrangedSubview(self.infoButton)
         }
     }
 
@@ -82,6 +95,10 @@ class TabControlsView: UIStackView {
         self.delegate?.willMoveToNextStep()
     }
 
+    func infoButtonTapped() {
+        self.delegate?.willDisplayWaypointInfo()
+    }
+
     func updateStepIndex(index: Int, outOf: Int) {
         self.backButton.enabled = true
         self.forwardButton.enabled = true
@@ -90,7 +107,7 @@ class TabControlsView: UIStackView {
             self.backButton.enabled = false
         }
 
-        if index == outOf {
+        if index + 1 >= outOf {
             self.forwardButton.enabled = false
         }
     }
