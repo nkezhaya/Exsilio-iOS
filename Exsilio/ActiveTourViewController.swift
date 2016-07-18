@@ -13,12 +13,18 @@ import SVProgressHUD
 
 class ActiveTourViewController: UIViewController {
     @IBOutlet var navView: DirectionsHeaderView?
-    @IBOutlet var mapView: GMSMapView?
     @IBOutlet var tabView: TabControlsView?
+    @IBOutlet var mapView: GMSMapView?
+    @IBOutlet var activeWaypointView: ActiveWaypointView?
+
+    @IBOutlet var navTop: NSLayoutConstraint?
+    @IBOutlet var tabBottom: NSLayoutConstraint?
+    @IBOutlet var activeWaypointTop: NSLayoutConstraint?
 
     var tourActive = false
     var currentStepIndex = 0
     var currentWaypointIndex = 0
+    var waypointInfoViewVisible = false
 
     var startingPoint: CLLocationCoordinate2D?
     var allStepsCache: [JSON]?
@@ -40,12 +46,16 @@ class ActiveTourViewController: UIViewController {
 
         self.navView?.delegate = self
         self.tabView?.delegate = self
+        self.activeWaypointView?.delegate = self
         self.mapView?.myLocationEnabled = true
         self.mapView?.buildingsEnabled = true
         self.mapView?.indoorEnabled = true
         self.mapView?.addObserver(self, forKeyPath: "myLocation", options: .New, context: nil)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
+
+        self.activeWaypointTop?.constant = self.view.frame.height
+        self.activeWaypointView?.layoutIfNeeded()
     }
 
     deinit {
@@ -177,6 +187,39 @@ class ActiveTourViewController: UIViewController {
         return steps
     }
 
+    func toggleWaypointInfoView() {
+        if let waypoint = self.currentWaypoint() {
+            self.activeWaypointView?.updateWaypoint(waypoint)
+
+            self.navView?.layoutIfNeeded()
+            self.tabView?.layoutIfNeeded()
+            self.activeWaypointView?.layoutIfNeeded()
+
+            UIView.animateWithDuration(0.5, animations: {
+                if self.waypointInfoViewVisible {
+                    self.navTop?.constant = 0
+                    self.tabBottom?.constant = 0
+                    self.activeWaypointTop?.constant = self.view.frame.height
+                } else {
+                    self.navTop?.constant = -self.navView!.frame.height
+                    self.tabBottom?.constant = self.navView!.frame.height
+                    self.activeWaypointTop?.constant = 30
+                }
+
+                self.navView?.setNeedsUpdateConstraints()
+                self.navView?.layoutIfNeeded()
+
+                self.tabView?.setNeedsUpdateConstraints()
+                self.tabView?.layoutIfNeeded()
+
+                self.activeWaypointView?.setNeedsUpdateConstraints()
+                self.activeWaypointView?.layoutIfNeeded()
+            }, completion: { _ in
+                self.waypointInfoViewVisible = !self.waypointInfoViewVisible
+            })
+        }
+    }
+
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         guard let keyPath = keyPath where keyPath == "myLocation" && tourActive == true else { return }
 
@@ -243,7 +286,13 @@ extension ActiveTourViewController: TabControlsDelegate {
     }
 
     func willDisplayWaypointInfo() {
-        print("info")
+        self.toggleWaypointInfoView()
+    }
+}
+
+extension ActiveTourViewController: ActiveWaypointViewDelegate {
+    func activeWaypointViewWillBeDismissed() {
+        self.toggleWaypointInfoView()
     }
 }
 
