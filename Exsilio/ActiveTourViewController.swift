@@ -240,7 +240,7 @@ class ActiveTourViewController: UIViewController {
                 let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                 let distanceMeters = location.distanceFromLocation(waypointLocation)
 
-                if distanceMeters < 15 {
+                if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible) {
                     self.willDisplayWaypointInfo()
                 }
             }

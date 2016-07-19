@@ -19,6 +19,7 @@ class ActiveWaypointView: UIView {
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var descriptionTextView: UITextView?
+    @IBOutlet var imageViewHeight: NSLayoutConstraint?
 
     var delegate: ActiveWaypointViewDelegate?
 
@@ -27,7 +28,7 @@ class ActiveWaypointView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.backButton?.setImage(UI.XIcon.imageWithTint(.whiteColor()), forState: .Normal)
+        self.backButton?.setImage(UI.XIcon.imageWithTint(UI.BarButtonColor), forState: .Normal)
         
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
@@ -46,14 +47,19 @@ class ActiveWaypointView: UIView {
             }
         }
 
-        if let imageURL = waypoint["image_url"].string {
+        if let imageURL = waypoint["image_url"].string where imageURL != API.MissingImagePath {
+            self.imageViewHeight?.constant = self.frame.height / 2
             let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.imageView?.image = image
                 }
             })
+        } else {
+            self.imageViewHeight?.constant = 0
         }
+
+        self.layoutIfNeeded()
     }
 
     func imageTapped() {

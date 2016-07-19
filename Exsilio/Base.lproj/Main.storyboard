@@ -485,21 +485,18 @@
                                 <rect key="frame" x="60" y="50" width="480" height="480"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GYQ-Ab-w7J">
-                                        <rect key="frame" x="8" y="246" width="464" height="226"/>
+                                        <rect key="frame" x="8" y="291" width="464" height="181"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="226" id="sue-bS-Q6l"/>
-                                        </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Tw-u8-5fE">
-                                        <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                        <rect key="frame" x="8" y="8" width="36" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="XnZ-5o-NlL"/>
-                                            <constraint firstAttribute="height" constant="70" id="vZT-xL-6Kd"/>
+                                            <constraint firstAttribute="width" constant="36" id="XnZ-5o-NlL"/>
+                                            <constraint firstAttribute="height" constant="36" id="vZT-xL-6Kd"/>
                                         </constraints>
                                         <state key="normal" image="XIcon"/>
                                         <connections>
@@ -507,12 +504,14 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA2-ak-l9A">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="195"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="240" id="TPJ-Pz-t8y"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waypoint Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCA-PE-0o1">
-                                        <rect key="frame" x="8" y="203" width="464" height="35"/>
+                                        <rect key="frame" x="8" y="248" width="464" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="8bx-St-T4n"/>
                                             <constraint firstAttribute="height" constant="35" id="gU7-io-an2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
@@ -530,7 +529,7 @@
                                     <constraint firstItem="qCA-PE-0o1" firstAttribute="top" secondItem="GA2-ak-l9A" secondAttribute="bottom" constant="8" symbolic="YES" id="LQ8-MV-Lz2"/>
                                     <constraint firstItem="GYQ-Ab-w7J" firstAttribute="trailing" secondItem="qCA-PE-0o1" secondAttribute="trailing" id="V2L-JQ-Fah"/>
                                     <constraint firstAttribute="trailing" secondItem="GA2-ak-l9A" secondAttribute="trailing" id="VGR-DA-uwt"/>
-                                    <constraint firstAttribute="bottom" secondItem="GYQ-Ab-w7J" secondAttribute="bottom" constant="8" id="gxi-8f-dcJ"/>
+                                    <constraint firstItem="GYQ-Ab-w7J" firstAttribute="bottom" secondItem="Cva-qb-QBm" secondAttribute="bottomMargin" id="kUe-Hu-2Pb"/>
                                     <constraint firstItem="GYQ-Ab-w7J" firstAttribute="leading" secondItem="qCA-PE-0o1" secondAttribute="leading" id="qjI-hl-zat"/>
                                     <constraint firstItem="GA2-ak-l9A" firstAttribute="trailing" secondItem="qCA-PE-0o1" secondAttribute="trailing" constant="8" id="qol-A2-Zxk"/>
                                     <constraint firstItem="2Tw-u8-5fE" firstAttribute="leading" secondItem="Cva-qb-QBm" secondAttribute="leadingMargin" id="tZO-4Q-LDi"/>
@@ -539,6 +538,7 @@
                                     <outlet property="backButton" destination="2Tw-u8-5fE" id="o7N-pw-5Je"/>
                                     <outlet property="descriptionTextView" destination="GYQ-Ab-w7J" id="MG1-3v-bNH"/>
                                     <outlet property="imageView" destination="GA2-ak-l9A" id="nur-9z-Qvn"/>
+                                    <outlet property="imageViewHeight" destination="TPJ-Pz-t8y" id="ceb-Ng-ON6"/>
                                     <outlet property="nameLabel" destination="qCA-PE-0o1" id="jTd-y6-I21"/>
                                 </connections>
                             </view>
