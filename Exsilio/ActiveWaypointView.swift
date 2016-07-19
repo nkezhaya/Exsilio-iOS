@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import AVFoundation
 
 protocol ActiveWaypointViewDelegate {
     func activeWaypointViewWillBeDismissed()
@@ -21,6 +22,8 @@ class ActiveWaypointView: UIView {
 
     var delegate: ActiveWaypointViewDelegate?
 
+    let speechSynthesizer = AVSpeechSynthesizer()
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -32,7 +35,16 @@ class ActiveWaypointView: UIView {
 
     func updateWaypoint(waypoint: JSON) {
         self.nameLabel?.text = waypoint["name"].string
-        self.descriptionTextView?.text = waypoint["description"].string
+
+        if let description = waypoint["description"].string {
+            self.descriptionTextView?.text = description
+
+            if NSUserDefaults.standardUserDefaults().boolForKey(Settings.SpeechKey) {
+                let utterance = AVSpeechUtterance(string: description)
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                self.speechSynthesizer.speakUtterance(utterance)
+            }
+        }
 
         if let imageURL = waypoint["image_url"].string {
             let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
@@ -49,6 +61,7 @@ class ActiveWaypointView: UIView {
     }
 
     @IBAction func dismiss() {
+        self.speechSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
         self.delegate?.activeWaypointViewWillBeDismissed()
     }
 }

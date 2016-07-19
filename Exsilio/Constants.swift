@@ -69,3 +69,7 @@ struct API {
         ]
     }
 }
+
+struct Settings {
+    static let SpeechKey = "AllowsSpeech"
+}

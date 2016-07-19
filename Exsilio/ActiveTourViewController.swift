@@ -189,11 +189,13 @@ class ActiveTourViewController: UIViewController {
 
     func toggleWaypointInfoView() {
         if let waypoint = self.currentWaypoint() {
-            self.activeWaypointView?.updateWaypoint(waypoint)
-
             self.navView?.layoutIfNeeded()
             self.tabView?.layoutIfNeeded()
             self.activeWaypointView?.layoutIfNeeded()
+
+            if !self.waypointInfoViewVisible {
+                self.activeWaypointView?.updateWaypoint(waypoint)
+            }
 
             UIView.animateWithDuration(0.5, animations: {
                 if self.waypointInfoViewVisible {

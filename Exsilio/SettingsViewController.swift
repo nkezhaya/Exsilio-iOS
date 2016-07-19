@@ -19,7 +19,16 @@ class SettingsViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        form +++ Section("Session")
+        form
+            +++ Section("Voice")
+            <<< SwitchRow() { row in
+                row.title = "Speak Descriptions"
+                row.onChange({ row in
+                    let value = row.value == nil ? false : row.value!
+                    NSUserDefaults.standardUserDefaults().setBool(value, forKey: Settings.SpeechKey)
+                })
+            }
+            +++ Section("Session")
             <<< ButtonRow() { row in
                 row.title = "Log Out"
                 row.onCellSelection({ (_, _) in

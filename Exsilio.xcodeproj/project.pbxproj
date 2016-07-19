@@ -45,6 +45,7 @@
 		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
 		A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */; };
 		A67D61F31D3C3BC900E605B3 /* ActiveWaypointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D61F21D3C3BC900E605B3 /* ActiveWaypointView.swift */; };
+		A68DE8431D3E5E4600E605B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68DE8421D3E5E4600E605B3 /* AVFoundation.framework */; };
 		A6A3B8321CF7489E00E605B3 /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3B8311CF7489E00E605B3 /* WaypointsTableViewController.swift */; };
 		A6A3B8341CF7510000E605B3 /* WaypointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3B8331CF7510000E605B3 /* WaypointTableViewCell.swift */; };
 		A6CBBC181CD3CD6300E605B3 /* EXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */; };
@@ -97,6 +98,7 @@
 		A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourNavigationController.swift; sourceTree = "<group>"; };
 		A67D61F21D3C3BC900E605B3 /* ActiveWaypointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveWaypointView.swift; sourceTree = "<group>"; };
 		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
+		A68DE8421D3E5E4600E605B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A6A3B8311CF7489E00E605B3 /* WaypointsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointsTableViewController.swift; sourceTree = "<group>"; };
 		A6A3B8331CF7510000E605B3 /* WaypointTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WaypointTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A6CBBC171CD3CD6300E605B3 /* EXLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EXLabel.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68DE8431D3E5E4600E605B3 /* AVFoundation.framework in Frameworks */,
 				8092604BE0F6352099AE4E71 /* Pods_Exsilio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +134,7 @@
 		976AA7F49EF47297BE143AA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A68DE8421D3E5E4600E605B3 /* AVFoundation.framework */,
 				C93B9481166D72ABA6A920B9 /* Pods_Exsilio.framework */,
 			);
 			name = Frameworks;
