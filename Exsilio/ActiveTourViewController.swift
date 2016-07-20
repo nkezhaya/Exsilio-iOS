@@ -140,7 +140,7 @@ class ActiveTourViewController: UIViewController {
             bounds = bounds.includingCoordinate(location.coordinate)
         }
 
-        self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 15))
+        self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 30))
     }
 
     func drawTour() {
@@ -212,14 +212,10 @@ class ActiveTourViewController: UIViewController {
                     self.activeWaypointTop?.constant = 30
                 }
 
-                self.navView?.setNeedsUpdateConstraints()
                 self.navView?.layoutIfNeeded()
-
-                self.tabView?.setNeedsUpdateConstraints()
                 self.tabView?.layoutIfNeeded()
-
-                self.activeWaypointView?.setNeedsUpdateConstraints()
                 self.activeWaypointView?.layoutIfNeeded()
+                self.mapView?.layoutIfNeeded()
             }, completion: { _ in
                 self.waypointInfoViewVisible = !self.waypointInfoViewVisible
             })

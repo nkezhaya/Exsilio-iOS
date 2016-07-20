@@ -423,7 +423,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZO-dp-XJB" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="130" width="600" height="420"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5L-b6-ftT" customClass="DirectionsHeaderView" customModule="Exsilio" customModuleProvider="target">
@@ -549,16 +549,16 @@
                             <constraint firstItem="xsz-gz-dBX" firstAttribute="leading" secondItem="jZO-dp-XJB" secondAttribute="leading" id="2TP-on-QSW"/>
                             <constraint firstItem="n5L-b6-ftT" firstAttribute="trailing" secondItem="jZO-dp-XJB" secondAttribute="trailing" id="2Tv-dH-Fzh"/>
                             <constraint firstAttribute="trailing" secondItem="jZO-dp-XJB" secondAttribute="trailing" id="3Sv-8y-poM"/>
-                            <constraint firstItem="n5L-b6-ftT" firstAttribute="top" secondItem="jZO-dp-XJB" secondAttribute="top" id="8UW-lI-6ov"/>
                             <constraint firstItem="Cva-qb-QBm" firstAttribute="height" secondItem="F59-HU-oVd" secondAttribute="height" multiplier="0.8" id="EZP-fQ-0Il"/>
                             <constraint firstItem="Cva-qb-QBm" firstAttribute="centerX" secondItem="F59-HU-oVd" secondAttribute="centerX" id="GIP-4g-x58"/>
+                            <constraint firstItem="jZO-dp-XJB" firstAttribute="top" secondItem="n5L-b6-ftT" secondAttribute="bottom" id="KO7-fJ-Mov"/>
                             <constraint firstItem="Cva-qb-QBm" firstAttribute="top" secondItem="Kh8-gV-b6D" secondAttribute="bottom" constant="30" id="PO2-z9-NhF"/>
                             <constraint firstItem="jZO-dp-XJB" firstAttribute="leading" secondItem="F59-HU-oVd" secondAttribute="leading" id="QVP-LJ-0Mh"/>
-                            <constraint firstItem="jZO-dp-XJB" firstAttribute="height" secondItem="F59-HU-oVd" secondAttribute="height" id="ddl-IN-wnm"/>
                             <constraint firstItem="Cva-qb-QBm" firstAttribute="width" secondItem="F59-HU-oVd" secondAttribute="width" multiplier="0.8" id="fYf-CB-sr8"/>
                             <constraint firstItem="xsz-gz-dBX" firstAttribute="trailing" secondItem="n5L-b6-ftT" secondAttribute="trailing" id="gPg-y1-Qia"/>
+                            <constraint firstItem="jZO-dp-XJB" firstAttribute="bottom" secondItem="xsz-gz-dBX" secondAttribute="top" id="hb8-cq-8Ww"/>
                             <constraint firstItem="xsz-gz-dBX" firstAttribute="bottom" secondItem="FNK-NC-ZWz" secondAttribute="top" id="sLD-Wt-5zT"/>
-                            <constraint firstItem="jZO-dp-XJB" firstAttribute="top" secondItem="F59-HU-oVd" secondAttribute="top" id="vIj-l5-X7C"/>
+                            <constraint firstItem="n5L-b6-ftT" firstAttribute="top" secondItem="F59-HU-oVd" secondAttribute="topMargin" id="xmW-3v-Poq"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -566,7 +566,7 @@
                         <outlet property="activeWaypointTop" destination="PO2-z9-NhF" id="9VB-F7-2sG"/>
                         <outlet property="activeWaypointView" destination="Cva-qb-QBm" id="0eL-4E-qDv"/>
                         <outlet property="mapView" destination="jZO-dp-XJB" id="fl4-bd-vsh"/>
-                        <outlet property="navTop" destination="8UW-lI-6ov" id="pMT-wx-NwH"/>
+                        <outlet property="navTop" destination="xmW-3v-Poq" id="46Q-jd-fvZ"/>
                         <outlet property="navView" destination="n5L-b6-ftT" id="sSS-Er-f3B"/>
                         <outlet property="tabBottom" destination="sLD-Wt-5zT" id="0qQ-ph-6g3"/>
                         <outlet property="tabView" destination="xsz-gz-dBX" id="FAp-8i-qR0"/>
