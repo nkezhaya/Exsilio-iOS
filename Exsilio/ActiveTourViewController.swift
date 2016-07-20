@@ -136,7 +136,11 @@ class ActiveTourViewController: UIViewController {
             }
         }
 
-        self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 200))
+        if let location = self.mapView?.myLocation {
+            bounds = bounds.includingCoordinate(location.coordinate)
+        }
+
+        self.mapView?.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 15))
     }
 
     func drawTour() {
