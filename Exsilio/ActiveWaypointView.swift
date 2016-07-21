@@ -45,7 +45,9 @@ class ActiveWaypointView: UIView {
                 utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                 self.speechSynthesizer.speakUtterance(utterance)
             }
-        }
+        } else {
+          self.descriptionTextView?.text = ""
+      }
 
         if let imageURL = waypoint["image_url"].string where imageURL != API.MissingImagePath {
             self.imageViewHeight?.constant = self.frame.height / 2
