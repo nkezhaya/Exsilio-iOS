@@ -647,15 +647,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="njf-61-D7W" firstAttribute="leading" secondItem="imm-T5-ggb" secondAttribute="leading" id="6FP-1c-D20"/>
+                            <constraint firstItem="wW9-mm-ekF" firstAttribute="trailing" secondItem="plf-OM-IyS" secondAttribute="trailingMargin" id="9WZ-vX-jAH"/>
                             <constraint firstItem="imm-T5-ggb" firstAttribute="top" secondItem="plf-OM-IyS" secondAttribute="top" constant="20" symbolic="YES" id="9YD-9Z-ttk"/>
                             <constraint firstItem="Yxl-7U-X5H" firstAttribute="top" secondItem="njf-61-D7W" secondAttribute="bottom" constant="40" id="EVn-1Z-GsJ"/>
-                            <constraint firstItem="Yxl-7U-X5H" firstAttribute="leading" secondItem="wW9-mm-ekF" secondAttribute="leading" id="M57-wg-QRv"/>
-                            <constraint firstItem="njf-61-D7W" firstAttribute="trailing" secondItem="Yxl-7U-X5H" secondAttribute="trailing" id="M7g-6Z-cTK"/>
-                            <constraint firstItem="njf-61-D7W" firstAttribute="leading" secondItem="Yxl-7U-X5H" secondAttribute="leading" id="MBJ-2b-x4z"/>
+                            <constraint firstItem="Yxl-7U-X5H" firstAttribute="leading" secondItem="plf-OM-IyS" secondAttribute="leadingMargin" id="O6e-54-0Xe"/>
                             <constraint firstItem="imm-T5-ggb" firstAttribute="leading" secondItem="plf-OM-IyS" secondAttribute="leadingMargin" id="QNT-1e-WkO"/>
-                            <constraint firstItem="Yxl-7U-X5H" firstAttribute="trailing" secondItem="wW9-mm-ekF" secondAttribute="trailing" id="Wrm-xl-fJ9"/>
+                            <constraint firstItem="njf-61-D7W" firstAttribute="leading" secondItem="plf-OM-IyS" secondAttribute="leadingMargin" id="UcY-hJ-uCY"/>
+                            <constraint firstItem="njf-61-D7W" firstAttribute="trailing" secondItem="plf-OM-IyS" secondAttribute="trailingMargin" id="W7q-df-xdX"/>
+                            <constraint firstItem="imm-T5-ggb" firstAttribute="trailing" secondItem="plf-OM-IyS" secondAttribute="trailingMargin" id="XKn-Np-UGI"/>
+                            <constraint firstItem="wW9-mm-ekF" firstAttribute="leading" secondItem="plf-OM-IyS" secondAttribute="leadingMargin" id="dZ6-HZ-jZx"/>
                             <constraint firstItem="wW9-mm-ekF" firstAttribute="top" secondItem="Yxl-7U-X5H" secondAttribute="bottom" constant="21" id="kpg-7i-tEY"/>
+                            <constraint firstItem="Yxl-7U-X5H" firstAttribute="trailing" secondItem="plf-OM-IyS" secondAttribute="trailingMargin" id="oUp-Nx-gUL"/>
                             <constraint firstItem="njf-61-D7W" firstAttribute="top" secondItem="imm-T5-ggb" secondAttribute="bottom" constant="26" id="qFv-cn-Xiu"/>
                         </constraints>
                     </view>
