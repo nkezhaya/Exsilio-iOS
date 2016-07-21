@@ -95,6 +95,10 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             waypoint["name"] = name
         }
 
+        if let description = self.descriptionField?.text {
+            waypoint["description"] = description
+        }
+
         if let coords = self.selectedPoint {
             waypoint["latitude"] = coords.latitude
             waypoint["longitude"] = coords.longitude
