@@ -225,7 +225,7 @@ class ActiveTourViewController: UIViewController {
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         guard let keyPath = keyPath where keyPath == "myLocation" && tourActive == true else { return }
 
-        if let location = self.mapView?.myLocation, step = self.currentStep(), waypoint = self.currentWaypoint() {
+        if let location = self.mapView?.myLocation, step = self.currentStep() {
             if let latitude = step["end_location"]["lat"].float, longitude = step["end_location"]["lng"].float {
                 let endLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                 let distanceMeters = location.distanceFromLocation(endLocation)
@@ -235,13 +235,18 @@ class ActiveTourViewController: UIViewController {
                 }
             }
 
-            // Are we close to the current waypoint?
-            if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
-                let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
-                let distanceMeters = location.distanceFromLocation(waypointLocation)
+            // Are we close to a waypoint?
+            if let waypoints = self.tourJSON?["waypoints"].array {
+                for waypoint in waypoints {
+                    if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
+                        let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
+                        let distanceMeters = location.distanceFromLocation(waypointLocation)
 
-                if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible) {
-                    self.willDisplayWaypointInfo()
+                        if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible) {
+                            self.willDisplayWaypointInfo()
+                            return
+                        }
+                    }
                 }
             }
         }
