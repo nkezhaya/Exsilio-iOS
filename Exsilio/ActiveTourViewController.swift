@@ -25,6 +25,7 @@ class ActiveTourViewController: UIViewController {
     var currentStepIndex = 0
     var currentWaypointIndex = 0
     var waypointInfoViewVisible = false
+    var shownWaypointIndices: [Int] = []
 
     var startingPoint: CLLocationCoordinate2D?
     var allStepsCache: [JSON]?
@@ -78,6 +79,7 @@ class ActiveTourViewController: UIViewController {
                     let json = JSON(jsonObj)
                     self.directionsJSON = json
                     self.drawPathFromJSON(json, withColor: UI.RedColor)
+                    self.shownWaypointIndices = []
                     self.cacheAllSteps()
 
                     fallthrough
@@ -199,6 +201,11 @@ class ActiveTourViewController: UIViewController {
 
             if !self.waypointInfoViewVisible {
                 self.activeWaypointView?.updateWaypoint(waypoint)
+
+                let id = waypoint["id"].intValue
+                if !self.shownWaypointIndices.contains(id) {
+                    self.shownWaypointIndices.append(id)
+                }
             }
 
             UIView.animateWithDuration(0.5, animations: {
@@ -243,8 +250,11 @@ class ActiveTourViewController: UIViewController {
                         let distanceMeters = location.distanceFromLocation(waypointLocation)
 
                         if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible) {
-                            self.willDisplayWaypointInfo()
-                            return
+
+                            if !self.shownWaypointIndices.contains(waypoint["id"].intValue) {
+                                self.willDisplayWaypointInfo()
+                                return
+                            }
                         }
                     }
                 }

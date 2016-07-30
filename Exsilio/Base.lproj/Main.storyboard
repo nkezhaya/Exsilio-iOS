@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -345,7 +346,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rb-iw-1Su" id="cz0-3X-uHj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Austin, TX • 34 min • 100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cT-pp-3Gp">
@@ -518,6 +519,16 @@
                                         <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-2G-HwZ">
+                                        <rect key="frame" x="436" y="8" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="1iv-vb-pKL"/>
+                                        </constraints>
+                                        <state key="normal" image="XIcon"/>
+                                        <connections>
+                                            <action selector="toggleVolume" destination="Cva-qb-QBm" eventType="touchUpInside" id="80H-96-Hlt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -527,8 +538,12 @@
                                     <constraint firstItem="GA2-ak-l9A" firstAttribute="leading" secondItem="qCA-PE-0o1" secondAttribute="leading" constant="-8" id="BFc-dx-9yR"/>
                                     <constraint firstItem="2Tw-u8-5fE" firstAttribute="top" secondItem="Cva-qb-QBm" secondAttribute="topMargin" id="Jwv-JA-ZQL"/>
                                     <constraint firstItem="qCA-PE-0o1" firstAttribute="top" secondItem="GA2-ak-l9A" secondAttribute="bottom" constant="8" symbolic="YES" id="LQ8-MV-Lz2"/>
+                                    <constraint firstItem="7aN-2G-HwZ" firstAttribute="top" secondItem="2Tw-u8-5fE" secondAttribute="top" id="LW4-OL-3jc"/>
+                                    <constraint firstItem="7aN-2G-HwZ" firstAttribute="trailing" secondItem="qCA-PE-0o1" secondAttribute="trailing" id="O8p-fI-A4k"/>
+                                    <constraint firstItem="7aN-2G-HwZ" firstAttribute="firstBaseline" secondItem="2Tw-u8-5fE" secondAttribute="firstBaseline" id="Q9b-wB-Nc9"/>
                                     <constraint firstItem="GYQ-Ab-w7J" firstAttribute="trailing" secondItem="qCA-PE-0o1" secondAttribute="trailing" id="V2L-JQ-Fah"/>
                                     <constraint firstAttribute="trailing" secondItem="GA2-ak-l9A" secondAttribute="trailing" id="VGR-DA-uwt"/>
+                                    <constraint firstItem="7aN-2G-HwZ" firstAttribute="baseline" secondItem="2Tw-u8-5fE" secondAttribute="baseline" id="ciR-hN-bed"/>
                                     <constraint firstItem="GYQ-Ab-w7J" firstAttribute="bottom" secondItem="Cva-qb-QBm" secondAttribute="bottomMargin" id="kUe-Hu-2Pb"/>
                                     <constraint firstItem="GYQ-Ab-w7J" firstAttribute="leading" secondItem="qCA-PE-0o1" secondAttribute="leading" id="qjI-hl-zat"/>
                                     <constraint firstItem="GA2-ak-l9A" firstAttribute="trailing" secondItem="qCA-PE-0o1" secondAttribute="trailing" constant="8" id="qol-A2-Zxk"/>
@@ -540,6 +555,7 @@
                                     <outlet property="imageView" destination="GA2-ak-l9A" id="nur-9z-Qvn"/>
                                     <outlet property="imageViewHeight" destination="TPJ-Pz-t8y" id="ceb-Ng-ON6"/>
                                     <outlet property="nameLabel" destination="qCA-PE-0o1" id="jTd-y6-I21"/>
+                                    <outlet property="volumeButton" destination="7aN-2G-HwZ" id="e1o-iO-0Ez"/>
                                 </connections>
                             </view>
                         </subviews>

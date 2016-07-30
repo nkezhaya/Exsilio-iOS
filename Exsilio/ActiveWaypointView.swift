@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import FontAwesome_swift
 import AVFoundation
 
 protocol ActiveWaypointViewDelegate {
@@ -16,19 +17,25 @@ protocol ActiveWaypointViewDelegate {
 
 class ActiveWaypointView: UIView {
     @IBOutlet var backButton: UIButton?
+    @IBOutlet var volumeButton: UIButton?
     @IBOutlet var imageView: UIImageView?
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var descriptionTextView: UITextView?
     @IBOutlet var imageViewHeight: NSLayoutConstraint?
 
     var delegate: ActiveWaypointViewDelegate?
+    var volume: Bool = true
+    var descriptionText: String?
 
     let speechSynthesizer = AVSpeechSynthesizer()
+    let volumeOnIcon = UIImage.fontAwesomeIconWithName(.VolumeUp, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
+    let volumeOffIcon = UIImage.fontAwesomeIconWithName(.VolumeOff, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.backButton?.setImage(UI.XIcon.imageWithTint(UI.BarButtonColor), forState: .Normal)
+        self.volumeButton?.setImage(volumeOnIcon, forState: .Normal)
         
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
@@ -41,13 +48,13 @@ class ActiveWaypointView: UIView {
             self.descriptionTextView?.text = description
 
             if NSUserDefaults.standardUserDefaults().boolForKey(Settings.SpeechKey) {
-                let utterance = AVSpeechUtterance(string: description)
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                self.speechSynthesizer.speakUtterance(utterance)
+                speak()
+            } else {
+                self.volumeButton?.hidden = true
             }
         } else {
-          self.descriptionTextView?.text = ""
-      }
+            self.descriptionTextView?.text = ""
+        }
 
         if let imageURL = waypoint["image_url"].string where imageURL != API.MissingImagePath {
             self.imageViewHeight?.constant = self.frame.height / 2
@@ -66,6 +73,26 @@ class ActiveWaypointView: UIView {
 
     func imageTapped() {
         // TODO
+    }
+
+    func speak() {
+        if let text = self.descriptionTextView?.text {
+            let utterance = AVSpeechUtterance(string: text)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            self.speechSynthesizer.speakUtterance(utterance)
+        }
+    }
+
+    @IBAction func toggleVolume() {
+        self.volume = !volume
+
+        if self.volume == true {
+            speak()
+            self.volumeButton?.setImage(volumeOnIcon, forState: .Normal)
+        } else {
+            self.speechSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
+            self.volumeButton?.setImage(volumeOffIcon, forState: .Normal)
+        }
     }
 
     @IBAction func dismiss() {
