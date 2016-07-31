@@ -24,7 +24,7 @@ class SettingsViewController: FormViewController {
             <<< SwitchRow() { row in
                 row.title = "Speak Descriptions"
                 row.onChange({ row in
-                    let value = row.value == nil ? false : row.value!
+                    let value: Bool = row.value == nil ? false : row.value!
                     NSUserDefaults.standardUserDefaults().setBool(value, forKey: Settings.SpeechKey)
                 })
             }

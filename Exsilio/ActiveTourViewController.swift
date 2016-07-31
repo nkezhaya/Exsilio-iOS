@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
+import ImageViewer
 
 class ActiveTourViewController: UIViewController {
     @IBOutlet var navView: DirectionsHeaderView?
@@ -25,7 +26,7 @@ class ActiveTourViewController: UIViewController {
     var currentStepIndex = 0
     var currentWaypointIndex = 0
     var waypointInfoViewVisible = false
-    var shownWaypointIndices: [Int] = []
+    var shownWaypointIds: [Int] = []
 
     var startingPoint: CLLocationCoordinate2D?
     var allStepsCache: [JSON]?
@@ -37,12 +38,14 @@ class ActiveTourViewController: UIViewController {
         super.viewDidLoad()
 
         self.setNeedsStatusBarAppearanceUpdate()
+        self.view.userInteractionEnabled = false
 
         SVProgressHUD.show()
         CurrentTourSingleton.sharedInstance.refreshTour { json in
             self.tourJSON = json
             self.drawTour()
             SVProgressHUD.dismiss()
+            self.view.userInteractionEnabled = true
         }
 
         self.navView?.delegate = self
@@ -79,7 +82,7 @@ class ActiveTourViewController: UIViewController {
                     let json = JSON(jsonObj)
                     self.directionsJSON = json
                     self.drawPathFromJSON(json, withColor: UI.RedColor)
-                    self.shownWaypointIndices = []
+                    self.shownWaypointIds = []
                     self.cacheAllSteps()
 
                     fallthrough
@@ -203,8 +206,8 @@ class ActiveTourViewController: UIViewController {
                 self.activeWaypointView?.updateWaypoint(waypoint)
 
                 let id = waypoint["id"].intValue
-                if !self.shownWaypointIndices.contains(id) {
-                    self.shownWaypointIndices.append(id)
+                if !self.shownWaypointIds.contains(id) {
+                    self.shownWaypointIds.append(id)
                 }
             }
 
@@ -245,16 +248,17 @@ class ActiveTourViewController: UIViewController {
             // Are we close to a waypoint?
             if let waypoints = self.tourJSON?["waypoints"].array {
                 for waypoint in waypoints {
+                    if self.shownWaypointIds.contains(waypoint["id"].intValue) {
+                        continue
+                    }
+
                     if let latitude = waypoint["latitude"].float, longitude = waypoint["longitude"].float {
                         let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                         let distanceMeters = location.distanceFromLocation(waypointLocation)
 
-                        if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible) {
-
-                            if !self.shownWaypointIndices.contains(waypoint["id"].intValue) {
-                                self.willDisplayWaypointInfo()
-                                return
-                            }
+                        if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible && self.activeWaypointView?.sticky != true) {
+                            self.willDisplayWaypointInfo()
+                            return
                         }
                     }
                 }
@@ -303,6 +307,7 @@ extension ActiveTourViewController: TabControlsDelegate {
     }
 
     func willDisplayWaypointInfo() {
+        self.activeWaypointView?.sticky = true
         self.toggleWaypointInfoView()
     }
 }
@@ -310,6 +315,10 @@ extension ActiveTourViewController: TabControlsDelegate {
 extension ActiveTourViewController: ActiveWaypointViewDelegate {
     func activeWaypointViewWillBeDismissed() {
         self.toggleWaypointInfoView()
+    }
+
+    func willPresentImageViewer(imageViewer: ImageViewer) {
+        self.presentImageViewer(imageViewer)
     }
 }
 

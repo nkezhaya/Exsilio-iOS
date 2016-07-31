@@ -58,6 +58,7 @@ class DirectionsHeaderView: UIView {
             ]))
 
         let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .Center
         paragraph.lineSpacing = 5
         paragraph.lineBreakMode = .ByWordWrapping
 

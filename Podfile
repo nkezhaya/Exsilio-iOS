@@ -18,4 +18,5 @@ target "Exsilio" do
   pod "Eureka"
   pod "SkyFloatingLabelTextField"
   pod "SVProgressHUD"
+  pod "ImageViewer"
 end

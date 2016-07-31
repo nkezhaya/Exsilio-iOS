@@ -28,10 +28,12 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
         if self.nameField?.text == nil || self.nameField?.text!.isEmpty == true {
             SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
         } else {
+            self.view.userInteractionEnabled = false
             CurrentTourSingleton.sharedInstance.newTour(self.nameField!.text!, description: self.descriptionField!.text!, successHandler: { tour in
                 if let navigationController = self.navigationController as? CreateTourNavigationController {
                     navigationController.dismissAndEditTour(tour)
                 }
+                self.view.userInteractionEnabled = true
             })
         }
     }

@@ -346,7 +346,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rb-iw-1Su" id="cz0-3X-uHj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Austin, TX • 34 min • 100 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cT-pp-3Gp">
@@ -493,18 +493,7 @@
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Tw-u8-5fE">
-                                        <rect key="frame" x="8" y="8" width="36" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="XnZ-5o-NlL"/>
-                                            <constraint firstAttribute="height" constant="36" id="vZT-xL-6Kd"/>
-                                        </constraints>
-                                        <state key="normal" image="XIcon"/>
-                                        <connections>
-                                            <action selector="dismiss" destination="Cva-qb-QBm" eventType="touchUpInside" id="Iwh-h9-hII"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA2-ak-l9A">
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GA2-ak-l9A">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="240" id="TPJ-Pz-t8y"/>
@@ -519,10 +508,22 @@
                                         <color key="textColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-2G-HwZ">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Tw-u8-5fE">
+                                        <rect key="frame" x="8" y="8" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="XnZ-5o-NlL"/>
+                                            <constraint firstAttribute="height" constant="36" id="vZT-xL-6Kd"/>
+                                        </constraints>
+                                        <state key="normal" image="XIcon"/>
+                                        <connections>
+                                            <action selector="dismiss" destination="Cva-qb-QBm" eventType="touchUpInside" id="Iwh-h9-hII"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-2G-HwZ">
                                         <rect key="frame" x="436" y="8" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="1iv-vb-pKL"/>
+                                            <constraint firstAttribute="height" constant="36" id="EeS-gs-ClQ"/>
                                         </constraints>
                                         <state key="normal" image="XIcon"/>
                                         <connections>
