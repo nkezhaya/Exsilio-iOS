@@ -235,8 +235,8 @@ class ActiveTourViewController: UIViewController {
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         guard let keyPath = keyPath where keyPath == "myLocation" && tourActive == true else { return }
 
-        if let location = self.mapView?.myLocation, step = self.currentStep() {
-            if let latitude = step["end_location"]["lat"].float, longitude = step["end_location"]["lng"].float {
+        if let location = self.mapView?.myLocation {
+            if let step = self.currentStep(), latitude = step["end_location"]["lat"].float, longitude = step["end_location"]["lng"].float {
                 let endLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                 let distanceMeters = location.distanceFromLocation(endLocation)
 
@@ -257,6 +257,7 @@ class ActiveTourViewController: UIViewController {
                         let distanceMeters = location.distanceFromLocation(waypointLocation)
 
                         if (distanceMeters < 10 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible && self.activeWaypointView?.sticky != true) {
+                            self.currentWaypointIndex = waypoints.indexOf(waypoint)!
                             self.willDisplayWaypointInfo()
                             return
                         }

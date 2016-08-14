@@ -18,7 +18,11 @@ PODS:
     - FBSDKCoreKit
   - FontAwesome.swift (0.7.3)
   - Fusuma (0.4.1)
-  - GoogleMaps (1.13.2)
+  - GoogleMaps (2.0.1):
+    - GoogleMaps/Maps (= 2.0.1)
+  - GoogleMaps/Base (2.0.1)
+  - GoogleMaps/Maps (2.0.1):
+    - GoogleMaps/Base (= 2.0.1)
   - ImageViewer (2.0)
   - SCLAlertView (0.5.8)
   - SkyFloatingLabelTextField (1.2.1)
@@ -55,7 +59,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
   FontAwesome.swift: f694fe0f667d6d3390b5919cdb0556a27b75d427
   Fusuma: 4dbaa05a2a20ab11a41f8dedbe650c904ea99625
-  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  GoogleMaps: f09da64fc987c1aa29394567c3cab5a3df83c402
   ImageViewer: 00eae024d0cb2eebb4b228f4669b6c4872afadb9
   SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
