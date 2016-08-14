@@ -30,7 +30,7 @@ class ActiveWaypointView: UIView {
     var sticky: Bool = false
     var descriptionText: String?
 
-    let speechSynthesizer = AVSpeechSynthesizer()
+    var speechSynthesizer: AVSpeechSynthesizer?
     var closeIcon = UI.XIcon.imageWithTint(UI.BarButtonColor)
     var volumeOnIcon = UIImage.fontAwesomeIconWithName(.VolumeUp, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
     var volumeOffIcon = UIImage.fontAwesomeIconWithName(.VolumeOff, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
@@ -94,9 +94,20 @@ class ActiveWaypointView: UIView {
 
     func speak() {
         if let text = self.descriptionTextView?.text {
+            enableSound()
+            self.speechSynthesizer = AVSpeechSynthesizer()
             let utterance = AVSpeechUtterance(string: text)
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            self.speechSynthesizer.speakUtterance(utterance)
+            self.speechSynthesizer?.speakUtterance(utterance)
+        }
+    }
+
+    func enableSound() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch _ {
+
         }
     }
 
@@ -126,7 +137,7 @@ class ActiveWaypointView: UIView {
         if self.volume == true {
             speak()
         } else {
-            self.speechSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
+            self.speechSynthesizer?.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
         }
 
         self.updateVolumeButtonImage()
@@ -134,7 +145,7 @@ class ActiveWaypointView: UIView {
 
     @IBAction func dismiss() {
         self.sticky = false
-        self.speechSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
+        self.speechSynthesizer?.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
         self.delegate?.activeWaypointViewWillBeDismissed()
     }
 }
