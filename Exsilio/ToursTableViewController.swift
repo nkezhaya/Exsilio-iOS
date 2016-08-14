@@ -93,9 +93,15 @@ class ToursTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourPreviewViewController") as! TourPreviewViewController
-        vc.tour = self.tours[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        let tour = self.tours[indexPath.row]
+
+        if tour["waypoints_count"].int < 2 {
+            SCLAlertView().showError("Error", subTitle: "Whoops! This tour does not have enough waypoints to preview yet. Swipe right to edit.")
+        } else {
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourPreviewViewController") as! TourPreviewViewController
+            vc.tour = tour
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
