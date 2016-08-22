@@ -12,6 +12,7 @@ import DZNEmptyDataSet
 import SwiftyJSON
 import SWTableViewCell
 import SCLAlertView
+import SVProgressHUD
 
 class ToursTableViewController: UITableViewController {
     var tours: JSON = JSON([])
@@ -44,13 +45,19 @@ class ToursTableViewController: UITableViewController {
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+    }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         refresh()
     }
 
     func refresh() {
+        SVProgressHUD.show()
+
         Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)", headers: API.authHeaders()).responseJSON { response in
             self.refreshControl?.endRefreshing()
+            SVProgressHUD.dismiss()
 
             switch response.result {
             case .Success(let json):
