@@ -256,7 +256,7 @@ class ActiveTourViewController: UIViewController {
                         let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                         let distanceMeters = location.distanceFromLocation(waypointLocation)
 
-                        if (distanceMeters < 10 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible && self.activeWaypointView?.sticky != true) {
+                        if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible && self.activeWaypointView?.sticky != true) {
                             self.currentWaypointIndex = waypoints.indexOf(waypoint)!
                             self.willDisplayWaypointInfo()
                             return
