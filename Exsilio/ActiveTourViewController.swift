@@ -24,7 +24,6 @@ class ActiveTourViewController: UIViewController {
 
     var tourActive = false
     var currentStepIndex = 0
-    var currentWaypointIndex = 0
     var waypointInfoViewVisible = false
     var shownWaypointIds: [Int] = []
 
@@ -110,7 +109,31 @@ class ActiveTourViewController: UIViewController {
     }
 
     func currentWaypoint() -> JSON? {
-        return self.tourJSON?["waypoints"].array?[self.currentWaypointIndex]
+        let distanceToLocation: (CLLocation -> Double?) = { location in
+            if let myLocation = self.mapView?.myLocation {
+                return myLocation.distanceFromLocation(location)
+            }
+
+            return nil
+        }
+
+
+        if let waypoints = self.tourJSON?["waypoints"].array {
+            let sorted = waypoints.sort { (a, b) in
+                let latitudeA = a["latitude"].floatValue
+                let latitudeB = b["latitude"].floatValue
+                let longitudeA = a["longitude"].floatValue
+                let longitudeB = b["longitude"].floatValue
+                let locationA = CLLocation(latitude: Double(latitudeA), longitude: Double(longitudeA))
+                let locationB = CLLocation(latitude: Double(latitudeB), longitude: Double(longitudeB))
+
+                return distanceToLocation(locationA) < distanceToLocation(locationB)
+            }
+
+            return sorted.first
+        }
+
+        return nil
     }
 
     func animateToMyLocation() {
@@ -204,11 +227,6 @@ class ActiveTourViewController: UIViewController {
 
             if !self.waypointInfoViewVisible {
                 self.activeWaypointView?.updateWaypoint(waypoint)
-
-                let id = waypoint["id"].intValue
-                if !self.shownWaypointIds.contains(id) {
-                    self.shownWaypointIds.append(id)
-                }
             }
 
             UIView.animateWithDuration(0.5, animations: {
@@ -257,7 +275,7 @@ class ActiveTourViewController: UIViewController {
                         let distanceMeters = location.distanceFromLocation(waypointLocation)
 
                         if (distanceMeters < 15 && !self.waypointInfoViewVisible) || (distanceMeters > 30 && self.waypointInfoViewVisible && self.activeWaypointView?.sticky != true) {
-                            self.currentWaypointIndex = waypoints.indexOf(waypoint)!
+                            self.shownWaypointIds.append(waypoint["id"].intValue)
                             self.willDisplayWaypointInfo()
                             return
                         }

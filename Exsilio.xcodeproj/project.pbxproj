@@ -342,6 +342,7 @@
 				TargetAttributes = {
 					A65A39951CBBFB3C00E605B3 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FDEYQ2PC7M;
 					};
 				};
 			};
@@ -595,6 +596,8 @@
 			baseConfigurationReference = 93C00C02D9BD2063E80EF1DD /* Pods-Exsilio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Exsilio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-DDEBUG\"";
@@ -609,13 +612,14 @@
 			baseConfigurationReference = 6809C36672D894B782C3C8FD /* Pods-Exsilio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Nicholas Kezhaya (FDEYQ2PC7M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Exsilio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-DRELEASE\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitepaperclip.Exsilio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aa7bdd48-6db7-4989-8480-5374daf3e627";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
