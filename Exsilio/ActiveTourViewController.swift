@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 import ImageViewer
+import SCLAlertView
 
 class ActiveTourViewController: UIViewController {
     @IBOutlet var navView: DirectionsHeaderView?
@@ -24,8 +25,8 @@ class ActiveTourViewController: UIViewController {
 
     var tourActive = false
     var currentStepIndex = 0
-    var waypointInfoViewVisible = false
     var shownWaypointIds: [Int] = []
+    var waypointInfoViewVisible = false
 
     var startingPoint: CLLocationCoordinate2D?
     var allStepsCache: [JSON]?
@@ -234,18 +235,18 @@ class ActiveTourViewController: UIViewController {
                     self.navTop?.constant = 0
                     self.tabBottom?.constant = 0
                     self.activeWaypointTop?.constant = self.view.frame.height
+                    self.waypointInfoViewVisible = false
                 } else {
                     self.navTop?.constant = -self.navView!.frame.height
                     self.tabBottom?.constant = self.navView!.frame.height
                     self.activeWaypointTop?.constant = 30
+                    self.waypointInfoViewVisible = true
                 }
 
                 self.navView?.layoutIfNeeded()
                 self.tabView?.layoutIfNeeded()
                 self.activeWaypointView?.layoutIfNeeded()
                 self.mapView?.layoutIfNeeded()
-            }, completion: { _ in
-                self.waypointInfoViewVisible = !self.waypointInfoViewVisible
             })
         }
     }
