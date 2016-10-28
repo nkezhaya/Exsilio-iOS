@@ -18,28 +18,28 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButtonClicked() {
-        FBSDKLoginManager().logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result, error) in
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: { (result, error) in
             if error != nil {
                 print("Error with Facebook login")
-            } else if result.isCancelled {
+            } else if (result?.isCancelled)! {
                 print("Cancelled!")
             } else {
                 let fbRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,first_name,last_name,email,gender"])
-                fbRequest.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) in
+                _ = fbRequest?.start { (connection: FBSDKGraphRequestConnection?, result: Any?, error: Error?) in
                     if error == nil {
-                        Alamofire.request(.POST, "\(API.URL)/\(API.AuthPath)", parameters: [ "user[token]": FBSDKAccessToken.currentAccessToken().tokenString ])
+                        Alamofire.request("\(API.URL)/\(API.AuthPath)", method: .post, parameters: [ "user[token]": FBSDKAccessToken.current().tokenString ])
                             .responseJSON { _ in
-                                (UIApplication.sharedApplication().delegate as! AppDelegate).setRootViewController()
-                            }
+                                (UIApplication.shared.delegate as! AppDelegate).setRootViewController()
+                        }
                     } else {
                         print("Error: \(error)")
                     }
-                })
+                }
             }
         })
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 }

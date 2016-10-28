@@ -34,51 +34,51 @@ class DirectionsHeaderView: UIView {
             attributes: [
                 NSFontAttributeName: UIFont.fontAwesomeOfSize(fontSize)
             ]))
-        description.appendAttributedString(NSAttributedString(string: " "))
+        description.append(NSAttributedString(string: " "))
 
-        description.appendAttributedString(NSAttributedString(
+        description.append(NSAttributedString(
             string: tour["duration"] as! String,
             attributes: [
                 NSFontAttributeName: UIFont(name: "OpenSans-Light", size: fontSize)!
             ]))
 
-        description.appendAttributedString(NSAttributedString(string: "\n"))
+        description.append(NSAttributedString(string: "\n"))
 
         description.appendAttributedString(NSAttributedString(
             string: String.fontAwesomeIconWithName(.MapMarker),
             attributes: [
                 NSFontAttributeName: UIFont.fontAwesomeOfSize(fontSize)
             ]))
-        description.appendAttributedString(NSAttributedString(string: " "))
+        description.append(NSAttributedString(string: " "))
 
-        description.appendAttributedString(NSAttributedString(
+        description.append(NSAttributedString(
             string: "\(tour["waypoints_count"]!) waypoints",
             attributes: [
                 NSFontAttributeName: UIFont(name: "OpenSans-Light", size: fontSize)!
             ]))
 
         let paragraph = NSMutableParagraphStyle()
-        paragraph.alignment = .Center
+        paragraph.alignment = .center
         paragraph.lineSpacing = 5
-        paragraph.lineBreakMode = .ByWordWrapping
+        paragraph.lineBreakMode = .byWordWrapping
 
         description.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSRangeFromString(description.string))
 
         self.subheader?.attributedText = description
     }
 
-    func updateStep(step: JSON) {
+    func updateStep(_ step: JSON) {
         if let distance = step["distance"]["text"].string {
             self.header?.text = distance
         }
 
         if let htmlInstructions = step["html_instructions"].string {
-            guard let regex = try? NSRegularExpression(pattern: "<.*?>", options: .CaseInsensitive) else {
+            guard let regex = try? NSRegularExpression(pattern: "<.*?>", options: .caseInsensitive) else {
                 return
             }
 
             let range = NSMakeRange(0, htmlInstructions.characters.count)
-            let instructions = regex.stringByReplacingMatchesInString(htmlInstructions, options: NSMatchingOptions(), range: range, withTemplate: "")
+            let instructions = regex.stringByReplacingMatches(in: htmlInstructions, options: NSRegularExpression.MatchingOptions(), range: range, withTemplate: "")
 
             self.subheader?.text = instructions
         }

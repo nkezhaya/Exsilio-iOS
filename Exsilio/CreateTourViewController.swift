@@ -14,21 +14,21 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var descriptionField: UITextField?
 
     override func viewDidLoad() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.ForwardIcon, style: .Plain, target: self, action: #selector(next))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.ForwardIcon, style: .plain, target: self, action: #selector(next))
 
         self.nameField?.becomeFirstResponder()
     }
 
     func dismiss() {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     func next() {
         if self.nameField?.text == nil || self.nameField?.text!.isEmpty == true {
             SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
         } else {
-            self.view.userInteractionEnabled = false
+            self.view.isUserInteractionEnabled = false
             CurrentTourSingleton.sharedInstance.newTour(self.nameField!.text!, description: self.descriptionField!.text!, successHandler: { tour in
                 if let navigationController = self.navigationController as? CreateTourNavigationController {
                     navigationController.dismissAndEditTour(tour)
@@ -38,7 +38,7 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.nameField {
             self.nameField?.resignFirstResponder()
             self.descriptionField?.becomeFirstResponder()

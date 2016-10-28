@@ -17,7 +17,7 @@ class SearchTableViewController: UITableViewController {
     let locationManager = CLLocationManager()
 
     var tours: JSON?
-    var expandedIndexPath: NSIndexPath?
+    var expandedIndexPath: IndexPath?
     var query: String = ""
     var currentLocation: CLLocation?
 
@@ -28,9 +28,9 @@ class SearchTableViewController: UITableViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.tabBarItem.image = UI.BarButtonIcon(.Search)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.BarButtonIcon(.Sliders),
-                                                                 style: .Plain,
+        self.tabBarItem.image = UI.BarButtonIcon(.search)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.BarButtonIcon(.sliders),
+                                                                 style: .plain,
                                                                  target: self,
                                                                  action: #selector(showFilters))
     }
@@ -38,17 +38,17 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.extendedLayoutIncludesOpaqueBars = false
         self.automaticallyAdjustsScrollViewInsets = false
 
         self.filtersViewController.searchController = self
 
-        self.tableView.registerNib(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
-        self.tableView.registerNib(UINib(nibName: "ExpandedTourTableViewCell", bundle: nil), forCellReuseIdentifier: "ExpandedTourTableViewCell")
+        self.tableView.register(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
+        self.tableView.register(UINib(nibName: "ExpandedTourTableViewCell", bundle: nil), forCellReuseIdentifier: "ExpandedTourTableViewCell")
 
         self.tableView.tableFooterView = UIView()
-        self.tableView.opaque = false
+        self.tableView.isOpaque = false
         self.tableView.backgroundView = nil
 
         self.tableView.emptyDataSetSource = self
@@ -62,13 +62,13 @@ class SearchTableViewController: UITableViewController {
         self.locationManager.delegate = self
 
         if CLLocationManager.locationServicesEnabled() {
-            if CLLocationManager.authorizationStatus() == .NotDetermined {
+            if CLLocationManager.authorizationStatus() == .notDetermined {
                 self.locationManager.requestWhenInUseAuthorization()
             }
         }
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tours = self.tours {
             return tours.count
         }
@@ -76,31 +76,31 @@ class SearchTableViewController: UITableViewController {
         return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.row + 1) % 10 == 0 {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if ((indexPath as NSIndexPath).row + 1) % 10 == 0 {
             self.fetchNextPage()
         }
 
         if self.expandedIndexPath == indexPath {
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("ExpandedTourTableViewCell", forIndexPath: indexPath) as! ExpandedTourTableViewCell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "ExpandedTourTableViewCell", for: indexPath) as! ExpandedTourTableViewCell
             cell.updateWithTour(self.tours![indexPath.row])
 
             return cell
         } else {
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("TourTableViewCell", forIndexPath: indexPath) as! TourTableViewCell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "TourTableViewCell", for: indexPath) as! TourTableViewCell
             cell.updateWithTour(self.tours![indexPath.row])
 
             return cell
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
 
         // If the user taps the same row, proceed to Tour summary.
 
         if self.expandedIndexPath == indexPath {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourPreviewViewController") as! TourPreviewViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TourPreviewViewController") as! TourPreviewViewController
             vc.tour = self.tours![indexPath.row]
 
             self.navigationController?.pushViewController(vc, animated: true)
@@ -109,7 +109,7 @@ class SearchTableViewController: UITableViewController {
 
         // Otherwise, figure out which rows are being expanded/collapsed. Only one row can be expanded at a time.
 
-        var pathsToReload: [NSIndexPath] = []
+        var pathsToReload: [IndexPath] = []
 
         if let oldExpandedIndexPath = self.expandedIndexPath {
             pathsToReload.append(oldExpandedIndexPath)
@@ -121,15 +121,15 @@ class SearchTableViewController: UITableViewController {
             self.expandedIndexPath = indexPath
         }
 
-        self.tableView.reloadRowsAtIndexPaths(pathsToReload, withRowAnimation: .Automatic)
+        self.tableView.reloadRows(at: pathsToReload, with: .automatic)
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.expandedIndexPath == indexPath ? 200.0 : 87.0
     }
 
     func showFilters() {
-        self.presentViewController(self.filtersViewController, animated: true, completion: nil)
+        self.present(self.filtersViewController, animated: true, completion: nil)
     }
 
     func search() {
@@ -151,9 +151,9 @@ class SearchTableViewController: UITableViewController {
 
         params["page"] = String(self.currentPage)
 
-        Alamofire.request(.GET, "\(API.URL)\(API.SearchPath)", parameters: params, headers: API.authHeaders()).responseJSON { response in
+        Alamofire.request("\(API.URL)\(API.SearchPath)", method: .get, parameters: params, headers: API.authHeaders()).responseJSON { response in
             switch response.result {
-            case .Success(let result):
+            case .success(let result):
                 let jsonResult = JSON(result)
                 let newTours = jsonResult["tours"]
                 let totalTours = jsonResult["total"].int
@@ -169,13 +169,13 @@ class SearchTableViewController: UITableViewController {
                 if self.currentPage > 1 {
                     var currentTours = self.tours!.arrayValue
                     let initialCount = currentTours.count
-                    currentTours.appendContentsOf(newTours.arrayValue)
+                    currentTours.append(contentsOf: newTours.arrayValue)
                     let newCount = currentTours.count
 
                     self.tours = JSON(currentTours)
 
-                    let indexPaths = (initialCount...newCount - 1).map { NSIndexPath(forRow: $0, inSection: 0) }
-                    self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+                    let indexPaths = (initialCount...newCount - 1).map { IndexPath(row: $0, section: 0) }
+                    self.tableView.insertRows(at: indexPaths, with: .automatic)
                 }
 
                 break
@@ -204,13 +204,13 @@ class SearchTableViewController: UITableViewController {
 }
 
 extension SearchTableViewController: CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
             manager.startUpdatingLocation()
         }
     }
 
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
 
         if let location = locations.first {
@@ -220,20 +220,20 @@ extension SearchTableViewController: CLLocationManagerDelegate {
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
 
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
     }
 
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
     }
 
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             searchBar.resignFirstResponder()
 
@@ -245,34 +245,34 @@ extension SearchTableViewController: UISearchBarDelegate {
 }
 
 extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
 
-    func emptyDataSetShouldDisplay(scrollView: UIScrollView) -> Bool {
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView) -> Bool {
         return self.tours?.count == 0
     }
 
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage.fontAwesomeIconWithName(.Search, textColor: UIColor(hexString: "#AAAAAA"), size: CGSizeMake(80, 80))
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage.fontAwesomeIcon(name: .search, textColor: UIColor(hexString: "#AAAAAA"), size: CGSize(width: 80, height: 80))
     }
 
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO RESULTS"
 
-        let attributes: [String : AnyObject!] = [
+        let attributes: [String : AnyObject?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
-            NSKernAttributeName: UI.LabelCharacterSpacing
+            NSKernAttributeName: UI.LabelCharacterSpacing as ImplicitlyUnwrappedOptional<AnyObject>
         ]
 
         return NSAttributedString(string: text, attributes: attributes)
     }
 
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Modify your search terms\nand try again!"
 
-        let attributes: [String : AnyObject!] = [
+        let attributes: [String : AnyObject?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#333333")
         ]
@@ -280,7 +280,7 @@ extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
         return NSAttributedString(string: text, attributes: attributes)
     }
 
-    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
         return -20
     }
 }

@@ -29,7 +29,7 @@ class FiltersViewController: FormViewController {
             (120 * 60): "2 hours"
         ]
 
-        let secondsToString: (String? -> String?) = { optVal in
+        let secondsToString: ((String?) -> String?) = { optVal in
             if let val = optVal {
                 if !val.isEmpty {
                     return secondsStrings[Int(val)!]
@@ -83,7 +83,7 @@ class FiltersViewController: FormViewController {
 
     func showNavigation() {
         let navBarHeight = CGFloat(44)
-        let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, navBarHeight + 20))
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: navBarHeight + 20))
 
         navigationBar.backgroundColor = UIColor.whiteColor()
 
@@ -92,12 +92,12 @@ class FiltersViewController: FormViewController {
         navigationItem.title = "Filters"
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset",
-                                                           style: .Plain,
+                                                           style: .plain,
                                                            target: self,
                                                            action: #selector(reset))
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
-                                                            style: .Done,
+                                                            style: .done,
                                                             target: self,
                                                             action: #selector(done))
 

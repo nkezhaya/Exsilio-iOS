@@ -24,8 +24,8 @@ class MapViewController: UIViewController {
 
         self.mapView?.mapType = kGMSTypeTerrain
         self.mapView?.delegate = self.delegate
-        self.mapView?.myLocationEnabled = true
-        self.mapView?.animateToZoom(15)
+        self.mapView?.isMyLocationEnabled = true
+        self.mapView?.animate(toZoom: 15)
 
         if self.startingPoint != nil {
             self.setCoordinate(self.startingPoint!)
@@ -34,7 +34,7 @@ class MapViewController: UIViewController {
         self.locationManager.delegate = self
 
         if CLLocationManager.locationServicesEnabled() {
-            if CLLocationManager.authorizationStatus() == .NotDetermined {
+            if CLLocationManager.authorizationStatus() == .notDetermined {
                 self.locationManager.requestWhenInUseAuthorization()
             }
         }
@@ -44,9 +44,9 @@ class MapViewController: UIViewController {
 
     func showNavigation() {
         let navBarHeight = CGFloat(44)
-        let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, navBarHeight + 20))
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: navBarHeight + 20))
 
-        navigationBar.backgroundColor = UIColor.whiteColor()
+        navigationBar.backgroundColor = UIColor.white
 
         // Create a navigation item with a title
         let navigationItem = UINavigationItem()
@@ -54,7 +54,7 @@ class MapViewController: UIViewController {
 
         navigationItem.leftBarButtonItem = nil
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
-                                                            style: .Done,
+                                                            style: .done,
                                                             target: self,
                                                             action: #selector(done))
 
@@ -63,25 +63,25 @@ class MapViewController: UIViewController {
         self.view.addSubview(navigationBar)
     }
 
-    func setCoordinate(coordinate: CLLocationCoordinate2D) {
-        self.delegate?.mapView!(self.mapView!, didTapAtCoordinate: coordinate)
-        self.mapView?.animateToLocation(coordinate)
-        self.mapView?.animateToZoom(15)
+    func setCoordinate(_ coordinate: CLLocationCoordinate2D) {
+        self.delegate?.mapView!(self.mapView!, didTapAt: coordinate)
+        self.mapView?.animate(toLocation: coordinate)
+        self.mapView?.animate(toZoom: 15)
     }
 
     func done() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
             manager.startUpdatingLocation()
         }
     }
 
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
 
         if self.startingPoint != nil {

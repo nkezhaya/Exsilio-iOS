@@ -19,30 +19,30 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
 
         // Sets the default color of the icon of the selected UITabBarItem and Title
-        UITabBar.appearance().tintColor = UIColor.blackColor()
+        UITabBar.appearance().tintColor = UIColor.black
 
         // Sets the default color of the background of the UITabBar
         UITabBar.appearance().barTintColor = UIColor(hexString: "#1c1c1c")
 
         // Sets the background color of the selected UITabBarItem
-        let size = CGSizeMake(self.tabBar.frame.width / CGFloat(self.tabBar.items!.count), self.tabBar.frame.height)
-        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.whiteColor(), size: size)
+        let size = CGSize(width: self.tabBar.frame.width / CGFloat(self.tabBar.items!.count), height: self.tabBar.frame.height)
+        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.white, size: size)
 
         // Uses the original colors for your images, so they aren't not rendered as grey automatically.
         for item in self.tabBar.items! as [UITabBarItem] {
             if let image = item.image {
-                item.image = image.imageWithTint(UIColor.whiteColor()).imageWithRenderingMode(.AlwaysOriginal)
-                item.selectedImage = image.imageWithTint(UIColor.blackColor()).imageWithRenderingMode(.AlwaysOriginal)
+                item.image = image.imageWithTint(UIColor.white).withRenderingMode(.alwaysOriginal)
+                item.selectedImage = image.imageWithTint(UIColor.black).withRenderingMode(.alwaysOriginal)
                 item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
             }
         }
     }
 
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         self.setAttributesFromViewController(viewController)
     }
 
-    func setAttributesFromViewController(viewController: UIViewController) {
+    func setAttributesFromViewController(_ viewController: UIViewController) {
         self.title = viewController.title
         self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem
     }

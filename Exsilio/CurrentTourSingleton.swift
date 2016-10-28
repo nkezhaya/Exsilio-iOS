@@ -20,8 +20,8 @@ class CurrentTourSingleton {
     var waypoints: [Waypoint] = []
     var tourActive = false
 
-    func newTour(name: String, description: String, successHandler: (JSON -> Void)) {
-        self.tour = ["name": name, "description": description, "waypoints": []]
+    func newTour(_ name: String, description: String, successHandler: @escaping ((JSON) -> Void)) {
+        self.tour = ["name": name as AnyObject, "description": description as AnyObject, "waypoints": []]
         self.waypoints = []
 
         let params = ["tour[name]": name, "tour[description]": description]
@@ -42,12 +42,12 @@ class CurrentTourSingleton {
         }
     }
 
-    func loadTourFromJSON(tour: JSON?) {
+    func loadTourFromJSON(_ tour: JSON?) {
         guard let tour = tour, let tourDict = tour.dictionaryObject else {
             return self.unloadTour()
         }
 
-        self.tour = tourDict
+        self.tour = tourDict as Tour
 
         if let waypointsArray = tour["waypoints"].arrayObject {
             self.waypoints = waypointsArray as! [Waypoint]
@@ -59,10 +59,10 @@ class CurrentTourSingleton {
         self.waypoints = []
     }
 
-    func moveWaypointAtIndex(sourceIndex: Int, toIndex destinationIndex: Int, completion: (Void -> Void)?) {
+    func moveWaypointAtIndex(_ sourceIndex: Int, toIndex destinationIndex: Int, completion: ((Void) -> Void)?) {
         let waypoint = self.waypoints[sourceIndex]
-        self.waypoints.removeAtIndex(sourceIndex)
-        self.waypoints.insert(waypoint, atIndex: destinationIndex)
+        self.waypoints.remove(at: sourceIndex)
+        self.waypoints.insert(waypoint, at: destinationIndex)
 
         var waypointIdsInOrder: [Int] = []
 
@@ -75,14 +75,14 @@ class CurrentTourSingleton {
         }
     }
 
-    func removeWaypointAtIndex(index: Int) {
+    func removeWaypointAtIndex(_ index: Int) {
         let id = self.waypoints[index]["id"] as! Int
-        self.waypoints.removeAtIndex(index)
+        self.waypoints.remove(at: index)
 
         Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)", headers: API.authHeaders())
     }
 
-    func refreshTour(completion: (JSON? -> Void)?) {
+    func refreshTour(_ completion: ((JSON?) -> Void)?) {
         Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)", headers: API.authHeaders()).responseJSON { response in
             switch (response.result) {
             case .Success(let jsonResponse):
@@ -97,7 +97,7 @@ class CurrentTourSingleton {
         }
     }
 
-    func save(successHandler successHandler: (Void -> Void)) {
+    func save(successHandler: @escaping ((Void) -> Void)) {
         Alamofire.upload(
             .POST,
             "\(API.URL)\(API.ToursPath)",

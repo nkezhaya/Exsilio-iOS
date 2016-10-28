@@ -1,72 +1,97 @@
 PODS:
-  - Alamofire (3.4.0)
-  - AlamofireImage (2.4.0):
-    - Alamofire (~> 3.3)
-  - Bolts (1.7.0):
-    - Bolts/AppLinks (= 1.7.0)
-    - Bolts/Tasks (= 1.7.0)
-  - Bolts/AppLinks (1.7.0):
+  - Alamofire (4.0.1)
+  - AlamofireImage (3.1.0):
+    - Alamofire (~> 4.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
-  - Bolts/Tasks (1.7.0)
+  - Bolts/Tasks (1.8.4)
   - DZNEmptyDataSet (1.8.1)
-  - Eureka (1.6.0)
-  - FBSDKCoreKit (4.12.0):
+  - Eureka (2.0.0-beta.1)
+  - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.12.0):
+  - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.12.0):
+  - FBSDKShareKit (4.16.1):
     - FBSDKCoreKit
-  - FontAwesome.swift (0.7.3)
-  - Fusuma (0.4.1)
-  - GoogleMaps (2.0.1):
-    - GoogleMaps/Maps (= 2.0.1)
-  - GoogleMaps/Base (2.0.1)
-  - GoogleMaps/Maps (2.0.1):
-    - GoogleMaps/Base (= 2.0.1)
-  - ImageViewer (2.0)
-  - SCLAlertView (0.5.8)
+  - FontAwesome.swift (1.0.0)
+  - Fusuma (1.0.0)
+  - GoogleMaps (2.1.0):
+    - GoogleMaps/Maps (= 2.1.0)
+  - GoogleMaps/Base (2.1.0)
+  - GoogleMaps/Maps (2.1.0):
+    - GoogleMaps/Base (= 2.1.0)
+  - ImageViewer (4.0)
+  - SCLAlertView (0.7.0)
   - SkyFloatingLabelTextField (1.2.1)
   - SVProgressHUD (2.0.3)
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (3.1.1)
   - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.3)
-  - AlamofireImage (~> 2.0)
+  - Alamofire (~> 4.0)
+  - AlamofireImage (~> 3.1)
   - DZNEmptyDataSet
-  - Eureka
+  - Eureka (~> 2.0.0-beta.1)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - FontAwesome.swift
-  - Fusuma
+  - FontAwesome.swift (from `git@github.com:thii/FontAwesome.swift`)
+  - Fusuma (from `git@github.com:ytakzk/Fusuma.git`)
   - GoogleMaps
-  - ImageViewer
+  - ImageViewer (from `git@github.com:MailOnline/ImageViewer.git`)
   - SCLAlertView
-  - SkyFloatingLabelTextField
+  - SkyFloatingLabelTextField (from `https://github.com/MLSDev/SkyFloatingLabelTextField.git`, branch `swift3`)
   - SVProgressHUD
-  - SwiftyJSON
+  - SwiftyJSON (~> 3.1.1)
   - SWTableViewCell (~> 0.3.7)
 
+EXTERNAL SOURCES:
+  FontAwesome.swift:
+    :git: git@github.com:thii/FontAwesome.swift
+  Fusuma:
+    :git: git@github.com:ytakzk/Fusuma.git
+  ImageViewer:
+    :git: git@github.com:MailOnline/ImageViewer.git
+  SkyFloatingLabelTextField:
+    :branch: swift3
+    :git: https://github.com/MLSDev/SkyFloatingLabelTextField.git
+
+CHECKOUT OPTIONS:
+  FontAwesome.swift:
+    :commit: 9ca8cc149b14856605ca744ee7c36621e5dc194b
+    :git: git@github.com:thii/FontAwesome.swift
+  Fusuma:
+    :commit: d89cc8398a3dac19ff03c7689302e62d3c233d49
+    :git: git@github.com:ytakzk/Fusuma.git
+  ImageViewer:
+    :commit: 94da03446fa239add46876978b8ac9658a2e6e39
+    :git: git@github.com:MailOnline/ImageViewer.git
+  SkyFloatingLabelTextField:
+    :commit: 03177934f990c794060765f33c408268ce8afee0
+    :git: https://github.com/MLSDev/SkyFloatingLabelTextField.git
+
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
-  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Eureka: ef5b9ac93aedeecfe50d98b1ac7678bf09a1fc62
-  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
-  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
-  FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
-  FontAwesome.swift: f694fe0f667d6d3390b5919cdb0556a27b75d427
-  Fusuma: 4dbaa05a2a20ab11a41f8dedbe650c904ea99625
-  GoogleMaps: f09da64fc987c1aa29394567c3cab5a3df83c402
-  ImageViewer: 00eae024d0cb2eebb4b228f4669b6c4872afadb9
-  SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
+  Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
+  FontAwesome.swift: beb1ff2f206a1517745f4f057a4d30a76f8d7d4e
+  Fusuma: 256315ea7daed298f246f1ba5e49700bc664dd93
+  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
+  ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: 60497cbec38623fea0fc56821446e24d854fca39
+PODFILE CHECKSUM: eabda62ec4acc8eb8f11b6a06189e5cc77d8cd62
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

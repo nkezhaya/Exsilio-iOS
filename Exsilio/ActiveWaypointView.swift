@@ -14,7 +14,7 @@ import ImageViewer
 
 protocol ActiveWaypointViewDelegate {
     func activeWaypointViewWillBeDismissed()
-    func willPresentImageViewer(imageViewer: ImageViewer)
+    func willPresentImageViewer(_ imageViewer: ImageViewer)
 }
 
 class ActiveWaypointView: UIView {
@@ -32,16 +32,16 @@ class ActiveWaypointView: UIView {
 
     var speechSynthesizer: AVSpeechSynthesizer?
     var closeIcon = UI.XIcon.imageWithTint(UI.BarButtonColor)
-    var volumeOnIcon = UIImage.fontAwesomeIconWithName(.VolumeUp, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
-    var volumeOffIcon = UIImage.fontAwesomeIconWithName(.VolumeOff, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
+    var volumeOnIcon = UIImage.fontAwesomeIcon(name: .volumeUp, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
+    var volumeOffIcon = UIImage.fontAwesomeIcon(name: .volumeOff, textColor: UI.BarButtonColor, size: UI.BarButtonSize)
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.updateNavIconColor(UI.BarButtonColor)
 
-        self.backButton?.imageView?.contentMode = .ScaleAspectFill
-        self.volumeButton?.imageView?.contentMode = .ScaleAspectFill
+        self.backButton?.imageView?.contentMode = .scaleAspectFill
+        self.volumeButton?.imageView?.contentMode = .scaleAspectFill
 
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         tapRecognizer.numberOfTapsRequired = 1
@@ -51,39 +51,39 @@ class ActiveWaypointView: UIView {
         self.layer.masksToBounds = true
     }
 
-    func updateNavIconColor(color: UIColor) {
+    func updateNavIconColor(_ color: UIColor) {
         closeIcon = closeIcon.imageWithTint(color)
         volumeOnIcon = volumeOnIcon.imageWithTint(color)
         volumeOffIcon = volumeOffIcon.imageWithTint(color)
 
-        self.backButton?.setImage(closeIcon, forState: .Normal)
+        self.backButton?.setImage(closeIcon, for: UIControlState())
         self.updateVolumeButtonImage()
     }
 
-    func updateWaypoint(waypoint: JSON) {
+    func updateWaypoint(_ waypoint: JSON) {
         self.nameLabel?.text = waypoint["name"].string
 
         if let description = waypoint["description"].string {
             self.descriptionTextView?.text = description
 
-            if NSUserDefaults.standardUserDefaults().boolForKey(Settings.SpeechKey) {
+            if UserDefaults.standard.bool(forKey: Settings.SpeechKey) {
                 speak()
             } else {
-                self.volumeButton?.hidden = true
+                self.volumeButton?.isHidden = true
             }
         } else {
             self.descriptionTextView?.text = ""
         }
 
-        if let imageURL = waypoint["image_url"].string where imageURL != API.MissingImagePath {
+        if let imageURL = waypoint["image_url"].string , imageURL != API.MissingImagePath {
             self.imageViewHeight?.constant = self.frame.height / 2
-            let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
-            CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+            let urlRequest = URLRequest(url: URL(string: imageURL)!)
+            CurrentTourSingleton.sharedInstance.imageDownloader.download(urlRequest) { response in
                 if let image = response.result.value {
                     self.imageView?.image = image
-                    self.updateNavIconColor(.whiteColor())
+                    self.updateNavIconColor(.white)
                 }
-            })
+            }
         } else {
             self.imageViewHeight?.constant = 0
             self.updateNavIconColor(UI.BarButtonColor)
@@ -98,7 +98,7 @@ class ActiveWaypointView: UIView {
             self.speechSynthesizer = AVSpeechSynthesizer()
             let utterance = AVSpeechUtterance(string: text)
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            self.speechSynthesizer?.speakUtterance(utterance)
+            self.speechSynthesizer?.speak(utterance)
         }
     }
 
@@ -115,7 +115,7 @@ class ActiveWaypointView: UIView {
         let imageProvider = SomeImageProvider()
         imageProvider.image = self.imageView!.image
 
-        let closeButton = UI.XIcon.imageWithTint(.whiteColor())
+        let closeButton = UI.XIcon.imageWithTint(.white)
         let buttonAssets = CloseButtonAssets(normal: closeButton, highlighted: closeButton)
         let configuration = ImageViewerConfiguration(imageSize: CGSize(width: 10, height: 10), closeButtonAssets: buttonAssets)
         let imageViewer = ImageViewer(imageProvider: imageProvider, configuration: configuration, displacedView: self.imageView!)
@@ -125,9 +125,9 @@ class ActiveWaypointView: UIView {
 
     func updateVolumeButtonImage() {
         if self.volume == true {
-            self.volumeButton?.setImage(volumeOnIcon, forState: .Normal)
+            self.volumeButton?.setImage(volumeOnIcon, for: .normal)
         } else {
-            self.volumeButton?.setImage(volumeOffIcon, forState: .Normal)
+            self.volumeButton?.setImage(volumeOffIcon, for: .normal)
         }
     }
 
@@ -137,7 +137,7 @@ class ActiveWaypointView: UIView {
         if self.volume == true {
             speak()
         } else {
-            self.speechSynthesizer?.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
+            self.speechSynthesizer?.stopSpeaking(at: AVSpeechBoundary.immediate)
         }
 
         self.updateVolumeButtonImage()
@@ -145,7 +145,7 @@ class ActiveWaypointView: UIView {
 
     @IBAction func dismiss() {
         self.sticky = false
-        self.speechSynthesizer?.stopSpeakingAtBoundary(AVSpeechBoundary.Immediate)
+        self.speechSynthesizer?.stopSpeaking(at: AVSpeechBoundary.immediate)
         self.delegate?.activeWaypointViewWillBeDismissed()
     }
 }
@@ -153,11 +153,11 @@ class ActiveWaypointView: UIView {
 class SomeImageProvider: ImageProvider {
     var image: UIImage!
 
-    func provideImage(completion: UIImage? -> Void) {
+    func provideImage(_ completion: (UIImage?) -> Void) {
         completion(image)
     }
 
-    func provideImage(atIndex index: Int, completion: UIImage? -> Void) {
+    func provideImage(atIndex index: Int, completion: (UIImage?) -> Void) {
         completion(image)
     }
 }

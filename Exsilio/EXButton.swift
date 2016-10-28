@@ -17,17 +17,17 @@ class EXButton: UIButton {
     }
 
     func darkBorderStyle() {
-        self.borderStyle(.blackColor())
+        self.borderStyle(.black())
     }
 
     func lightBorderStyle() {
-        self.borderStyle(.whiteColor())
+        self.borderStyle(.white())
     }
 
-    func borderStyle(color: UIColor) {
+    func borderStyle(_ color: UIColor) {
         self.layer.borderWidth = 2
-        self.layer.borderColor = color.CGColor
-        self.backgroundColor = UIColor.clearColor()
+        self.layer.borderColor = color.cgColor
+        self.backgroundColor = UIColor.clear
         self.tintColor = color
         self.updateText(titleLabel!.text!, withColor: color)
     }
@@ -37,18 +37,18 @@ class EXButton: UIButton {
         self.layer.cornerRadius = 20
 
         if self.titleLabel?.text != nil {
-            self.updateText(self.titleLabel!.text!, withColor: .whiteColor())
+            self.updateText(self.titleLabel!.text!, withColor: .white())
         }
     }
 
-    func setIcon(icon: FontAwesome) {
-        let icon = UIImage.fontAwesomeIconWithName(icon, textColor: self.tintColor, size: CGSizeMake(24, 24)).imageWithTint(self.tintColor)
+    func setIcon(_ icon: FontAwesome) {
+        let icon = UIImage.fontAwesomeIconWithName(icon, textColor: self.tintColor, size: CGSize(width: 24, height: 24)).imageWithTint(self.tintColor)
         self.setImage(icon, forState: .Normal)
         self.setImage(icon, forState: .Highlighted)
     }
 
-    func updateText(text: String, withColor color: UIColor?) {
-        var attributes: [String: AnyObject] = [NSKernAttributeName: UI.LabelCharacterSpacing]
+    func updateText(_ text: String, withColor color: UIColor?) {
+        var attributes: [String: AnyObject] = [NSKernAttributeName: UI.LabelCharacterSpacing as AnyObject]
 
         if color != nil {
             attributes[NSForegroundColorAttributeName] = color!
@@ -58,7 +58,7 @@ class EXButton: UIButton {
         let attributedText = NSAttributedString(string: text,
                                                 attributes: attributes)
 
-        self.setAttributedTitle(attributedText, forState: .Normal)
-        self.setAttributedTitle(attributedText, forState: .Highlighted)
+        self.setAttributedTitle(attributedText, for: UIControlState())
+        self.setAttributedTitle(attributedText, for: .highlighted)
     }
 }

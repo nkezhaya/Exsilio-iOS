@@ -20,9 +20,9 @@ class ToursTableViewController: UITableViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.tabBarItem.image = UI.BarButtonIcon(.MapO)
+        self.tabBarItem.image = UI.BarButtonIcon(.mapO)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.PlusIcon,
-                                                                 style: .Plain,
+                                                                 style: .plain,
                                                                  target: self,
                                                                  action: #selector(newTour))
     }
@@ -30,24 +30,24 @@ class ToursTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge()
         self.extendedLayoutIncludesOpaqueBars = false
         self.automaticallyAdjustsScrollViewInsets = false
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
-        self.tableView.registerNib(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
+        self.tableView.register(UINib(nibName: "TourTableViewCell", bundle: nil), forCellReuseIdentifier: "TourTableViewCell")
 
         self.tableView.tableFooterView = UIView()
-        self.tableView.opaque = false
+        self.tableView.isOpaque = false
         self.tableView.backgroundView = nil
 
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
     }
@@ -55,12 +55,12 @@ class ToursTableViewController: UITableViewController {
     func refresh() {
         SVProgressHUD.show()
 
-        Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)", headers: API.authHeaders()).responseJSON { response in
+        Alamofire.request("\(API.URL)\(API.ToursPath)", method: .get, headers: API.authHeaders()).responseJSON { response in
             self.refreshControl?.endRefreshing()
             SVProgressHUD.dismiss()
 
             switch response.result {
-            case .Success(let json):
+            case .success(let json):
                 self.tours = JSON(json)
                 self.tableView.reloadData()
                 break
@@ -71,25 +71,25 @@ class ToursTableViewController: UITableViewController {
     }
 
     func newTour() {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("CreateTourNavigationController") as! CreateTourNavigationController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreateTourNavigationController") as! CreateTourNavigationController
         vc.toursTableViewController = self
 
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
 
-    func editTourAtIndexPath(indexPath: NSIndexPath) {
+    func editTourAtIndexPath(_ indexPath: IndexPath) {
         CurrentTourSingleton.sharedInstance.loadTourFromJSON(self.tours[indexPath.row])
 
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WaypointsTableViewController") as! WaypointsTableViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "WaypointsTableViewController") as! WaypointsTableViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tours.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("TourTableViewCell", forIndexPath: indexPath) as! TourTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "TourTableViewCell", for: indexPath) as! TourTableViewCell
         cell.delegate = self
         cell.updateWithTour(self.tours[indexPath.row])
         cell.addUtilityButtons()
@@ -97,15 +97,15 @@ class ToursTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
 
         let tour = self.tours[indexPath.row]
 
-        if tour["waypoints_count"].int < 2 {
+        if tour["waypoints_count"].int! < 2 {
             SCLAlertView().showError("Error", subTitle: "Whoops! This tour does not have enough waypoints to preview yet. Swipe right to edit.")
         } else {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TourPreviewViewController") as! TourPreviewViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TourPreviewViewController") as! TourPreviewViewController
             vc.tour = tour
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -113,8 +113,8 @@ class ToursTableViewController: UITableViewController {
 }
 
 extension ToursTableViewController: SWTableViewCellDelegate {
-    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
-        let indexPath = self.tableView.indexPathForCell(cell)!
+    func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
+        let indexPath = self.tableView.indexPath(for: cell)!
 
         switch index {
         case 0:
@@ -126,11 +126,11 @@ extension ToursTableViewController: SWTableViewCellDelegate {
                 let published = !(self.tours[indexPath.row]["published"].bool == true)
                 let params = ["tour[published]": "\(published)"]
 
-                tourCell.hideUtilityButtonsAnimated(true)
+                tourCell.hideUtilityButtons(animated: true)
 
-                Alamofire.request(.PUT, "\(API.URL)\(API.ToursPath)/\(id)", parameters: params, headers: API.authHeaders()).responseJSON { response in
+                Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)", method: .put, parameters: params, headers: API.authHeaders()).responseJSON { response in
                     switch response.result {
-                    case .Success(let jsonString):
+                    case .success(let jsonString):
                         let json = JSON(jsonString)
                         if let errors = json["errors"].string {
                             SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
@@ -148,10 +148,10 @@ extension ToursTableViewController: SWTableViewCellDelegate {
             break
         case 2:
             if let id = self.tours[indexPath.row]["id"].int {
-                Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(id)", headers: API.authHeaders())
+                _ = Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)", method: .delete, headers: API.authHeaders())
 
-                self.tours.arrayObject?.removeAtIndex(indexPath.row)
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                self.tours.arrayObject?.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
             break
         default:
@@ -159,36 +159,36 @@ extension ToursTableViewController: SWTableViewCellDelegate {
         }
     }
 
-    func swipeableTableViewCellShouldHideUtilityButtonsOnSwipe(cell: SWTableViewCell!) -> Bool {
+    func swipeableTableViewCellShouldHideUtilityButtons(onSwipe cell: SWTableViewCell!) -> Bool {
         return true
     }
 }
 
 extension ToursTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool {
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
 
-    func emptyDataSetShouldDisplay(scrollView: UIScrollView) -> Bool {
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView) -> Bool {
         return self.tours.count == 0
     }
 
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO TOURS YET"
 
-        let attributes: [String : AnyObject!] = [
+        let attributes: [String : AnyObject?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
-            NSKernAttributeName: UI.LabelCharacterSpacing
+            NSKernAttributeName: UI.LabelCharacterSpacing as ImplicitlyUnwrappedOptional<AnyObject>
         ]
 
         return NSAttributedString(string: text, attributes: attributes)
     }
 
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Create a tour and\nshare it with others!"
 
-        let attributes: [String : AnyObject!] = [
+        let attributes: [String : AnyObject?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#333333")
         ]

@@ -23,7 +23,7 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
 
         if let tour = self.tour {
             self.nameLabel?.text = tour["name"].string
@@ -36,10 +36,10 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         self.takeTourButton?.backgroundColor = UIColor(hexString: "#21C064")
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe))
-        swipeLeft.direction = .Left
+        swipeLeft.direction = .left
 
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(rightSwipe))
-        swipeRight.direction = .Right
+        swipeRight.direction = .right
 
         self.view.addGestureRecognizer(swipeLeft)
         self.view.addGestureRecognizer(swipeRight)
@@ -80,7 +80,7 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         self.tour?["waypoints"].array?.forEach({ waypoint in
             if let urlString = waypoint["image_url"].string {
                 if urlString != API.MissingImagePath {
-                    let urlRequest = NSURLRequest(URL: NSURL(string: urlString)!)
+                    let urlRequest = NSURLRequest(url: NSURL(string: urlString)! as URL)
                     CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: nil)
                     self.imagesPresent = true
                 }
@@ -97,7 +97,7 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
 
         if let currentPage = self.pageControl?.currentPage, let imageURL = self.tour?["waypoints"][currentPage]["image_url"].string {
             let duration = 0.2
-            let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
+            let urlRequest = URLRequest(url: URL(string: imageURL)!)
 
             UIView.animateWithDuration(duration, animations: {
                 self.backgroundImageView?.alpha = 0.0
@@ -116,12 +116,12 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     }
 
     func dismiss() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func takeTour() {
         CurrentTourSingleton.sharedInstance.loadTourFromJSON(self.tour)
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ActiveTourViewController") as! ActiveTourViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ActiveTourViewController") as! ActiveTourViewController
+        self.present(vc, animated: true, completion: nil)
     }
 }

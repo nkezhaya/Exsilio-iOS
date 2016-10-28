@@ -18,16 +18,16 @@ struct UI {
     static let GreenColor = UIColor(hexString: "#21c064")
     static let BlueColor = UIColor(hexString: "#1c56ff")
     static let RedColor = UIColor(hexString: "#e04940")
-    static let BlackColor = UIColor.blackColor()
+    static let BlackColor = UIColor.black
     static let BarButtonColor = UIColor(hexString: "#333333")
     static let BarButtonColorDisabled = UIColor(hexString: "#c1c1c1")
-    static let BarButtonSize = CGSizeMake(32, 32)
+    static let BarButtonSize = CGSize(width: 32, height: 32)
 
-    static func BarButtonIcon(name: FontAwesome, withColor color: UIColor) -> UIImage {
+    static func BarButtonIcon(_ name: FontAwesome, withColor color: UIColor) -> UIImage {
         return UIImage.fontAwesomeIconWithName(name, textColor: color, size: BarButtonSize)
     }
 
-    static func BarButtonIcon(name: FontAwesome) -> UIImage {
+    static func BarButtonIcon(_ name: FontAwesome) -> UIImage {
         return UI.BarButtonIcon(name, withColor: UI.BarButtonColor)
     }
 
@@ -53,14 +53,14 @@ struct API {
     static let MissingImagePath = "/images/original/missing.png"
 
     static func googleMapsKey() -> String {
-        let plist = NSBundle.mainBundle().pathForResource("Configuration", ofType: "plist")!
+        let plist = Bundle.main.path(forResource: "Configuration", ofType: "plist")!
         let config = NSDictionary(contentsOfFile: plist)!
 
-        return config.objectForKey("GoogleMapsAPI")!.objectForKey("Key") as! String
+        return (config.object(forKey: "GoogleMapsAPI")! as AnyObject).object(forKey: "Key") as! String
     }
 
     static func currentToken() -> String {
-        return FBSDKAccessToken.currentAccessToken().tokenString
+        return FBSDKAccessToken.current().tokenString
     }
 
     static func authHeaders() -> [String: String] {

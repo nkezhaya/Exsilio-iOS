@@ -38,7 +38,7 @@ class ExpandedTourTableViewCell: UITableViewCell {
         self.backgroundImage!.alpha = 0.8
     }
 
-    func updateWithTour(tour: JSON) {
+    func updateWithTour(_ tour: JSON) {
         self.tourJSON = tour
 
         // Name, distance
@@ -47,7 +47,7 @@ class ExpandedTourTableViewCell: UITableViewCell {
         if let name = tour["name"].string {
             self.nameLabel!.attributedText = NSAttributedString(string: name,
                                                                 attributes: [
-                                                                    NSForegroundColorAttributeName: UIColor.whiteColor(),
+                                                                    NSForegroundColorAttributeName: UIColor.white,
                                                                     NSKernAttributeName: UI.LabelCharacterSpacing,
                                                                     NSFontAttributeName: UIFont(name: "OpenSans-Light", size: 18.0)!
                                                                     ])
@@ -88,7 +88,7 @@ class ExpandedTourTableViewCell: UITableViewCell {
 
         // Background image
         if let backgroundImageURL = tour["display_image_url"].string {
-            let urlRequest = NSURLRequest(URL: NSURL(string: backgroundImageURL)!)
+            let urlRequest = URLRequest(url: URL(string: backgroundImageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.backgroundImage?.image = image
@@ -98,7 +98,7 @@ class ExpandedTourTableViewCell: UITableViewCell {
 
         // User image
         if let userImageURL = tour["user"]["picture_url"].string {
-            let urlRequest = NSURLRequest(URL: NSURL(string: userImageURL)!)
+            let urlRequest = URLRequest(url: URL(string: userImageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.userImage?.image = image.af_imageRoundedIntoCircle()

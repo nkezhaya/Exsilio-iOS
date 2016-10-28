@@ -9,36 +9,36 @@
 import UIKit
 
 extension UIImage {
-    func scaledTo(scale: Float) -> UIImage {
-        return UIImage(CGImage: self.CGImage!,
+    func scaledTo(_ scale: Float) -> UIImage {
+        return UIImage(cgImage: self.cgImage!,
                        scale: self.scale * CGFloat(scale),
                        orientation: self.imageOrientation)
     }
 
-    func imageWithTint(tintColor: UIColor) -> UIImage {
-        let rect = CGRectMake(0, 0, size.width, size.height);
+    func imageWithTint(_ tintColor: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
 
         UIGraphicsBeginImageContextWithOptions(rect.size, false, scale)
-        drawInRect(rect)
+        draw(in: rect)
 
         let ctx = UIGraphicsGetCurrentContext()
-        CGContextSetBlendMode(ctx, CGBlendMode.SourceIn)
-        CGContextSetFillColorWithColor(ctx, tintColor.CGColor)
-        CGContextFillRect(ctx, rect)
+        ctx?.setBlendMode(CGBlendMode.sourceIn)
+        ctx?.setFillColor(tintColor.cgColor)
+        ctx?.fill(rect)
 
         let image = UIGraphicsGetImageFromCurrentImageContext()
 
         UIGraphicsEndImageContext();
         
-        return image;
+        return image!;
     }
 
-    func makeImageWithColorAndSize(color: UIColor, size: CGSize) -> UIImage {
+    func makeImageWithColorAndSize(_ color: UIColor, size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
-        UIRectFill(CGRectMake(0, 0, size.width, size.height))
+        UIRectFill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
 }

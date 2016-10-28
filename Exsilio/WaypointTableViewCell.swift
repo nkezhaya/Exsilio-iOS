@@ -22,10 +22,10 @@ class WaypointTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.pinImageView?.image = UIImage.fontAwesomeIconWithName(.MapPin, textColor: UIColor(hexString: "#333333"), size: CGSizeMake(64, 64))
+        self.pinImageView?.image = UIImage.fontAwesomeIconWithName(.MapPin, textColor: UIColor(hexString: "#333333"), size: CGSize(width: 64, height: 64))
     }
 
-    func updateWithWaypoint(waypoint: Waypoint) {
+    func updateWithWaypoint(_ waypoint: Waypoint) {
         self.waypoint = waypoint
 
         self.nameLabel?.text = waypoint["name"] as? String
@@ -37,7 +37,7 @@ class WaypointTableViewCell: UITableViewCell {
         }
 
         if let imageURL = waypoint["image_url"] as? String {
-            let urlRequest = NSURLRequest(URL: NSURL(string: imageURL)!)
+            let urlRequest = URLRequest(url: URL(string: imageURL)!)
             CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
                 if let image = response.result.value {
                     self.photoImageView?.image = image.af_imageRoundedIntoCircle()

@@ -27,8 +27,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var waypoint: Waypoint?
 
     override func viewDidLoad() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .Plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Done, target: self, action: #selector(saveWaypoint))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveWaypoint))
 
         self.openMapButton?.darkBorderStyle()
         self.pickImageButton?.darkBorderStyle()
@@ -45,7 +45,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                 self.descriptionField?.text = description
             }
 
-            if let latitude = waypoint["latitude"] as? Double, longitude = waypoint["longitude"] as? Double {
+            if let latitude = waypoint["latitude"] as? Double, let longitude = waypoint["longitude"] as? Double {
                 self.pointSelected(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
             }
 
@@ -64,7 +64,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     }
 
     func dismiss() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     func validateMessage() -> Bool {
@@ -92,16 +92,16 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         var waypoint: Waypoint = self.waypoint == nil ? [:] : self.waypoint!
 
         if let name = self.nameField?.text {
-            waypoint["name"] = name
+            waypoint["name"] = name as AnyObject?
         }
 
         if let description = self.descriptionField?.text {
-            waypoint["description"] = description
+            waypoint["description"] = description as AnyObject?
         }
 
         if let coords = self.selectedPoint {
-            waypoint["latitude"] = coords.latitude
-            waypoint["longitude"] = coords.longitude
+            waypoint["latitude"] = coords.latitude as AnyObject?
+            waypoint["longitude"] = coords.longitude as AnyObject?
         }
 
         if let image = self.selectedImage {
@@ -119,7 +119,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
                 method = .POST
             } else {
                 method = .PUT
-                url = url.stringByAppendingString("/\(waypointId!)")
+                url = url + "/\(waypointId!)"
             }
 
             SVProgressHUD.show()
@@ -169,7 +169,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.descriptionField {
             self.descriptionField?.resignFirstResponder()
         } else {
@@ -187,16 +187,16 @@ extension WaypointViewController: FusumaDelegate {
         self.presentViewController(fusumaViewController, animated: true, completion: nil)
     }
 
-    func fusumaImageSelected(image: UIImage) {
+    func fusumaImageSelected(_ image: UIImage) {
         self.selectedImage = image
 
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
 
         self.pickImageButton?.layer.borderWidth = 0
         self.pickImageButton?.backgroundColor = UI.GreenColor
-        self.pickImageButton?.tintColor = .whiteColor()
+        self.pickImageButton?.tintColor = .white()
         self.pickImageButton?.setIcon(.Check)
-        self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .whiteColor())
+        self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .white())
     }
 
     func fusumaCameraRollUnauthorized() {
@@ -206,24 +206,24 @@ extension WaypointViewController: FusumaDelegate {
 
 extension WaypointViewController: GMSMapViewDelegate {
     @IBAction func openMap() {
-        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
         vc.delegate = self
         vc.startingPoint = self.selectedPoint
 
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
 
-    func pointSelected(coordinate: CLLocationCoordinate2D) {
+    func pointSelected(_ coordinate: CLLocationCoordinate2D) {
         self.selectedPoint = coordinate
 
         self.openMapButton?.layer.borderWidth = 0
         self.openMapButton?.backgroundColor = UI.GreenColor
-        self.openMapButton?.tintColor = .whiteColor()
+        self.openMapButton?.tintColor = .white()
         self.openMapButton?.setIcon(.Check)
-        self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .whiteColor())
+        self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .white())
     }
 
-    func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         mapView.clear()
 
         let marker = GMSMarker(position: coordinate)
