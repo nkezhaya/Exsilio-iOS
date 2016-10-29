@@ -21,14 +21,14 @@ class CurrentTourSingleton {
     var tourActive = false
 
     func newTour(_ name: String, description: String, successHandler: @escaping ((JSON) -> Void)) {
-        self.tour = ["name": name as AnyObject, "description": description as AnyObject, "waypoints": []]
+        self.tour = ["name": name, "description": description, "waypoints": []]
         self.waypoints = []
 
         let params = ["tour[name]": name, "tour[description]": description]
 
-        Alamofire.request(.POST, "\(API.URL)\(API.ToursPath)", parameters: params, headers: API.authHeaders()).responseJSON { response in
+        Alamofire.request("\(API.URL)\(API.ToursPath)", method: .get, parameters: params, headers: API.authHeaders()).responseJSON { response in
             switch response.result {
-            case .Success(let jsonString):
+            case .success(let jsonString):
                 let json = JSON(jsonString)
                 if let errors = json["errors"].string {
                     SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
@@ -70,7 +70,7 @@ class CurrentTourSingleton {
             waypointIdsInOrder.append(waypoint["id"] as! Int)
         }
 
-        Alamofire.request(.PUT, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/reposition", parameters: ["waypoints": waypointIdsInOrder], headers: API.authHeaders()).responseJSON { _ in
+        Alamofire.request("\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/reposition", method: .put, parameters: ["waypoints": waypointIdsInOrder], headers: API.authHeaders()).responseJSON { _ in
             completion?()
         }
     }
@@ -79,15 +79,15 @@ class CurrentTourSingleton {
         let id = self.waypoints[index]["id"] as! Int
         self.waypoints.remove(at: index)
 
-        Alamofire.request(.DELETE, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)", headers: API.authHeaders())
+        Alamofire.request("\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)\(API.WaypointsPath)/\(id)", method: .delete, headers: API.authHeaders())
     }
 
     func refreshTour(_ completion: ((JSON?) -> Void)?) {
-        Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)", headers: API.authHeaders()).responseJSON { response in
+        Alamofire.request("\(API.URL)\(API.ToursPath)/\(self.tour["id"]!)", method: .get, headers: API.authHeaders()).responseJSON { response in
             switch (response.result) {
-            case .Success(let jsonResponse):
+            case .success(let jsonResponse):
                 let json = JSON(jsonResponse)
-                self.tour = json.dictionaryObject!
+                self.tour = json.dictionaryObject! as Tour
                 self.waypoints = json["waypoints"].arrayObject as! [Waypoint]
 
                 completion?(json)
@@ -98,44 +98,49 @@ class CurrentTourSingleton {
     }
 
     func save(successHandler: @escaping ((Void) -> Void)) {
+        var urlRequest: URLRequest
+        do {
+            urlRequest = try URLRequest(url: "\(API.URL)\(API.ToursPath)", method: .post, headers: API.authHeaders())
+        } catch { return; }
         Alamofire.upload(
-            .POST,
-            "\(API.URL)\(API.ToursPath)",
-            headers: API.authHeaders(),
             multipartFormData: { multipartFormData in
-                if let name = self.tour["name"] {
-                    multipartFormData.appendBodyPart(data: name.dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[name]")
+                if let tourName = self.tour["name"] as? String {
+                    multipartFormData.append(tourName.data(using: String.Encoding.utf8)!, withName: "tour[name]")
                 }
 
-                if let description = self.tour["description"] {
-                    multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[description]")
+                if let tourDescription = self.tour["description"] as? String {
+                    multipartFormData.append(tourDescription.data(using: String.Encoding.utf8)!, withName: "tour[description]")
                 }
 
                 var position = 0
                 for waypoint in self.waypoints {
-                    multipartFormData.appendBodyPart(data: waypoint["name"]!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][name]")
-                    multipartFormData.appendBodyPart(data: "\(position)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][position]")
-                    multipartFormData.appendBodyPart(data: "\(waypoint["latitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][latitude]")
-                    multipartFormData.appendBodyPart(data: "\(waypoint["longitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][longitude]")
+                    let waypointName = waypoint["name"] as! String
+                    let latitude = waypoint["latitude"] as! Float
+                    let longitude = waypoint["longitude"] as! Float
+                    multipartFormData.append(waypointName.data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][name]")
+                    multipartFormData.append("\(position)".data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][position]")
+                    multipartFormData.append("\(latitude)".data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][latitude]")
+                    multipartFormData.append("\(longitude)".data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][longitude]")
 
                     if let description = waypoint["description"] as? String {
-                        multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "tour[waypoints_attributes][][description]")
+                        multipartFormData.append(description.data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][description]")
                     }
 
                     if let image = waypoint["photo"] as? UIImage {
-                        multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "tour[waypoints_attributes][][image]", fileName: "image.png", mimeType: "image/png")
+                        multipartFormData.append(UIImagePNGRepresentation(image)!, withName: "tour[waypoints_attributes][][image]", fileName: "image.png", mimeType: "image/png")
                     }
 
                     position += 1
                 }
             },
+            with: urlRequest,
             encodingCompletion: { encodingResult in
                 switch encodingResult {
-                case .Success(let upload, _, _):
+                case .success(let upload, _, _):
                     upload.responseJSON { response in
                         switch response.result {
-                        case .Success(let json):
-                            if let errors = json["errors"] as? String {
+                        case .success(let json):
+                            if let errors = JSON(json)["errors"].string {
                                 SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
                             } else {
                                 successHandler()

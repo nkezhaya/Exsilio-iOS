@@ -85,7 +85,7 @@ class FiltersViewController: FormViewController {
         let navBarHeight = CGFloat(44)
         let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: navBarHeight + 20))
 
-        navigationBar.backgroundColor = UIColor.whiteColor()
+        navigationBar.backgroundColor = UIColor.white
 
         // Create a navigation item with a title
         let navigationItem = UINavigationItem()
@@ -113,7 +113,7 @@ class FiltersViewController: FormViewController {
     }
 
     func done() {
-        self.dismissViewControllerAnimated(true, completion: {
+        self.dismiss(animated: true, completion: {
             self.searchController?.resetSearch()
             self.searchController?.search()
         })

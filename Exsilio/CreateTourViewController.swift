@@ -14,17 +14,17 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var descriptionField: UITextField?
 
     override func viewDidLoad() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.ForwardIcon, style: .plain, target: self, action: #selector(next))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissView))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UI.ForwardIcon, style: .plain, target: self, action: #selector(nextTapped))
 
         self.nameField?.becomeFirstResponder()
     }
 
-    func dismiss() {
+    func dismissView() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
-    func next() {
+    func nextTapped() {
         if self.nameField?.text == nil || self.nameField?.text!.isEmpty == true {
             SCLAlertView().showError("Whoops!", subTitle: "You forgot to put a name in.", closeButtonTitle: "OK")
         } else {
@@ -33,7 +33,7 @@ class CreateTourViewController: UIViewController, UITextFieldDelegate {
                 if let navigationController = self.navigationController as? CreateTourNavigationController {
                     navigationController.dismissAndEditTour(tour)
                 }
-                self.view.userInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
             })
         }
     }

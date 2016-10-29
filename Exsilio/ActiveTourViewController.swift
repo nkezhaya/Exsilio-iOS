@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
-import ImageViewer
 import SCLAlertView
 
 class ActiveTourViewController: UIViewController {
@@ -56,7 +55,7 @@ class ActiveTourViewController: UIViewController {
         self.mapView?.isIndoorEnabled = true
         self.mapView?.addObserver(self, forKeyPath: "myLocation", options: .new, context: nil)
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissModal))
 
         self.activeWaypointTop?.constant = self.view.frame.height
         self.activeWaypointView?.layoutIfNeeded()
@@ -66,7 +65,7 @@ class ActiveTourViewController: UIViewController {
         self.mapView?.removeObserver(self, forKeyPath: "myLocation")
     }
 
-    func dismiss() {
+    func dismissModal() {
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -76,9 +75,9 @@ class ActiveTourViewController: UIViewController {
 
             let params = ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
             let id = self.tourJSON!["id"].int!
-            Alamofire.request(.GET, "\(API.URL)\(API.ToursPath)/\(id)/start", parameters: params, headers: API.authHeaders()).responseJSON { response in
+            Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)/start", method: .get, parameters: params, headers: API.authHeaders()).responseJSON { response in
                 switch response.result {
-                case .Success(let jsonObj):
+                case .success(let jsonObj):
                     let json = JSON(jsonObj)
                     self.directionsJSON = json
                     self.drawPathFromJSON(json, withColor: UI.RedColor)
@@ -128,7 +127,7 @@ class ActiveTourViewController: UIViewController {
                 let locationA = CLLocation(latitude: Double(latitudeA), longitude: Double(longitudeA))
                 let locationB = CLLocation(latitude: Double(latitudeB), longitude: Double(longitudeB))
 
-                return distanceToLocation(locationA) < distanceToLocation(locationB)
+                return distanceToLocation(locationA) ?? 0.0 < distanceToLocation(locationB) ?? 0.0
             }
 
             return sorted.first
@@ -199,7 +198,7 @@ class ActiveTourViewController: UIViewController {
         }
     }
 
-    func cacheAllSteps() -> [JSON] {
+    @discardableResult func cacheAllSteps() -> [JSON] {
         if let cache = self.allStepsCache {
             return cache
         }
@@ -336,14 +335,10 @@ extension ActiveTourViewController: ActiveWaypointViewDelegate {
     func activeWaypointViewWillBeDismissed() {
         self.toggleWaypointInfoView()
     }
-
-    func willPresentImageViewer(_ imageViewer: ImageViewer) {
-        self.presentImageViewer(imageViewer)
-    }
 }
 
 extension ActiveTourViewController: DirectionsHeaderDelegate {
     func willDismissFromHeader() {
-        self.dismiss()
+        self.dismissModal()
     }
 }

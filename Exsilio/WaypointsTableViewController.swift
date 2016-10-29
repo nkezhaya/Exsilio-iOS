@@ -20,10 +20,10 @@ class WaypointsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissModal))
         self.navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UI.PlusIcon, style: .plain, target: self, action: #selector(addWaypoint)),
-            UIBarButtonItem(image: UI.BarButtonIcon(.Edit), style: .Plain, target: self, action: #selector(toggleEditingMode))
+            UIBarButtonItem(image: UI.BarButtonIcon(.edit), style: .plain, target: self, action: #selector(toggleEditingMode))
         ]
 
         self.tableView.tableFooterView = UIView()
@@ -43,7 +43,7 @@ class WaypointsTableViewController: UITableViewController {
         self.refresh()
     }
 
-    func dismiss() {
+    func dismissModal() {
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -111,7 +111,7 @@ extension WaypointsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
     }
 
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage.fontAwesomeIconWithName(.MapPin, textColor: UIColor(hexString: "#AAAAAA"), size: CGSize(width: 80, height: 80))
+        return UIImage.fontAwesomeIcon(name: .mapPin, textColor: UIColor(hexString: "#AAAAAA"), size: CGSize(width: 80, height: 80))
     }
 
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {

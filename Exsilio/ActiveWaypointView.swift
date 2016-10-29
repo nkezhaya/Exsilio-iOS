@@ -10,11 +10,9 @@ import UIKit
 import SwiftyJSON
 import FontAwesome_swift
 import AVFoundation
-import ImageViewer
 
 protocol ActiveWaypointViewDelegate {
     func activeWaypointViewWillBeDismissed()
-    func willPresentImageViewer(_ imageViewer: ImageViewer)
 }
 
 class ActiveWaypointView: UIView {
@@ -42,10 +40,6 @@ class ActiveWaypointView: UIView {
 
         self.backButton?.imageView?.contentMode = .scaleAspectFill
         self.volumeButton?.imageView?.contentMode = .scaleAspectFill
-
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        tapRecognizer.numberOfTapsRequired = 1
-        self.imageView?.addGestureRecognizer(tapRecognizer)
         
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
@@ -111,18 +105,6 @@ class ActiveWaypointView: UIView {
         }
     }
 
-    func imageTapped() {
-        let imageProvider = SomeImageProvider()
-        imageProvider.image = self.imageView!.image
-
-        let closeButton = UI.XIcon.imageWithTint(.white)
-        let buttonAssets = CloseButtonAssets(normal: closeButton, highlighted: closeButton)
-        let configuration = ImageViewerConfiguration(imageSize: CGSize(width: 10, height: 10), closeButtonAssets: buttonAssets)
-        let imageViewer = ImageViewer(imageProvider: imageProvider, configuration: configuration, displacedView: self.imageView!)
-
-        self.delegate?.willPresentImageViewer(imageViewer)
-    }
-
     func updateVolumeButtonImage() {
         if self.volume == true {
             self.volumeButton?.setImage(volumeOnIcon, for: .normal)
@@ -147,17 +129,5 @@ class ActiveWaypointView: UIView {
         self.sticky = false
         self.speechSynthesizer?.stopSpeaking(at: AVSpeechBoundary.immediate)
         self.delegate?.activeWaypointViewWillBeDismissed()
-    }
-}
-
-class SomeImageProvider: ImageProvider {
-    var image: UIImage!
-
-    func provideImage(_ completion: (UIImage?) -> Void) {
-        completion(image)
-    }
-
-    func provideImage(atIndex index: Int, completion: (UIImage?) -> Void) {
-        completion(image)
     }
 }

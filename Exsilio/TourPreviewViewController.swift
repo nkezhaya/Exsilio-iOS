@@ -23,7 +23,7 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissModal))
 
         if let tour = self.tour {
             self.nameLabel?.text = tour["name"].string
@@ -80,8 +80,9 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
         self.tour?["waypoints"].array?.forEach({ waypoint in
             if let urlString = waypoint["image_url"].string {
                 if urlString != API.MissingImagePath {
-                    let urlRequest = NSURLRequest(url: NSURL(string: urlString)! as URL)
-                    CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: nil)
+                    let urlRequest = URLRequest(url: URL(string: urlString)!)
+                    CurrentTourSingleton.sharedInstance.imageDownloader.download(urlRequest, completion: nil)
+                    
                     self.imagesPresent = true
                 }
             }
@@ -99,23 +100,23 @@ class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocatio
             let duration = 0.2
             let urlRequest = URLRequest(url: URL(string: imageURL)!)
 
-            UIView.animateWithDuration(duration, animations: {
+            UIView.animate(withDuration: duration, animations: {
                 self.backgroundImageView?.alpha = 0.0
             }, completion: { _ in
-                CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+                CurrentTourSingleton.sharedInstance.imageDownloader.download(urlRequest) { response in
                     if let image = response.result.value {
                         self.backgroundImageView?.image = image
 
-                        UIView.animateWithDuration(duration, animations: {
+                        UIView.animate(withDuration: duration, animations: {
                             self.backgroundImageView?.alpha = 0.75
                         })
                     }
-                })
+                }
             })
         }
     }
 
-    func dismiss() {
+    func dismissModal() {
         self.navigationController?.popViewController(animated: true)
     }
 

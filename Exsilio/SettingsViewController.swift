@@ -13,7 +13,7 @@ class SettingsViewController: FormViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.tabBarItem.image = UI.BarButtonIcon(.Cog)
+        self.tabBarItem.image = UI.BarButtonIcon(.cog)
     }
 
     override func viewDidLoad() {
@@ -25,14 +25,14 @@ class SettingsViewController: FormViewController {
                 row.title = "Speak Descriptions"
                 row.onChange({ row in
                     let value: Bool = row.value == nil ? false : row.value!
-                    NSUserDefaults.standardUserDefaults().setBool(value, forKey: Settings.SpeechKey)
+                    UserDefaults.standard.set(value, forKey: Settings.SpeechKey)
                 })
             }
             +++ Section("Session")
             <<< ButtonRow() { row in
                 row.title = "Log Out"
                 row.onCellSelection({ (_, _) in
-                    (UIApplication.sharedApplication().delegate as! AppDelegate).logOut()
+                    (UIApplication.shared.delegate as! AppDelegate).logOut()
                 })
             }
     }

@@ -27,12 +27,11 @@ class DirectionsHeaderView: UIView {
         self.header?.text = tour["name"] as? String
 
         let fontSize = CGFloat(18)
-
         let description = NSMutableAttributedString()
-        description.appendAttributedString(NSAttributedString(
-            string: String.fontAwesomeIconWithName(.ClockO),
+        description.append(NSAttributedString(
+            string: String.fontAwesomeIcon(name: .clockO),
             attributes: [
-                NSFontAttributeName: UIFont.fontAwesomeOfSize(fontSize)
+                NSFontAttributeName: UIFont.fontAwesome(ofSize: fontSize)
             ]))
         description.append(NSAttributedString(string: " "))
 
@@ -44,10 +43,10 @@ class DirectionsHeaderView: UIView {
 
         description.append(NSAttributedString(string: "\n"))
 
-        description.appendAttributedString(NSAttributedString(
-            string: String.fontAwesomeIconWithName(.MapMarker),
+        description.append(NSAttributedString(
+            string: String.fontAwesomeIcon(name: .mapMarker),
             attributes: [
-                NSFontAttributeName: UIFont.fontAwesomeOfSize(fontSize)
+                NSFontAttributeName: UIFont.fontAwesome(ofSize: fontSize)
             ]))
         description.append(NSAttributedString(string: " "))
 

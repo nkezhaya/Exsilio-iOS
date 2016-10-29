@@ -18,5 +18,4 @@ target "Exsilio" do
   pod "Eureka", "~> 2.0.0-beta.1"
   pod "SkyFloatingLabelTextField", git: "https://github.com/MLSDev/SkyFloatingLabelTextField.git", branch: "swift3"
   pod "SVProgressHUD"
-  pod "ImageViewer", git: "git@github.com:MailOnline/ImageViewer.git"
 end

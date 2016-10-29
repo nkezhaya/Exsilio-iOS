@@ -10,8 +10,8 @@ import Foundation
 import FBSDKLoginKit
 import FontAwesome_swift
 
-typealias Tour = [String: AnyObject]
-typealias Waypoint = [String: AnyObject]
+typealias Tour = [String: Any]
+typealias Waypoint = [String: Any]
 
 struct UI {
     static let LabelCharacterSpacing = 1.2
@@ -24,7 +24,7 @@ struct UI {
     static let BarButtonSize = CGSize(width: 32, height: 32)
 
     static func BarButtonIcon(_ name: FontAwesome, withColor color: UIColor) -> UIImage {
-        return UIImage.fontAwesomeIconWithName(name, textColor: color, size: BarButtonSize)
+        return UIImage.fontAwesomeIcon(name: name, textColor: color, size: BarButtonSize)
     }
 
     static func BarButtonIcon(_ name: FontAwesome) -> UIImage {

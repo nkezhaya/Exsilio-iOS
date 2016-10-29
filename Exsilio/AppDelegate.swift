@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setAesthetics() {
         let color = UIColor(hexString: "#333333")
         UINavigationBar.appearance().tintColor = color
-        UINavigationBar.appearance().barTintColor = .white()
+        UINavigationBar.appearance().barTintColor = .white
 
         let attributes: [String: AnyObject] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 20)!,

@@ -27,14 +27,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
     var waypoint: Waypoint?
 
     override func viewDidLoad() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismiss))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissModal))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveWaypoint))
 
         self.openMapButton?.darkBorderStyle()
         self.pickImageButton?.darkBorderStyle()
 
-        self.openMapButton?.setIcon(.Map)
-        self.pickImageButton?.setIcon(.Camera)
+        self.openMapButton?.setIcon(.map)
+        self.pickImageButton?.setIcon(.camera)
 
         if let waypoint = self.waypoint {
             if let name = waypoint["name"] as? String {
@@ -51,7 +51,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
 
             if let imageURL = waypoint["image_url"] as? String {
                 if imageURL != API.MissingImagePath {
-                    Alamofire.request(.GET, "\(API.URL)\(imageURL)").responseImage { response in
+                    Alamofire.request("\(API.URL)\(imageURL)").responseImage { response in
                         if let image = response.result.value {
                             self.fusumaImageSelected(image)
                         }
@@ -63,7 +63,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         self.nameField?.becomeFirstResponder()
     }
 
-    func dismiss() {
+    func dismissModal() {
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -111,47 +111,51 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }
 
         if let tourId = CurrentTourSingleton.sharedInstance.tour["id"] as? Int {
-            let method: Alamofire.Method
+            var method: Alamofire.HTTPMethod = .post
             let waypointId = waypoint["id"]
             var url = "\(API.URL)\(API.ToursPath)/\(tourId)\(API.WaypointsPath)"
 
-            if waypointId == nil {
-                method = .POST
-            } else {
-                method = .PUT
+            if waypointId != nil {
+                method = .put
                 url = url + "/\(waypointId!)"
             }
 
+            var urlRequest: URLRequest
+            do {
+                urlRequest = try URLRequest(url: url, method: method, headers: API.authHeaders())
+            } catch { return; }
+
             SVProgressHUD.show()
             Alamofire.upload(
-                method,
-                url,
-                headers: API.authHeaders(),
                 multipartFormData: { multipartFormData in
-                    multipartFormData.appendBodyPart(data: waypoint["name"]!.dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[name]")
-                    multipartFormData.appendBodyPart(data: "\(waypoint["latitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[latitude]")
-                    multipartFormData.appendBodyPart(data: "\(waypoint["longitude"]!)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[longitude]")
+                    let waypointName = waypoint["name"] as! String
+                    let latitude = waypoint["latitude"] as! Float
+                    let longitude = waypoint["longitude"] as! Float
+                    multipartFormData.append(waypointName.data(using: String.Encoding.utf8)!, withName: "waypoint[name]")
+                    multipartFormData.append("\(latitude)".data(using: String.Encoding.utf8)!, withName: "waypoint[latitude]")
+                    multipartFormData.append("\(longitude)".data(using: String.Encoding.utf8)!, withName: "waypoint[longitude]")
 
                     if let description = waypoint["description"] as? String {
-                        multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "waypoint[description]")
+                        multipartFormData.append(description.data(using: String.Encoding.utf8)!, withName: "waypoint[description]")
                     }
 
                     if let image = waypoint["photo"] as? UIImage {
-                        multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(image)!, name: "waypoint[image]", fileName: "image.png", mimeType: "image/png")
+                        multipartFormData.append(UIImagePNGRepresentation(image)!, withName: "waypoint[image]", fileName: "image.png", mimeType: "image/png")
                     }
                 },
+                with: urlRequest,
                 encodingCompletion: { encodingResult in
                     switch encodingResult {
-                    case .Success(let upload, _, _):
+                    case .success(let upload, _, _):
                         upload.responseJSON { response in
                             switch response.result {
-                            case .Success(let json):
+                            case .success(let json):
                                 SVProgressHUD.dismiss()
 
-                                if let errors = json["errors"] as? String {
+                                if let errors = JSON(json)["errors"].string {
                                     SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
                                 } else {
-                                    self.dismiss()
+                                    self.dismissModal()
                                 }
 
                                 break
@@ -181,10 +185,14 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension WaypointViewController: FusumaDelegate {
+    func fusumaVideoCompleted(withFileURL fileURL: URL) {
+
+    }
+
     @IBAction func pickImage() {
         let fusumaViewController = FusumaViewController()
         fusumaViewController.delegate = self
-        self.presentViewController(fusumaViewController, animated: true, completion: nil)
+        self.present(fusumaViewController, animated: true, completion: nil)
     }
 
     func fusumaImageSelected(_ image: UIImage) {
@@ -194,9 +202,9 @@ extension WaypointViewController: FusumaDelegate {
 
         self.pickImageButton?.layer.borderWidth = 0
         self.pickImageButton?.backgroundColor = UI.GreenColor
-        self.pickImageButton?.tintColor = .white()
-        self.pickImageButton?.setIcon(.Check)
-        self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .white())
+        self.pickImageButton?.tintColor = .white
+        self.pickImageButton?.setIcon(.check)
+        self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .white)
     }
 
     func fusumaCameraRollUnauthorized() {
@@ -218,9 +226,9 @@ extension WaypointViewController: GMSMapViewDelegate {
 
         self.openMapButton?.layer.borderWidth = 0
         self.openMapButton?.backgroundColor = UI.GreenColor
-        self.openMapButton?.tintColor = .white()
-        self.openMapButton?.setIcon(.Check)
-        self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .white())
+        self.openMapButton?.tintColor = .white
+        self.openMapButton?.setIcon(.check)
+        self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .white)
     }
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {

@@ -17,11 +17,11 @@ class EXButton: UIButton {
     }
 
     func darkBorderStyle() {
-        self.borderStyle(.black())
+        self.borderStyle(.black)
     }
 
     func lightBorderStyle() {
-        self.borderStyle(.white())
+        self.borderStyle(.white)
     }
 
     func borderStyle(_ color: UIColor) {
@@ -37,14 +37,14 @@ class EXButton: UIButton {
         self.layer.cornerRadius = 20
 
         if self.titleLabel?.text != nil {
-            self.updateText(self.titleLabel!.text!, withColor: .white())
+            self.updateText(self.titleLabel!.text!, withColor: .white)
         }
     }
 
     func setIcon(_ icon: FontAwesome) {
-        let icon = UIImage.fontAwesomeIconWithName(icon, textColor: self.tintColor, size: CGSize(width: 24, height: 24)).imageWithTint(self.tintColor)
-        self.setImage(icon, forState: .Normal)
-        self.setImage(icon, forState: .Highlighted)
+        let icon = UIImage.fontAwesomeIcon(name: icon, textColor: self.tintColor, size: CGSize(width: 24, height: 24)).imageWithTint(self.tintColor)
+        self.setImage(icon, for: .normal)
+        self.setImage(icon, for: .highlighted)
     }
 
     func updateText(_ text: String, withColor color: UIColor?) {

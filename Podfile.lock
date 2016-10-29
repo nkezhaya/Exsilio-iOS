@@ -23,7 +23,6 @@ PODS:
   - GoogleMaps/Base (2.1.0)
   - GoogleMaps/Maps (2.1.0):
     - GoogleMaps/Base (= 2.1.0)
-  - ImageViewer (4.0)
   - SCLAlertView (0.7.0)
   - SkyFloatingLabelTextField (1.2.1)
   - SVProgressHUD (2.0.3)
@@ -41,7 +40,6 @@ DEPENDENCIES:
   - FontAwesome.swift (from `git@github.com:thii/FontAwesome.swift`)
   - Fusuma (from `git@github.com:ytakzk/Fusuma.git`)
   - GoogleMaps
-  - ImageViewer (from `git@github.com:MailOnline/ImageViewer.git`)
   - SCLAlertView
   - SkyFloatingLabelTextField (from `https://github.com/MLSDev/SkyFloatingLabelTextField.git`, branch `swift3`)
   - SVProgressHUD
@@ -53,8 +51,6 @@ EXTERNAL SOURCES:
     :git: git@github.com:thii/FontAwesome.swift
   Fusuma:
     :git: git@github.com:ytakzk/Fusuma.git
-  ImageViewer:
-    :git: git@github.com:MailOnline/ImageViewer.git
   SkyFloatingLabelTextField:
     :branch: swift3
     :git: https://github.com/MLSDev/SkyFloatingLabelTextField.git
@@ -66,9 +62,6 @@ CHECKOUT OPTIONS:
   Fusuma:
     :commit: d89cc8398a3dac19ff03c7689302e62d3c233d49
     :git: git@github.com:ytakzk/Fusuma.git
-  ImageViewer:
-    :commit: 94da03446fa239add46876978b8ac9658a2e6e39
-    :git: git@github.com:MailOnline/ImageViewer.git
   SkyFloatingLabelTextField:
     :commit: 03177934f990c794060765f33c408268ce8afee0
     :git: https://github.com/MLSDev/SkyFloatingLabelTextField.git
@@ -85,13 +78,12 @@ SPEC CHECKSUMS:
   FontAwesome.swift: beb1ff2f206a1517745f4f057a4d30a76f8d7d4e
   Fusuma: 256315ea7daed298f246f1ba5e49700bc664dd93
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
-  ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-PODFILE CHECKSUM: eabda62ec4acc8eb8f11b6a06189e5cc77d8cd62
+PODFILE CHECKSUM: 5693a23a9751f0860c70ce577de8d656a0f5e228
 
 COCOAPODS: 1.1.1

@@ -54,32 +54,32 @@ class ExpandedTourTableViewCell: UITableViewCell {
         }
 
         // Duration
-        let duration = "\(String.fontAwesomeIconWithName(.ClockO)) "
+        let duration = "\(String.fontAwesomeIcon(name: .clockO)) "
         let mutableAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: duration,
             attributes: [
-                NSForegroundColorAttributeName: UIColor.whiteColor(),
-                NSFontAttributeName: UIFont.fontAwesomeOfSize(17.0)
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.fontAwesome(ofSize: 17.0)
             ]))
 
-        mutableAttributedString.appendAttributedString(NSAttributedString(string: tour["duration_short"].string!,
+        mutableAttributedString.append(NSAttributedString(string: tour["duration_short"].string!,
             attributes: [
-                NSForegroundColorAttributeName: UIColor.whiteColor(),
+                NSForegroundColorAttributeName: UIColor.white,
                 NSFontAttributeName: UIFont(name: "OpenSans", size: 17.0)!
             ]))
 
         self.durationLabel!.attributedText = mutableAttributedString
 
         // Waypoints
-        let pin = "\(String.fontAwesomeIconWithName(.MapMarker)) "
+        let pin = "\(String.fontAwesomeIcon(name: .mapMarker)) "
         let pinMutableAttributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: pin,
             attributes: [
-                NSForegroundColorAttributeName: UIColor.whiteColor(),
-                NSFontAttributeName: UIFont.fontAwesomeOfSize(17.0)
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.fontAwesome(ofSize: 17.0)
             ]))
 
-        pinMutableAttributedString.appendAttributedString(NSAttributedString(string: "\(tour["waypoints"].count)",
+        pinMutableAttributedString.append(NSAttributedString(string: "\(tour["waypoints"].count)",
             attributes: [
-                NSForegroundColorAttributeName: UIColor.whiteColor(),
+                NSForegroundColorAttributeName: UIColor.white,
                 NSFontAttributeName: UIFont(name: "OpenSans", size: 17.0)!
             ]))
 
@@ -89,25 +89,25 @@ class ExpandedTourTableViewCell: UITableViewCell {
         // Background image
         if let backgroundImageURL = tour["display_image_url"].string {
             let urlRequest = URLRequest(url: URL(string: backgroundImageURL)!)
-            CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+            CurrentTourSingleton.sharedInstance.imageDownloader.download(urlRequest) { response in
                 if let image = response.result.value {
                     self.backgroundImage?.image = image
                 }
-            })
+            }
         }
 
         // User image
         if let userImageURL = tour["user"]["picture_url"].string {
             let urlRequest = URLRequest(url: URL(string: userImageURL)!)
-            CurrentTourSingleton.sharedInstance.imageDownloader.downloadImage(URLRequest: urlRequest, completion: { response in
+            CurrentTourSingleton.sharedInstance.imageDownloader.download(urlRequest) { response in
                 if let image = response.result.value {
                     self.userImage?.image = image.af_imageRoundedIntoCircle()
                     self.userImage!.layer.cornerRadius = self.userImage!.frame.width / 2
                     self.userImage!.layer.borderWidth = 2
-                    self.userImage!.layer.borderColor = UIColor.whiteColor().CGColor
+                    self.userImage!.layer.borderColor = UIColor.white.cgColor
                     self.userImage!.layer.masksToBounds = true
                 }
-            })
+            }
         }
     }
 }
