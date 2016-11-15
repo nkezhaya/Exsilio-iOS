@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>94</string>
+	<string>95</string>
 	<key>FacebookAppID</key>
 	<string>1016717635040558</string>
 	<key>FacebookDisplayName</key>
@@ -47,8 +47,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Photo upload for creating a tour</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to set the default waypoint marker</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo upload for creating a tour</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans</string>
