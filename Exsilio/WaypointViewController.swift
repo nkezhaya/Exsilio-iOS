@@ -123,7 +123,7 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             var urlRequest: URLRequest
             do {
                 urlRequest = try URLRequest(url: url, method: method, headers: API.authHeaders())
-            } catch { return; }
+            } catch { return }
 
             SVProgressHUD.show()
             Alamofire.upload(

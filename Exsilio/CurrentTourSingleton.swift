@@ -26,7 +26,7 @@ class CurrentTourSingleton {
 
         let params = ["tour[name]": name, "tour[description]": description]
 
-        Alamofire.request("\(API.URL)\(API.ToursPath)", method: .get, parameters: params, headers: API.authHeaders()).responseJSON { response in
+        Alamofire.request("\(API.URL)\(API.ToursPath)", method: .post, parameters: params, headers: API.authHeaders()).responseJSON { response in
             switch response.result {
             case .success(let jsonString):
                 let json = JSON(jsonString)
@@ -100,7 +100,9 @@ class CurrentTourSingleton {
     func save(successHandler: @escaping ((Void) -> Void)) {
         var urlRequest: URLRequest
         do {
-            urlRequest = try URLRequest(url: "\(API.URL)\(API.ToursPath)", method: .post, headers: API.authHeaders())
+            urlRequest = try URLRequest(url: "\(API.URL)\(API.ToursPath)",
+                method: .post,
+                headers: API.authHeaders())
         } catch { return; }
         Alamofire.upload(
             multipartFormData: { multipartFormData in
@@ -115,8 +117,8 @@ class CurrentTourSingleton {
                 var position = 0
                 for waypoint in self.waypoints {
                     let waypointName = waypoint["name"] as! String
-                    let latitude = waypoint["latitude"] as! Float
-                    let longitude = waypoint["longitude"] as! Float
+                    let latitude = waypoint["latitude"] as! Double
+                    let longitude = waypoint["longitude"] as! Double
                     multipartFormData.append(waypointName.data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][name]")
                     multipartFormData.append("\(position)".data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][position]")
                     multipartFormData.append("\(latitude)".data(using: String.Encoding.utf8)!, withName: "tour[waypoints_attributes][][latitude]")
