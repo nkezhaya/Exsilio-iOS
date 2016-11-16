@@ -92,16 +92,16 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         var waypoint: Waypoint = self.waypoint == nil ? [:] : self.waypoint!
 
         if let name = self.nameField?.text {
-            waypoint["name"] = name as AnyObject?
+            waypoint["name"] = name
         }
 
         if let description = self.descriptionField?.text {
-            waypoint["description"] = description as AnyObject?
+            waypoint["description"] = description
         }
 
         if let coords = self.selectedPoint {
-            waypoint["latitude"] = coords.latitude as AnyObject?
-            waypoint["longitude"] = coords.longitude as AnyObject?
+            waypoint["latitude"] = coords.latitude
+            waypoint["longitude"] = coords.longitude
         }
 
         if let image = self.selectedImage {
@@ -129,8 +129,8 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
             Alamofire.upload(
                 multipartFormData: { multipartFormData in
                     let waypointName = waypoint["name"] as! String
-                    let latitude = waypoint["latitude"] as! Float
-                    let longitude = waypoint["longitude"] as! Float
+                    let latitude = waypoint["latitude"] as! Double
+                    let longitude = waypoint["longitude"] as! Double
                     multipartFormData.append(waypointName.data(using: String.Encoding.utf8)!, withName: "waypoint[name]")
                     multipartFormData.append("\(latitude)".data(using: String.Encoding.utf8)!, withName: "waypoint[latitude]")
                     multipartFormData.append("\(longitude)".data(using: String.Encoding.utf8)!, withName: "waypoint[longitude]")
