@@ -174,6 +174,9 @@
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="CREATE ACCOUNT"/>
+                                                <connections>
+                                                    <action selector="createAccountButtonTapped" destination="eOw-8X-Dtf" eventType="touchUpInside" id="Egn-KT-07T"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -215,6 +218,12 @@
                             <constraint firstItem="GFp-EJ-F7l" firstAttribute="leading" secondItem="gOT-zo-GgL" secondAttribute="leading" id="o9S-l7-Q3g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="phL-dD-etm" id="R8Q-Na-UDo"/>
+                        <outlet property="firstNameTextField" destination="z7a-81-X6g" id="pkl-Si-Cw7"/>
+                        <outlet property="lastNameTextField" destination="jFM-z6-YHQ" id="cYf-Oi-xfq"/>
+                        <outlet property="passwordTextField" destination="XJz-Wi-DeH" id="x7k-4X-Yw7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAR-FH-BFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -275,7 +284,7 @@
                                     <segue destination="eOw-8X-Dtf" kind="show" id="G7G-Vs-xYh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-QZ-SNw" customClass="FormButton" customModule="Basic_Space" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-QZ-SNw" customClass="FormButton" customModule="Exsilio" customModuleProvider="target">
                                 <rect key="frame" x="36" y="443" width="303" height="65"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

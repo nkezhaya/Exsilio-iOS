@@ -20,7 +20,7 @@ class AuthenticationSingleton {
         }
 
         set {
-            if accessToken == nil {
+            if newValue == nil {
                 UserDefaults.standard.removeObject(forKey: Settings.accessTokenKey)
             } else {
                 UserDefaults.standard.set(newValue, forKey: Settings.accessTokenKey)
@@ -106,9 +106,10 @@ class AuthenticationSingleton {
     }
 
     fileprivate func loginSuccessHandler(_ json: JSON, success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
-        if let jwt = json["jwt"].string {
-            accessToken = jwt
+        if json["user"] != nil {
             currentUser = json["user"]
+            accessToken = json["user"]["authentication_token"].string
+
             NotificationCenter.default.post(name: .userLoggedIn, object: nil)
 
             success?()
@@ -154,13 +155,13 @@ class AuthenticationSingleton {
             switch self {
             case .login: fallthrough
             case .loginWithFacebook:
-                return "/users/sign_in"
+                return "/users/sign_in.json"
             case .register:
-                return "/users"
+                return "/users.json"
             case .changePassword:
-                return "/users/password"
+                return "/users/password.json"
             case .me:
-                return "/users/me"
+                return "/users/me.json"
             }
         }
 
