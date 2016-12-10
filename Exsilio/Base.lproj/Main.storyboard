@@ -182,7 +182,7 @@
         <scene sceneID="hHK-yC-tv2">
             <objects>
                 <navigationController storyboardIdentifier="CreateTourNavigationController" title="Create Tour" id="9Xe-FF-1Lu" customClass="CreateTourNavigationController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hXw-Oe-E69">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hXw-Oe-E69">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -664,11 +664,11 @@
             </objects>
             <point key="canvasLocation" x="4256.8000000000002" y="1860.7196401799101"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Tours-->
         <scene sceneID="IUm-7q-sdC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uw0-hu-dFI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="rQd-an-ePs"/>
+                <navigationController title="My Tours" automaticallyAdjustsScrollViewInsets="NO" id="Uw0-hu-dFI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title=" " id="rQd-an-ePs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rAB-xF-B9n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -683,10 +683,10 @@
             </objects>
             <point key="canvasLocation" x="-652" y="1866.1169415292354"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="Bvv-CU-1Ou">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K7n-32-Qw2" sceneMemberID="viewController">
+                <navigationController title="Search" automaticallyAdjustsScrollViewInsets="NO" id="K7n-32-Qw2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="pQd-ue-Ug6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LKY-TE-Qyl">
@@ -702,10 +702,10 @@
             </objects>
             <point key="canvasLocation" x="-652" y="1165.3673163418291"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings-->
         <scene sceneID="jDs-A0-JBu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iXE-PC-p6R" sceneMemberID="viewController">
+                <navigationController title="Settings" automaticallyAdjustsScrollViewInsets="NO" id="iXE-PC-p6R" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="HUU-TU-Ylz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QlN-Pl-k3X">

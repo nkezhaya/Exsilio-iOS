@@ -261,6 +261,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="iconName" value="PasswordIcon"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="mhO-rW-Qmx" id="rdW-ma-qRl"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-4b-CwJ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="36" y="223" width="303" height="50"/>
@@ -273,6 +276,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="iconName" value="EmailIcon"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="mhO-rW-Qmx" id="YP5-x2-It0"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fD-VZ-jy7">
                                 <rect key="frame" x="16" y="578" width="343" height="29"/>
@@ -284,7 +290,7 @@
                                     <segue destination="eOw-8X-Dtf" kind="show" id="G7G-Vs-xYh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-QZ-SNw" customClass="FormButton" customModule="Exsilio" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6Z-QZ-SNw" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
                                 <rect key="frame" x="36" y="443" width="303" height="65"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -298,6 +304,9 @@
                                         <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonTapped" destination="mhO-rW-Qmx" eventType="touchUpInside" id="nTk-tk-4ei"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -319,6 +328,11 @@
                             <constraint firstItem="7fD-VZ-jy7" firstAttribute="trailing" secondItem="2Z2-mD-GcU" secondAttribute="trailingMargin" id="xWE-Rk-cp4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Cyx-4b-CwJ" id="RmX-Cp-JwO"/>
+                        <outlet property="headerLabel" destination="K7F-Qp-dvl" id="ycS-E4-OuE"/>
+                        <outlet property="passwordTextField" destination="YZ0-cN-6ef" id="SI0-Uc-c3X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piy-Rd-Svf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

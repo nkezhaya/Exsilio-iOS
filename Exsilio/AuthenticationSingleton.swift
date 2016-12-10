@@ -34,8 +34,8 @@ class AuthenticationSingleton {
         return accessToken != nil || FBSDKAccessToken.current() != nil
     }
 
-    func login(username: String, password: String, success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
-        Alamofire.request(AuthenticationRouter.login(username, password)).responseJSON(completionHandler: authResponseHandler(success, failure: failure))
+    func login(email: String, password: String, success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
+        Alamofire.request(AuthenticationRouter.login(email, password)).responseJSON(completionHandler: authResponseHandler(success, failure: failure))
     }
 
     func loggedInWithFacebook() {
@@ -146,15 +146,13 @@ class AuthenticationSingleton {
 
     enum AuthenticationRouter: URLRequestConvertible {
         case login(String, String)
-        case loginWithFacebook(String)
         case register(Parameters)
         case changePassword(Parameters)
         case me
 
         var path: String {
             switch self {
-            case .login: fallthrough
-            case .loginWithFacebook:
+            case .login:
                 return "/users/sign_in.json"
             case .register:
                 return "/users.json"
@@ -167,10 +165,8 @@ class AuthenticationSingleton {
 
         var parameters: Parameters? {
             switch self {
-            case .login(let username, let password):
-                return ["user": ["username": username, "password": password]]
-            case .loginWithFacebook(let accessToken):
-                return ["facebook_token": accessToken]
+            case .login(let email, let password):
+                return ["user": ["email": email, "password": password]]
             case .register(let registrationParams):
                 return ["user": registrationParams]
             case .changePassword(let params):

@@ -51,6 +51,7 @@ class TourTableViewCell: SWTableViewCell {
     }
 
     func updateWithTour(_ tour: JSON) {
+        guard tour != nil else { return }
         self.tourJSON = tour
         self.nameLabel!.text = tour["name"].string
 
@@ -61,7 +62,6 @@ class TourTableViewCell: SWTableViewCell {
             self.descriptionLabel!.text = "Draft: \(tour["city_state"].string!)"
             self.pinImage?.image = lockImage
         }
-
 
         if let imageURL = tour["user"]["picture_url"].string {
             let urlRequest = URLRequest(url: URL(string: imageURL)!)
