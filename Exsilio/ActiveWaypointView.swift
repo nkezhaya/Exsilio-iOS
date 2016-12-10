@@ -60,7 +60,7 @@ class ActiveWaypointView: UIView {
         if let description = waypoint["description"].string {
             self.descriptionTextView?.text = description
 
-            if UserDefaults.standard.bool(forKey: Settings.SpeechKey) {
+            if UserDefaults.standard.bool(forKey: Settings.speechKey) {
                 speak()
             } else {
                 self.volumeButton?.isHidden = true

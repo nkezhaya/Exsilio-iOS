@@ -39,7 +39,7 @@ struct UI {
 
 struct API {
     #if DEBUG
-    static let URL = "http://192.168.1.3:3000"
+    static let URL = "http://192.168.1.6:3000"
     #else
     static let URL = "https://exsilio.herokuapp.com"
     #endif
@@ -59,17 +59,49 @@ struct API {
         return (config.object(forKey: "GoogleMapsAPI")! as AnyObject).object(forKey: "Key") as! String
     }
 
-    static func currentToken() -> String {
+    static func currentFacebookToken() -> String? {
         return FBSDKAccessToken.current().tokenString
     }
 
-    static func authHeaders() -> [String: String] {
-        return [
-            TokenHeader: self.currentToken()
-        ]
+    static func authHeaders() -> Headers {
+        if FBSDKAccessToken.current() != nil {
+            return ["X-FB-Token": FBSDKAccessToken.current().tokenString]
+        }
+
+        var headers = Headers()
+
+        if AuthenticationSingleton.shared.currentUser == nil {
+            return headers
+        }
+
+        if let userEmail = AuthenticationSingleton.shared.currentUser?["email"].string {
+            headers["X-User-Email"] = userEmail
+        }
+
+        if let accessToken = AuthenticationSingleton.shared.accessToken {
+            headers["X-User-Token"] = accessToken
+        }
+
+        return headers
     }
 }
 
 struct Settings {
-    static let SpeechKey = "AllowsSpeech"
+    static let speechKey = "AllowsSpeech"
+    static let accessTokenKey = "AccessTokenKey"
+}
+
+extension Notification.Name {
+    static let userLoggedIn = Notification.Name("userLoggedIn")
+    static let userLoggedOut = Notification.Name("userLoggedOut")
+}
+
+typealias Parameters = [String: Any]
+typealias MultipartParameters = [String: Data]
+typealias Headers = [String: String]
+
+enum GenericError: Error {
+    case error(String)
+
+    static let incompleteForm = "Please fill out all form fields and try again."
 }

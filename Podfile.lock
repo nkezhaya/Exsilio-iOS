@@ -2,6 +2,8 @@ PODS:
   - Alamofire (4.0.1)
   - AlamofireImage (3.1.0):
     - Alamofire (~> 4.0)
+  - AlamofireNetworkActivityIndicator (2.0.1):
+    - Alamofire (~> 4.0)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -26,12 +28,15 @@ PODS:
   - SCLAlertView (0.7.0)
   - SkyFloatingLabelTextField (1.2.1)
   - SVProgressHUD (2.0.3)
+  - SwiftMessages (3.0.3)
   - SwiftyJSON (3.1.1)
   - SWTableViewCell (0.3.7)
+  - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - AlamofireImage (~> 3.1)
+  - AlamofireImage (~> 3.1.0)
+  - AlamofireNetworkActivityIndicator (~> 2.0)
   - DZNEmptyDataSet
   - Eureka (~> 2.0.0-beta.1)
   - FBSDKCoreKit
@@ -43,8 +48,10 @@ DEPENDENCIES:
   - SCLAlertView
   - SkyFloatingLabelTextField (from `https://github.com/MLSDev/SkyFloatingLabelTextField.git`, branch `swift3`)
   - SVProgressHUD
+  - SwiftMessages (~> 3.0.1)
   - SwiftyJSON (~> 3.1.1)
   - SWTableViewCell (~> 0.3.7)
+  - TPKeyboardAvoiding
 
 EXTERNAL SOURCES:
   FontAwesome.swift:
@@ -69,6 +76,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
+  AlamofireNetworkActivityIndicator: 3e55069ada3e1ff7703665156429eedcdfea0bc1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
@@ -81,9 +89,11 @@ SPEC CHECKSUMS:
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  SwiftMessages: 3c6fd0375009d69ff35a7656bae0e31b4d8a930d
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+  TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 5693a23a9751f0860c70ce577de8d656a0f5e228
+PODFILE CHECKSUM: f1ee92e4e638a0a951daeb0c41f13e1ea959480a
 
 COCOAPODS: 1.1.1

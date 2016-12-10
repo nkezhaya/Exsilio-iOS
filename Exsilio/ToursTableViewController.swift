@@ -176,7 +176,7 @@ extension ToursTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO TOURS YET"
 
-        let attributes: [String : AnyObject?] = [
+        let attributes: [String : Any?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
             NSKernAttributeName: UI.LabelCharacterSpacing as ImplicitlyUnwrappedOptional<AnyObject>
@@ -188,7 +188,7 @@ extension ToursTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Create a tour and\nshare it with others!"
 
-        let attributes: [String : AnyObject?] = [
+        let attributes: [String : Any?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#333333")
         ]

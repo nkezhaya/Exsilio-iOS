@@ -3,7 +3,8 @@ use_frameworks!
 
 target "Exsilio" do
   pod "Alamofire", "~> 4.0"
-  pod "AlamofireImage", "~> 3.1"
+  pod "AlamofireImage", "~> 3.1.0"
+  pod "AlamofireNetworkActivityIndicator", "~> 2.0"
 
   pod "FBSDKCoreKit"
   pod "FBSDKLoginKit"
@@ -18,4 +19,6 @@ target "Exsilio" do
   pod "Eureka", "~> 2.0.0-beta.1"
   pod "SkyFloatingLabelTextField", git: "https://github.com/MLSDev/SkyFloatingLabelTextField.git", branch: "swift3"
   pod "SVProgressHUD"
+  pod "SwiftMessages", "~> 3.0.1"
+  pod "TPKeyboardAvoiding"
 end

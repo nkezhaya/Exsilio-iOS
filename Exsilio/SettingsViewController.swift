@@ -25,14 +25,14 @@ class SettingsViewController: FormViewController {
                 row.title = "Speak Descriptions"
                 row.onChange({ row in
                     let value: Bool = row.value == nil ? false : row.value!
-                    UserDefaults.standard.set(value, forKey: Settings.SpeechKey)
+                    UserDefaults.standard.set(value, forKey: Settings.speechKey)
                 })
             }
             +++ Section("Session")
             <<< ButtonRow() { row in
                 row.title = "Log Out"
                 row.onCellSelection({ (_, _) in
-                    (UIApplication.shared.delegate as! AppDelegate).logOut()
+                    AuthenticationSingleton.shared.logOut()
                 })
             }
     }

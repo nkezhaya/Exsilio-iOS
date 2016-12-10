@@ -117,7 +117,7 @@ extension WaypointsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO WAYPOINTS"
 
-        let attributes: [String : AnyObject?] = [
+        let attributes: [String : Any?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
             NSKernAttributeName: UI.LabelCharacterSpacing as ImplicitlyUnwrappedOptional<AnyObject>
@@ -129,7 +129,7 @@ extension WaypointsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Add some waypoints before\npublishing your tour!"
 
-        let attributes: [String : AnyObject?] = [
+        let attributes: [String : Any?] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#333333")
         ]
