@@ -50,6 +50,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         if !authentication.isLoggedIn() {
             displayAuthentication(animated: false)
         }
+
+        if authentication.isLoggedIn() {
+            authentication.refreshCurrentUser()
+        }
     }
 
     func didLogIn() {

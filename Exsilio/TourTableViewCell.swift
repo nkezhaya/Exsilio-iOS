@@ -51,7 +51,6 @@ class TourTableViewCell: SWTableViewCell {
     }
 
     func updateWithTour(_ tour: JSON) {
-        guard tour != nil else { return }
         self.tourJSON = tour
         self.nameLabel!.text = tour["name"].string
 
