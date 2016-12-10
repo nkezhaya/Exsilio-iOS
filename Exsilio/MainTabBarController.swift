@@ -27,6 +27,23 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         center.addObserver(self, selector: #selector(didLogOut), name: .userLoggedOut, object: nil)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Uses the original colors for your images, so they aren't not rendered as grey automatically.
+        if let items = self.tabBar.items {
+            for item in items {
+                item.title = ""
+
+                if let image = item.image {
+                    item.image = image.imageWithTint(UIColor.white).withRenderingMode(.alwaysOriginal)
+                    item.selectedImage = image.imageWithTint(UIColor.black).withRenderingMode(.alwaysOriginal)
+                    item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+                }
+            }
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -63,15 +80,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         // Back button title label position
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -99999, vertical: 0), for: .default)
-
-        // Uses the original colors for your images, so they aren't not rendered as grey automatically.
-        for item in self.tabBar.items! as [UITabBarItem] {
-            if let image = item.image {
-                item.image = image.imageWithTint(UIColor.white).withRenderingMode(.alwaysOriginal)
-                item.selectedImage = image.imageWithTint(UIColor.black).withRenderingMode(.alwaysOriginal)
-                item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
-            }
-        }
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
