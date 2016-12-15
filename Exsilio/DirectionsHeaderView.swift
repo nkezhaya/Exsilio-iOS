@@ -61,7 +61,7 @@ class DirectionsHeaderView: UIView {
         paragraph.lineSpacing = 5
         paragraph.lineBreakMode = .byWordWrapping
 
-        description.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSRangeFromString(description.string))
+        description.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSRange(location: 0, length: description.string.characters.count))
 
         self.subheader?.attributedText = description
     }
