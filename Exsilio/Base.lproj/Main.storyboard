@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zkp-Dl-uAi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zkp-Dl-uAi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -182,7 +182,7 @@
         <scene sceneID="hHK-yC-tv2">
             <objects>
                 <navigationController storyboardIdentifier="CreateTourNavigationController" title="Create Tour" id="9Xe-FF-1Lu" customClass="CreateTourNavigationController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hXw-Oe-E69">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hXw-Oe-E69">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -568,7 +568,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="delegate" destination="plf-OM-IyS" id="SJ9-S1-p7x"/>
+                                    <outlet property="delegate" destination="rCV-Dq-8ZR" id="jih-00-KiS"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxl-7U-X5H" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
@@ -670,7 +670,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uw0-hu-dFI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="rQd-an-ePs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rAB-xF-B9n">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rAB-xF-B9n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -689,7 +689,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K7n-32-Qw2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="pQd-ue-Ug6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LKY-TE-Qyl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LKY-TE-Qyl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -708,7 +708,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iXE-PC-p6R" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="HUU-TU-Ylz"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QlN-Pl-k3X">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QlN-Pl-k3X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
