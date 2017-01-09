@@ -82,7 +82,7 @@ class AuthenticationSingleton {
 
                 completion?()
             case .failure(_):
-                self.logOut()
+                break
             }
         }
     }
