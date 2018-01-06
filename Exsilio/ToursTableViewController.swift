@@ -90,9 +90,7 @@ class ToursTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "TourTableViewCell", for: indexPath) as! TourTableViewCell
-        cell.delegate = self
         cell.updateWithTour(self.tours[indexPath.row])
-        cell.addUtilityButtons()
 
         return cell
     }
@@ -102,6 +100,23 @@ class ToursTableViewController: UITableViewController {
 
         let tour = self.tours[indexPath.row]
 
+        let alertController = UIAlertController(title: "Manage Tour", message: "What would you like to do with this tour?", preferredStyle: .actionSheet)
+
+        alertController.addAction(UIAlertAction(title: "Preview Tour", style: .default, handler: { _ in self.previewTour(tour: tour) }))
+        alertController.addAction(UIAlertAction(title: "Edit Tour", style: .default, handler: { _ in self.editTourAtIndexPath(indexPath) }))
+
+        let published = !(self.tours[indexPath.row]["published"].bool == true)
+        let publishedTitle = published ? "Unpublish Tour" : "Publish Tour"
+        alertController.addAction(UIAlertAction(title: publishedTitle, style: .default, handler: { _ in self.publishTourAtIndexPath(indexPath) }))
+
+        alertController.addAction(UIAlertAction(title: "Clone Tour", style: .default, handler: { _ in self.cloneTourAtIndexPath(indexPath) }))
+        alertController.addAction(UIAlertAction(title: "Delete Tour", style: .destructive, handler: { _ in self.deleteTourAtIndexPath(indexPath) }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alertController, animated: true, completion: nil)
+    }
+
+    private func previewTour(tour: JSON) {
         if tour["waypoints_count"].int! < 2 {
             SCLAlertView().showError("Error", subTitle: "Whoops! This tour does not have enough waypoints to preview yet. Swipe right to edit.")
         } else {
@@ -110,57 +125,73 @@ class ToursTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-}
 
-extension ToursTableViewController: SWTableViewCellDelegate {
-    func swipeableTableViewCell(_ cell: SWTableViewCell!, didTriggerRightUtilityButtonWith index: Int) {
-        let indexPath = self.tableView.indexPath(for: cell)!
+    private func publishTourAtIndexPath(_ indexPath: IndexPath) {
+        let tour = self.tours[indexPath.row]
+        if let id = tour["id"].int {
+            let published = !(tour["published"].bool == true)
+            let params = ["tour[published]": "\(published)"]
 
-        switch index {
-        case 0:
-            self.editTourAtIndexPath(indexPath)
-            break
-        case 1:
-            if let id = self.tours[indexPath.row]["id"].int {
-                let tourCell = cell as! TourTableViewCell
-                let published = !(self.tours[indexPath.row]["published"].bool == true)
-                let params = ["tour[published]": "\(published)"]
-
-                tourCell.hideUtilityButtons(animated: true)
-
-                Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)", method: .put, parameters: params, headers: API.authHeaders()).responseJSON { response in
-                    switch response.result {
-                    case .success(let jsonString):
-                        let json = JSON(jsonString)
-                        if let errors = json["errors"].string {
-                            SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
-                        } else {
-                            self.tours[indexPath.row]["published"] = JSON(published)
-                            tourCell.updateWithTour(self.tours[indexPath.row])
-                            tourCell.resetUtilityButtons()
-                        }
-                        break
-                    default:
-                        break
+            Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)", method: .put, parameters: params, headers: API.authHeaders()).responseJSON { response in
+                switch response.result {
+                case .success(let jsonString):
+                    let json = JSON(jsonString)
+                    if let errors = json["errors"].string {
+                        SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
+                    } else {
+                        self.tours[indexPath.row]["published"] = JSON(published)
                     }
+                    break
+                default:
+                    break
                 }
             }
-            break
-        case 2:
+        }
+    }
+
+    private func cloneTourAtIndexPath(_ indexPath: IndexPath) {
+        guard let id = self.tours[indexPath.row]["id"].int else { return }
+        let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+        let name = alert.addTextField("Enter the new tour name")
+        alert.addButton("Clone") {
+            guard let name = name.text else { return }
+
+            let params = ["tour[name]": name]
+            SVProgressHUD.show()
+            Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)/clone", method: .post, parameters: params, headers: API.authHeaders()).responseJSON { response in
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success(let jsonString):
+                    let json = JSON(jsonString)
+                    if let errors = json["errors"].string {
+                        SCLAlertView().showError("Whoops!", subTitle: errors, closeButtonTitle: "OK")
+                    } else {
+                        self.refresh()
+                    }
+                    break
+                default:
+                    break
+                }
+            }
+        }
+        alert.addButton("Cancel", action: {})
+        alert.showEdit("Clone Tour", subTitle: "")
+    }
+
+    private func deleteTourAtIndexPath(_ indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "Delete Tour", message: "Are you sure you want to delete this tour?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             if let id = self.tours[indexPath.row]["id"].int {
                 _ = Alamofire.request("\(API.URL)\(API.ToursPath)/\(id)", method: .delete, headers: API.authHeaders())
 
                 self.tours.arrayObject?.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
-            break
-        default:
-            break
-        }
-    }
-
-    func swipeableTableViewCellShouldHideUtilityButtons(onSwipe cell: SWTableViewCell!) -> Bool {
-        return true
+        })
+        let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -176,7 +207,7 @@ extension ToursTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO TOURS YET"
 
-        let attributes: [String : Any?] = [
+        let attributes: [String : Any] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
             NSKernAttributeName: UI.LabelCharacterSpacing as ImplicitlyUnwrappedOptional<AnyObject>
@@ -188,7 +219,7 @@ extension ToursTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelega
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Create a tour and\nshare it with others!"
 
-        let attributes: [String : Any?] = [
+        let attributes: [String : Any] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#333333")
         ]

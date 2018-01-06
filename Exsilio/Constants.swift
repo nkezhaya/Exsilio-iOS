@@ -39,8 +39,7 @@ struct UI {
 
 struct API {
     #if DEBUG
-    //static let URL = "http://192.168.1.6:3000"
-    static let URL = "https://exsilio.herokuapp.com"
+    static let URL = "http://192.168.1.35:3000"
     #else
     static let URL = "https://exsilio.herokuapp.com"
     #endif

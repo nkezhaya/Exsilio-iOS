@@ -10,9 +10,8 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
-import SWTableViewCell
 
-class TourTableViewCell: SWTableViewCell {
+class TourTableViewCell: UITableViewCell {
     var tourJSON: JSON?
 
     @IBOutlet var nameLabel: UILabel?
@@ -28,26 +27,6 @@ class TourTableViewCell: SWTableViewCell {
 
         self.selectedBackgroundView = UIView()
         self.selectedBackgroundView!.backgroundColor = .white
-    }
-
-    func addUtilityButtons() {
-        if self.rightUtilityButtons != nil && !self.rightUtilityButtons.isEmpty {
-            return
-        }
-
-        let tourPublished = self.tourJSON?["published"].bool == true
-
-        let buttons = NSMutableArray()
-        buttons.sw_addUtilityButton(with: UI.BlueColor, icon: UIImage.fontAwesomeIcon(name: .edit, textColor: .white, size: CGSize(width: 30, height: 30)))
-        buttons.sw_addUtilityButton(with: UI.GreenColor, icon: UIImage.fontAwesomeIcon(name: tourPublished ? .lock : .unlockAlt, textColor: .white, size: CGSize(width: 30, height: 30)))
-        buttons.sw_addUtilityButton(with: UI.RedColor, icon: UIImage.fontAwesomeIcon(name: .trash, textColor: .white, size: CGSize(width: 30, height: 30)))
-
-        self.rightUtilityButtons = buttons as [AnyObject]
-    }
-
-    func resetUtilityButtons() {
-        self.rightUtilityButtons = []
-        self.addUtilityButtons()
     }
 
     func updateWithTour(_ tour: JSON) {
