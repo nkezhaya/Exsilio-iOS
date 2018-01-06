@@ -11,7 +11,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - DZNEmptyDataSet (1.8.1)
-  - Eureka (2.0.0-beta.1)
+  - Eureka (4.0.1)
   - FBSDKCoreKit (4.16.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.16.1):
@@ -38,7 +38,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.1.0)
   - AlamofireNetworkActivityIndicator (~> 2.0)
   - DZNEmptyDataSet
-  - Eureka (~> 2.0.0-beta.1)
+  - Eureka (~> 4.0)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -79,7 +79,7 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityIndicator: 3e55069ada3e1ff7703665156429eedcdfea0bc1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
+  Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
@@ -94,6 +94,6 @@ SPEC CHECKSUMS:
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: f1ee92e4e638a0a951daeb0c41f13e1ea959480a
+PODFILE CHECKSUM: c0b8922945308747c1afc66afd9513bd44394b7d
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.4.0.beta.2

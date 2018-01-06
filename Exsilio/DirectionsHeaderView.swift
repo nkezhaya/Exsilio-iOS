@@ -61,7 +61,7 @@ class DirectionsHeaderView: UIView {
         paragraph.lineSpacing = 5
         paragraph.lineBreakMode = .byWordWrapping
 
-        description.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSRange(location: 0, length: description.string.characters.count))
+        description.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSRange(location: 0, length: description.string.utf8.count))
 
         self.subheader?.attributedText = description
     }
@@ -76,7 +76,7 @@ class DirectionsHeaderView: UIView {
                 return
             }
 
-            let range = NSMakeRange(0, htmlInstructions.characters.count)
+            let range = NSMakeRange(0, htmlInstructions.utf8.count)
             let instructions = regex.stringByReplacingMatches(in: htmlInstructions, options: NSRegularExpression.MatchingOptions(), range: range, withTemplate: "")
 
             self.subheader?.text = instructions

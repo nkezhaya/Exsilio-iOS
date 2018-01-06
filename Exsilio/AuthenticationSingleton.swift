@@ -34,7 +34,7 @@ class AuthenticationSingleton {
         return accessToken != nil || FBSDKAccessToken.current() != nil
     }
 
-    func login(email: String, password: String, success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
+    func login(email: String, password: String, success: (() -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
         Alamofire.request(AuthenticationRouter.login(email, password)).responseJSON(completionHandler: authResponseHandler(success, failure: failure))
     }
 
@@ -44,11 +44,11 @@ class AuthenticationSingleton {
         }
     }
 
-    func register(with params: Parameters, success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
+    func register(with params: Parameters, success: (() -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
         Alamofire.request(AuthenticationRouter.register(params)).responseJSON(completionHandler: authResponseHandler(success, failure: failure))
     }
 
-    func changePassword(params: Parameters, success: ((Void) -> Void)? = nil) {
+    func changePassword(params: Parameters, success: (() -> Void)? = nil) {
         Alamofire.request(AuthenticationRouter.changePassword(params)).validate().responseJSON { response in
             switch response.result {
             case .success:
@@ -59,7 +59,7 @@ class AuthenticationSingleton {
         }
     }
 
-    func refreshCurrentUser(_ completion: ((Void) -> Void)? = nil) {
+    func refreshCurrentUser(_ completion: (() -> Void)? = nil) {
         Alamofire.request(AuthenticationRouter.me).responseJSON { response in
             switch response.result {
             case .success(let data):
@@ -94,7 +94,7 @@ class AuthenticationSingleton {
         NotificationCenter.default.post(name: .userLoggedOut, object: nil)
     }
 
-    fileprivate func authResponseHandler(_ success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) -> ((DataResponse<Any>) -> Void) {
+    fileprivate func authResponseHandler(_ success: (() -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) -> ((DataResponse<Any>) -> Void) {
         return { response in
             switch response.result {
             case .success(let data):
@@ -105,7 +105,7 @@ class AuthenticationSingleton {
         }
     }
 
-    fileprivate func loginSuccessHandler(_ json: JSON, success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
+    fileprivate func loginSuccessHandler(_ json: JSON, success: (() -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) {
         if json["user"] != nil {
             currentUser = json["user"]
             accessToken = json["user"]["authentication_token"].string
@@ -126,7 +126,7 @@ class AuthenticationSingleton {
         }
     }
 
-    fileprivate func userResponseHandler(_ success: ((Void) -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) -> ((DataResponse<Any>) -> Void) {
+    fileprivate func userResponseHandler(_ success: (() -> Void)? = nil, failure: ((GenericError) -> Void)? = nil) -> ((DataResponse<Any>) -> Void) {
         return { response in
             switch response.result {
             case .success(let data):

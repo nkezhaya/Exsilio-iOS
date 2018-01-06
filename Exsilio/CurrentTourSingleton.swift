@@ -59,7 +59,7 @@ class CurrentTourSingleton {
         self.waypoints = []
     }
 
-    func moveWaypointAtIndex(_ sourceIndex: Int, toIndex destinationIndex: Int, completion: ((Void) -> Void)?) {
+    func moveWaypointAtIndex(_ sourceIndex: Int, toIndex destinationIndex: Int, completion: (() -> Void)?) {
         let waypoint = self.waypoints[sourceIndex]
         self.waypoints.remove(at: sourceIndex)
         self.waypoints.insert(waypoint, at: destinationIndex)
@@ -97,7 +97,7 @@ class CurrentTourSingleton {
         }
     }
 
-    func save(successHandler: @escaping ((Void) -> Void)) {
+    func save(successHandler: @escaping (() -> Void)) {
         var urlRequest: URLRequest
         do {
             urlRequest = try URLRequest(url: "\(API.URL)\(API.ToursPath)",

@@ -260,7 +260,7 @@ extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "NO RESULTS"
 
-        let attributes: [String : Any?] = [
+        let attributes: [String : Any] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 24)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#AAAAAA"),
             NSKernAttributeName: UI.LabelCharacterSpacing as ImplicitlyUnwrappedOptional<AnyObject>
@@ -272,7 +272,7 @@ extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = "Modify your search terms\nand try again!"
 
-        let attributes: [String : Any?] = [
+        let attributes: [String : Any] = [
             NSFontAttributeName: UIFont(name: "OpenSans", size: 18)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#333333")
         ]

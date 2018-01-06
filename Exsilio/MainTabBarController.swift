@@ -66,7 +66,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
 
-    func displayAuthentication(animated: Bool, completion: ((Void) -> Void)? = nil) {
+    func displayAuthentication(animated: Bool, completion: (() -> Void)? = nil) {
         let authStoryboard = UIStoryboard(name: "Authentication", bundle: nil)
         present(authStoryboard.instantiateInitialViewController()!, animated: true, completion: completion)
     }

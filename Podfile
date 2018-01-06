@@ -16,9 +16,19 @@ target "Exsilio" do
   pod "FontAwesome.swift", git: "git@github.com:thii/FontAwesome.swift"
   pod "SwiftyJSON", "~> 3.1.1"
   pod "SWTableViewCell", "~> 0.3.7"
-  pod "Eureka", "~> 2.0.0-beta.1"
+  pod "Eureka", "~> 4.0"
   pod "SkyFloatingLabelTextField", git: "https://github.com/MLSDev/SkyFloatingLabelTextField.git", branch: "swift3"
   pod "SVProgressHUD"
   pod "SwiftMessages", "~> 3.0.1"
   pod "TPKeyboardAvoiding"
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == "Eureka"
+      target.build_configurations.each do |config|
+        config.build_settings["SWIFT_VERSION"] = "4.0"
+      end
+    end
+  end
 end

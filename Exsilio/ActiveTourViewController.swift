@@ -69,7 +69,7 @@ class ActiveTourViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    func startTour(_ completion: ((Void) -> Void)?) {
+    func startTour(_ completion: (() -> Void)?) {
         if let location = self.mapView?.myLocation {
             SVProgressHUD.show()
 
