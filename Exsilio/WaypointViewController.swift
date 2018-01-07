@@ -17,11 +17,16 @@ import SVProgressHUD
 class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
     @IBOutlet var descriptionField: UITextField?
+    @IBOutlet var selectedImageView: UIImageView?
 
     @IBOutlet var openMapButton: EXButton?
     @IBOutlet var pickImageButton: EXButton?
 
-    var selectedImage: UIImage?
+    var selectedImage: UIImage? {
+        didSet {
+            selectedImageView?.image = selectedImage
+        }
+    }
     var selectedPoint: CLLocationCoordinate2D?
 
     var waypoint: Waypoint?
@@ -51,7 +56,9 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
 
             if let imageURL = waypoint["image_url"] as? String {
                 if imageURL != API.MissingImagePath {
-                    Alamofire.request("\(API.URL)\(imageURL)").responseImage { response in
+                    SVProgressHUD.show()
+                    Alamofire.request(imageURL).responseImage { response in
+                        SVProgressHUD.dismiss()
                         if let image = response.result.value {
                             self.fusumaImageSelected(image)
                         }
@@ -204,7 +211,8 @@ extension WaypointViewController: FusumaDelegate {
         self.pickImageButton?.backgroundColor = UI.GreenColor
         self.pickImageButton?.tintColor = .white
         self.pickImageButton?.setIcon(.check)
-        self.pickImageButton?.updateText("PHOTO SELECTED!", withColor: .white)
+        self.pickImageButton?.setTitleColor(.white, for: .normal)
+        self.pickImageButton?.updateColor(.white)
     }
 
     func fusumaCameraRollUnauthorized() {
@@ -228,7 +236,7 @@ extension WaypointViewController: GMSMapViewDelegate {
         self.openMapButton?.backgroundColor = UI.GreenColor
         self.openMapButton?.tintColor = .white
         self.openMapButton?.setIcon(.check)
-        self.openMapButton?.updateText("LOCATION SELECTED!", withColor: .white)
+        self.openMapButton?.updateColor(.white)
     }
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {

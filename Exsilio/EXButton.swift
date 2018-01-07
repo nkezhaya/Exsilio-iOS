@@ -61,4 +61,10 @@ class EXButton: UIButton {
         self.setAttributedTitle(attributedText, for: UIControlState())
         self.setAttributedTitle(attributedText, for: .highlighted)
     }
+
+    func updateColor(_ color: UIColor) {
+        if let attributedTitle = attributedTitle(for: .normal) {
+            updateText(attributedTitle.string, withColor: color)
+        }
+    }
 }
