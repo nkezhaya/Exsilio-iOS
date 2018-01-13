@@ -39,28 +39,10 @@ class MapViewController: UIViewController {
             }
         }
 
-        showNavigation()
-    }
-
-    func showNavigation() {
-        let navBarHeight = CGFloat(44)
-        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: navBarHeight + 20))
-
-        navigationBar.backgroundColor = UIColor.white
-
-        // Create a navigation item with a title
-        let navigationItem = UINavigationItem()
-        navigationItem.title = self.title
-
-        navigationItem.leftBarButtonItem = nil
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(done))
-
-        navigationBar.items = [navigationItem]
-
-        self.view.addSubview(navigationBar)
     }
 
     func setCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -70,7 +52,7 @@ class MapViewController: UIViewController {
     }
 
     func done() {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }
 

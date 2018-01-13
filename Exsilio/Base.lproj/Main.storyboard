@@ -641,7 +641,7 @@
         <!--Pick Location-->
         <scene sceneID="4O7-xk-mAJ">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" title="Pick Location" id="xfV-e4-XVO" customClass="MapViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="Pick Location" automaticallyAdjustsScrollViewInsets="NO" id="xfV-e4-XVO" customClass="MapViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nt1-Zr-M2P"/>
                         <viewControllerLayoutGuide type="bottom" id="rvK-0Y-bA2"/>
@@ -663,6 +663,7 @@
                             <constraint firstItem="gRS-NS-xNm" firstAttribute="leading" secondItem="da3-YA-ltR" secondAttribute="leading" id="tvo-91-9I6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Pick Location" id="J7S-gz-peD"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -671,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4n-7v-jSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4256.8000000000002" y="1860.7196401799101"/>
+            <point key="canvasLocation" x="5554" y="1861"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IUm-7q-sdC">
@@ -729,6 +730,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPm-x9-4JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-652" y="2553.3733133433284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QZB-oM-d8L">
+            <objects>
+                <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="bm3-U7-xpc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Yc-iG-ySw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xfV-e4-XVO" kind="relationship" relationship="rootViewController" id="dKI-UC-dQH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZNt-gy-xyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4769" y="1861"/>
         </scene>
     </scenes>
     <resources>

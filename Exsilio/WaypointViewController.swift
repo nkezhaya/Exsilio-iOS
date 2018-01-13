@@ -222,11 +222,13 @@ extension WaypointViewController: FusumaDelegate {
 
 extension WaypointViewController: GMSMapViewDelegate {
     @IBAction func openMap() {
-        let vc = self.storyboard!.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        vc.delegate = self
-        vc.startingPoint = self.selectedPoint
+        if let navController = self.storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as? UINavigationController {
+            let vc = navController.viewControllers.first as! MapViewController
+            vc.delegate = self
+            vc.startingPoint = self.selectedPoint
 
-        self.present(vc, animated: true, completion: nil)
+            present(navController, animated: true, completion: nil)
+        }
     }
 
     func pointSelected(_ coordinate: CLLocationCoordinate2D) {
