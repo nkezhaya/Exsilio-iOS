@@ -30,12 +30,36 @@ class IntroViewController: UIViewController {
                     if error == nil {
                         AuthenticationSingleton.shared.loggedInWithFacebook()
                         self.dismiss(animated: true, completion: nil)
-                    } else {
-                        print("Error: \(error)")
                     }
                 }
             }
         })
+    }
+
+    @IBAction func forgotPasswordTapped() {
+        var inputTextField: UITextField?
+        let alertController = UIAlertController(title: "Forgot your password?",
+                                                message: "Enter your email and we'll send you a new one.",
+                                                preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            guard let email = inputTextField?.text else { return }
+
+            AuthenticationSingleton.shared.forgotPassword(email: email) {
+                let alertController = UIAlertController(title: "Temporary Password Sent", message: "Check your email for your temporary password, and change it once you log in.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }))
+
+        alertController.addTextField(configurationHandler: { (textField: UITextField!) in
+            textField.placeholder = "Email"
+            textField.keyboardType = .emailAddress
+            inputTextField = textField
+        })
+
+        present(alertController, animated: true, completion: nil)
     }
 
     override var preferredStatusBarStyle : UIStatusBarStyle {

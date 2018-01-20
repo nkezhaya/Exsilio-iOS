@@ -48,6 +48,17 @@ class AuthenticationSingleton {
         Alamofire.request(AuthenticationRouter.register(params)).responseJSON(completionHandler: authResponseHandler(success, failure: failure))
     }
 
+    func forgotPassword(email: String, success: (() -> Void)? = nil) {
+        Alamofire.request(AuthenticationRouter.forgotPassword(email)).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                success?()
+            case .failure(let error):
+                ErrorHelper.handle(serverError: error, response: response)
+            }
+        }
+    }
+
     func changePassword(params: Parameters, success: (() -> Void)? = nil) {
         Alamofire.request(AuthenticationRouter.changePassword(params)).validate().responseJSON { response in
             switch response.result {
@@ -147,6 +158,7 @@ class AuthenticationSingleton {
     enum AuthenticationRouter: URLRequestConvertible {
         case login(String, String)
         case register(Parameters)
+        case forgotPassword(String)
         case changePassword(Parameters)
         case me
 
@@ -156,6 +168,8 @@ class AuthenticationSingleton {
                 return "/users/sign_in.json"
             case .register:
                 return "/users.json"
+            case .forgotPassword:
+                return "/passwords.json"
             case .changePassword:
                 return "/users/password.json"
             case .me:
@@ -169,6 +183,8 @@ class AuthenticationSingleton {
                 return ["user": ["email": email, "password": password]]
             case .register(let registrationParams):
                 return ["user": registrationParams]
+            case .forgotPassword(let email):
+                return ["email": email]
             case .changePassword(let params):
                 return params
             default:

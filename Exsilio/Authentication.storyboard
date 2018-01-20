@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3oy-eh-fet">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3oy-eh-fet">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" highlightedImage="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fID-Mn-eE9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="696"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Exsilio!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pco-i0-LB2">
                                 <rect key="frame" x="99.666666666666686" y="87" width="215" height="33"/>
@@ -36,8 +36,20 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOr-3f-Erv">
+                                <rect key="frame" x="87" y="630" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="K9F-5I-mvm"/>
+                                </constraints>
+                                <state key="normal" title="Forgot your password?">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.79262093321917804" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgotPasswordTapped" destination="Acr-jg-r73" eventType="touchUpInside" id="fyh-pK-6xe"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lf-rC-1ky" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="87" y="620" width="240" height="40"/>
+                                <rect key="frame" x="87" y="570" width="240" height="40"/>
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.33725490200000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="RNe-3Z-G0I"/>
@@ -52,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhF-co-4hi" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="87" y="560" width="240" height="40"/>
+                                <rect key="frame" x="87" y="510" width="240" height="40"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.75294117650000003" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <state key="normal" title="LOG IN WITH EMAIL">
@@ -63,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLS-Sg-U8N" customClass="EXButton" customModule="Exsilio" customModuleProvider="target">
-                                <rect key="frame" x="87" y="500" width="240" height="40"/>
+                                <rect key="frame" x="87" y="450" width="240" height="40"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.75294117650000003" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <state key="normal" title="SIGN UP WITH EMAIL">
@@ -82,6 +94,7 @@
                             <constraint firstItem="rhF-co-4hi" firstAttribute="height" secondItem="9lf-rC-1ky" secondAttribute="height" id="72g-iD-oxJ"/>
                             <constraint firstItem="lLS-Sg-U8N" firstAttribute="height" secondItem="rhF-co-4hi" secondAttribute="height" id="76s-kS-ZWz"/>
                             <constraint firstItem="Pco-i0-LB2" firstAttribute="top" secondItem="dMv-5x-xJP" secondAttribute="bottom" constant="67" id="HDP-fy-bje"/>
+                            <constraint firstItem="mLS-JH-j12" firstAttribute="top" secondItem="eOr-3f-Erv" secondAttribute="bottom" constant="76" id="IFB-4x-wBK"/>
                             <constraint firstItem="fID-Mn-eE9" firstAttribute="top" secondItem="06m-dl-YtT" secondAttribute="topMargin" id="JeZ-zJ-Kl1"/>
                             <constraint firstItem="lLS-Sg-U8N" firstAttribute="width" secondItem="rhF-co-4hi" secondAttribute="width" id="QRk-Wr-xSJ"/>
                             <constraint firstItem="9lf-rC-1ky" firstAttribute="centerX" secondItem="06m-dl-YtT" secondAttribute="centerX" id="R7E-SQ-oAr"/>
@@ -91,7 +104,8 @@
                             <constraint firstItem="rhF-co-4hi" firstAttribute="centerX" secondItem="06m-dl-YtT" secondAttribute="centerX" id="aTZ-fy-gIY"/>
                             <constraint firstItem="rhF-co-4hi" firstAttribute="width" secondItem="9lf-rC-1ky" secondAttribute="width" id="cOT-U4-aEI"/>
                             <constraint firstItem="9lf-rC-1ky" firstAttribute="top" secondItem="rhF-co-4hi" secondAttribute="bottom" constant="20" id="d1N-2w-089"/>
-                            <constraint firstItem="mLS-JH-j12" firstAttribute="top" secondItem="9lf-rC-1ky" secondAttribute="bottom" constant="76" id="m60-88-XT7"/>
+                            <constraint firstItem="eOr-3f-Erv" firstAttribute="top" secondItem="9lf-rC-1ky" secondAttribute="bottom" constant="20" id="oAY-Gn-7dU"/>
+                            <constraint firstItem="eOr-3f-Erv" firstAttribute="centerX" secondItem="06m-dl-YtT" secondAttribute="centerX" id="ohP-6j-4x4"/>
                             <constraint firstItem="fID-Mn-eE9" firstAttribute="centerY" secondItem="06m-dl-YtT" secondAttribute="centerY" id="ttA-Kr-eXe"/>
                         </constraints>
                     </view>
@@ -101,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibp-BO-n6i" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-540" y="1860.7196401799101"/>
+            <point key="canvasLocation" x="-540.57971014492762" y="1860.326086956522"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="Fep-AM-epN">
@@ -374,7 +388,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3oy-eh-fet" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hry-r4-u15">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -391,6 +405,6 @@
         <image name="LoginBackground" width="640" height="1135"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G7G-Vs-xYh"/>
+        <segue reference="cig-d8-pzV"/>
     </inferredMetricsTieBreakers>
 </document>
