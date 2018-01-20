@@ -20,6 +20,8 @@ class SettingsViewController: FormViewController {
         super.viewDidLoad()
 
         form
+            +++ Section("Profile")
+            <<< viewControllerRow(title: "Change Password", builder: { return ChangePasswordViewController() })
             +++ Section("Voice")
             <<< SwitchRow() { row in
                 row.title = "Speak Descriptions"
@@ -35,5 +37,16 @@ class SettingsViewController: FormViewController {
                     AuthenticationSingleton.shared.logOut()
                 })
             }
+    }
+
+    private func viewControllerRow(title: String, builder: @escaping () -> UIViewController) -> ButtonRow {
+        return ButtonRow() { row in
+            row.title = title
+            row.presentationMode = PresentationMode.show(controllerProvider: ControllerProvider.callback(builder: {
+                return builder()
+            }), onDismiss: { vc in
+                vc.navigationController?.dismiss(animated: true, completion: nil)
+            })
+        }
     }
 }

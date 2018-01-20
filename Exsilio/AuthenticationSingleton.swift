@@ -171,7 +171,7 @@ class AuthenticationSingleton {
             case .forgotPassword:
                 return "/passwords.json"
             case .changePassword:
-                return "/users/password.json"
+                return "/passwords.json"
             case .me:
                 return "/users/me.json"
             }
@@ -186,7 +186,7 @@ class AuthenticationSingleton {
             case .forgotPassword(let email):
                 return ["email": email]
             case .changePassword(let params):
-                return params
+                return ["user": params]
             default:
                 return nil
             }

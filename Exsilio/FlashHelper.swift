@@ -10,11 +10,13 @@ import SwiftMessages
 
 struct FlashHelper {
     static func displayMessage(withTitle title: String, body: String, theme: Theme) {
+        var config = SwiftMessages.defaultConfig
+        config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
         let message = MessageView.viewFromNib(layout: .CardView)
         message.configureTheme(theme)
         message.configureContent(title: title, body: body)
         message.button?.isHidden = true
-        SwiftMessages.show(view: message)
+        SwiftMessages.show(config: config, view: message)
     }
 
     static func displayError(_ error: GenericError) {
