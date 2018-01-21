@@ -88,6 +88,7 @@ struct API {
 
 struct Settings {
     static let speechKey = "AllowsSpeech"
+    static let speechRateKey = "SpeechRate"
     static let accessEmailKey = "AccessEmailKey"
     static let accessTokenKey = "AccessTokenKey"
 }

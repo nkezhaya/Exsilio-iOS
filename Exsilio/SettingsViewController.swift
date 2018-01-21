@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 import SVProgressHUD
+import AVFoundation
 
 class SettingsViewController: FormViewController {
     override func awakeFromNib() {
@@ -24,9 +25,21 @@ class SettingsViewController: FormViewController {
             +++ Section("Voice")
             <<< SwitchRow() { row in
                 row.title = "Speak Descriptions"
+                row.value = UserDefaults.standard.bool(forKey: Settings.speechKey)
                 row.onChange({ row in
                     let value: Bool = row.value == nil ? false : row.value!
                     UserDefaults.standard.set(value, forKey: Settings.speechKey)
+                })
+            }
+            <<< SliderRow() { row in
+                row.title = "Narrator Speed"
+                let rate = UserDefaults.standard.object(forKey: Settings.speechRateKey) == nil ? AVSpeechUtteranceDefaultSpeechRate : UserDefaults.standard.float(forKey: Settings.speechRateKey)
+                row.value = rate
+                row.minimumValue = AVSpeechUtteranceMinimumSpeechRate
+                row.maximumValue = AVSpeechUtteranceMaximumSpeechRate
+                row.onChange({ row in
+                    let value: Float = row.value == nil ? 0 : row.value!
+                    UserDefaults.standard.set(value, forKey: Settings.speechRateKey)
                 })
             }
             +++ Section("Session")

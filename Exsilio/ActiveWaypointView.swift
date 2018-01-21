@@ -92,6 +92,8 @@ class ActiveWaypointView: UIView {
             self.speechSynthesizer = AVSpeechSynthesizer()
             let utterance = AVSpeechUtterance(string: text)
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            utterance.rate = UserDefaults.standard.object(forKey: Settings.speechRateKey) == nil ? AVSpeechUtteranceDefaultSpeechRate : UserDefaults.standard.float(forKey: Settings.speechRateKey)
+            
             self.speechSynthesizer?.speak(utterance)
         }
     }
