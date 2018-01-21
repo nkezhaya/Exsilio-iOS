@@ -245,7 +245,7 @@ extension WaypointViewController: GMSMapViewDelegate {
         mapView.clear()
 
         let marker = GMSMarker(position: coordinate)
-        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.appearAnimation = .pop
         marker.map = mapView
 
         self.pointSelected(coordinate)

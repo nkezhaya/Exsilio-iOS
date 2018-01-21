@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.mapView?.mapType = kGMSTypeTerrain
+        self.mapView?.mapType = .terrain
         self.mapView?.delegate = self.delegate
         self.mapView?.isMyLocationEnabled = true
         self.mapView?.animate(toZoom: 15)

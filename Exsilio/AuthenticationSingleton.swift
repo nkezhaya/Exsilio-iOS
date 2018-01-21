@@ -14,6 +14,19 @@ class AuthenticationSingleton {
     fileprivate init() {}
     static let shared = AuthenticationSingleton()
 
+    var accessEmail: String? {
+        get {
+            return UserDefaults.standard.string(forKey: Settings.accessEmailKey)
+        }
+
+        set {
+            if newValue == nil {
+                UserDefaults.standard.removeObject(forKey: Settings.accessEmailKey)
+            } else {
+                UserDefaults.standard.set(newValue, forKey: Settings.accessEmailKey)
+            }
+        }
+    }
     var accessToken: String? {
         get {
             return UserDefaults.standard.string(forKey: Settings.accessTokenKey)
@@ -120,6 +133,7 @@ class AuthenticationSingleton {
         if json["user"] != nil {
             currentUser = json["user"]
             accessToken = json["user"]["authentication_token"].string
+            accessEmail = json["user"]["email"].string
 
             NotificationCenter.default.post(name: .userLoggedIn, object: nil)
 

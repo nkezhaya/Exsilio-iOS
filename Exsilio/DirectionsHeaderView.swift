@@ -27,7 +27,12 @@ class DirectionsHeaderView: UIView {
         self.header?.text = tour["name"] as? String
 
         let fontSize = CGFloat(18)
-        let description = NSMutableAttributedString()
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        paragraph.lineSpacing = 5
+        paragraph.lineBreakMode = .byWordWrapping
+
+        let description = NSMutableAttributedString(string: "", attributes: [NSParagraphStyleAttributeName: paragraph])
         description.append(NSAttributedString(
             string: String.fontAwesomeIcon(name: .clockO),
             attributes: [
@@ -55,13 +60,6 @@ class DirectionsHeaderView: UIView {
             attributes: [
                 NSFontAttributeName: UIFont(name: "OpenSans-Light", size: fontSize)!
             ]))
-
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.alignment = .center
-        paragraph.lineSpacing = 5
-        paragraph.lineBreakMode = .byWordWrapping
-
-        description.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: NSRange(location: 0, length: description.string.utf8.count))
 
         self.subheader?.attributedText = description
     }

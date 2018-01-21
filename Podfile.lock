@@ -20,11 +20,11 @@ PODS:
     - FBSDKCoreKit
   - FontAwesome.swift (1.0.0)
   - Fusuma (1.0.0)
-  - GoogleMaps (2.1.0):
-    - GoogleMaps/Maps (= 2.1.0)
-  - GoogleMaps/Base (2.1.0)
-  - GoogleMaps/Maps (2.1.0):
-    - GoogleMaps/Base (= 2.1.0)
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
+    - GoogleMaps/Base
   - SCLAlertView (0.7.0)
   - SkyFloatingLabelTextField (1.2.1)
   - SVProgressHUD (2.0.3)
@@ -85,7 +85,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
   FontAwesome.swift: beb1ff2f206a1517745f4f057a4d30a76f8d7d4e
   Fusuma: 256315ea7daed298f246f1ba5e49700bc664dd93
-  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
@@ -96,4 +96,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c0b8922945308747c1afc66afd9513bd44394b7d
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.4.0

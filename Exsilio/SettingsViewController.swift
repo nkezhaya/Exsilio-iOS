@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import SVProgressHUD
 
 class SettingsViewController: FormViewController {
     override func awakeFromNib() {
@@ -20,8 +21,6 @@ class SettingsViewController: FormViewController {
         super.viewDidLoad()
 
         form
-            +++ Section("Profile")
-            <<< viewControllerRow(title: "Change Password", builder: { return ChangePasswordViewController() })
             +++ Section("Voice")
             <<< SwitchRow() { row in
                 row.title = "Speak Descriptions"
@@ -35,6 +34,7 @@ class SettingsViewController: FormViewController {
                 row.title = "Log Out"
                 row.onCellSelection({ (_, _) in
                     AuthenticationSingleton.shared.logOut()
+                    SVProgressHUD.dismiss()
                 })
             }
     }

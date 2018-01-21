@@ -47,12 +47,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if !authentication.isLoggedIn() {
-            displayAuthentication(animated: false)
-        }
-
         if authentication.isLoggedIn() {
             authentication.refreshCurrentUser()
+        } else {
+            displayAuthentication(animated: false)
         }
     }
 

@@ -39,7 +39,7 @@ struct UI {
 
 struct API {
     #if DEBUG
-    static let URL = "http://192.168.1.35:3000"
+    static let URL = "http://192.168.1.72:3000"
     #else
     static let URL = "https://exsilio.herokuapp.com"
     #endif
@@ -70,12 +70,12 @@ struct API {
 
         var headers = Headers()
 
-        if AuthenticationSingleton.shared.currentUser == nil {
+        guard AuthenticationSingleton.shared.isLoggedIn() else {
             return headers
         }
 
-        if let userEmail = AuthenticationSingleton.shared.currentUser?["email"].string {
-            headers["X-User-Email"] = userEmail
+        if let accessEmail = AuthenticationSingleton.shared.accessEmail {
+            headers["X-User-Email"] = accessEmail
         }
 
         if let accessToken = AuthenticationSingleton.shared.accessToken {
@@ -88,6 +88,7 @@ struct API {
 
 struct Settings {
     static let speechKey = "AllowsSpeech"
+    static let accessEmailKey = "AccessEmailKey"
     static let accessTokenKey = "AccessTokenKey"
 }
 
