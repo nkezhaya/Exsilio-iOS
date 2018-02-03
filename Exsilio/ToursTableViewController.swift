@@ -105,7 +105,7 @@ class ToursTableViewController: UITableViewController {
         alertController.addAction(UIAlertAction(title: "Preview Tour", style: .default, handler: { _ in self.previewTour(tour: tour) }))
         alertController.addAction(UIAlertAction(title: "Edit Tour", style: .default, handler: { _ in self.editTourAtIndexPath(indexPath) }))
 
-        let published = !(self.tours[indexPath.row]["published"].bool == true)
+        let published = self.tours[indexPath.row]["published"].boolValue
         let publishedTitle = published ? "Unpublish Tour" : "Publish Tour"
         alertController.addAction(UIAlertAction(title: publishedTitle, style: .default, handler: { _ in self.publishTourAtIndexPath(indexPath) }))
 
