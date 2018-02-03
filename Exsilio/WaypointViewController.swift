@@ -205,8 +205,6 @@ extension WaypointViewController: FusumaDelegate {
     func fusumaImageSelected(_ image: UIImage) {
         self.selectedImage = image
 
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-
         self.pickImageButton?.layer.borderWidth = 0
         self.pickImageButton?.backgroundColor = UI.GreenColor
         self.pickImageButton?.tintColor = .white
