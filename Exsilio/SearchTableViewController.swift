@@ -129,7 +129,9 @@ class SearchTableViewController: UITableViewController {
     }
 
     func showFilters() {
-        self.present(self.filtersViewController, animated: true, completion: nil)
+        let navigationController = UINavigationController()
+        navigationController.pushViewController(self.filtersViewController, animated: false)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
     func search() {
