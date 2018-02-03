@@ -102,7 +102,7 @@ class ToursTableViewController: UITableViewController {
 
         let alertController = UIAlertController(title: "Manage Tour", message: "What would you like to do with this tour?", preferredStyle: .actionSheet)
 
-        alertController.addAction(UIAlertAction(title: "Preview Tour", style: .default, handler: { _ in self.previewTour(tour: tour) }))
+        alertController.addAction(UIAlertAction(title: "Open Tour", style: .default, handler: { _ in self.previewTour(tour: tour) }))
         alertController.addAction(UIAlertAction(title: "Edit Tour", style: .default, handler: { _ in self.editTourAtIndexPath(indexPath) }))
 
         let published = self.tours[indexPath.row]["published"].boolValue
