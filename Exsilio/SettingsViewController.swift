@@ -43,6 +43,7 @@ class SettingsViewController: FormViewController {
                 })
             }
             +++ Section("Session")
+            <<< viewControllerRow(title: "Change Password", builder: { return ChangePasswordViewController() })
             <<< ButtonRow() { row in
                 row.title = "Log Out"
                 row.onCellSelection({ (_, _) in

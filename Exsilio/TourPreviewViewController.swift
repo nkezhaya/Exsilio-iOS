@@ -7,16 +7,14 @@
 //
 
 import UIKit
-import CoreLocation
 import SwiftyJSON
 
-class TourPreviewViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class TourPreviewViewController: UIViewController {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var backgroundImageView: UIImageView?
     @IBOutlet var pageControl: UIPageControl?
     @IBOutlet var takeTourButton: EXButton?
 
-    var locationManager = CLLocationManager()
     var tour: JSON?
     var imagesPresent = false
 

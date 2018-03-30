@@ -10,11 +10,16 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 import FontAwesome_swift
+import Mapbox
+
+protocol MapViewDelegate {
+    func mapView(_ mapView: MGLMapView, didTapAt: CLLocationCoordinate2D)
+}
 
 class MapViewController: UIViewController {
-    @IBOutlet var mapView: GMSMapView?
+    @IBOutlet var mapView: MGLMapView?
 
-    var delegate: GMSMapViewDelegate?
+    var delegate: MapViewDelegate?
     var startingPoint: CLLocationCoordinate2D?
 
     let locationManager = CLLocationManager()
@@ -22,21 +27,16 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.mapView?.mapType = .terrain
-        self.mapView?.delegate = self.delegate
-        self.mapView?.isMyLocationEnabled = true
-        self.mapView?.animate(toZoom: 15)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
+        mapView?.addGestureRecognizer(tapGestureRecognizer)
 
-        if self.startingPoint != nil {
-            self.setCoordinate(self.startingPoint!)
+        if let startingPoint = startingPoint {
+            setCoordinate(startingPoint)
         }
 
-        self.locationManager.delegate = self
-
-        if CLLocationManager.locationServicesEnabled() {
-            if CLLocationManager.authorizationStatus() == .notDetermined {
-                self.locationManager.requestWhenInUseAuthorization()
-            }
+        locationManager.delegate = self
+        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
         }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
@@ -46,13 +46,19 @@ class MapViewController: UIViewController {
     }
 
     func setCoordinate(_ coordinate: CLLocationCoordinate2D) {
-        self.delegate?.mapView!(self.mapView!, didTapAt: coordinate)
-        self.mapView?.animate(toLocation: coordinate)
-        self.mapView?.animate(toZoom: 15)
+        guard let mapView = mapView, let delegate = delegate else { return }
+        delegate.mapView(mapView, didTapAt: coordinate)
+        mapView.setCenter(coordinate, zoomLevel: 15, animated: true)
     }
 
     func done() {
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+
+    @objc private func mapViewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        guard let mapView = mapView, let delegate = delegate else { return }
+        let coordinate = mapView.convert(gestureRecognizer.location(in: mapView), toCoordinateFrom: mapView)
+        delegate.mapView(mapView, didTapAt: coordinate)
     }
 }
 
@@ -66,12 +72,12 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
 
-        if self.startingPoint != nil {
+        if startingPoint != nil {
             return
         }
 
         if let coordinate = locations.first?.coordinate {
-            self.setCoordinate(coordinate)
+            setCoordinate(coordinate)
         }
     }
 }

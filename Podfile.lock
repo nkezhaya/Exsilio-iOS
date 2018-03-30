@@ -20,11 +20,7 @@ PODS:
     - FBSDKCoreKit
   - FontAwesome.swift (1.0.0)
   - Fusuma (1.0.0)
-  - GoogleMaps (2.5.0):
-    - GoogleMaps/Maps (= 2.5.0)
-  - GoogleMaps/Base (2.5.0)
-  - GoogleMaps/Maps (2.5.0):
-    - GoogleMaps/Base
+  - Mapbox-iOS-SDK (3.7.6)
   - SCLAlertView (0.7.0)
   - SkyFloatingLabelTextField (1.2.1)
   - SVProgressHUD (2.0.3)
@@ -42,9 +38,9 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - FontAwesome.swift (from `git@github.com:thii/FontAwesome.swift`)
-  - Fusuma (from `git@github.com:ytakzk/Fusuma.git`)
-  - GoogleMaps
+  - "FontAwesome.swift (from `git@github.com:thii/FontAwesome.swift`)"
+  - "Fusuma (from `git@github.com:ytakzk/Fusuma.git`)"
+  - Mapbox-iOS-SDK (~> 3.7)
   - SCLAlertView
   - SkyFloatingLabelTextField (from `https://github.com/MLSDev/SkyFloatingLabelTextField.git`, branch `swift3`)
   - SVProgressHUD
@@ -53,11 +49,30 @@ DEPENDENCIES:
   - SWTableViewCell (~> 0.3.7)
   - TPKeyboardAvoiding
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireImage
+    - AlamofireNetworkActivityIndicator
+    - Bolts
+    - DZNEmptyDataSet
+    - Eureka
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - Mapbox-iOS-SDK
+    - SCLAlertView
+    - SVProgressHUD
+    - SwiftMessages
+    - SwiftyJSON
+    - SWTableViewCell
+    - TPKeyboardAvoiding
+
 EXTERNAL SOURCES:
   FontAwesome.swift:
-    :git: git@github.com:thii/FontAwesome.swift
+    :git: "git@github.com:thii/FontAwesome.swift"
   Fusuma:
-    :git: git@github.com:ytakzk/Fusuma.git
+    :git: "git@github.com:ytakzk/Fusuma.git"
   SkyFloatingLabelTextField:
     :branch: swift3
     :git: https://github.com/MLSDev/SkyFloatingLabelTextField.git
@@ -65,10 +80,10 @@ EXTERNAL SOURCES:
 CHECKOUT OPTIONS:
   FontAwesome.swift:
     :commit: 9ca8cc149b14856605ca744ee7c36621e5dc194b
-    :git: git@github.com:thii/FontAwesome.swift
+    :git: "git@github.com:thii/FontAwesome.swift"
   Fusuma:
     :commit: d89cc8398a3dac19ff03c7689302e62d3c233d49
-    :git: git@github.com:ytakzk/Fusuma.git
+    :git: "git@github.com:ytakzk/Fusuma.git"
   SkyFloatingLabelTextField:
     :commit: 03177934f990c794060765f33c408268ce8afee0
     :git: https://github.com/MLSDev/SkyFloatingLabelTextField.git
@@ -85,7 +100,7 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
   FontAwesome.swift: beb1ff2f206a1517745f4f057a4d30a76f8d7d4e
   Fusuma: 256315ea7daed298f246f1ba5e49700bc664dd93
-  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  Mapbox-iOS-SDK: 23ececda1d90c3b436b45e2c88e9677f025303c0
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SkyFloatingLabelTextField: 3f6610aded18e778df5cfab3b9e12a11b3e014e9
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
@@ -94,6 +109,6 @@ SPEC CHECKSUMS:
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: c0b8922945308747c1afc66afd9513bd44394b7d
+PODFILE CHECKSUM: c94a3c15106b877df0dd500e80a48acc89f942dc
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0.beta.1

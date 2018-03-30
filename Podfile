@@ -12,7 +12,7 @@ target "Exsilio" do
   pod "DZNEmptyDataSet"
   pod "Fusuma", git: "git@github.com:ytakzk/Fusuma.git"
   pod "SCLAlertView"
-  pod "GoogleMaps"
+  pod "Mapbox-iOS-SDK", "~> 3.7"
   pod "FontAwesome.swift", git: "git@github.com:thii/FontAwesome.swift"
   pod "SwiftyJSON", "~> 3.1.1"
   pod "SWTableViewCell", "~> 0.3.7"

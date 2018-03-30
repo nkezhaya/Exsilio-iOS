@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import DZNEmptyDataSet
 import FontAwesome_swift
+import CoreLocation
 
 class SearchTableViewController: UITableViewController {
     let filtersViewController = FiltersViewController()

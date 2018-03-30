@@ -10,7 +10,6 @@
 #define ObjCBridge_h
 
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-#import <GoogleMaps/GoogleMaps.h>
 #import <SWTableViewCell/SWTableViewCell.h>
 
 #endif

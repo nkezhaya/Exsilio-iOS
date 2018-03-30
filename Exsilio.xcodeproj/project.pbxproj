@@ -53,6 +53,7 @@
 		A674A78E1CD108D800E605B3 /* ToursTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */; };
 		A674A7901CD108F600E605B3 /* CreateTourNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */; };
 		A67D61F31D3C3BC900E605B3 /* ActiveWaypointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D61F21D3C3BC900E605B3 /* ActiveWaypointView.swift */; };
+		A67E40CD206D9E89008828B6 /* MGLMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67E40CC206D9E89008828B6 /* MGLMapViewExtensions.swift */; };
 		A68DE8431D3E5E4600E605B3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68DE8421D3E5E4600E605B3 /* AVFoundation.framework */; };
 		A6A3B8321CF7489E00E605B3 /* WaypointsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3B8311CF7489E00E605B3 /* WaypointsTableViewController.swift */; };
 		A6A3B8341CF7510000E605B3 /* WaypointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A3B8331CF7510000E605B3 /* WaypointTableViewCell.swift */; };
@@ -114,6 +115,7 @@
 		A674A78D1CD108D800E605B3 /* ToursTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToursTableViewController.swift; sourceTree = "<group>"; };
 		A674A78F1CD108F600E605B3 /* CreateTourNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourNavigationController.swift; sourceTree = "<group>"; };
 		A67D61F21D3C3BC900E605B3 /* ActiveWaypointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveWaypointView.swift; sourceTree = "<group>"; };
+		A67E40CC206D9E89008828B6 /* MGLMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGLMapViewExtensions.swift; sourceTree = "<group>"; };
 		A689046E1CD112E000E605B3 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		A68DE8421D3E5E4600E605B3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A6A35B881DDB987700E605B3 /* Exsilio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exsilio.entitlements; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				A674A7871CD100E700E605B3 /* Dictionary+Merge.swift */,
 				A64B6D281DFC7E8300B9B687 /* URLRequestExtensions.swift */,
 				A64B86071DFC8B4700600A0E /* NavigationControllerExtensions.swift */,
+				A67E40CC206D9E89008828B6 /* MGLMapViewExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -365,7 +368,6 @@
 				A65A39931CBBFB3C00E605B3 /* Frameworks */,
 				A65A39941CBBFB3C00E605B3 /* Resources */,
 				757C270E7909E6874CAFFFB6 /* [CP] Embed Pods Frameworks */,
-				D07C83D352B0B235C4E51E43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -462,6 +464,8 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SWTableViewCell/SWTableViewCell.framework",
@@ -483,6 +487,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWTableViewCell.framework",
@@ -508,24 +514,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# do not assign the new build number if there is no changes\nDIFF=`git diff`\nif [[ $DIFF == \"\" ]]; then exit 0; fi\n\n# path to the property list where the version number should be changed\nPLIST=\"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n# the number of commits in repository to be used for the build number\nNUMBER_OF_COMMITS=`git rev-list HEAD --count`\n\n# a future build number should consider its own commit\nBUILD_NUMBER=$((NUMBER_OF_COMMITS+2))\n\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $BUILD_NUMBER\" \"${PLIST}\"";
-		};
-		D07C83D352B0B235C4E51E43 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Exsilio/Pods-Exsilio-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		D643D76A537EDD787BF20A1B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -562,6 +550,7 @@
 				A65A399C1CBBFB3C00E605B3 /* IntroViewController.swift in Sources */,
 				A639109C1D0888E400E605B3 /* SettingsViewController.swift in Sources */,
 				A63910981D08740300E605B3 /* MainTabBarController.swift in Sources */,
+				A67E40CD206D9E89008828B6 /* MGLMapViewExtensions.swift in Sources */,
 				A611CD591CDBA2F700E605B3 /* MapViewController.swift in Sources */,
 				A64B86061DFC810C00600A0E /* FlashHelper.swift in Sources */,
 				A6F1DD431CBC074C00E605B3 /* EXButton.swift in Sources */,

@@ -13,6 +13,7 @@ import Alamofire
 import SCLAlertView
 import FontAwesome_swift
 import SVProgressHUD
+import Mapbox
 
 class WaypointViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField: UITextField?
@@ -70,6 +71,16 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         self.nameField?.becomeFirstResponder()
     }
 
+    @IBAction func openMap() {
+        if let navController = self.storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as? UINavigationController {
+            let vc = navController.viewControllers.first as! MapViewController
+            vc.delegate = self
+            vc.startingPoint = self.selectedPoint
+
+            present(navController, animated: true, completion: nil)
+        }
+    }
+
     func dismissModal() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -89,6 +100,16 @@ class WaypointViewController: UIViewController, UITextFieldDelegate {
         }
 
         return true
+    }
+
+    func pointSelected(_ coordinate: CLLocationCoordinate2D) {
+        selectedPoint = coordinate
+
+        openMapButton?.layer.borderWidth = 0
+        openMapButton?.backgroundColor = UI.GreenColor
+        openMapButton?.tintColor = .white
+        openMapButton?.setIcon(.check)
+        openMapButton?.updateColor(.white)
     }
 
     func saveWaypoint() {
@@ -218,34 +239,14 @@ extension WaypointViewController: FusumaDelegate {
     }
 }
 
-extension WaypointViewController: GMSMapViewDelegate {
-    @IBAction func openMap() {
-        if let navController = self.storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as? UINavigationController {
-            let vc = navController.viewControllers.first as! MapViewController
-            vc.delegate = self
-            vc.startingPoint = self.selectedPoint
-
-            present(navController, animated: true, completion: nil)
-        }
-    }
-
-    func pointSelected(_ coordinate: CLLocationCoordinate2D) {
-        self.selectedPoint = coordinate
-
-        self.openMapButton?.layer.borderWidth = 0
-        self.openMapButton?.backgroundColor = UI.GreenColor
-        self.openMapButton?.tintColor = .white
-        self.openMapButton?.setIcon(.check)
-        self.openMapButton?.updateColor(.white)
-    }
-
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+extension WaypointViewController: MapViewDelegate {
+    func mapView(_ mapView: MGLMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         mapView.clear()
 
-        let marker = GMSMarker(position: coordinate)
-        marker.appearAnimation = .pop
-        marker.map = mapView
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
 
-        self.pointSelected(coordinate)
+        pointSelected(coordinate)
     }
 }

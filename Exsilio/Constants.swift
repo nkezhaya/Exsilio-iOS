@@ -39,7 +39,7 @@ struct UI {
 
 struct API {
     #if DEBUG
-    static let URL = "http://192.168.1.72:3000"
+    static let URL = "http://192.168.1.35:3000"
     #else
     static let URL = "https://exsilio.herokuapp.com"
     #endif
@@ -52,11 +52,11 @@ struct API {
     static let SearchPath = "\(API.ToursPath)/search"
     static let MissingImagePath = "/images/original/missing.png"
 
-    static func googleMapsKey() -> String {
+    static func mapboxKey() -> String {
         let plist = Bundle.main.path(forResource: "Configuration", ofType: "plist")!
         let config = NSDictionary(contentsOfFile: plist)!
 
-        return (config.object(forKey: "GoogleMapsAPI")! as AnyObject).object(forKey: "Key") as! String
+        return (config.object(forKey: "MapboxAPI")! as AnyObject).object(forKey: "Key") as! String
     }
 
     static func currentFacebookToken() -> String? {
