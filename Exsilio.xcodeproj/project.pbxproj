@@ -15,6 +15,7 @@
 		A611CD5D1CDBA9F800E605B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */; };
 		A611CD5F1CDBAD8D00E605B3 /* CurrentTourSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */; };
 		A62219FC1CEE0FEC00E605B3 /* TourPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62219FB1CEE0FEC00E605B3 /* TourPreviewViewController.swift */; };
+		A62244132079373800EDE266 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62244122079373800EDE266 /* MapHelper.swift */; };
 		A6234C851D09C04B00E605B3 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6234C841D09C04B00E605B3 /* FiltersViewController.swift */; };
 		A62A5B1E1CBED6D500E605B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62A5B1D1CBED6D500E605B3 /* Constants.swift */; };
 		A6354C711CC047CE00E605B3 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */; };
@@ -75,6 +76,7 @@
 		A611CD5C1CDBA9F800E605B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A611CD5E1CDBAD8D00E605B3 /* CurrentTourSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTourSingleton.swift; sourceTree = "<group>"; };
 		A62219FB1CEE0FEC00E605B3 /* TourPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TourPreviewViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A62244122079373800EDE266 /* MapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 		A6234C841D09C04B00E605B3 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		A62A5B1D1CBED6D500E605B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A6354C701CC047CE00E605B3 /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				A64B86031DFC80F700600A0E /* ErrorHelper.swift */,
 				A64B86051DFC810C00600A0E /* FlashHelper.swift */,
+				A62244122079373800EDE266 /* MapHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				A66029C01D1EF29200E605B3 /* DirectionsHeaderView.swift in Sources */,
 				A64B86081DFC8B4700600A0E /* NavigationControllerExtensions.swift in Sources */,
 				A64B6D231DFC79BD00B9B687 /* RegistrationViewController.swift in Sources */,
+				A62244132079373800EDE266 /* MapHelper.swift in Sources */,
 				A64B6D271DFC7B3900B9B687 /* AuthenticationSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

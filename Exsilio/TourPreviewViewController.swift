@@ -9,11 +9,11 @@
 import UIKit
 import SwiftyJSON
 
-class TourPreviewViewController: UIViewController {
-    @IBOutlet var nameLabel: UILabel?
-    @IBOutlet var backgroundImageView: UIImageView?
-    @IBOutlet var pageControl: UIPageControl?
-    @IBOutlet var takeTourButton: EXButton?
+final class TourPreviewViewController: UIViewController {
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var takeTourButton: EXButton!
 
     var tour: JSON?
     var imagesPresent = false
@@ -21,17 +21,17 @@ class TourPreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissModal))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UI.BackIcon, style: .plain, target: self, action: #selector(dismissModal))
 
-        if let tour = self.tour {
-            self.nameLabel?.text = tour["name"].string
+        if let tour = tour {
+            nameLabel.text = tour["name"].string
 
             let numberOfWaypoints = tour["waypoints"].array?.filter { $0["image_url"].string != API.MissingImagePath }.count
 
-            self.pageControl?.numberOfPages = numberOfWaypoints == nil ? 0 : numberOfWaypoints!
+            pageControl.numberOfPages = numberOfWaypoints == nil ? 0 : numberOfWaypoints!
         }
 
-        self.takeTourButton?.backgroundColor = UIColor(hexString: "#21C064")
+        takeTourButton.backgroundColor = UIColor(hexString: "#21C064")
 
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe))
         swipeLeft.direction = .left
@@ -39,43 +39,39 @@ class TourPreviewViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(rightSwipe))
         swipeRight.direction = .right
 
-        self.view.addGestureRecognizer(swipeLeft)
-        self.view.addGestureRecognizer(swipeRight)
+        view.addGestureRecognizer(swipeLeft)
+        view.addGestureRecognizer(swipeRight)
 
-        self.cacheAllImages()
-        self.updateBackgroundImageForPage()
+        cacheAllImages()
+        updateBackgroundImageForPage()
     }
 
     func leftSwipe() {
-        if let pageControl = self.pageControl {
-            let currentPage = pageControl.currentPage
+        let currentPage = pageControl.currentPage
 
-            if currentPage == pageControl.numberOfPages - 1 {
-                pageControl.currentPage = 0
-            } else {
-                pageControl.currentPage += 1
-            }
+        if currentPage == pageControl.numberOfPages - 1 {
+            pageControl.currentPage = 0
+        } else {
+            pageControl.currentPage += 1
         }
 
-        self.updateBackgroundImageForPage()
+        updateBackgroundImageForPage()
     }
 
     func rightSwipe() {
-        if let pageControl = self.pageControl {
-            let currentPage = pageControl.currentPage
+        let currentPage = pageControl.currentPage
 
-            if currentPage == 0 {
-                pageControl.currentPage = pageControl.numberOfPages - 1
-            } else {
-                pageControl.currentPage -= 1
-            }
+        if currentPage == 0 {
+            pageControl.currentPage = pageControl.numberOfPages - 1
+        } else {
+            pageControl.currentPage -= 1
         }
 
-        self.updateBackgroundImageForPage()
+        updateBackgroundImageForPage()
     }
 
     func cacheAllImages() {
-        self.tour?["waypoints"].array?.forEach({ waypoint in
+        tour?["waypoints"].array?.forEach({ waypoint in
             if let urlString = waypoint["image_url"].string {
                 if urlString != API.MissingImagePath {
                     let urlRequest = URLRequest(url: URL(string: urlString)!)
@@ -88,9 +84,9 @@ class TourPreviewViewController: UIViewController {
     }
 
     func updateBackgroundImageForPage() {
-        if !self.imagesPresent {
-            self.backgroundImageView?.image = UIImage(named: "LoginBackground")
-            self.backgroundImageView?.alpha = 0.6
+        if !imagesPresent {
+            backgroundImageView?.image = UIImage(named: "LoginBackground")
+            backgroundImageView?.alpha = 0.6
             return
         }
 
@@ -120,7 +116,7 @@ class TourPreviewViewController: UIViewController {
 
     @IBAction func takeTour() {
         CurrentTourSingleton.sharedInstance.loadTourFromJSON(self.tour)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ActiveTourViewController") as! ActiveTourViewController
-        self.present(vc, animated: true, completion: nil)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ActiveTourViewController") as! ActiveTourViewController
+        present(vc, animated: true, completion: nil)
     }
 }

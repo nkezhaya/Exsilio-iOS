@@ -26,7 +26,7 @@ class ActiveTourViewController: UIViewController {
 
     var tourActive = false
     var currentStepIndex = 0
-    var shownWaypointIds: [Int] = []
+    var shownWaypointIds: [Int: Date] = [:]
     var waypointInfoViewVisible = false
 
     var startingPoint: CLLocationCoordinate2D?
@@ -37,8 +37,11 @@ class ActiveTourViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setNeedsStatusBarAppearanceUpdate()
-        self.view.isUserInteractionEnabled = false
+        setNeedsStatusBarAppearanceUpdate()
+        view.isUserInteractionEnabled = false
+
+        mapView?.logoView.isHidden = true
+        mapView?.attributionButton.isHidden = true
 
         SVProgressHUD.show()
         CurrentTourSingleton.sharedInstance.refreshTour { json in
@@ -73,9 +76,10 @@ class ActiveTourViewController: UIViewController {
                 case .success(let jsonObj):
                     let json = JSON(jsonObj)
                     self.directionsJSON = json
-                    self.drawPathFromJSON(json, withColor: UI.RedColor)
-                    self.shownWaypointIds = []
+                    MapHelper.drawPath(from: json, withColor: UI.RedColor, mapView: self.mapView!)
+                    self.shownWaypointIds = [:]
                     self.cacheAllSteps()
+                    self.mapView?.delegate = self
 
                     fallthrough
                 default:
@@ -131,70 +135,9 @@ class ActiveTourViewController: UIViewController {
         return nil
     }
 
-    func animateToUserLocation() {
-        if self.mapView?.userLocation == nil {
-            if let waypoint = self.tourJSON!["waypoints"].array?.first {
-                self.animateToWaypoint(waypoint)
-            }
-        }
-    }
-
-    func animateToWaypoint(_ waypoint: JSON) {
-        if let latitude = waypoint["latitude"].float, let longitude = waypoint["longitude"].float {
-            let coordinate = CLLocationCoordinate2D(latitude: Double(latitude), longitude: Double(longitude))
-            mapView?.setCenter(coordinate, zoomLevel: 18, animated: true)
-        }
-    }
-
-    func animateToTourPreview() {
-        if
-            let minLatitude = tourJSON!["waypoints"].array?.map({ $0["latitude"].floatValue }).min(),
-            let minLongitude = tourJSON!["waypoints"].array?.map({ $0["longitude"].floatValue }).min(),
-            let maxLatitude = tourJSON!["waypoints"].array?.map({ $0["latitude"].floatValue }).max(),
-            let maxLongitude = tourJSON!["waypoints"].array?.map({ $0["longitude"].floatValue }).max()
-        {
-            let bounds = MGLCoordinateBounds(sw: CLLocationCoordinate2D(latitude: Double(minLatitude), longitude: Double(minLongitude)),
-                                             ne: CLLocationCoordinate2D(latitude: Double(maxLatitude), longitude: Double(maxLongitude)))
-
-            mapView?.setVisibleCoordinateBounds(bounds, edgePadding: UIEdgeInsetsMake(30, 30, 30, 30), animated: true)
-        }
-    }
-
     func drawTour() {
-        drawPathFromJSON(tourJSON!["directions"], withColor: UI.BlueColor)
-
-        tourJSON!["waypoints"].array?.forEach { waypoint in
-            if let latitude = waypoint["latitude"].float, let longitude = waypoint["longitude"].float {
-                let coordinate = CLLocationCoordinate2D(latitude: Double(latitude), longitude: Double(longitude))
-                let annotation = MGLPointAnnotation()
-                annotation.coordinate = coordinate
-                mapView?.addAnnotation(annotation)
-            }
-        }
-
-        animateToTourPreview()
-    }
-
-    func drawPathFromJSON(_ json: JSON, withColor color: UIColor) {
-        var identifier = 0
-
-        json["routes"][0]["legs"].array?.forEach { leg in
-            leg["steps"].array?.forEach { step in
-                if
-                    let startLat = step["start_location"]["lat"].float,
-                    let startLng = step["start_location"]["lng"].float,
-                    let endLat = step["end_location"]["lat"].float,
-                    let endLng = step["end_location"]["lng"].float
-                {
-                    let startCoordinate = CLLocationCoordinate2D(latitude: Double(startLat), longitude: Double(startLng))
-                    let endCoordinate = CLLocationCoordinate2D(latitude: Double(endLat), longitude: Double(endLng))
-                    let polyline = MGLPolyline(coordinates: [startCoordinate, endCoordinate], count: UInt(2))
-                    mapView?.addAnnotation(polyline)
-
-                    identifier += 1
-                }
-            }
-        }
+        MapHelper.drawTour(tourJSON!, mapView: mapView!)
+        MapHelper.setMapBounds(for: tourJSON!, mapView: mapView!)
     }
 
     @discardableResult func cacheAllSteps() -> [JSON] {
@@ -211,10 +154,10 @@ class ActiveTourViewController: UIViewController {
             }
         }
 
-        appendToSteps(self.directionsJSON)
-        appendToSteps(self.tourJSON)
+        appendToSteps(directionsJSON)
+        appendToSteps(tourJSON)
 
-        self.allStepsCache = steps
+        allStepsCache = steps
         return steps
     }
 
@@ -264,7 +207,7 @@ extension ActiveTourViewController: TabControlsDelegate {
             }
         } else if state == .tourPreview {
             tourActive = false
-            animateToTourPreview()
+            MapHelper.setMapBounds(for: tourJSON!, mapView: mapView!)
             mapView?.clear()
             allStepsCache = nil
             drawTour()
@@ -272,26 +215,26 @@ extension ActiveTourViewController: TabControlsDelegate {
     }
 
     func willMoveToNextStep() {
-        if self.allStepsCache == nil || self.currentStepIndex == self.allStepsCache!.count {
+        if allStepsCache == nil || currentStepIndex == allStepsCache!.count {
             return
         }
 
-        self.currentStepIndex += 1
-        self.updateUIForCurrentStep()
+        currentStepIndex += 1
+        updateUIForCurrentStep()
     }
 
     func willMoveToPreviousStep() {
-        if self.currentStepIndex == 0 {
+        if currentStepIndex == 0 {
             return
         }
 
-        self.currentStepIndex -= 1
-        self.updateUIForCurrentStep()
+        currentStepIndex -= 1
+        updateUIForCurrentStep()
     }
 
     func willDisplayWaypointInfo() {
-        self.activeWaypointView?.sticky = true
-        self.toggleWaypointInfoView()
+        activeWaypointView?.sticky = true
+        toggleWaypointInfoView()
     }
 }
 
@@ -325,16 +268,19 @@ extension ActiveTourViewController: MGLMapViewDelegate {
         // Are we close to a waypoint?
         if let waypoints = self.tourJSON?["waypoints"].array {
             for waypoint in waypoints {
-                //if self.shownWaypointIds.contains(waypoint["id"].intValue) {
-                //continue
-                //}
+                if let date = shownWaypointIds[waypoint["id"].intValue] {
+                    let calendar = Calendar.current
+                    if let fiveMinutesAgo = calendar.date(byAdding: .minute, value: 5, to: Date()), date >= fiveMinutesAgo {
+                        continue
+                    }
+                }
 
                 if let latitude = waypoint["latitude"].float, let longitude = waypoint["longitude"].float {
                     let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                     let distanceMeters = location.distance(from: waypointLocation)
 
                     if (distanceMeters < 15 && !waypointInfoViewVisible) || (distanceMeters > 30 && waypointInfoViewVisible && activeWaypointView?.sticky != true) {
-                        shownWaypointIds.append(waypoint["id"].intValue)
+                        shownWaypointIds[waypoint["id"].intValue] = Date()
                         willDisplayWaypointInfo()
                         return
                     }
