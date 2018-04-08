@@ -42,6 +42,16 @@ final class TourPreviewTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "WaypointPreviewViewController") as? WaypointPreviewViewController {
+            vc.title = waypoints[indexPath.row]["title"].string
+            vc.waypointDescription = waypoints[indexPath.row]["description"].string
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
     }
@@ -75,10 +85,6 @@ final class TourPreviewTableViewCell: UITableViewCell {
 
                 if let name = waypoint["name"] as? String {
                     text = name
-                }
-
-                if let description = waypoint["description"] as? String, !description.isEmpty {
-                    text = "\(text)\n\n\(description)"
                 }
 
                 waypointLabel.text = text

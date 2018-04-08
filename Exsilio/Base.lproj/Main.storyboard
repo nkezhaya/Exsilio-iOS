@@ -97,7 +97,7 @@
         <scene sceneID="6eH-6U-4jC">
             <objects>
                 <tableViewController storyboardIdentifier="TourPreviewTableViewController" id="Zwh-no-U0C" customClass="TourPreviewTableViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vpr-H7-01G">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vpr-H7-01G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,9 +110,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-jf-OTM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="239"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="240" id="ZjN-jn-fOb"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome tour!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6g-sg-jkb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome tour!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6g-sg-jkb">
                                             <rect key="frame" x="16" y="204" width="343" height="25"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,7 +128,6 @@
                                         <constraint firstItem="rTN-jf-OTM" firstAttribute="top" secondItem="LKo-HZ-7Zg" secondAttribute="top" id="R37-U1-sWA"/>
                                         <constraint firstItem="o6g-sg-jkb" firstAttribute="leading" secondItem="LKo-HZ-7Zg" secondAttribute="leadingMargin" id="db6-MS-2qn"/>
                                         <constraint firstItem="rTN-jf-OTM" firstAttribute="leading" secondItem="LKo-HZ-7Zg" secondAttribute="leading" id="ujN-k7-smc"/>
-                                        <constraint firstAttribute="bottom" secondItem="rTN-jf-OTM" secondAttribute="bottom" id="xBp-oR-6mM"/>
                                         <constraint firstItem="o6g-sg-jkb" firstAttribute="bottom" secondItem="LKo-HZ-7Zg" secondAttribute="bottomMargin" id="zR9-au-qeI"/>
                                         <constraint firstAttribute="trailing" secondItem="rTN-jf-OTM" secondAttribute="trailing" id="zzM-yM-xT7"/>
                                     </constraints>
@@ -146,7 +148,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLw-9Y-Rjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902" y="1119"/>
+            <point key="canvasLocation" x="2041" y="1119"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="tAw-wj-Apm">
@@ -337,6 +339,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciB-bC-TAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2901.5999999999999" y="2538.9805097451276"/>
+        </scene>
+        <!--Waypoint Preview View Controller-->
+        <scene sceneID="6oJ-6d-700">
+            <objects>
+                <viewController storyboardIdentifier="WaypointPreviewViewController" id="kx9-Ez-X5X" customClass="WaypointPreviewViewController" customModule="Exsilio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lNc-h9-ugt"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uh7-YP-eDm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vea-iV-af6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyz-5R-8pw" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grT-TZ-372">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZv-15-dip">
+                                                <rect key="frame" x="8" y="0.0" width="375" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gZv-15-dip" firstAttribute="trailingMargin" secondItem="grT-TZ-372" secondAttribute="trailing" id="AIL-f4-f3S"/>
+                                            <constraint firstItem="gZv-15-dip" firstAttribute="leading" secondItem="grT-TZ-372" secondAttribute="leadingMargin" id="Vz1-uS-8Gy"/>
+                                            <constraint firstItem="gZv-15-dip" firstAttribute="width" secondItem="grT-TZ-372" secondAttribute="width" id="bqD-px-ZFp"/>
+                                            <constraint firstAttribute="bottom" secondItem="gZv-15-dip" secondAttribute="bottom" constant="20" id="gZJ-y6-YFS"/>
+                                            <constraint firstItem="gZv-15-dip" firstAttribute="top" secondItem="grT-TZ-372" secondAttribute="top" id="lfT-kg-LTY"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="grT-TZ-372" secondAttribute="trailing" id="LfQ-gj-fcy"/>
+                                    <constraint firstItem="grT-TZ-372" firstAttribute="top" secondItem="Zyz-5R-8pw" secondAttribute="top" id="OsC-m5-2Yf"/>
+                                    <constraint firstAttribute="bottom" secondItem="grT-TZ-372" secondAttribute="bottom" id="a5B-j2-rWo"/>
+                                    <constraint firstItem="grT-TZ-372" firstAttribute="leading" secondItem="Zyz-5R-8pw" secondAttribute="leading" id="gH0-CC-Mko"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zyz-5R-8pw" firstAttribute="leading" secondItem="vea-iV-af6" secondAttribute="leading" id="1eD-lE-eUQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Zyz-5R-8pw" secondAttribute="trailing" id="BLE-Nf-qha"/>
+                            <constraint firstItem="Uh7-YP-eDm" firstAttribute="top" secondItem="Zyz-5R-8pw" secondAttribute="bottom" id="Qef-Q5-Iiw"/>
+                            <constraint firstItem="Zyz-5R-8pw" firstAttribute="top" secondItem="vea-iV-af6" secondAttribute="top" id="t1Z-50-4CA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="gZv-15-dip" id="eYd-Db-F3i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyO-Bd-Ct3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2901.5999999999999" y="1119.4902548725638"/>
         </scene>
         <!--Active Tour View Controller-->
         <scene sceneID="85A-FG-R3T">
