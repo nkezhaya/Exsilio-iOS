@@ -120,7 +120,7 @@ class ToursTableViewController: UITableViewController {
         if tour["waypoints_count"].int! < 2 {
             SCLAlertView().showError("Error", subTitle: "Whoops! This tour does not have enough waypoints to preview yet. Swipe right to edit.")
         } else {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TourPreviewViewController") as! TourPreviewViewController
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TourPreviewTableViewController") as! TourPreviewTableViewController
             vc.tour = tour
             self.navigationController?.pushViewController(vc, animated: true)
         }
