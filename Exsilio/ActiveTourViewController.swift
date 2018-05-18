@@ -266,24 +266,26 @@ extension ActiveTourViewController: MGLMapViewDelegate {
         }
 
         // Are we close to a waypoint?
-        if let waypoints = self.tourJSON?["waypoints"].array {
-            for waypoint in waypoints {
-                if let date = shownWaypointIds[waypoint["id"].intValue] {
-                    let calendar = Calendar.current
-                    if let fiveMinutesAgo = calendar.date(byAdding: .minute, value: 5, to: Date()), date >= fiveMinutesAgo {
-                        continue
-                    }
+        guard let waypoints = self.tourJSON?["waypoints"].array else {
+            return
+        }
+
+        for waypoint in waypoints {
+            if let visitedWaypointDate = shownWaypointIds[waypoint["id"].intValue] {
+                let calendar = Calendar.current
+                if let fiveMinutesAgo = calendar.date(byAdding: .minute, value: 5, to: Date()), visitedWaypointDate <= fiveMinutesAgo {
+                    continue
                 }
+            }
 
-                if let latitude = waypoint["latitude"].float, let longitude = waypoint["longitude"].float {
-                    let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
-                    let distanceMeters = location.distance(from: waypointLocation)
+            if let latitude = waypoint["latitude"].float, let longitude = waypoint["longitude"].float {
+                let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
+                let distanceMeters = location.distance(from: waypointLocation)
 
-                    if (distanceMeters < 15 && !waypointInfoViewVisible) || (distanceMeters > 30 && waypointInfoViewVisible && activeWaypointView?.sticky != true) {
-                        shownWaypointIds[waypoint["id"].intValue] = Date()
-                        willDisplayWaypointInfo()
-                        return
-                    }
+                if (distanceMeters < 15 && !waypointInfoViewVisible) || (distanceMeters > 30 && waypointInfoViewVisible && activeWaypointView?.sticky != true) {
+                    shownWaypointIds[waypoint["id"].intValue] = Date()
+                    willDisplayWaypointInfo()
+                    return
                 }
             }
         }
