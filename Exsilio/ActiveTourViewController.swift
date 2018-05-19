@@ -26,7 +26,7 @@ class ActiveTourViewController: UIViewController {
 
     var tourActive = false
     var currentStepIndex = 0
-    var shownWaypointIds: [Int: Date] = [:]
+    var shownWaypointIds = [Int]()
     var waypointInfoViewVisible = false
 
     var startingPoint: CLLocationCoordinate2D?
@@ -77,7 +77,7 @@ class ActiveTourViewController: UIViewController {
                     let json = JSON(jsonObj)
                     self.directionsJSON = json
                     MapHelper.drawPath(from: json, withColor: UI.RedColor, mapView: self.mapView!)
-                    self.shownWaypointIds = [:]
+                    self.shownWaypointIds = []
                     self.cacheAllSteps()
                     self.mapView?.delegate = self
 
@@ -271,19 +271,20 @@ extension ActiveTourViewController: MGLMapViewDelegate {
         }
 
         for waypoint in waypoints {
-            if let visitedWaypointDate = shownWaypointIds[waypoint["id"].intValue] {
-                let calendar = Calendar.current
-                if let fiveMinutesAgo = calendar.date(byAdding: .minute, value: 5, to: Date()), visitedWaypointDate <= fiveMinutesAgo {
-                    continue
-                }
-            }
-
             if let latitude = waypoint["latitude"].float, let longitude = waypoint["longitude"].float {
                 let waypointLocation = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
                 let distanceMeters = location.distance(from: waypointLocation)
 
+                if let shownWaypointIndex = shownWaypointIds.index(of: waypoint["id"].intValue) {
+                    if distanceMeters >= 50 {
+                        shownWaypointIds.remove(at: shownWaypointIndex)
+                    } else {
+                        continue
+                    }
+                }
+
                 if (distanceMeters < 15 && !waypointInfoViewVisible) || (distanceMeters > 30 && waypointInfoViewVisible && activeWaypointView?.sticky != true) {
-                    shownWaypointIds[waypoint["id"].intValue] = Date()
+                    shownWaypointIds.append(waypoint["id"].intValue)
                     willDisplayWaypointInfo()
                     return
                 }
